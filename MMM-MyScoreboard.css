@@ -1,0 +1,104 @@
+.MMM-MyScoreboard {
+  min-width: 300px;
+}
+
+.MMM-MyScoreboard .league-separator {
+  font-size: 15.5px;
+  line-height: 25px;
+  text-transform: uppercase;
+  margin-top: 6px;
+  border-bottom: solid 1px #222;
+  text-align: left;
+}
+
+
+.MMM-MyScoreboard .box-score {
+  min-width: 300px;
+  height: 70px;
+  position: relative;
+  text-align: left;
+  border-bottom: solid 1px #222;
+}
+
+.MMM-MyScoreboard .box-score .logo {
+  position: absolute;
+  display: block;
+  max-width: 60px;
+  max-height: 60px;
+  top: 35px;
+
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.MMM-MyScoreboard .wrapper.colored .box-score .logo {
+  -webkit-filter: none;
+  filter: none;
+}
+
+
+.MMM-MyScoreboard .box-score .logo.visitor {
+  left: 30px;
+  transform: translate(-50%, -50%);
+}
+.MMM-MyScoreboard .box-score .logo.home {
+  right: 30px;
+  transform: translate(50%, -50%);
+}
+
+.MMM-MyScoreboard .box-score .score {
+  position: absolute;
+  display: block;
+  width: 44px;
+  font-size: 32px;
+  line-height: 1;
+  top: 20px;
+  color: #FFF;
+  text-align: center;
+}
+
+.MMM-MyScoreboard .box-score.NBA .score {
+  top: 22px;
+  font-size: 26px;
+  letter-spacing: -2px;
+}
+
+.MMM-MyScoreboard .box-score .score.visitor {
+  left: 65px;
+}
+.MMM-MyScoreboard .box-score .score.home {
+  right: 65px;
+}
+
+.MMM-MyScoreboard .box-score .status {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  display: block;
+  left: 0px;
+  top: 25px;
+  line-height: 1;
+  font-weight: 300;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.MMM-MyScoreboard .box-score .status sup {
+  font-size: 68%;
+  vertical-align: middle;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.MMM-MyScoreboard .box-score.in-progress .status {
+  color: #FFF;
+  font-weight: 400;
+}
+
+.MMM-MyScoreboard .wrapper.colored .box-score.in-progress .status {  
+  color: #f8dd70;
+}
+
+.MMM-MyScoreboard .box-score .status .game-clock {
+  margin-right: 12px;
+}
