@@ -1,3 +1,14 @@
+/*********************************
+
+  Magic Mirror Module: 
+  MMM-MyScoreboard
+  https://github.com/jclarke0000/MMM-MyScoreboard
+
+  By Jeff Clarke
+  MIT Licensed
+ 
+*********************************/
+
 Module.register("MMM-MyScoreboard",{
   // Default module config.
   defaults: {
@@ -148,7 +159,6 @@ Module.register("MMM-MyScoreboard",{
   },
 
   socketNotificationReceived: function(notification, payload) {
-    //only update if a data set is returned.  Otherwise leave stale data on the screen.
     if ( notification === 'MMM-MYSCOREBOARD-DATA') {
       this.loaded = true;
       this.sportsData[payload.index] = payload.data;
