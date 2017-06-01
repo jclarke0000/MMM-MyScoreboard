@@ -82,6 +82,11 @@ module.exports =
                 gameState = 1;
                 status = self.getInningSection(game.status.inning_state) + " " + self.getOrdinal(Number(game.status.inning));
                 break;
+              case "Delayed" :
+              case "Postponed" :
+                gameState = 1; //so time won't be lit up
+                status = "<span class='delay'>Delayed<br />(" + self.getOrdinal(Number(game.status.inning)) + ")</span>";
+                break;
               case "Game Over":
               case "Final" :
                 gameState = 2;

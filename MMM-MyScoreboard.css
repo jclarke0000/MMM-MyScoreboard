@@ -83,6 +83,14 @@
   font-weight: 400;
 }
 
+.MMM-MyScoreboard .box-score.MLB .status .delay {
+  color: #AAA;
+  font-weight: normal;
+  position: relative;
+  top: -10px;
+
+}
+
 .MMM-MyScoreboard .box-score .status sup {
   font-size: 68%;
   vertical-align: middle;
