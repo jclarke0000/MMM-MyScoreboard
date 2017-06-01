@@ -55,15 +55,17 @@ module.exports = NodeHelper.create({
 
     console.log("getting scores...");
 
+    var today = moment();
+
+    if (today.hour() < this.config.rolloverHours) {
+      //it's past midnight local time, but within the
+      //rollover window.  Show yesterday's games, not today's
+      today.subtract(1, 'day');
+    }
+
     var self = this;
     this.sportsList.forEach( function(league, index) {
 
-      var today = moment();
-      if (today.hour < this.config.rolloverHours) {
-        //it's past midnight local time, but within the
-        //rollover window.  Show yesterday's games, not today's
-        today = today.subtract(1, 'day');
-      }
 
       var serviceURL = league.getUrl(today);
       console.log(serviceURL);
