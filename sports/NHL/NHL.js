@@ -116,7 +116,10 @@ module.exports =
                   periodTxt = periodTxt.replace("2nd", "2<sup>ND</sup>");
                   periodTxt = periodTxt.replace("3rd", "3<sup>RD</sup>");
 
-                  var timeRemaining = moment(game.linescore.currentPeriodTimeRemaining, 'mm:ss').format('m:ss');
+                  var timeRemaining = game.linescore.currentPeriodTimeRemaining;
+                  if (timeRemaining.substring(0,1) == "0") {
+                    timeRemaining = timeRemaining.substring(1); //hide first zero when time is less tha  10 minutes
+                  } 
                   status = '<span class="game-clock">' +
                     timeRemaining +
                     '</span><span class="period">' +

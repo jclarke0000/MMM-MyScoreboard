@@ -57,12 +57,6 @@
   text-align: center;
 }
 
-.MMM-MyScoreboard .box-score.NBA .score {
-  top: 22px;
-  font-size: 26px;
-  letter-spacing: -2px;
-}
-
 .MMM-MyScoreboard .box-score .score.visitor {
   left: 65px;
 }
@@ -81,14 +75,6 @@
   font-weight: 300;
   font-size: 20px;
   font-weight: 400;
-}
-
-.MMM-MyScoreboard .box-score.MLB .status .delay {
-  color: #AAA;
-  font-weight: normal;
-  position: relative;
-  top: -10px;
-
 }
 
 .MMM-MyScoreboard .box-score .status sup {
@@ -110,3 +96,26 @@
 .MMM-MyScoreboard .box-score .status .game-clock {
   margin-right: 12px;
 }
+
+/* ------------ Sport specific styles --------------- */
+
+/* NBA */
+.MMM-MyScoreboard .box-score.NBA .score {
+  top: 22px;
+  font-size: 26px;
+  letter-spacing: -2px;
+}
+
+
+/* MLB */
+.MMM-MyScoreboard .box-score.MLB .status .delay {
+  color: #AAA;
+  font-weight: normal;
+  position: relative;
+  top: -10px;
+}
+
+
+
+
+
