@@ -116,10 +116,11 @@ module.exports =
                   periodTxt = periodTxt.replace("2nd", "2<sup>ND</sup>");
                   periodTxt = periodTxt.replace("3rd", "3<sup>RD</sup>");
 
-                  status = '<span class="period">' +
+                  var timeRemaining = moment(game.linescore.currentPeriodTimeRemaining, 'mm:ss').format('m:ss');
+                  status = '<span class="game-clock">' +
+                    timeRemaining +
+                    '</span><span class="period">' +
                     periodTxt +
-                    '</span><span class="game-clock">' +
-                    game.linescore.currentPeriodTimeRemaining +
                     '</span>';
 
                   break;
