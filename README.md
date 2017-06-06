@@ -88,23 +88,23 @@ Each entry in your `sports` array is an object with two properties:
   module: "MMM-MyScoreboard",
   position: "top_right",
   classes: "default everyone",
+  header: "My Scoreboard",
   config: {
-    showHeader: true,
-    headerText: "Today's Scores",
     showLeagueSeparators: true,
     colored: true,
+    viewStyle: "mediumLogos",
     sports: [
       {
-        league: 'NHL',
-        teams: ['TOR','NYY']
+        league: "NHL",
+        teams: ["TOR","NYY"]
       },
       {
-        league: 'NBA',
-        teams: ['TOR']
+        league: "NBA",
+        teams: ["TOR"]
       },
       {
-        league: 'MLB',
-        teams: ['TOR', 'WSH', 'CLE']
+        league: "MLB",
+        teams: ["TOR", "WSH", "CLE"]
       },
     ]
 
