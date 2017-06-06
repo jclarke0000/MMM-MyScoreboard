@@ -2,7 +2,7 @@
 
 This a module for [MagicMirror](https://github.com/MichMich/MagicMirror/tree/develop).
 
-This module display's today's scores for your favourite across a number of different sports.
+This module display's today's scores for your favourite teams across a number of different leagues.
 
 ![Screen Shot](/../screenshots/MMM-MyScoreboard-screenshot.png?raw=true "Screen Shot")
 
