@@ -6,7 +6,7 @@
   font-size: 15.5px;
   line-height: 18px;
   text-transform: uppercase;
-  margin-top: 6px;
+  margin-top: 10px;
   border-bottom: solid 1px #222;
   text-align: left;
   padding: 0;
@@ -35,7 +35,6 @@
   position: relative;
   right: -2px;
 }
-
 
 .MMM-MyScoreboard .box-score {
   min-width: 300px;
@@ -166,7 +165,8 @@
 }
 
 .MMM-MyScoreboard .box-score.mediumLogos .score {
-  top: 9px;
+  font-size: 26px;
+  top: 11px;
 }
 .MMM-MyScoreboard .box-score.mediumLogos .score.visitor {
   left: 42px;

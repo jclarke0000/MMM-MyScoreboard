@@ -74,11 +74,25 @@ module.exports = NodeHelper.create({
 
         if(!error && response.statusCode == 200) {
           //good response.  Process data.
-          var formattedGamesArray = league.processData(JSON.parse(body));
+
+          var formattedGamesArray;
+          try {
+            formattedGamesArray = league.processData(JSON.parse(body));
+          } catch (e) {
+            /*
+              In case the data feed changes, or there is otherwise some kind of unexpected
+              structure of the JSON, we won't be able to process it.  So this will prepare
+              an empty array for the sport.  It won't display, but it won't stall execution.
+              The other sports should display just fine.
+            */
+            console.log( "** " + self.name + " ERROR ** Couldn't process " + league.name + " data: " + e.message );
+            formattedGamesArray = []; 
+          }
           self.sendSocketNotification('MMM-MYSCOREBOARD-DATA', {index: index, data: formattedGamesArray});
         } else {
-          //error retrieving data
-          console.log( this.name + ": Error getting scores for " + league.name());
+          //error retrieving data.  retrun empty array
+          console.log( "**" + self.name + "  ERROR ** Couldn't retrieve scores for " + league.name + ": " + error );
+          self.sendSocketNotification('MMM-MYSCOREBOARD-DATA', {index: index, data: []});
         }
 
 
