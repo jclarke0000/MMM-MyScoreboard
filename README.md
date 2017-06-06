@@ -96,7 +96,7 @@ Each entry in your `sports` array is an object with two properties:
     sports: [
       {
         league: "NHL",
-        teams: ["TOR","NYY"]
+        teams: ["TOR", "PIT"]
       },
       {
         league: "NBA",
@@ -104,7 +104,7 @@ Each entry in your `sports` array is an object with two properties:
       },
       {
         league: "MLB",
-        teams: ["TOR", "WSH", "CLE"]
+        teams: ["TOR", "CHW", "NYY"]
       },
     ]
 
