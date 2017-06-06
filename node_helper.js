@@ -77,7 +77,7 @@ module.exports = NodeHelper.create({
 
           var formattedGamesArray;
           try {
-            formattedGamesArray = league.processData(JSON.parse(body));
+            formattedGamesArray = league.processData(body);
           } catch (e) {
             /*
               In case the data feed changes, or there is otherwise some kind of unexpected

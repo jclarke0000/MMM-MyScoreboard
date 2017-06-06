@@ -59,6 +59,8 @@ module.exports =
 
   processData: function(data) {
 
+    //expects JSON
+    data = JSON.parse(data);
 
     var self = this;
     var formattedGamesList = new Array();
