@@ -1,7 +1,7 @@
 # MMM-MyTTC
 
-This a module for MagicMirror
-https://magicmirror.builders/
+This a module for <strong>MagicMirror</strong><br>
+https://magicmirror.builders/<br>
 https://github.com/MichMich/MagicMirror
 
 This module display's today's scores for your favourite teams across a number of different leagues.
