@@ -23,14 +23,6 @@ This module display's today's scores for your favourite across a number of diffe
   </thead>
   <tbody>
     <tr>
-      <td><code>showHeader</code></td>
-      <td>Whether to show the module header.<br><br><strong>Type</strong> <code>Boolean</code><br />Defaults to <code>true</code>.</td>
-    </tr>
-    <tr>
-      <td><code>headerText</code></td>
-      <td>Text to display on the module header.<br><br><strong>Type</strong> <code>String</code><br>Defaults to <code>"My Scoreboard"</code></td>
-    </tr>
-    <tr>
       <td><code>dataPollInterval</code></td>
       <td>How frequently to poll for data in milliseconds.<br><br><strong>Type</strong> <code>Number</code><br>Defaults to <code>300000</code> (i.e.: every 5 minutes)</td>
     </tr>
@@ -47,11 +39,21 @@ This module display's today's scores for your favourite across a number of diffe
       <td>How many hours past midnight to continue to show the previous day's games.<br><br><strong>Type</strong> <code>Number</code><br>Defaults to <code>3</code> (i.e.: continue to show yesterday's games until 3:00 AM)</td>
     </tr>
     <tr>
+      <td><code>viewStyle</code></td>
+      <td>One of the following: <code>largeLogos</code>, <code>mediumLogos</code>, <code>oneLine</code>, <code>oneLineWithLogos</code>, <code>stacked</code> or <code>stackedWithLogos</code>.<br><br><strong>Type</strong> <code>String</code><br>Defaults to <code>largeLogos</code><br />See below for examples of the view styles.</td>
+    </tr>
+    <tr>
       <td><code>sports</code></td>
       <td><strong>REQUIRED</strong> An array of leagues and teams you wish to follow.<br><br><strong>Type</strong> <code>Array</code><br>See below for instructions to configure your <code>sports</code> list.</td>
     </tr>
   </tbody>
 </table>
+
+## View Styles
+
+Examples of the available view styles you can specify with the `viewStyle` parameter.
+
+todo, add screenshots.
 
 
 ## Configuring your sports list

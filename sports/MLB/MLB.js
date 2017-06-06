@@ -73,24 +73,32 @@ module.exports =
           self.teamsToFollow.indexOf(game.away_name_abbrev) != -1) {
 
             var gameState;
-            var status;
+            var classes = [];
+            var status = [];
+
 
             console.log("game.status.status: " + game.status.status);
 
             switch(game.status.status) {
               case "In Progress":
                 gameState = 1;
-                status = self.getInningSection(game.status.inning_state) + " " + self.getOrdinal(Number(game.status.inning));
+                status.push(self.getInningSection(game.status.inning_state));
+                status.push(self.getOrdinal(Number(game.status.inning)));
                 break;
               case "Delayed" :
               case "Postponed" :
-                gameState = 1; //so time won't be lit up
-                status = "<span class='delay'>Delayed<br />(" + self.getOrdinal(Number(game.status.inning)) + ")</span>";
+                classes.push["delay"];
+                gameState = 1;
+                status.push("Delay");
+                status.push(self.getOrdinal(Number(game.status.inning)));
                 break;
               case "Game Over":
               case "Final" :
                 gameState = 2;
-                status = "Final" + (Number(game.status.inning) > 9 ? " (" + game.status.inning + ")" : "");
+                status.push("Final");
+                if (Number(game.status.inning) > 9) {
+                  status.push("(" + game.status.inning + ")");
+                }
                 break;
               case "Preview":
               case "Pre-Game":
@@ -98,15 +106,18 @@ module.exports =
               default: //game in future
                 gameState = 0;
                 var localTZ = moment.tz.guess();
-                status = moment.tz(game.time_date + ' ' + game.ampm, 'YYYY/MM/DD h:mm A', 'America/Toronto').tz(localTZ).format('h:mm a');
+                status.push(moment.tz(game.time_date + ' ' + game.ampm, 'YYYY/MM/DD h:mm A', 'America/Toronto').tz(localTZ).format('h:mm a'));
                 break;
             }
 
 
             formattedGamesList.push({
               gameMode: gameState,
+              classes: classes,
               hTeam: game.home_name_abbrev,
               vTeam: game.away_name_abbrev,
+              hTeamLong: game.home_team_name,
+              vTeamLong: game.away_team_name,              
               hScore: game.linescore ? game.linescore.r.home : "0",
               vScore: game.linescore ? game.linescore.r.away : "0",
               status: status

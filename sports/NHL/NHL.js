@@ -95,14 +95,16 @@ module.exports =
         if (self.teamsIdsToFollow.indexOf(game.teams.away.team.id) != -1 ||
             self.teamsIdsToFollow.indexOf(game.teams.home.team.id) != -1 ) {      
 
-              var status = '';
+              var status = [];
+              var classes = [];
+
               var gameState = self.gameStates[game.status.codedGameState];
               switch (gameState) {
                 case 0:
                   //set status to start time, present in local time zone
                   var localTZ = moment.tz.guess();
                   //NHL provides game time in Zulu time (i.e. no time offset).  So we can convert in one shot.
-                  status = moment.tz(game.gameDate, localTZ).format("h:mm a");
+                  status.push(moment.tz(game.gameDate, localTZ).format("h:mm a"));
                   break;
                 case 1:
                   //set status to period and game clock
@@ -120,25 +122,26 @@ module.exports =
                   if (timeRemaining.substring(0,1) == "0") {
                     timeRemaining = timeRemaining.substring(1); //hide first zero when time is less tha  10 minutes
                   } 
-                  status = '<span class="game-clock">' +
-                    timeRemaining +
-                    '</span><span class="period">' +
-                    periodTxt +
-                    '</span>';
+                  status.push(timeRemaining);
+                  status.push(periodTxt);
 
                   break;
                 case 2:
                   //set status to final
-                  status = game.status.detailedState + 
-                    (game.linescore.currentPeriodOrdinal.indexOf("OT") != -1 ? " (" + game.linescore.currentPeriodOrdinal + ")" : "");
-
+                  status.push(game.status.detailedState);
+                  if (game.linescore.currentPeriodOrdinal.indexOf("OT") != -1) {
+                    status.push("(" + game.linescore.currentPeriodOrdinal + ")");
+                  }
                   break;
               }
 
               formattedGamesList.push({
                 gameMode: gameState,
+                classes: classes,
                 hTeam: self.getTeamShortCode(game.teams.home.team.id),
                 vTeam: self.getTeamShortCode(game.teams.away.team.id),
+                hTeamLong: self.getTeamName(game.teams.home.team.id),
+                vTeamLong: self.getTeamName(game.teams.away.team.id),
                 hScore: game.teams.home.score,
                 vScore: game.teams.away.score,
                 status: status
@@ -170,123 +173,153 @@ module.exports =
   teams: [
     {
       id: 1,
-      shortCode: "NJD"
+      shortCode: "NJD",
+      name: "Devils"
     },
     {
       id: 2,
-      shortCode: "NYI"
+      shortCode: "NYI",
+      name: "Islanders"
     },
     {
       id: 3,
-      shortCode: "NYR"
+      shortCode: "NYR",
+      name: "Rangers"
     },
     {
       id: 4,
-      shortCode: "PHI"
+      shortCode: "PHI",
+      name: "Flyers"
     },
     {
       id: 5,
-      shortCode: "PIT"
+      shortCode: "PIT",
+      name: "Penguins"
     },
     {
       id: 6,
-      shortCode: "BOS"
+      shortCode: "BOS",
+      name: "Bruins"
     },
     {
       id: 7,
-      shortCode: "BUF"
+      shortCode: "BUF",
+      name: "Sabres"
     },
     {
       id: 8,
-      shortCode: "MTL"
+      shortCode: "MTL",
+      name: "Canadiens"
     },
     {
       id: 9,
-      shortCode: "OTT"
+      shortCode: "OTT",
+      name: "Senators"
     },
     {
       id: 10,
-      shortCode: "TOR"
+      shortCode: "TOR",
+      name: "Maple Leafs"
     },
     {
       id: 12,
-      shortCode: "CAR"
+      shortCode: "CAR",
+      name: "Hurricanes"
     },
     {
       id: 13,
-      shortCode: "FLA"
+      shortCode: "FLA",
+      name: "Panthers"
     },
     {
       id: 14,
-      shortCode: "TBL"
+      shortCode: "TBL",
+      name: "Lightning"
     },
     {
       id: 15,
-      shortCode: "WSH"
+      shortCode: "WSH",
+      name: "Capitals"
     },
     {
       id: 16,
-      shortCode: "CHI"
+      shortCode: "CHI",
+      name: "Black Hawks"
     },
     {
       id: 17,
-      shortCode: "DET"
+      shortCode: "DET",
+      name: "Red Wings"
     },
     {
       id: 18,
-      shortCode: "NSH"
+      shortCode: "NSH",
+      name: "Predators"
     },
     {
       id: 19,
-      shortCode: "STL"
+      shortCode: "STL",
+      name: "Blues"
     },
     {
       id: 20,
-      shortCode: "CGY"
+      shortCode: "CGY",
+      name: "Flames"
     },
     {
       id: 21,
-      shortCode: "COL"
+      shortCode: "COL",
+      name: "Avalanche"
     },
     {
       id: 22,
-      shortCode: "EDM"
+      shortCode: "EDM",
+      name: "Oilers"
     },
     {
       id: 23,
-      shortCode: "VAN"
+      shortCode: "VAN",
+      name: "Canucks"
     },
     {
       id: 24,
-      shortCode: "ANA"
+      shortCode: "ANA",
+      name: "Ducks"
     },
     {
       id: 25,
-      shortCode: "DAL"
+      shortCode: "DAL",
+      name: "Stars"
     },
     {
       id: 26,
-      shortCode: "LAK"
+      shortCode: "LAK",
+      name: "Kings"
     },
     {
       id: 28,
-      shortCode: "SJS"
+      shortCode: "SJS",
+      name: "Sharks"
     },
     {
       id: 29,
-      shortCode: "CBJ"
+      shortCode: "CBJ",
+      name: "Blue Jackets"
     },
     {
       id: 30,
-      shortCode: "MIN"
+      shortCode: "MIN",
+      name: "Wild"
     },
     {
       id: 52,
-      shortCode: "WPG"
+      shortCode: "WPG",
+      name: "Jets"
     },
     {
       id: 53,
-      shortCode: "ARI"
+      shortCode: "ARI",
+      name: "Coyotes"
     },
   ],
 
@@ -298,6 +331,17 @@ module.exports =
       }
     });
     return shortCode;
+  },
+
+  getTeamName: function(id) {
+    var name = ''
+    this.teams.find( function(el) {
+      if (el.id == id) {
+        name = el.name;
+      }
+    });
+    return name;
   }
+
 
 }
