@@ -1,4 +1,4 @@
-# MMM-MyTTC
+# MMM-MyScoreboard
 
 This a module for <strong>MagicMirror</strong><br>
 https://magicmirror.builders/<br>
