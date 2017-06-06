@@ -49,11 +49,6 @@ This module display's today's scores for your favourite across a number of diffe
   </tbody>
 </table>
 
-## View Styles
-
-Examples of the available view styles you can specify with the `viewStyle` parameter.
-
-todo, add screenshots.
 
 
 ## Configuring your sports list
@@ -117,6 +112,13 @@ Each entry in your `sports` array is an object with two properties:
 },
 
 ```
+
+## View Styles
+
+Examples of the available view styles you can specify with the `viewStyle` parameter.
+
+![View Styles](/../screenshots/viewStyles.jpg?raw=true "View Styles")
+
 
 ## Leagues and Team Shortcodes
 
