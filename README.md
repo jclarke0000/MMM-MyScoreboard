@@ -4,6 +4,8 @@ This a module for [MagicMirror](https://github.com/MichMich/MagicMirror/tree/dev
 
 This module display's today's scores for your favourite across a number of different sports.
 
+![Screen Shot](/../screenshots/MMM-MyScoreboard-screenshot.png?raw=true "Screen Shot")
+
 
 ## Installation
 
