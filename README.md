@@ -122,4 +122,107 @@ Examples of the available view styles you can specify with the `viewStyle` param
 
 ## Leagues and Team Shortcodes
 
-to do.
+### NHL
+
+```
+ANA   Anaheim Ducks
+ARI   Arizona Coyotes
+BOS   Boton Bruins
+BUF   Buffalo Sabres
+CAR   Carolina Hurricanes
+CBJ   Columbus Blue Jackets
+CGY   Calgary Flames
+CHI   Chicago Black Hawks
+COL   Colorado Avalanche
+DAL   Dallas Stars
+DET   Detrois Red Wings
+EDM   Edmonton Oilers
+FLA   Florida Panthers
+LAK   Los Angeles Kings
+MIN   Minnesota Wild
+MTL   Montreal Canadiens
+NJD   New Jersey Devils
+NSH   Nashville Predators
+NYI   New York Islanders
+NYR   New York Rangers
+OTT   Ottawa Senators
+PHI   Philadelphia Flyers
+PIT   Pittsburgh Penguins
+SJS   San Jose Sharks
+STL   St. Louis Blues
+TBL   Tamba Bay Lightning
+TOR   Toronto Maple Leafs
+VAN   Vanvouver Canucks
+WPG   Winnipeg Jets
+WSH   Washington Capitals
+```
+
+### MLB
+
+```
+ARI   Arizona Diamondbacks
+ATL   Atlanta Braves
+BAL   Baltimore Orioles
+BOS   Boston Red Sox
+CHC   Chicago Cubs
+CIN   Cincinnati reds
+CLE   Cleveland Indians
+COL   Colorado Rockies
+CWS   Chicago White Sox
+DET   Detroit Tigers
+HOU   Houston Astros
+KC    Kansas City Royals
+LAA   Los Angeles Angels
+LAD   Los Angeles Dodgers
+MIA   Miami Marlins
+MIL   Milwaukee Brewers
+MIN   Minnesota Twons
+NYM   New York Mets
+NYY   New York Yankees
+OAK   Oakland Athletics
+PHI   Philadelphia Phillies
+PIT   Pittsburgh Pirates
+SD    San Diego Padres
+SEA   Seattle Mariners
+SF    San Francisco Giants
+STL   St. Louis Cardinals
+TB    Tampa Bay Rays
+TEX   Texas Rangers
+TOR   Toronto Blue Jays
+WSH   Washington Nationals
+```
+
+### NBA
+
+```
+ATL   Atlanta Hawks
+BKN   Brooklyn Nets
+BOS   Boston Celtics
+CHA   Charlotte Hornets
+CHI   Chicago Bulls
+CLE   Cleveland Cavaliers
+DAL   Dallas Mavericks
+DEN   Denver Nuggets
+DET   Detroit Pistons
+GSW   Golden State Warriors
+HOU   Houston Rockets
+IND   Indiana Pacers
+LAC   Los Angeles Clippers
+LAL   Los Angeles Lakers
+MEM   Memphis Grizzlies
+MIA   Miami Heat
+MIL   Milwaukee Bucks
+MIN   Minnesota Timberwolves
+NOP   New Orleans Pelicans
+NYK   New York Knicks
+OKC   Oklahoma City Thunder
+ORL   Orlando Magic
+PHI   Philadelphia 76ers
+PHX   Phoenix Suns
+POR   Portland Trail Blazers
+SAC   Sacramento Kings
+SAS   San Antonio Spurs
+TOR   Toronto Raptors
+UTA   Utah Jazz
+WAS   Washington Wizards
+```
