@@ -79,7 +79,7 @@ module.exports =
             var status = [];
 
 
-            console.log("game.status.status: " + game.status.status);
+            // console.log("game.status.status: " + game.status.status);
 
             switch(game.status.status) {
               case "In Progress":

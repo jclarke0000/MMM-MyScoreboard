@@ -20,15 +20,15 @@ Module.register("MMM-MyScoreboard",{
     sports: [
       {
         league: 'NHL',
-        teams: ['PIT','NSH']
+        teams: ['TOR','MTL','OTT','WPG','CGY','EDM','VAN']
       },
       {
         league: 'NBA',
-        teams: ['CLE','GSW']
+        teams: ['TOR']
       },
       {
         league: 'MLB',
-        teams: ['TOR', 'WSH', 'CLE']
+        teams: ['TOR']
       },
     ]
   },
