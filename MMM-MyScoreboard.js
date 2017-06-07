@@ -244,11 +244,18 @@ Module.register("MMM-MyScoreboard",{
       }
     });
 
-    console.log("anyGames = " + anyGames);
+    // console.log("anyGames = " + anyGames);
+    /*
+      We're using the lockString parameter to play nicely with
+      other modules that attempt to show or hide this module,
+      e.g.: MMM-Facial-Recognition.  When both use a lockString,
+      the module will only be visible when both agree that it
+      should be visible.
+    */
     if (!anyGames) {
-      this.hide(1000);
+      this.hide(1000, {lockString: this.identifier});
     } else {
-      this.show(1000);
+      this.show(1000, {lockString: this.identifier});
     }
 
     return wrapper;
