@@ -9,7 +9,7 @@ module.exports = NodeHelper.create({
   sportsList : [],
   dataPollStarted: false,
 
-  supportedLeagues: ['MLB', 'NBA', 'NHL'],
+  supportedLeagues: ['MLB', 'NBA', 'NHL', 'CFL'],
 
   start: function() {
     console.log("Starting node_helper for module [" + this.name + "]");
@@ -29,7 +29,7 @@ module.exports = NodeHelper.create({
         var sport = this.config.sports[i];
         if (this.supportedLeagues.indexOf(sport.league) != -1) {
           var sObj = require('./sports/' + sport.league + "/" + sport.league + ".js");
-            sObj.configure(sport.teams);
+            sObj.configure(sport);
 
           this.sportsList.push(sObj);          
         }
@@ -85,13 +85,13 @@ module.exports = NodeHelper.create({
               an empty array for the sport.  It won't display, but it won't stall execution.
               The other sports should display just fine.
             */
-            console.log( "** " + self.name + " ERROR ** Couldn't process " + league.name + " data: " + e.message );
+            console.log( "[" + self.name + "] ** ERROR ** Couldn't process " + league.name + " data: " + e.message );
             formattedGamesArray = []; 
           }
           self.sendSocketNotification('MMM-MYSCOREBOARD-DATA', {index: index, data: formattedGamesArray});
         } else {
           //error retrieving data.  retrun empty array
-          console.log( "**" + self.name + "  ERROR ** Couldn't retrieve scores for " + league.name + ": " + error );
+          console.log( "[" + self.name + "] **  ERROR ** Couldn't retrieve scores for " + league.name + ": " + error );
           self.sendSocketNotification('MMM-MYSCOREBOARD-DATA', {index: index, data: []});
         }
 

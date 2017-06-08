@@ -8,8 +8,8 @@ module.exports =
 
   teamsToFollow:[],
 
-  configure: function(teams) {
-    this.teamsToFollow = teams;
+  configure: function(config) {
+    this.teamsToFollow = config.teams;
   },
 
   getUrl: function(date) {
