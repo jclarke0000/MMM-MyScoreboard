@@ -8,12 +8,16 @@ module.exports =
 
   teamsToFollow:[],
 
-  configure: function(teams) {
-    this.teamsToFollow = teams;
+  configure: function(config) {
+    this.teamsToFollow = config.teams;
   },
 
   getUrl: function(date) {
     var d = moment(date);
+
+    //save this for later explicit comparison against the result set.
+    this.lastPullDate = d;
+
     var url = "http://gd2.mlb.com/components/game/mlb/year_" + d.format('YYYY') +
     "/month_" + d.format('MM') +
     "/day_" + d.format('DD') + 
@@ -70,9 +74,15 @@ module.exports =
 
       data.data.games.game.forEach( function(game) {
 
-
-        if (self.teamsToFollow.indexOf(game.home_name_abbrev) != -1 || 
-          self.teamsToFollow.indexOf(game.away_name_abbrev) != -1) {
+        /*
+          Only process and add games that match the list of teams to follow as well as match
+          the last date provided to the getUrl function (ie.: explicit match on game date).
+          This is because sometimes the MLB feed has games from the wrong date even though
+          the request queries for a specific date.
+        */
+        if ( (self.teamsToFollow.indexOf(game.home_name_abbrev) != -1 || 
+                self.teamsToFollow.indexOf(game.away_name_abbrev) != -1) &&
+              self.lastPullDate.startOf("day").isSame(moment(game.original_date, "YYYY-MM-DD").startOf("day")) ) {
 
             var gameState;
             var classes = [];
