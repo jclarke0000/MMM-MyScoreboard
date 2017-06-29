@@ -68,7 +68,7 @@ module.exports = NodeHelper.create({
 
 
       var serviceURL = league.getUrl(today);
-      // console.log(serviceURL);
+      console.log(serviceURL);
 
       request({url: serviceURL, method: 'GET'}, function(error, response, body) {
 

@@ -14,6 +14,10 @@ module.exports =
 
   getUrl: function(date) {
     var d = moment(date);
+
+    //Save this for later data processing. MLB includes yesterday's finals in today's feed
+    this.lastDateForPoll = d;
+        
     var url = "http://gd2.mlb.com/components/game/mlb/year_" + d.format('YYYY') +
     "/month_" + d.format('MM') +
     "/day_" + d.format('DD') + 
@@ -71,8 +75,9 @@ module.exports =
       data.data.games.game.forEach( function(game) {
 
 
-        if (self.teamsToFollow.indexOf(game.home_name_abbrev) != -1 || 
-          self.teamsToFollow.indexOf(game.away_name_abbrev) != -1) {
+        if ( (self.teamsToFollow.indexOf(game.home_name_abbrev) != -1 || 
+          self.teamsToFollow.indexOf(game.away_name_abbrev) != -1) && 
+            moment(self.lastDateForPoll).startOf("day").isSame(moment(game.original_date, "YYYY/MM/DD").startOf("day")) ) {
 
             var gameState;
             var classes = [];
