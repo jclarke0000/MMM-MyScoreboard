@@ -100,15 +100,13 @@ module.exports =
           break;
         case 1:
           //build game clock and quater          
-          status.push(game.event_status.minutes + ":" + (game.event_status.seconds > 9 ? "0" + game.event_status.seconds : game.event_status.seconds));
+          status.push(game.event_status.minutes + ":" + (game.event_status.seconds < 10 ? "0" + game.event_status.seconds : game.event_status.seconds));
           status.push(self.getOrdinal(game.event_status.quarter));
           break;
         case 3:
           status.push(game.event_status.name);
           break;
       }
-
-
 
       formattedGame = {
         classes: classes,
@@ -120,7 +118,6 @@ module.exports =
         hScore: game.team_2.score,
         vScore: game.team_1.score,
         status: status
-
       }
 
       formattedGames.push(formattedGame);
