@@ -62,6 +62,7 @@ Currently this module supports the following leagues:
 * **NHL** - National Hockey League
 * **NBA** - National Basketball Association
 * **MLB** - Major League Baseball
+* **CFL** - Canadian Football League (requires an API key from http://api.cfl.ca/key-request)
 
 Each entry in your `sports` array is an object with two properties:
 
@@ -80,6 +81,10 @@ Each entry in your `sports` array is an object with two properties:
     <tr>
       <td><code>teams</code></td>
       <td><strong>REQUIRED</strong> an array of teams for which you want to see scores.  Specify teams using their shortcodes (e.g.: <code>"TOR"</code> for Toronto Maple Leafs.<br><br><strong>Type</strong> <code>Array</code><br>See below for a full listing of teams and their short codes</td>
+    </tr>
+    <tr>
+      <td><code>apiKey</code></td>
+      <td><strong>REQUIRED FOR CFL</strong> You need to request an API key from CFL tech support here:<br>http://api.cfl.ca/key-request</td>
     </tr>
   </tbody>
 </table>
@@ -110,6 +115,11 @@ Each entry in your `sports` array is an object with two properties:
         league: "MLB",
         teams: ["TOR", "CHW", "NYY"]
       },
+      {
+        league: 'CFL',
+        teams: ['TOR','MTL','OTT'],
+        apiKey: 'your_secret_API_key'
+      }      
     ]
 
   }
@@ -229,4 +239,17 @@ SAS   San Antonio Spurs
 TOR   Toronto Raptors
 UTA   Utah Jazz
 WAS   Washington Wizards
+```
+
+### CFL
+```
+BC    B.C. Lions
+CGY   Calgary Stampeders
+EDM   Edmonton Eskimos
+HAM   Hamilton Tiger-Cats
+MTL   Montreal Alouetts
+OTT   Ottawa Redblacks
+SSK   Saskatchewan Roughriders
+TOR   Toronto Argonauts
+WPG   Winnipeg Blue Bombers
 ```
