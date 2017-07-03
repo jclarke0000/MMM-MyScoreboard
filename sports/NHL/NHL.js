@@ -4,9 +4,6 @@ const moment = require('moment-timezone');
 module.exports = 
 {
 
-  /*
-    For identification purposes.  Useful for debugging
-  */
   name: "NHL",
 
   /*
@@ -15,18 +12,12 @@ module.exports =
   teamsIdsToFollow : [],
 
 
-  /*
-    Configures the module with the teams for which games and scores are to be retrieved
-
-      @param teams 
-        Array of three-letter team shortcodes in string format
-  */
-  configure: function(teams) {
+  configure: function(config) {
 
     var self = this;
     this.teamsIdsToFollow = new Array();
 
-    teams.forEach( function(team) {
+    config.teams.forEach( function(team) {
       self.teams.find(function(el) {
         if (el.shortCode == team)  {
           self.teamsIdsToFollow.push(el.id);

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="403px" height="300px" viewBox="0 0 403 300" style="enable-background:new 0 0 403 300;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FEC058;}
+	.st1{fill:#00471D;}
+	.st2{fill:none;stroke:#000000;stroke-width:4.1;}
+	.st3{fill:none;stroke:#FFFFFF;stroke-width:4.1;}
+</style>
+<g>
+	<g>
+		<ellipse class="st0" cx="201.5" cy="150" rx="197" ry="145.5"/>
+		<path class="st1" d="M201.5,300C90.4,300,0,232.7,0,150S90.4,0,201.5,0C312.6,0,403,67.3,403,150S312.6,300,201.5,300z M201.5,9.1
+			C95.4,9.1,9.1,72.3,9.1,150s86.3,140.9,192.4,140.9c106.1,0,192.4-63.2,192.4-140.9S307.6,9.1,201.5,9.1z"/>
+	</g>
+	<ellipse cx="201.7" cy="150" rx="175.9" ry="129.1"/>
+	<path class="st1" d="M201.7,22.7c90.9,0,173.9,51.5,173.9,128.3c0,65.2-66.7,123.5-173.9,123.5c-80.3,0-165.5-51.5-165.5-128.3
+		C36.2,65.9,115,22.7,201.7,22.7"/>
+	<path class="st2" d="M106.8,66.4h142.4L242,90.3h-96.1l-6.1,19.7h198l-7.3,23.9h-96.5l-5.8,18.5h92.3l-7.3,23.9h-92.3l-5.8,18.6
+		h96.2l-7.3,23.9H162.1l12.7-41.4H72.4L106.8,66.4z M132.6,133.9l-6.2,19.8h55.8l6.2-19.8H132.6z"/>
+	<path class="st3" d="M98.5,72.4h142.4l-7.3,23.9h-96.1l-6.1,19.7h198l-7.3,23.9h-96.5l-5.8,18.5h92.3l-7.3,23.9h-92.3l-5.8,18.6
+		h96.2l-7.3,23.9H153.8l12.7-41.4H64.1L98.5,72.4z M124.2,140l-6.2,19.8h55.8L180,140H124.2z"/>
+	<path class="st0" d="M98.5,72.4h142.4l-7.3,23.9h-96.1l-6.1,19.7h198l-7.3,23.9h-96.5l-5.8,18.5h92.3l-7.3,23.9h-92.3l-5.8,18.6
+		h96.2l-7.3,23.9H153.8l12.7-41.4H64.1L98.5,72.4z M124.2,140l-6.2,19.8h55.8L180,140H124.2z"/>
+</g>
+</svg>

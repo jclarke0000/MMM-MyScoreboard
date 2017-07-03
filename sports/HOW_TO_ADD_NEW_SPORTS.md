@@ -22,27 +22,35 @@ module.exports =
   /*
     STRING - Name of the league.  Should match the
     directory name for this league (e.g.: "NHL").  Used
-    for identification and debug purposes.
+    for identification and debug purposes.  Either
+    state is as a literal string, or populate it in the
+    configure() function using the config.league
+    property.
   */
   name: ...,
 
 
   /*
     Function configure()
-      param teams - ARRAY of STRINGS
 
-    This function configures the league with the teams
-    the user wishes see scores for.  It receives an array
-    team short codes in string format.
+    @param config - the JS Object section of the module's config 
+      for this particular sport.
 
-    e.g.: ["TOR, "MTL"]
+      At a minimum , it shall provide two properties:
+        league: STRING (e.g.: "NHL")
+        teams: ARRAY of team short codes (e.g.: ["TOR, "MTL"])
+    
+    Any additional configuration parameters specific to the data
+    feed (e.g.: some feeds require an API key) should be provided
+    here as well.
+
   */
-  configure: function(teams) {
+  configure: function(config) {
     ...
   },
 
   /*
-    Function getURL()
+    Function getUrl()
       param date - Moment.js date object
       returns STRING - built URL used to retrieve game data
 

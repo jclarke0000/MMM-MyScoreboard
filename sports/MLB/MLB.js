@@ -8,8 +8,8 @@ module.exports =
 
   teamsToFollow:[],
 
-  configure: function(teams) {
-    this.teamsToFollow = teams;
+  configure: function(config) {
+    this.teamsToFollow = config.teams;
   },
 
   getUrl: function(date) {
@@ -17,7 +17,7 @@ module.exports =
 
     //Save this for later data processing. MLB includes yesterday's finals in today's feed
     this.lastDateForPoll = d;
-
+        
     var url = "http://gd2.mlb.com/components/game/mlb/year_" + d.format('YYYY') +
     "/month_" + d.format('MM') +
     "/day_" + d.format('DD') + 
