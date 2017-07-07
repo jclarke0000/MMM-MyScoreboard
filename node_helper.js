@@ -1,5 +1,5 @@
-const request = require('request');
-const moment = require('moment-timezone');
+const request = require("request");
+const moment = require("moment-timezone");
 const NodeHelper = require("node_helper");
 
 module.exports = NodeHelper.create({
@@ -9,7 +9,7 @@ module.exports = NodeHelper.create({
   sportsList : [],
   dataPollStarted: false,
 
-  supportedLeagues: ['MLB', 'NBA', 'NHL', 'CFL'],
+  supportedLeagues: ["MLB", "NBA", "NHL", "CFL"],
 
   start: function() {
     console.log("Starting node_helper for module [" + this.name + "]");
@@ -18,7 +18,7 @@ module.exports = NodeHelper.create({
 
   socketNotificationReceived: function(notification, payload) {
     
-    if (notification == 'MMM-MYSCOREBOARD-START') {
+    if (notification == "MMM-MYSCOREBOARD-START") {
 
       //payload contains module config.
       this.config = payload;
@@ -28,8 +28,8 @@ module.exports = NodeHelper.create({
 
         var sport = this.config.sports[i];
         if (this.supportedLeagues.indexOf(sport.league) != -1) {
-          var sObj = require('./sports/' + sport.league + "/" + sport.league + ".js");
-            sObj.configure(sport);
+          var sObj = require("./sports/" + sport.league + "/" + sport.league + ".js");
+          sObj.configure(sport);
 
           this.sportsList.push(sObj);          
         }
@@ -44,7 +44,7 @@ module.exports = NodeHelper.create({
         var self = this;
         setInterval(function() {
           self.getScores();
-        }, this.config.dataPollInterval)
+        }, this.config.dataPollInterval);
       }
 
     }
@@ -60,7 +60,7 @@ module.exports = NodeHelper.create({
     if (today.hour() < this.config.rolloverHours) {
       //it's past midnight local time, but within the
       //rollover window.  Show yesterday's games, not today's
-      today.subtract(1, 'day');
+      today.subtract(1, "day");
     }
 
     var self = this;
@@ -68,9 +68,9 @@ module.exports = NodeHelper.create({
 
 
       var serviceURL = league.getUrl(today);
-      console.log(serviceURL);
+      // console.log(serviceURL);
 
-      request({url: serviceURL, method: 'GET'}, function(error, response, body) {
+      request({url: serviceURL, method: "GET"}, function(error, response, body) {
 
         if(!error && response.statusCode == 200) {
           //good response.  Process data.
@@ -88,11 +88,11 @@ module.exports = NodeHelper.create({
             console.log( "[" + self.name + "] ** ERROR ** Couldn't process " + league.name + " data: " + e.message );
             formattedGamesArray = []; 
           }
-          self.sendSocketNotification('MMM-MYSCOREBOARD-DATA', {index: index, data: formattedGamesArray});
+          self.sendSocketNotification("MMM-MYSCOREBOARD-DATA", {index: index, data: formattedGamesArray});
         } else {
           //error retrieving data.  retrun empty array
           console.log( "[" + self.name + "] **  ERROR ** Couldn't retrieve scores for " + league.name + ": " + error );
-          self.sendSocketNotification('MMM-MYSCOREBOARD-DATA', {index: index, data: []});
+          self.sendSocketNotification("MMM-MYSCOREBOARD-DATA", {index: index, data: []});
         }
 
 
