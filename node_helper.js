@@ -9,7 +9,7 @@ module.exports = NodeHelper.create({
   sportsList : [],
   dataPollStarted: false,
 
-  supportedLeagues: ["MLB", "NBA", "NHL", "CFL"],
+  supportedLeagues: ["MLB", "NBA", "NHL", "CFL", "NFL"],
 
   start: function() {
     console.log("Starting node_helper for module [" + this.name + "]");
@@ -28,6 +28,7 @@ module.exports = NodeHelper.create({
 
         var sport = this.config.sports[i];
         if (this.supportedLeagues.indexOf(sport.league) != -1) {
+          
           var sObj = require("./sports/" + sport.league + "/" + sport.league + ".js");
           sObj.configure(sport);
 

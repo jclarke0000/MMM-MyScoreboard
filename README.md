@@ -62,6 +62,7 @@ Currently this module supports the following leagues:
 * **NHL** - National Hockey League
 * **NBA** - National Basketball Association
 * **MLB** - Major League Baseball
+* **NFL** - National Football League
 * **CFL** - Canadian Football League (requires an API key from http://api.cfl.ca/key-request)
 
 Each entry in your `sports` array is an object with two properties:
@@ -119,7 +120,11 @@ Each entry in your `sports` array is an object with two properties:
         league: 'CFL',
         teams: ['TOR','MTL','OTT'],
         apiKey: 'your_secret_API_key'
-      }      
+      },
+      {
+        league: "NFL",
+        teams: ["BUF", "NYJ", "NYG"]
+      }
     ]
 
   }
@@ -239,6 +244,42 @@ SAS   San Antonio Spurs
 TOR   Toronto Raptors
 UTA   Utah Jazz
 WAS   Washington Wizards
+```
+
+### NFL
+```
+ARI   Arizona Cardinals
+ATL   Atlanta Falcons
+BAL   Baltimore Ravens
+BUF   Buffalo Bills
+CAR   Carolina Panthers
+CHI   Chicago Bears
+CIN   Cincinati Bengals
+CLE   Cleveland Browns
+DAL   Dallas Cowboys
+DEN   Denver Broncos
+DET   Detroit Lions
+GB    Green Bay Packers
+HOU   Houston Texans
+IND   Indianapolis Colts
+JAX   Jacksonville Jaguars
+KC    Kansas City Chiefs
+LAC   Los Angeles Chargers
+LAR   Los Angeles Rams
+MIA   Miami Dolphins
+MIN   Minnesota Vikings
+NE    New England Patriots
+NO    New Orleans Saints
+NYG   New York Giants
+NYJ   New York Jets
+OAK   Oakland Raiders
+PHI   Philadelphia Eagles
+PIT   Pittsburgh Steelers
+SEA   Seattle Seahawks
+SF    San Francisco 49ers
+TB    Tampa Bay Buccaneers
+TEN   Tennessee Titans
+WAS   Washington Redskins
 ```
 
 ### CFL
