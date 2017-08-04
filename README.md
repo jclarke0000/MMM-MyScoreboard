@@ -149,7 +149,7 @@ CGY   Calgary Flames
 CHI   Chicago Black Hawks
 COL   Colorado Avalanche
 DAL   Dallas Stars
-DET   Detrois Red Wings
+DET   Detroit Red Wings
 EDM   Edmonton Oilers
 FLA   Florida Panthers
 LAK   Los Angeles Kings
