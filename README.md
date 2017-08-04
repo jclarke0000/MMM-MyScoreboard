@@ -4,7 +4,8 @@ This a module for <strong>MagicMirror</strong><br>
 https://magicmirror.builders/<br>
 https://github.com/MichMich/MagicMirror
 
-This module display"s today"s scores for your favourite teams across a number of different leagues.
+This module display's today's scores for your favourite teams across a number of different
+leagues, including NHL, NBA, NFL, MLB and CFL.
 
 ![Screen Shot](/../screenshots/MMM-MyScoreboard-screenshot.png?raw=true "Screen Shot")
 
@@ -40,7 +41,7 @@ This module display"s today"s scores for your favourite teams across a number of
     </tr>
     <tr>
       <td><code>rolloverHours</code></td>
-      <td>How many hours past midnight to continue to show the previous day"s games.<br><br><strong>Type</strong> <code>Number</code><br>Defaults to <code>3</code> (i.e.: continue to show yesterday"s games until 3:00 AM)</td>
+      <td>How many hours past midnight to continue to show the previous day's games.<br><br><strong>Type</strong> <code>Number</code><br>Defaults to <code>3</code> (i.e.: continue to show yesterday's games until 3:00 AM)</td>
     </tr>
     <tr>
       <td><code>viewStyle</code></td>
