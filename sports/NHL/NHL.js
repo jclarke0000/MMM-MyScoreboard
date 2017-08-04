@@ -315,6 +315,11 @@ module.exports =
       shortCode: "ARI",
       name: "Coyotes"
     },
+    {
+      id: 54,
+      shortCode: "VGK",
+      name: "Golden Knights"
+    }
   ],
 
   getTeamShortCode: function(id) {

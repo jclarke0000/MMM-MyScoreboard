@@ -167,6 +167,7 @@ STL   St. Louis Blues
 TBL   Tamba Bay Lightning
 TOR   Toronto Maple Leafs
 VAN   Vanvouver Canucks
+VGK   Vegas Golden Knights
 WPG   Winnipeg Jets
 WSH   Washington Capitals
 ```
