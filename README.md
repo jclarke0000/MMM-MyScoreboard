@@ -45,7 +45,7 @@ leagues, including NHL, NBA, NFL, MLB and CFL.
     </tr>
     <tr>
       <td><code>viewStyle</code></td>
-      <td>One of the following: <code>largeLogos</code>, <code>mediumLogos</code>, <code>oneLine</code>, <code>oneLineWithLogos</code>, <code>stacked</code> or <code>stackedWithLogos</code>.<br><br><strong>Type</strong> <code>String</code><br>Defaults to <code>largeLogos</code><br />See below for examples of the view styles.</td>
+      <td>One of the following: <code>largeLogos</code>, <code>mediumLogos</code>, <code>smallLogos</code>, <code>oneLine</code>, <code>oneLineWithLogos</code>, <code>stacked</code> or <code>stackedWithLogos</code>.<br><br><strong>Type</strong> <code>String</code><br>Defaults to <code>largeLogos</code><br />See below for examples of the view styles.</td>
     </tr>
     <tr>
       <td><code>sports</code></td>

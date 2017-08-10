@@ -47,6 +47,7 @@ Module.register("MMM-MyScoreboard",{
   viewStyles: [
     "largeLogos",
     "mediumLogos",
+    "smallLogos",
     "oneLine",
     "oneLineWithLogos",
     "stacked",
@@ -57,6 +58,7 @@ Module.register("MMM-MyScoreboard",{
     switch(v) {
       case 'largeLogos':
       case 'mediumLogos':
+      case 'smallLogos':
       case 'oneLineWithLogos':
       case 'stackedWithLogos':
         return true;

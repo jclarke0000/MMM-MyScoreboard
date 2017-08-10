@@ -175,6 +175,49 @@
   right: 42px;
 }
 
+/* smallLogos */
+.MMM-MyScoreboard .box-score.smallLogos {
+  height: 30px;
+}
+
+.MMM-MyScoreboard .box-score.smallLogos .logo {
+  max-width: 24px;
+  max-height: 24px;
+  top: 15px;
+}
+
+.MMM-MyScoreboard .box-score.smallLogos .logo.home {
+  right: 12px;
+}
+.MMM-MyScoreboard .box-score.smallLogos .logo.visitor {
+  left: 12px;
+}
+
+.MMM-MyScoreboard .box-score.smallLogos .status {
+  height: 30px;
+  font-size: 16px;
+  line-height: 30px;
+  width: calc(100% - 124px);
+  left: 62px;
+  top: 0px;
+}
+
+.MMM-MyScoreboard .box-score.smallLogos .score {
+  font-size: 20px;
+  top: 0px;
+  height: 30px;
+  line-height: 30px;
+}
+.MMM-MyScoreboard .box-score.smallLogos .score.visitor {
+  left: 28px;
+}
+.MMM-MyScoreboard .box-score.smallLogos .score.home {
+  right: 28px;
+}
+
+
+
+
 /* oneLine / oneLineWithLogos */
 .MMM-MyScoreboard .box-score.oneLine,
 .MMM-MyScoreboard .box-score.oneLineWithLogos {
