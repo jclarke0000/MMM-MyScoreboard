@@ -139,7 +139,7 @@ Examples of the available view styles you can specify with the `viewStyle` param
 
 ![View Styles](/../screenshots/viewStyles.jpg?raw=true "View Styles")
 
-`smallLogos`
+`smallLogos`<br />
 ![View Styles](/../screenshots/viewStyle_smallLogos.png?raw=true "smallLogos")
 
 
