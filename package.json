@@ -19,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "moment-timezone": "^0.5.13",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "xml2js-parser": "^1.1.1"
   }
 }

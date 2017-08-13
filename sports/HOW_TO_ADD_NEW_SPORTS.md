@@ -23,7 +23,7 @@ module.exports =
     STRING - Name of the league.  Should match the
     directory name for this league (e.g.: "NHL").  Used
     for identification and debug purposes.  Either
-    state is as a literal string, or populate it in the
+    state it as a literal string, or populate it in the
     configure() function using the config.league
     property.
   */
@@ -57,7 +57,7 @@ module.exports =
     This function accepts a Moment.js date object and returns
     a built URL String to retrieve data for this league.
   */
-  getURL: function(date) {
+  getUrl: function(date) {
     ...
   },
 
@@ -121,7 +121,7 @@ module.exports =
         NUMBER - Visiting team's score
 
       status:
-        ARRAY of STRINGS - game status is made of of one or more strings.  Split
+        ARRAY of STRINGS - game status is made up of one or more strings.  Split
           the complete status into logical pieces:
 
           e.g.: ["8:00 pm"] or ["10:53","3rd"]
