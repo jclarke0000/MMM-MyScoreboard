@@ -8,6 +8,7 @@ module.exports = NodeHelper.create({
   gamesList: [],
   sportsList : [],
   dataPollStarted: false,
+  errorCount : [],
 
   supportedLeagues: ["MLB", "NBA", "NHL", "CFL", "NFL"],
 
@@ -32,7 +33,8 @@ module.exports = NodeHelper.create({
           var sObj = require("./sports/" + sport.league + "/" + sport.league + ".js");
           sObj.configure(sport);
 
-          this.sportsList.push(sObj);          
+          this.sportsList.push(sObj); 
+          this.errorCount[i] = 0;
         }
       }
 
@@ -54,7 +56,7 @@ module.exports = NodeHelper.create({
 
   getScores: function() {
 
-    // console.log("getting scores...");
+    console.log("getting scores...");
 
     var today = moment();
 
@@ -79,21 +81,37 @@ module.exports = NodeHelper.create({
           var formattedGamesArray;
           try {
             formattedGamesArray = league.processData(body);
+
+            //all good.  reset error count and return the games list.
+            self.errorCount[index] = 0;
+            self.sendSocketNotification("MMM-MYSCOREBOARD-DATA", {index: index, data: formattedGamesArray});
+
           } catch (e) {
             /*
               In case the data feed changes, or there is otherwise some kind of unexpected
-              structure of the JSON, we won't be able to process it.  So this will prepare
-              an empty array for the sport.  It won't display, but it won't stall execution.
-              The other sports should display just fine.
+              structure of the JSON, we won't be able to process it.  But sometimes the feed
+              just errors out unexpectedly.  We'll keep track of errors, and after 3 consecutive
+              errors, we'll return an empty array for the particular sport.  That sport won't
+              display, but it won't stall execution.  The other sports should display just fine.
             */
-            console.log( "[" + self.name + "] ** ERROR ** Couldn't process " + league.name + " data: " + e.message );
-            formattedGamesArray = []; 
+
+            self.errorCount[index] += 1;
+            console.log( "[" + self.name + "] ** ERROR ** Couldn't process " + league.name + " data: " + e.message + ". Error count: " + self.errorCount[index] );
+            if (self.errorCount[index] >= 3) {
+              self.errorCount[index] = 0;
+              console.log( "[" + self.name + "] 3 consecutive errors for " + league.name + ". Returning an empty games array" );
+              self.sendSocketNotification("MMM-MYSCOREBOARD-DATA", {index: index, data: []});
+            }
           }
-          self.sendSocketNotification("MMM-MYSCOREBOARD-DATA", {index: index, data: formattedGamesArray});
         } else {
           //error retrieving data.  retrun empty array
-          console.log( "[" + self.name + "] **  ERROR ** Couldn't retrieve scores for " + league.name + ": " + error );
-          self.sendSocketNotification("MMM-MYSCOREBOARD-DATA", {index: index, data: []});
+          self.errorCount[index] += 1;
+          console.log( "[" + self.name + "] **  ERROR ** Couldn't retrieve scores for " + league.name + ": " + error + ". Error count: " + self.errorCount[index] );
+          if (self.errorCount[index] >= 3) {
+            self.errorCount[index] = 0;
+            console.log( "[" + self.name + "] 3 consecutive errors for " + league.name + ". Returning an empty games array" );
+            self.sendSocketNotification("MMM-MYSCOREBOARD-DATA", {index: index, data: []});
+          }
         }
 
 
