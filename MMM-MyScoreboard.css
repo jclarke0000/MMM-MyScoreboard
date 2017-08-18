@@ -284,11 +284,11 @@
 }
 .MMM-MyScoreboard .box-score.oneLine .score.visitor,
 .MMM-MyScoreboard .box-score.oneLineWithLogos .score.visitor {
-  left: 40px;
+  left: 50px;
 }
 .MMM-MyScoreboard .box-score.oneLine .score.home,
 .MMM-MyScoreboard .box-score.oneLineWithLogos .score.home {
-  left: 132px;
+  left: 142px;
 }
 
 .MMM-MyScoreboard .box-score.oneLine .status,
@@ -332,10 +332,10 @@
   left: 150px;
 }
 .MMM-MyScoreboard .box-score.oneLineWithLogos .score.visitor {
-  left: 70px;
+  left: 80px;
 }
 .MMM-MyScoreboard .box-score.oneLineWithLogos .score.home {
-  left: 192px;
+  left: 202px;
 }
 .MMM-MyScoreboard .box-score.oneLineWithLogos .vs-symbol {
   left: 85px;
@@ -482,7 +482,11 @@
   top: -10px;
 }
 
-
+/* NCAAF */
+.MMM-MyScoreboard .box-score.NCAAF.stacked .team-name,
+.MMM-MyScoreboard .box-score.NCAAF.stackedWithLogos .team-name {
+  width: 130px;
+}
 
 
 

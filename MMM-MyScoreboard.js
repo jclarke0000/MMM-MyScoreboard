@@ -137,13 +137,13 @@ Module.register("MMM-MyScoreboard",{
     if (this.viewStyleHasLogos(viewStyle)) {      
       var hTeamLogo = document.createElement("img");
       hTeamLogo.classList.add("logo", "home");
-      hTeamLogo.src = this.file("sports/" + league + "/logos/" + gameObj.hTeam + ".svg");
+      hTeamLogo.src = this.file("sports/" + league + "/logos/" + gameObj.hTeam + "." + (gameObj.usePngLogos ? "png" : "svg"));
       hTeamLogo.setAttribute("alt", gameObj.hTeam);
       boxScore.appendChild(hTeamLogo);
 
       var vTeamLogo = document.createElement("img");
       vTeamLogo.classList.add("logo", "visitor");
-      vTeamLogo.src = this.file("sports/" + league + "/logos/" + gameObj.vTeam + ".svg");
+      vTeamLogo.src = this.file("sports/" + league + "/logos/" + gameObj.vTeam + "." + (gameObj.usePngLogos ? "png" : "svg"));
       vTeamLogo.setAttribute("alt", gameObj.vTeam);
       boxScore.appendChild(vTeamLogo);
     }

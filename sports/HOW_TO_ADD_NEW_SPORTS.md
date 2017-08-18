@@ -86,6 +86,7 @@ module.exports =
         hScore:
         vScore:
         status:
+        usePngLogos:
       },
       {
         ...
@@ -131,6 +132,11 @@ module.exports =
           will render on one line regardless of available space instead of possibly
           breaking between "8:00" and "pm", while in the second there may be a line
           break between "10:53" and "3rd" depending on available space.
+
+      usePngLogos:
+        BOOLEAN (Optional)
+        Use this to specify whether to use PNG images for the logos.  If omitted,
+        SVG is assumed.
 
   */
   processData: function(data) {
