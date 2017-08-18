@@ -82,12 +82,32 @@ module.exports =
       var vTeamData = game.competitions[0].competitors[1];
 
       /*
-        Looks like the home team is always the first in the feed, but it also specifies,
+        Looks like the home team is always the first in the feed, but it also specified,
         so we can be sure.
       */
       if (hTeamData.homeAway == "away") {
         hTeamData = game.competitions[0].competitors[1];
         vTeamData = game.competitions[0].competitors[0];
+      }
+
+      /*
+        WTF... 
+
+        Sometimes FCS teams (I-AA) play FBS (I-A) teams.  These are known as money games.
+        As such, the logos directory contains images for all of the FCS teams as well
+        as the FBS teams.  Wouldn't you know it but there is a SDSU in both divisions --
+        totally different schools!!!
+
+        So we'll deal with it here.  There is an SDSU logo file with a space at the end of
+        its name (e.g.: "SDSU .png" that is for the FCS team.  We'll use that abbreviation
+        which will load a different logo file, but the extra space will collapse in HTML
+        when the short code is displayed)
+      */
+
+      if (hTeamData.team.abbreviation == "SDSU" && hTeamData.team.location.indexOf("South Dakota State") != -1) {
+        hTeamData.team.abbreviation = "SDSU "; 
+      } else if (vTeamData.team.abbreviation == "SDSU" && vTeamData.team.location.indexOf("South Dakota State") != -1) {
+        vTeamData.team.abbreviation = "SDSU ";
       }
 
       formattedGamesList.push({

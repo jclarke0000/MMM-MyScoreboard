@@ -5,7 +5,7 @@ https://magicmirror.builders/<br>
 https://github.com/MichMich/MagicMirror
 
 This module display's today's scores for your favourite teams across a number of different
-leagues, including NHL, NBA, NFL, MLB and CFL.
+leagues, including NHL, NBA, NFL, MLB, CFL and NCAAF (FBS Division).
 
 ![Screen Shot](/../screenshots/MMM-MyScoreboard-screenshot.png?raw=true "Screen Shot")
 
@@ -65,6 +65,7 @@ Currently this module supports the following leagues:
 * **MLB** - Major League Baseball
 * **NFL** - National Football League
 * **CFL** - Canadian Football League (requires an API key from http://api.cfl.ca/key-request)
+* **NCAAF** - NCAA College Football (FBS Division only)
 
 Each entry in your `sports` array is an object with two properties:
 
@@ -298,4 +299,138 @@ OTT   Ottawa Redblacks
 SSK   Saskatchewan Roughriders
 TOR   Toronto Argonauts
 WPG   Winnipeg Blue Bombers
+```
+
+### NCAAF (FBS Division)
+```
+AFA   Air Force Falcons
+AKR   Akron Zips
+ALA   Alabama Crimson Tide
+APP   Appalachian State Mountaineers
+ARIZ  Arizona Wildcats
+ARK   Arkansas Razorbacks
+ARMY  Army West Point Black Knights
+ARST  Arkansas State Red Wolves
+ASU   Arizona State Devils
+AUB   Auburn Tigers
+BALL  Ball State Cardinals
+BAY   Baylor Bears
+BC    Boston College Eagles
+BGSU  Bowling Green Falcons
+BSU   Boise State Broncos
+BUFF  Buffalo Bills
+BYU   BYU Cougars
+CAL   California Golden Bears
+CCU   Coastal Carolina Chanticleers
+CHAR  Charlotte 49ers
+CIN   Cincinnati Bearcats
+CLEM  Clemson Tigers
+CMU   Central Michigan Chippewas
+COLO  Colorado Buffalos
+CONN  Connecticut Juskies
+CSU   Colorado State Rams
+DUKE  Duke Blue Devils
+ECU   East Carolina Pirates
+EMU   Eastern Michigan Eagles
+FAU   Florida Atlantic Owls
+FIU   Florida International Golden Panthers
+FLA   Florida Gators
+FRES  Fresno State Bulldogs
+FSU   Florida State Seminoles
+GASO  Georgia Southern Eagles
+GAST  Georgia State Panthers
+GT    Georgia Tech Yellow Jackets
+HAW   Hawaii Rainbow Warriors
+HOU   Houston Cougars
+IDHO  Idaho Vandals
+ILL   Illinois Fighting Illini
+IND   Indiana Hoosiers
+IOWA  Iowa Hawkeyes
+ISU   Iowa State Cyclones
+KENT  Kent State Golden Flashes
+KSU   Kansas State Wildcats
+KU    Kansas Jayhawks
+LOU   Louisville Cardinals
+LSU   LSU Tigers
+LT    Louisianna Tech Bulldogs
+M-OH  Miami (OH) Redhawks
+MD    Maryland Terrapins
+MEM   Memphis Tigers
+MIAMI Miami Hurricanes
+MICH  Michigan Wolverines
+MINN  Minnesota Golden Gophers
+MISS  Ole Miss Rebels
+MIZ   Missouri Tigers
+MRSH  Marshall Thundering Herd
+MSST  Mississippi State Bulldogs
+MSU   Michigan State Spartans
+MTSU  Middle Tennessee Blue Raiders
+NAVY  Navy Midshipmen
+NCST  North Carolina State Wolfpack
+ND    Notre Dame Fighting Irish
+NEB   Nebraska Cornhuskers
+NEV   Nevada Wolf Pack
+NIU   Northern Illinois Huskies
+NMSU  New Mexico State Aggies
+NW    Northwestern Wildcats
+ODU   Old Dominion Monarchs
+OHIO  Ohio Bobcats
+OKLA  Oklahoma Sooners
+OKST  Oklahoma State Cowboys
+ORE   Oregon Ducks
+ORST  Oregon State Beavers
+OSU   Ohio State Buckeyes
+PITT  Pittsburgh Panthers
+PSU   Penn State Nittany Lions
+PUR   Purdue Boilermakers
+RICE  Rice Owls
+RUTG  Rutgers Scarlet Knights
+SC    South Carolina Gamecocks
+SDSU  San Diego State Aztecs
+SJSU  San Jose State Spartans
+SMU   SMU Mustangs
+STAN  Stanford Cardinal
+SYR   Syracuse Orange
+TA&M  Texas A&M Aggies
+TCU   TCU Horned Frogs
+TEM   Temple Owls
+TENN  Tennessee Volunteers
+TEX   Texas Long Horns
+TLSA  Tulsa Golden Hurricane
+TOL   Toledo Rockets
+TROY  Troy Trojans
+TTU   Texas Tech Red Raiders
+TULN  Tulane Green Wave
+TXST  Texas State Bobcats
+UAB   UAB Blazers
+UCF   UCF Knights
+UCLA  UCLA Bruins
+UGA   Georgia Bulldogs
+UK    Kentucky Wildcats
+ULL   Louisianna-Lafayette Ragin' Cajuns
+ULM   Louisianna-Monroe Warhawks
+UMASS Massachusetts Minutemen
+UNC   North Carolina Tar Heels
+UNLV  UNLV Rebels
+UNM   New Mexico Lobos
+UNT   North Texas Mean Green
+USA   South Alabama Jaguars
+USC   USC Trojans
+USF   South Florida Bulls
+USM   Southern Mississippi Golden Eagles
+USU   Utah State Aggies
+UTAH  Utah Utes
+UTEP  UTEP Miners
+UTSA  UT San Antonio Roadrunners
+UVA   Virginia Cavaliers
+VAN   Vanderbilt Commodores
+VT    Virginia Tech Hokies
+WAKE  Wake Forest Demon Deacons
+WASH  Washington Huskies
+WIS   Wisconsin Badgers
+WKU   Western Kentucky Hilltoppers
+WMU   Western MNichigan Broncos
+WSU   Washington State Cougars
+WVU   West Virginia Mountaineers
+WYO   Wyoming Cowboys
 ```
