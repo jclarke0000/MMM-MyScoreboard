@@ -10,7 +10,7 @@ module.exports = NodeHelper.create({
   dataPollStarted: false,
   errorCount : [],
 
-  supportedLeagues: ["MLB", "NBA", "NHL", "CFL", "NFL"],
+  supportedLeagues: ["MLB", "NBA", "NHL", "CFL", "NFL", "MLS"],
 
   start: function() {
     console.log("Starting node_helper for module [" + this.name + "]");
