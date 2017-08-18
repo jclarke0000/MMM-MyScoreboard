@@ -5,7 +5,7 @@ https://magicmirror.builders/<br>
 https://github.com/MichMich/MagicMirror
 
 This module display's today's scores for your favourite teams across a number of different
-leagues, including NHL, NBA, NFL, MLB and CFL.
+leagues, including NHL, NBA, NFL, MLB, MLS and CFL.
 
 ![Screen Shot](/../screenshots/MMM-MyScoreboard-screenshot.png?raw=true "Screen Shot")
 
@@ -64,6 +64,7 @@ Currently this module supports the following leagues:
 * **NBA** - National Basketball Association
 * **MLB** - Major League Baseball
 * **NFL** - National Football League
+* **MLS** - Major League Soccer
 * **CFL** - Canadian Football League (requires an API key from http://api.cfl.ca/key-request)
 
 Each entry in your `sports` array is an object with two properties:
@@ -285,6 +286,32 @@ SF    San Francisco 49ers
 TB    Tampa Bay Buccaneers
 TEN   Tennessee Titans
 WAS   Washington Redskins
+```
+
+### MLS
+```
+ATL   Atlanta United FC
+CHI   Chicago Fire
+CLB   Columbus Crew SC
+COL   Colorado Rapids
+DAL   FC Dallas
+DCU   DC United
+HOU   Houston Dynamo
+LAG   LA Galaxy
+MNU   Minnesota United FC
+MTL   Montreal Impact
+NWE   New England Revolution
+NWY   New York Red Bulls
+NYC   New York City FC
+ORL   Orlando City FC
+PHI   Philadelphia Union
+POR   Portland Timbers
+RSL   Real Salt Lake
+SAN   San Jose Earthquakes
+SEA   Seattle Sounders FC
+SKC   Sporting Kansas City
+TOR   Toronto FC
+VAN   Vancouver Whitecaps
 ```
 
 ### CFL
