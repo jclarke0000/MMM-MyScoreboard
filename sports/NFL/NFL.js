@@ -149,18 +149,18 @@ module.exports =
     var self = this;
     var localTZ = moment.tz.guess();
 
-    console.log("data = " + data);
+    // console.log("data = " + data);
 
-    console.log("about to convert to JSON");
+    // console.log("about to convert to JSON");
     var gameJSON = parseStringSync(data); //I hate working with XML...
-    console.log("converted.");
+    // console.log("converted.");
 
-    console.log("filtering...");
+    // console.log("filtering...");
     var gamesToFollow = gameJSON.ss.gms[0].g.filter( function(game) {
       return String(game.$.eid).substring(0,8) == self.gameDate.format("YYYYMMDD") &&
         (self.teamsToFollow.indexOf(game.$.v) != -1 || self.teamsToFollow.indexOf(game.$.h) != -1);
     });
-    console.log("filtered...");
+    // console.log("filtered...");
 
     var formattedGamesArray = [];
     gamesToFollow.forEach( function(game) {

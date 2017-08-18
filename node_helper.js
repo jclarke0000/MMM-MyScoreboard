@@ -56,7 +56,7 @@ module.exports = NodeHelper.create({
 
   getScores: function() {
 
-    console.log("getting scores...");
+    // console.log("getting scores...");
 
     var today = moment();
 
