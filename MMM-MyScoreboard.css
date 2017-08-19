@@ -483,6 +483,11 @@
 }
 
 
+/* MLS */
+.MMM-MyScoreboard .box-score.MLS.delay .status {
+  color: #AAA;
+}
+
 
 
 

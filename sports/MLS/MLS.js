@@ -34,7 +34,7 @@ module.exports =
       default:
         return q;
     }
-  },  
+  },
 
   processData: function(data) {
 
@@ -63,14 +63,29 @@ module.exports =
           gameState = 0;
           status.push(moment(game.competitions[0].date).tz(localTZ).format("h:mm a"));
           break;
-        case "2": //guessing this is in-progress
+        case "23":
+          gameState = 1;
+          status.push("HALFTIME");
+          break;
+        case "24":
+          gameState = 1;
+          status.push("OVERTIME");
+          break;
+        case "25": //first half
+        case "26": //second half
           gameState = 1;
           status.push(game.status.displayClock);
           status.push(self.formatHalf(game.status.period));
           break;
-        case "3": //final
+        case "28":
           gameState = 2;
-          status.push("FINAL");
+          status.push("FULLTIME");
+          break;
+        case "7":
+        case "17":
+          gameState = 1;
+          classes.push["delay"];
+          status.push("DELAY");
           break;
       }
 
@@ -96,8 +111,7 @@ module.exports =
         vTeamLong: vTeamData.team.shortDisplayName,                    
         hScore: hTeamData.score,
         vScore: vTeamData.score,
-        status: status,
-        usePngLogos: true
+        status: status
       });
 
     });
@@ -105,6 +119,52 @@ module.exports =
     return formattedGamesList;
 
   },
+
+/*
+  0 - TBD   
+  1 - SCHEDULED   
+  2 - IN PROGRESS   
+  3 - FINAL   
+  4 - FORFEIT   
+  5 - CANCELLED   
+  6 - POSTPONED   
+  7 - DELAYED   
+  8 - SUSPENDED   
+  9 - FORFEIT OF HOME TEAM    
+  10 - FORFEIT OF AWAY TEAM   
+  17 - RAIN DELAY   
+  21 - BEGINNING OF PERIOD    
+  22 - END OF PERIOD    
+  23 - HALFTIME   
+  24 - OVERTIME   
+  25 - FIRST HALF   
+  26 - SECOND HALF    
+  27 - ABANDONED    
+  28 - FULL TIME    
+  29 - RESCHEDULED    
+  30 - START LIST   
+  31 - INTERMEDIATE   
+  32 - UNOFFICIAL   
+  33 - MEDAL OFFICIAL   
+  34 - GROUPINGS OFFICIAL   
+  35 - PLAY COMPLETE    
+  36 - OFFICIAL - EVENT SHORTENED   
+  37 - CORRECTED RESULT   
+  38 - RETIRED    
+  39 - BYE    
+  40 - WALKOVER   
+  41 - VOID   
+  42 - PRELIMINARY    
+  43 - GOLDEN TIME    
+  44 - SHOOTOUT   
+  45 - FINAL SCORE - AFTER EXTRA TIME   
+  46 - FINAL SCORE - AFTER GOLDEN GOAL    
+  47 - FINAL SCORE - AFTER PENALTIES    
+  48 - END EXTRA TIME   
+  49 - EXTRA TIME HALF TIME   
+  50 - FIXTURE - NO LIVE COVERAGE   
+  51 - FINAL SCORE - ABANDONED
+*/
 
 
 
