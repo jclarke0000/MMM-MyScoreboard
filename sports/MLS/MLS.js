@@ -25,12 +25,6 @@ module.exports =
         return q + "<sup>ST</sup>";
       case 2:
         return q + "<sup>ND</sup>";
-      case "H":
-        return "HALFTIME";
-      case "ET":
-        return "ET";
-      case "OT":
-        return "OT";
       default:
         return q;
     }
@@ -69,7 +63,7 @@ module.exports =
           break;
         case "24":
           gameState = 1;
-          status.push("OVERTIME");
+          status.push("OT");
           break;
         case "25": //first half
         case "26": //second half
@@ -79,14 +73,17 @@ module.exports =
           break;
         case "28":
           gameState = 2;
-          status.push("FULLTIME");
+          status.push("Full Time");
           break;
         case "7":
         case "17":
           gameState = 1;
           classes.push["delay"];
-          status.push("DELAY");
+          status.push("Delay");
           break;
+        default:
+          gameState = 2;
+          status.push(game.status.type.description);
       }
 
 
