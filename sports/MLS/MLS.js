@@ -68,7 +68,7 @@ module.exports =
         case "25": //first half
         case "26": //second half
           gameState = 1;
-          status.push(game.status.displayClock);
+          status.push(game.status.displayClock == "" ? "0'" : game.status.displayClock);
           status.push(self.formatHalf(game.status.period));
           break;
         case "28":
