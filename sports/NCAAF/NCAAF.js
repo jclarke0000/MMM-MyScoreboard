@@ -66,15 +66,33 @@ module.exports =
           gameState = 0;
           status.push(moment(game.competitions[0].date).tz(localTZ).format("h:mm a"));
           break;
-        case "2": //guessing this is in-progress
+        case "2": //in-progress
+        case "24": //overtime
           gameState = 1;
           status.push(game.status.displayClock);
           status.push(self.formatQuarter(game.status.period));
           break;
+        case "23": //halftime
+          gameState = 1;
+          status.push("HALFTIME");
+          break;
+        case "17": //rain delay
+          gameState = 1;
+          classes.push["delay"];
+          status.push("Delayed");
+          break;
         case "3": //final
           gameState = 2;
-          status.push("FINAL");
+          status.push("Final");
           break;
+        case "5": //cancelled
+          gameState = 0;
+          status.push("Cancelled");
+          break;
+        case "6": //postponed
+          gameState = 0;
+          status.push("Postponed");
+          break;          
       }
 
 
