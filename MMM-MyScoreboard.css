@@ -131,6 +131,12 @@
   margin-right: 12px;
 }
 
+/* Dim the status while an in-progress game is delayed */
+.MMM-MyScoreboard .box-score.in-progress.delay .status,
+.MMM-MyScoreboard .wrapper.colored .box-score.in-progress.delay .status {
+  color: #AAA;
+}
+
 /* 
   ------------- View Modifiers -------------
   The above styles default to the largeLogos
@@ -284,11 +290,11 @@
 }
 .MMM-MyScoreboard .box-score.oneLine .score.visitor,
 .MMM-MyScoreboard .box-score.oneLineWithLogos .score.visitor {
-  left: 40px;
+  left: 50px;
 }
 .MMM-MyScoreboard .box-score.oneLine .score.home,
 .MMM-MyScoreboard .box-score.oneLineWithLogos .score.home {
-  left: 132px;
+  left: 142px;
 }
 
 .MMM-MyScoreboard .box-score.oneLine .status,
@@ -332,10 +338,10 @@
   left: 150px;
 }
 .MMM-MyScoreboard .box-score.oneLineWithLogos .score.visitor {
-  left: 70px;
+  left: 80px;
 }
 .MMM-MyScoreboard .box-score.oneLineWithLogos .score.home {
-  left: 192px;
+  left: 202px;
 }
 .MMM-MyScoreboard .box-score.oneLineWithLogos .vs-symbol {
   left: 85px;
@@ -474,12 +480,10 @@
   letter-spacing: -2px;
 }
 
-/* MLB */
-.MMM-MyScoreboard .box-score.MLB.delay .status {
-  color: #AAA;
-  font-weight: normal;
-  position: relative;
-  top: -10px;
+/* NCAAF */
+.MMM-MyScoreboard .box-score.NCAAF.stacked .team-name,
+.MMM-MyScoreboard .box-score.NCAAF.stackedWithLogos .team-name {
+  width: 130px;
 }
 
 
@@ -487,7 +491,5 @@
 .MMM-MyScoreboard .box-score.MLS.delay .status {
   color: #AAA;
 }
-
-
 
 
