@@ -131,6 +131,12 @@
   margin-right: 12px;
 }
 
+/* Dim the status while an in-progress game is delayed */
+.MMM-MyScoreboard .box-score.in-progress.delay .status,
+.MMM-MyScoreboard .wrapper.colored .box-score.in-progress.delay .status {
+  color: #AAA;
+}
+
 /* 
   ------------- View Modifiers -------------
   The above styles default to the largeLogos
@@ -472,14 +478,6 @@
   top: 10px;
   font-size: 26px;
   letter-spacing: -2px;
-}
-
-/* MLB */
-.MMM-MyScoreboard .box-score.MLB.delay .status {
-  color: #AAA;
-  font-weight: normal;
-  position: relative;
-  top: -10px;
 }
 
 /* NCAAF */

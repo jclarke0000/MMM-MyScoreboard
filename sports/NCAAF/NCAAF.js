@@ -72,22 +72,32 @@ module.exports =
           status.push(game.status.displayClock);
           status.push(self.formatQuarter(game.status.period));
           break;
+        case "22": //end period
+          gameState = 1;
+          status.push("END");
+          status.push(self.formatQuarter(game.status.period));
+          break;
         case "23": //halftime
           gameState = 1;
           status.push("HALFTIME");
           break;
+        case "7":  //delay
         case "17": //rain delay
           gameState = 1;
           classes.push["delay"];
-          status.push("Delayed");
+          status.push("Delay");
           break;
         case "3": //final
           gameState = 2;
-          status.push("Final");
+          if (game.status.period == 5) {
+            status.push("Final (OT)");
+          } else {
+            status.push("Final");
+          }
           break;
         case "5": //cancelled
           gameState = 0;
-          status.push("Cancelled");
+          status.push("Canceled");
           break;
         case "6": //postponed
           gameState = 0;
