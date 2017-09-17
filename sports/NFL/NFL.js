@@ -113,6 +113,7 @@ module.exports =
         return q + "<sup>TH</sup>";
       case "5":
       case "OT":
+      case "O":
         return "OT";
       default:
         return q;
@@ -181,7 +182,7 @@ module.exports =
           break;
         case "FO":
         case "FOT":
-          status.push("Final OT");
+          status.push("Final (OT)");
           gameMode = 2;
           break;
         default:
