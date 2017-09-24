@@ -116,14 +116,17 @@ module.exports =
                   if (timeRemaining.substring(0,1) == "0") {
                     timeRemaining = timeRemaining.substring(1); //hide first zero when time is less tha  10 minutes
                   } 
-                  status.push(timeRemaining);
+
+                  if (periodTxt != "SO") {
+                    status.push(timeRemaining);                  
+                  }
                   status.push(periodTxt);
 
                   break;
                 case 2:
                   //set status to final
                   status.push(game.status.detailedState);
-                  if (game.linescore.currentPeriodOrdinal.indexOf("OT") != -1) {
+                  if (game.linescore.currentPeriodOrdinal.indexOf("OT") != -1 || game.linescore.currentPeriodOrdinal.indexOf("SO") != -1) {
                     status.push("(" + game.linescore.currentPeriodOrdinal + ")");
                   }
                   break;
@@ -150,14 +153,20 @@ module.exports =
 
   },
 
+  /*
+    Game state codes changed in the 2017/18 season.
+    The following maps the feed's codedGameState value
+    with this module's native 0 (scheduled / future),
+    1 (in-progress), and 2 (post-game / final) states.
+  */
   gameStates: {
-    "1": 0,
-    "2": 0,
-    "3": 1,
-    "4": 1,
-    "5": 1,
-    "6": 1,
-    "7": 2
+    "1": 0, //Scheduled
+    "2": 0, //Pre-Game
+    "3": 1, //In Progress
+    "4": 1, //In Progress - Critical
+    "5": 1, //???
+    "6": 2, //Final
+    "7": 2  //Final, Post season ???
   },
 
   /* 
