@@ -492,4 +492,8 @@
   color: #AAA;
 }
 
-
+/* CFL */
+.MMM-MyScoreboard .box-score.CFL.stacked .team-name,
+.MMM-MyScoreboard .box-score.CFL.stackedWithLogos .team-name {
+  text-transform: capitalize;
+}
