@@ -18,8 +18,8 @@
   "author": "Jeff Clarke",
   "license": "MIT",
   "dependencies": {
+    "json-parse-async": "^1.0.3",
     "moment-timezone": "^0.5.13",
-    "request": "^2.81.0",
-    "xml2js-parser": "^1.1.1"
+    "request": "^2.81.0"
   }
 }

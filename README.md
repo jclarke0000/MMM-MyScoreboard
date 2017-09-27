@@ -28,10 +28,6 @@ leagues, including NHL, NBA, NFL, MLB, MLS, CFL and NCAAF (FBS Division).
   </thead>
   <tbody>
     <tr>
-      <td><code>dataPollInterval</code></td>
-      <td>How frequently to poll for data in milliseconds.<br><br><strong>Type</strong> <code>Number</code><br>Defaults to <code>300000</code> (i.e.: every 5 minutes)</td>
-    </tr>
-    <tr>
       <td><code>showLeagueSeparators</code></td>
       <td>Whether to show separators between different leagues.<br><br><strong>Type</strong> <code>Boolean</code><br>Defaults to <code>true</code></td>
     </tr>
@@ -155,7 +151,7 @@ ARI   Arizona Coyotes
 BOS   Boton Bruins
 BUF   Buffalo Sabres
 CAR   Carolina Hurricanes
-CBJ   Columbus Blue Jackets
+CLB   Columbus Blue Jackets
 CGY   Calgary Flames
 CHI   Chicago Black Hawks
 COL   Colorado Avalanche
@@ -163,7 +159,7 @@ DAL   Dallas Stars
 DET   Detroit Red Wings
 EDM   Edmonton Oilers
 FLA   Florida Panthers
-LAK   Los Angeles Kings
+LA    Los Angeles Kings
 MIN   Minnesota Wild
 MTL   Montreal Canadiens
 NJD   New Jersey Devils
@@ -175,7 +171,7 @@ PHI   Philadelphia Flyers
 PIT   Pittsburgh Penguins
 SJS   San Jose Sharks
 STL   St. Louis Blues
-TBL   Tamba Bay Lightning
+TB    Tamba Bay Lightning
 TOR   Toronto Maple Leafs
 VAN   Vanvouver Canucks
 VGK   Vegas Golden Knights
@@ -215,7 +211,7 @@ STL   St. Louis Cardinals
 TB    Tampa Bay Rays
 TEX   Texas Rangers
 TOR   Toronto Blue Jays
-WSH   Washington Nationals
+WAS   Washington Nationals
 ```
 
 ### NBA
