@@ -162,7 +162,7 @@ FLA   Florida Panthers
 LA    Los Angeles Kings
 MIN   Minnesota Wild
 MTL   Montreal Canadiens
-NJD   New Jersey Devils
+NJ    New Jersey Devils
 NSH   Nashville Predators
 NYI   New York Islanders
 NYR   New York Rangers
@@ -292,19 +292,19 @@ CHI   Chicago Fire
 CLB   Columbus Crew SC
 COL   Colorado Rapids
 DAL   FC Dallas
-DCU   DC United
+DC    DC United
 HOU   Houston Dynamo
-LAG   LA Galaxy
+LA    LA Galaxy
 MNU   Minnesota United FC
 MTL   Montreal Impact
-NWE   New England Revolution
-NWY   New York Red Bulls
+NE    New England Revolution
+NY    New York Red Bulls
 NYC   New York City FC
 ORL   Orlando City FC
 PHI   Philadelphia Union
 POR   Portland Timbers
 RSL   Real Salt Lake
-SAN   San Jose Earthquakes
+SJ    San Jose Earthquakes
 SEA   Seattle Sounders FC
 SKC   Sporting Kansas City
 TOR   Toronto FC

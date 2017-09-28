@@ -60,17 +60,31 @@ module.exports = {
         
         parseJSON(body, function(p_err, content) {
           if (p_err) {
-            console.log( "[MMM-MyScoreboard] **  ERROR ** Couldn't parse data for provider SNET: " + p_err );       
+            console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** Couldn't parse data for provider SNET: " + p_err );       
           } else if (content.data) {
             self.scoresObj = content;
           }
         });
 
       } else {
-        console.log( "[MMM-MyScoreboard] **  ERROR ** Couldn't retrieve data for provider SNET: " + r_err );       
+        console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** Couldn't retrieve data for provider SNET: " + r_err );       
       }
 
     });
+  },
+
+  filterGames: function(obj, leagueData, addToArray, teams, gameDate) {
+
+    if (leagueData[obj]) {
+      leagueData[obj].forEach(function(game) {
+        if ( moment(game.date, "ddd MMM D").isSame(gameDate, "day") && 
+          (teams == null || teams.indexOf(game.home_team_short) != -1 ||
+            teams.indexOf(game.visiting_team_short) != -1)) {
+          addToArray.push(game);
+        }
+      });
+    }
+
   },
 
   getLeague: function(league, teams, gameDate) {
@@ -78,55 +92,63 @@ module.exports = {
     var self = this;
     var d = moment(gameDate);
 
-    /*
-      Sportsnet's feed is subdivided by sport and then further subdivided
-      into up to three arrays:
-      e.g.: data.cfl.In-Progress, data.cfl.Pre-Game, data.cfl.Final
-      So we'll build one array that has games from each if they match
-      gameDate and the teams array if present
-    */
 
     // In case the front end requests scores for a sport currently out of season
     if (!this.scoresObj.data[league.toLowerCase()]) {
       return [];
     }
+
+    /*
+      Sportsnet's feed is subdivided by sport and then further subdivided
+      into a number of dirrenet arrays
+
+      So we'll build one array that has games from each if they match
+      the game date and the teams array if present
+    */
     var leagueData = this.scoresObj.data[league.toLowerCase()];
+
+    var snetGameObjects = [
+      "Pre-Game",
+      "In-Progress",
+      "Half-Over",
+      "Final"
+    ];
 
     var filteredGames = [];
 
-    //First iterate through in-progress games
-    if (leagueData["In-Progress"]) {
-      leagueData["In-Progress"].forEach(function(game) {
-        if ( moment(game.date, "ddd MMM D").isSame(d, "day") && 
-          (teams == null || teams.indexOf(game.home_team_short) != -1 ||
-            teams.indexOf(game.visiting_team_short) != -1)) {
-          filteredGames.push(game);
-        }
-      });
-    }
+    snetGameObjects.forEach(function(obj) {
+      self.filterGames(obj, leagueData, filteredGames, teams, d);
+    });
 
-    //then finished games
-    if (leagueData["Final"]) {
-      leagueData["Final"].forEach(function(game) {
-        if ( moment(game.date, "ddd MMM D").isSame(d, "day") && 
-          (teams == null || teams.indexOf(game.home_team_short) != -1 ||
-            teams.indexOf(game.visiting_team_short) != -1)) {
-          filteredGames.push(game);
-        }
-      });
-    }
+    /*
+      now sort the array by start time so that the games always appear
+      in the same order regardless of status.  Sort it first by start
+      time, then by visting team short code.
+    */
 
-    //finally any scheduled games
-    if (leagueData["Pre-Game"]) {
-      leagueData["Pre-Game"].forEach(function(game) {
-        if ( moment(game.date, "ddd MMM D").isSame(d, "day") && 
-          (teams == null || teams.indexOf(game.home_team_short) != -1 ||
-            teams.indexOf(game.visiting_team_short) != -1)) {
-          filteredGames.push(game);
-        }
-      });
-    }
+    filteredGames.sort(function(a,b) {
+      var aTime = moment(a.time, "hh:mm a zz");
+      var bTime = moment(b.time, "hh:mm a zz");
 
+      //first sort by start time
+      if (aTime.isBefore(bTime)) {
+        return -1;
+      }
+      if (aTime.isAfter(bTime)) {
+        return 1;
+      }
+
+      //start times are the same.  Now sort by team short codes
+      if (a.visiting_team_short < b.visiting_team_short) {
+        return -1;
+      }
+      if (a.visiting_team_short > b.visiting_team_short) {
+        return 1;
+      }
+
+      return 0;
+
+    });
 
     var formattedGames = [];
 
@@ -139,6 +161,7 @@ module.exports = {
           gameState = 0; //not started
           break;
         case "In-Progress":
+        case "Half-Over":
           gameState = 1; //in-progress
           break;
         case "Final":
@@ -161,7 +184,7 @@ module.exports = {
           //build game status.
           if (league != "MLB" &&
             game.period_status.indexOf("End of") == -1 &&
-            game.period_status.indexOf("Half") == -1 ) {
+            game.period_status.toLowerCase().indexOf("half") == -1 ) {
   
             status.push(game.clock);          
 
@@ -199,6 +222,7 @@ module.exports = {
     s = s.replace("End of", "END");
     s = s.replace("Top ", "TOP ");
     s = s.replace("Bot ", "BOT ");
+    s = s.replace("HALF", "HALFTIME");
     s = s.replace("1st", "1<sup>ST</sup>");
     s = s.replace("2nd", "2<sup>ND</sup>");
     s = s.replace("3rd", "3<sup>RD</sup>");
@@ -219,6 +243,11 @@ module.exports = {
     s = s.replace("18th", "18<sup>TH</sup>");
     s = s.replace("19th", "19<sup>TH</sup>");
     s = s.replace("20th", "20<sup>TH</sup>");
+    s = s.replace("21st", "21<sup>ST</sup>");
+    s = s.replace("22nd", "22<sup>ND</sup>");
+    s = s.replace("23rd", "23<sup>RD</sup>");
+    s = s.replace("24th", "24<sup>TH</sup>");
+    s = s.replace("25th", "25<sup>TH</sup>");
     return s;
   },
 
@@ -244,6 +273,11 @@ module.exports = {
       case "CFL":
       case "NBA":
         if (game.period > 4) {
+          return " (OT)";
+        } 
+        break;
+      case "MLS":
+        if (game.period > 2) {
           return " (OT)";
         } 
         break;

@@ -2,6 +2,14 @@
   min-width: 300px;
 }
 
+.MMM-MyScoreboard .wrapper {
+  margin-top: 10px;
+}
+
+.MMM-MyScoreboard .module-header {
+  margin-bottom: 0px;
+}
+
 .MMM-MyScoreboard .league-separator {
   font-size: 15.5px;
   line-height: 18px;
@@ -123,6 +131,11 @@
   font-weight: 400;
 }
 
+.MMM-MyScoreboard .box-score.in-progress .team-name,
+.MMM-MyScoreboard .box-score.in-progress .team-short-code {
+  color: #FFF;
+}
+
 .MMM-MyScoreboard .wrapper.colored .box-score.in-progress .status {  
   color: #f8dd70;
 }
@@ -131,11 +144,61 @@
   margin-right: 12px;
 }
 
+.MMM-MyScoreboard .wrapper.shade-rows .league-separator,
+.MMM-MyScoreboard .wrapper.shade-rows .box-score {
+  border-color: #282828;
+}
+
+.MMM-MyScoreboard .wrapper.shade-rows .box-score.odd {
+  background-color: #181818;
+}
+
+.MMM-MyScoreboard .wrapper.shade-rows.no-league-separators .box-score.odd {
+  background-color: initial;
+}
+
+.MMM-MyScoreboard .wrapper.shade-rows.no-league-separators .box-score:nth-child(odd) {
+  background-color: #181818;
+}
+
+
+
+
+
 /* Dim the status while an in-progress game is delayed */
 .MMM-MyScoreboard .box-score.in-progress.delay .status,
 .MMM-MyScoreboard .wrapper.colored .box-score.in-progress.delay .status {
   color: #AAA;
 }
+
+/* Highlight the winners of finished games */
+.MMM-MyScoreboard .box-score.final.winner-h .score.visitor {
+  color: #AAA;
+}
+.MMM-MyScoreboard .wrapper .box-score.final.winner-h .team-short-code.home,
+.MMM-MyScoreboard .wrapper .box-score.final.winner-h .team-name.home {
+  color: #FFF;
+}
+.MMM-MyScoreboard .wrapper.colored .box-score.winner-h .score.home {
+  color: #f8dd70;
+}
+
+.MMM-MyScoreboard .box-score.final.winner-v .score.home {
+  color: #AAA;
+}
+.MMM-MyScoreboard .wrapper .box-score.final.winner-v .team-short-code.visitor,
+.MMM-MyScoreboard .wrapper .box-score.final.winner-v .team-name.visitor {
+  color: #FFF;
+}
+.MMM-MyScoreboard .wrapper.colored .box-score.final.winner-v .score.visitor {
+  color: #f8dd70;
+}
+
+.MMM-MyScoreboard .box-score.final.tie .score.visitor,
+.MMM-MyScoreboard .box-score.final.tie .score.home {
+  color: #AAA;
+}
+
 
 /* 
   ------------- View Modifiers -------------
@@ -270,7 +333,7 @@
 }
 .MMM-MyScoreboard .box-score.in-progress.oneLine .team-short-code,
 .MMM-MyScoreboard .box-score.in-progress.oneLineWithLogos .team-short-code {  
-  /*color: #FFF;*/
+  color: #FFF;
 }
 
 .MMM-MyScoreboard .box-score.oneLine .team-short-code.visitor,
@@ -384,6 +447,10 @@
   left: 0px;
   width: 110px;
   color: #AAA;
+}
+.MMM-MyScoreboard .box-score.in-progress.stacked .team-name,
+.MMM-MyScoreboard .box-score.in-progress.stackedWithLogos .team-name {
+  color: #FFF;
 }
 .MMM-MyScoreboard .box-score.stacked .team-name.visitor {
   top:6px;

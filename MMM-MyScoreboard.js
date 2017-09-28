@@ -15,6 +15,7 @@ Module.register("MMM-MyScoreboard",{
     showLeagueSeparators: true,
     colored: true,
     rolloverHours: 3, //hours past midnight to show the pervious day's scores
+    shadeRows: false,
     viewStyle: "largeLogos",
     sports: [
       {
@@ -239,6 +240,18 @@ Module.register("MMM-MyScoreboard",{
 
     }
 
+    //add classes to final games
+    if (gameObj.gameMode == this.gameModes.FINAL) {
+      boxScore.classList.add("final");
+      if (gameObj.hScore > gameObj.vScore) {
+        boxScore.classList.add("winner-h");
+      } else if (gameObj.vScore > gameObj.hScore) {
+        boxScore.classList.add("winner-v");
+      } else {
+        boxScore.classList.add("tie");
+      }
+    }
+
     return boxScore;
   },
 
@@ -249,11 +262,17 @@ Module.register("MMM-MyScoreboard",{
     if (this.config.colored) {
       wrapper.classList.add("colored");
     }
+    if (this.config.shadeRows) {
+      wrapper.classList.add("shade-rows");
+    }
+    if (!this.config.showLeagueSeparators) {
+      wrapper.classList.add("no-league-separators");
+    } 
 
     if (!this.loaded) {
       var loadingText = document.createElement("div");
-        loadingText.innerHTML = this.translate('LOADING');
-        loadingText.className = "dimmed light small";
+      loadingText.innerHTML = this.translate("LOADING");
+      loadingText.className = "dimmed light small";
       wrapper.appendChild(loadingText);
       return wrapper;
     }
@@ -268,9 +287,11 @@ Module.register("MMM-MyScoreboard",{
           leagueSeparator.classList.add("league-separator");
           leagueSeparator.innerHTML = "<span>" + sport.league + "</span>";
           wrapper.appendChild(leagueSeparator);
-        };
-        self.sportsData[index].forEach(function(game) {
-          wrapper.appendChild(self.boxScoreFactory(sport.league, game));          
+        }
+        self.sportsData[index].forEach(function(game, gidx) {
+          var boxScore = self.boxScoreFactory(sport.league, game);
+          boxScore.classList.add(gidx % 2 == 0 ? "odd" : "even") ;
+          wrapper.appendChild(boxScore);     
         });
       }
     });
