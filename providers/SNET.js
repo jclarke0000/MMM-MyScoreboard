@@ -327,8 +327,8 @@ module.exports = {
         gameMode: gameState,
         hTeam: game.home_team_short,
         vTeam: game.visiting_team_short,
-        hTeamLong: self.titleCase(game.home_team),
-        vTeamLong: self.titleCase(game.visiting_team),
+        hTeamLong: game.home_team_short == "TBD" ? "TBD" : self.titleCase(game.home_team),
+        vTeamLong: game.visiting_team_short == "TBD" ? "TBD" : self.titleCase(game.visiting_team),
         hScore: game.home_score,
         vScore: game.visiting_score,
         status: status
@@ -421,6 +421,11 @@ module.exports = {
   },
 
   titleCase: function(str) {
+
+    if (str == null || str == undefined) {
+      return "";
+    } 
+
     var splitStr = str.toLowerCase().split(" ");
     for (var i = 0; i < splitStr.length; i++) {
       // two-letter portions are all upper case (e.g.: the "FC" in Toronto FC)

@@ -159,7 +159,7 @@ Examples of the available view styles you can specify with the `viewStyle` param
 ```
 ANA   Anaheim Ducks
 ARI   Arizona Coyotes
-BOS   Boton Bruins
+BOS   Boston Bruins
 BUF   Buffalo Sabres
 CAR   Carolina Hurricanes
 CLB   Columbus Blue Jackets
@@ -246,8 +246,8 @@ MEM   Memphis Grizzlies
 MIA   Miami Heat
 MIL   Milwaukee Bucks
 MIN   Minnesota Timberwolves
-NOP   New Orleans Pelicans
-NYK   New York Knicks
+NO    New Orleans Pelicans
+NY    New York Knicks
 OKC   Oklahoma City Thunder
 ORL   Orlando Magic
 PHI   Philadelphia 76ers
