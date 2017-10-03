@@ -54,14 +54,27 @@
 
 .MMM-MyScoreboard .box-score .logo {
   position: absolute;
-  display: block;
-  max-width: 60px;
-  max-height: 60px;
-  top: 35px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  width: 60px;
+  height: 60px;
+  top: 5px;
+  
+  border: none;
 
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 }
+
+.MMM-MyScoreboard .box-score .logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 
 .MMM-MyScoreboard .wrapper.colored .box-score .logo {
   -webkit-filter: none;
@@ -70,12 +83,10 @@
 
 
 .MMM-MyScoreboard .box-score .logo.visitor {
-  left: 30px;
-  transform: translate(-50%, -50%);
+  left: 0px;
 }
 .MMM-MyScoreboard .box-score .logo.home {
-  right: 30px;
-  transform: translate(50%, -50%);
+  right: 0px;
 }
 
 .MMM-MyScoreboard .box-score .score {
@@ -133,7 +144,7 @@
 
 .MMM-MyScoreboard .box-score.in-progress .team-name,
 .MMM-MyScoreboard .box-score.in-progress .team-short-code {
-  color: #FFF;
+  color: #EFEFEF;
 }
 
 .MMM-MyScoreboard .wrapper.colored .box-score.in-progress .status {  
@@ -144,6 +155,8 @@
   margin-right: 12px;
 }
 
+
+/* Row shading */
 .MMM-MyScoreboard .wrapper.shade-rows .league-separator,
 .MMM-MyScoreboard .wrapper.shade-rows .box-score {
   border-color: #282828;
@@ -172,30 +185,39 @@
 }
 
 /* Highlight the winners of finished games */
-.MMM-MyScoreboard .box-score.final.winner-h .score.visitor {
-  color: #AAA;
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-h .score.visitor {
+  color: #777;
 }
-.MMM-MyScoreboard .wrapper .box-score.final.winner-h .team-short-code.home,
-.MMM-MyScoreboard .wrapper .box-score.final.winner-h .team-name.home {
-  color: #FFF;
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-h .team-short-code.home,
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-h .team-name.home {
+  color: #EFEFEF;
 }
-.MMM-MyScoreboard .wrapper.colored .box-score.winner-h .score.home {
-  color: #f8dd70;
-}
-
-.MMM-MyScoreboard .box-score.final.winner-v .score.home {
-  color: #AAA;
-}
-.MMM-MyScoreboard .wrapper .box-score.final.winner-v .team-short-code.visitor,
-.MMM-MyScoreboard .wrapper .box-score.final.winner-v .team-name.visitor {
-  color: #FFF;
-}
-.MMM-MyScoreboard .wrapper.colored .box-score.final.winner-v .score.visitor {
-  color: #f8dd70;
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-h .team-short-code.visitor,
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-h .team-name.visitor {
+  color: #777
 }
 
-.MMM-MyScoreboard .box-score.final.tie .score.visitor,
-.MMM-MyScoreboard .box-score.final.tie .score.home {
+.MMM-MyScoreboard .wrapper.highlight-winners.colored .box-score.winner-h .score.home {
+  color: #7AE4FF;
+}
+
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-v .score.home {
+  color: #777;
+}
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-v .team-short-code.visitor,
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-v .team-name.visitor {
+  color: #EFEFEF;
+}
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-v .team-short-code.home,
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-v .team-name.home {
+  color: #777;
+}
+.MMM-MyScoreboard .wrapper.highlight-winners.colored .box-score.final.winner-v .score.visitor {
+  color: #7AE4FF;
+}
+
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.tie .score.visitor,
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.tie .score.home {
   color: #AAA;
 }
 
@@ -215,16 +237,16 @@
 
 
 .MMM-MyScoreboard .box-score.mediumLogos .logo {
-  max-width: 40px;
-  max-height: 40px;
-  top: 25px;  
+  width: 40px;
+  height: 40px;
+  top: 5px;  
 }
 
 .MMM-MyScoreboard .box-score.mediumLogos .logo.home {
-  right: 20px;
+  right: 0px;
 }
 .MMM-MyScoreboard .box-score.mediumLogos .logo.visitor {
-  left: 20px;
+  left: 0px;
 }
 
 .MMM-MyScoreboard .box-score.mediumLogos .status {
@@ -250,16 +272,16 @@
 }
 
 .MMM-MyScoreboard .box-score.smallLogos .logo {
-  max-width: 24px;
-  max-height: 24px;
-  top: 15px;
+  width: 24px;
+  height: 24px;
+  top: 3px;
 }
 
 .MMM-MyScoreboard .box-score.smallLogos .logo.home {
-  right: 12px;
+  right: 0px;
 }
 .MMM-MyScoreboard .box-score.smallLogos .logo.visitor {
-  left: 12px;
+  left: 0px;
 }
 
 .MMM-MyScoreboard .box-score.smallLogos .status {
@@ -317,7 +339,7 @@
 
 .MMM-MyScoreboard .box-score.oneLine .vs-symbol,
 .MMM-MyScoreboard .box-score.oneLineWithLogos .vs-symbol {
-  left: 55px;
+  left: 70px;
   font-size: 16px;
   line-height: 16px;
   display: inline-block;
@@ -328,12 +350,17 @@
 
 .MMM-MyScoreboard .box-score.oneLine .team-short-code,
 .MMM-MyScoreboard .box-score.oneLineWithLogos .team-short-code {
-  width: 44px;  
+  width: 60px;  
   color: #AAA;
 }
+
+.MMM-MyScoreboard .box-score.oneLineWithLogos .team-short-code {
+  width: 52px;
+}
+
 .MMM-MyScoreboard .box-score.in-progress.oneLine .team-short-code,
 .MMM-MyScoreboard .box-score.in-progress.oneLineWithLogos .team-short-code {  
-  color: #FFF;
+  color: #EFEFEF;
 }
 
 .MMM-MyScoreboard .box-score.oneLine .team-short-code.visitor,
@@ -342,7 +369,7 @@
 }
 .MMM-MyScoreboard .box-score.oneLine .team-short-code.home,
 .MMM-MyScoreboard .box-score.oneLineWithLogos .team-short-code.home {
-  left: 90px;
+  left: 120px;
 }
 
 .MMM-MyScoreboard .box-score.oneLine .score,
@@ -353,11 +380,11 @@
 }
 .MMM-MyScoreboard .box-score.oneLine .score.visitor,
 .MMM-MyScoreboard .box-score.oneLineWithLogos .score.visitor {
-  left: 50px;
+  left: 62px;
 }
 .MMM-MyScoreboard .box-score.oneLine .score.home,
 .MMM-MyScoreboard .box-score.oneLineWithLogos .score.home {
-  left: 142px;
+  left: 182px;
 }
 
 .MMM-MyScoreboard .box-score.oneLine .status,
@@ -382,17 +409,16 @@
 
 
 .MMM-MyScoreboard .box-score.oneLineWithLogos .logo {
-  top: 15px;
-  max-height: 24px;
-  max-width: 24px;
+  top: 3px;
+  height: 24px;
+  width: 24px;
   right: initial;
 }
 .MMM-MyScoreboard .box-score.oneLineWithLogos .logo.visitor {
-  left: 12px;
+  left: 0px;
 }
 .MMM-MyScoreboard .box-score.oneLineWithLogos .logo.home {
-  left: 132px;
-  transform: translate(-50%, -50%);  
+  left: 120px;
 }
 .MMM-MyScoreboard .box-score.oneLineWithLogos .team-short-code.visitor {
   left: 30px;
@@ -445,12 +471,12 @@
 .MMM-MyScoreboard .box-score.stacked .team-name,
 .MMM-MyScoreboard .box-score.stackedWithLogos .team-name {
   left: 0px;
-  width: 110px;
+  width: 150px;
   color: #AAA;
 }
 .MMM-MyScoreboard .box-score.in-progress.stacked .team-name,
 .MMM-MyScoreboard .box-score.in-progress.stackedWithLogos .team-name {
-  color: #FFF;
+  color: #EFEFEF;
 }
 .MMM-MyScoreboard .box-score.stacked .team-name.visitor {
   top:6px;
@@ -461,7 +487,7 @@
 
 .MMM-MyScoreboard .box-score.stacked .score,
 .MMM-MyScoreboard .box-score.stackedWithLogos .score {
-  left: 116px;
+  left: 140px;
   width: 44px;
   color: #AAA;
   text-align: right;
@@ -487,11 +513,12 @@
   justify-content: flex-end;
   align-content: center;
   align-items: center;
-  width: calc(100% - 170px);
+  width: calc(100% - 190px);
 }
 
 .MMM-MyScoreboard .box-score.stackedWithLogos .team-name {
   left: 30px;
+  width: 130px;
 }
 .MMM-MyScoreboard .box-score.stackedWithLogos .team-name.visitor {
   top: 8px;
@@ -501,17 +528,16 @@
 }
 
 .MMM-MyScoreboard .box-score.stackedWithLogos .logo {
-  max-height: 24px;
-  max-width: 24px;
-  left: 12px;
+  height: 24px;
+  width: 24px;
+  left: 0px;
   right: initial;
-  transform: translate(-50%, -50%);  
 }
 .MMM-MyScoreboard .box-score.stackedWithLogos .logo.visitor {
-  top: 20px;
+  top: 8px;
 }
 .MMM-MyScoreboard .box-score.stackedWithLogos .logo.home {
-  top: 48px;
+  top: 36px;
 }
 .MMM-MyScoreboard .box-score.stackedWithLogos .score {  
   left: 146px;
@@ -528,6 +554,95 @@
 }
 
 
+/* -- Alternate display for when logo image is broken -- */
+
+/*
+  Images don't normally render :before and :after pseudoelements,
+  but in most modern browsers, they will render in the event
+  the image is broken.  We can use that to our advanatge here.
+  When the image is broken, we'll render a square that will cover
+  the broken image icon and display the team's short code, which
+  is written in as the attribute "data-abbr" in the image tag.
+*/
+
+.MMM-MyScoreboard .box-score .logo img:after {
+  content: attr(data-abbr);
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  background-color: #000;
+  color: #AAA;
+}
+
+.MMM-MyScoreboard .box-score.largeLogos .logo img:after {  
+  width: 60px;
+  height: 60px;
+  font-size: 20px;
+  line-height: 60px;
+}
+
+.MMM-MyScoreboard .box-score.mediumLogos .logo img:after {  
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  line-height: 40px;
+  letter-spacing: -1px;
+}
+
+
+.MMM-MyScoreboard .box-score.smallLogos .logo img:after,
+.MMM-MyScoreboard .box-score.oneLineWithLogos .logo img:after,
+.MMM-MyScoreboard .box-score.stackedWithLogos .logo img:after {  
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -1px;
+}
+
+/* 
+  Don't bother showing the short code for oneLineWithLogos and
+  stackedWithLogos view styles.  There is a label beside the logo
+  in these styles.
+*/
+.MMM-MyScoreboard .box-score.oneLineWithLogos .logo img:after,
+.MMM-MyScoreboard .box-score.stackedWithLogos .logo img:after {
+  content: " ";
+}
+
+/* Account for row shading */
+.MMM-MyScoreboard .wrapper.shade-rows .box-score.odd .logo img:after {
+  background-color: #181818;
+}
+
+.MMM-MyScoreboard .wrapper.shade-rows.no-league-separators .box-score.odd .logo img:after{
+  background-color: #000;
+}
+
+.MMM-MyScoreboard .wrapper.shade-rows.no-league-separators .box-score:nth-child(odd) .logo img:after {
+  background-color: #181818;
+}
+
+/* Account for in-progress game */
+.MMM-MyScoreboard .box-score.in-progress .logo img:after {
+  color: #EFEFEF;
+}
+
+/* Account for winner highlighting */
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-h .logo.home img:after {
+  color: #EFEFEF;
+}
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-h logo.visitor img:after {
+  color: #777
+}
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-v .logo.visitor img:after {
+  color: #EFEFEF;
+}
+.MMM-MyScoreboard .wrapper.highlight-winners .box-score.final.winner-v logo.home img:after {
+  color: #777
+}
 
 
 
@@ -550,8 +665,15 @@
 /* NCAAF */
 .MMM-MyScoreboard .box-score.NCAAF.stacked .team-name,
 .MMM-MyScoreboard .box-score.NCAAF.stackedWithLogos .team-name {
-  width: 130px;
+  letter-spacing: -1px;
 }
+
+.MMM-MyScoreboard .box-score.NCAAF.oneLine .team-short-code,
+.MMM-MyScoreboard .box-score.NCAAF.oneLineWithLogos .team-short-code {
+  letter-spacing: -1px;
+}
+
+
 
 
 /* MLS */

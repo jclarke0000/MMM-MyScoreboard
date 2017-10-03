@@ -17,6 +17,14 @@ leagues, including NHL, NBA, NFL, MLB, MLS, CFL and NCAAF (FBS Division).
 2. Enter the new `MMM-MyScoreboard` directory and execute `npm install`.
 
 
+## Notice to anyone updating from previous versions
+
+1. Run `git pull` to get the latest source code
+2. Run `npm istall` in the `MMM-MyScoreboard` directory.
+3. (Optional) Run `npm prune` to remove some packages that are no longer needed.
+4. As the providers have changed for most sports, some of the team shortcodes are different. If you're not seeing your team show up even though you know a game is scheduled, check to see if you need to update your config.
+
+
 ## Configuration
 
 <table>
@@ -44,6 +52,14 @@ leagues, including NHL, NBA, NFL, MLB, MLS, CFL and NCAAF (FBS Division).
       <td>One of the following: <code>largeLogos</code>, <code>mediumLogos</code>, <code>smallLogos</code>, <code>oneLine</code>, <code>oneLineWithLogos</code>, <code>stacked</code> or <code>stackedWithLogos</code>.<br><br><strong>Type</strong> <code>String</code><br>Defaults to <code>largeLogos</code><br />See below for examples of the view styles.</td>
     </tr>
     <tr>
+      <td><code>shadeRows</code></td>
+      <td>Whether to shade alternate rows.<br><br><strong>Type</strong> <code>Boolean</code><br>Defaults to <code>false</code></td>
+    </tr>
+    <tr>
+      <td><code>highlightWinners</code></td>
+      <td>For games that are final, the winning team / score is highlighted.<br><br><strong>Type</strong> <code>Boolean</code><br>Defaults to <code>true</code></td>
+    </tr>
+    <tr>
       <td><code>sports</code></td>
       <td><strong>REQUIRED</strong> An array of leagues and teams you wish to follow.<br><br><strong>Type</strong> <code>Array</code><br>See below for instructions to configure your <code>sports</code> list.</td>
     </tr>
@@ -61,7 +77,7 @@ Currently this module supports the following leagues:
 * **MLB** - Major League Baseball
 * **NFL** - National Football League
 * **MLS** - Major League Soccer
-* **CFL** - Canadian Football League (requires an API key from http://api.cfl.ca/key-request)
+* **CFL** - Canadian Football League
 * **NCAAF** - NCAA College Football (FBS Division only)
 
 Each entry in your `sports` array is an object with two properties:
@@ -80,11 +96,7 @@ Each entry in your `sports` array is an object with two properties:
     </tr>
     <tr>
       <td><code>teams</code></td>
-      <td><strong>REQUIRED</strong> an array of teams for which you want to see scores.  Specify teams using their shortcodes (e.g.: <code>"TOR"</code> for Toronto Maple Leafs.<br><br><strong>Type</strong> <code>Array</code><br>See below for a full listing of teams and their short codes</td>
-    </tr>
-    <tr>
-      <td><code>apiKey</code></td>
-      <td><strong>REQUIRED FOR CFL</strong> You need to request an API key from CFL tech support here:<br>http://api.cfl.ca/key-request</td>
+      <td>An array of teams for which you want to see scores.  Specify teams using their shortcodes (e.g.: <code>"TOR"</code> for Toronto Maple Leafs.<br><br><strong>Type</strong> <code>Array</code><br>See below for a full listing of teams and their short codes<br><br><strong>UPDATE v2.0:</strong> This is no longer required.  If you omit this, then all games will be listed.</td>
     </tr>
   </tbody>
 </table>
@@ -104,8 +116,7 @@ Each entry in your `sports` array is an object with two properties:
     viewStyle: "mediumLogos",
     sports: [
       {
-        league: "NHL",
-        teams: ["TOR", "PIT"]
+        league: "NHL"
       },
       {
         league: "NBA",
@@ -121,8 +132,7 @@ Each entry in your `sports` array is an object with two properties:
       },
       {
         league: "CFL",
-        teams: ["TOR", "MTL", "OTT"],
-        apiKey: "your_secret_API_key"
+        teams: ["TOR", "MTL", "OTT"]
       }
     ]
 
@@ -130,6 +140,7 @@ Each entry in your `sports` array is an object with two properties:
 },
 
 ```
+
 
 ## View Styles
 
@@ -169,7 +180,7 @@ NYR   New York Rangers
 OTT   Ottawa Senators
 PHI   Philadelphia Flyers
 PIT   Pittsburgh Penguins
-SJS   San Jose Sharks
+SJ    San Jose Sharks
 STL   St. Louis Blues
 TB    Tamba Bay Lightning
 TOR   Toronto Maple Leafs
@@ -226,7 +237,7 @@ CLE   Cleveland Cavaliers
 DAL   Dallas Mavericks
 DEN   Denver Nuggets
 DET   Detroit Pistons
-GSW   Golden State Warriors
+GS    Golden State Warriors
 HOU   Houston Rockets
 IND   Indiana Pacers
 LAC   Los Angeles Clippers
@@ -243,10 +254,10 @@ PHI   Philadelphia 76ers
 PHX   Phoenix Suns
 POR   Portland Trail Blazers
 SAC   Sacramento Kings
-SAS   San Antonio Spurs
+SA    San Antonio Spurs
 TOR   Toronto Raptors
-UTA   Utah Jazz
-WAS   Washington Wizards
+UTAH  Utah Jazz
+WSH   Washington Wizards
 ```
 
 ### NFL
@@ -295,7 +306,7 @@ DAL   FC Dallas
 DC    DC United
 HOU   Houston Dynamo
 LA    LA Galaxy
-MNU   Minnesota United FC
+MIN   Minnesota United FC
 MTL   Montreal Impact
 NE    New England Revolution
 NY    New York Red Bulls
@@ -306,7 +317,7 @@ POR   Portland Timbers
 RSL   Real Salt Lake
 SJ    San Jose Earthquakes
 SEA   Seattle Sounders FC
-SKC   Sporting Kansas City
+KC    Sporting Kansas City
 TOR   Toronto FC
 VAN   Vancouver Whitecaps
 ```

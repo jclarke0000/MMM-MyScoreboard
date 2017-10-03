@@ -10,12 +10,14 @@
 *********************************/
 
 Module.register("MMM-MyScoreboard",{
+
   // Default module config.
   defaults: {
     showLeagueSeparators: true,
     colored: true,
     rolloverHours: 3, //hours past midnight to show the pervious day's scores
     shadeRows: false,
+    highlightWinners: true,
     viewStyle: "largeLogos",
     sports: [
       {
@@ -35,7 +37,7 @@ Module.register("MMM-MyScoreboard",{
 
   supportedLeagues: {
     "NBA" : {
-      provider: "SNET",
+      provider: "ESPN",
       logoFormat: "svg"
     },
     "NHL" : {
@@ -165,16 +167,27 @@ Module.register("MMM-MyScoreboard",{
 
     //add team logos if applicable
     if (this.viewStyleHasLogos(viewStyle)) {      
-      var hTeamLogo = document.createElement("img");
+
+      var hTeamLogo = document.createElement("span");
       hTeamLogo.classList.add("logo", "home");
-      hTeamLogo.src = this.file("logos/" + league + "/" + gameObj.hTeam + "." + this.supportedLeagues[league].logoFormat );
-      hTeamLogo.setAttribute("alt", gameObj.hTeam);
+
+      var hTeamLogoImg = document.createElement("img");
+      hTeamLogoImg.src = this.file("logos/" + league + "/" + gameObj.hTeam + "." + this.supportedLeagues[league].logoFormat );
+      hTeamLogoImg.setAttribute("data-abbr", gameObj.hTeam);
+
+      hTeamLogo.appendChild(hTeamLogoImg);
       boxScore.appendChild(hTeamLogo);
 
-      var vTeamLogo = document.createElement("img");
+
+
+      var vTeamLogo = document.createElement("span");
       vTeamLogo.classList.add("logo", "visitor");
-      vTeamLogo.src = this.file("logos/" + league + "/" + gameObj.vTeam + "." + this.supportedLeagues[league].logoFormat );
-      vTeamLogo.setAttribute("alt", gameObj.vTeam);
+
+      var vTeamLogoImg = document.createElement("img");      
+      vTeamLogoImg.src = this.file("logos/" + league + "/" + gameObj.vTeam + "." + this.supportedLeagues[league].logoFormat );
+      vTeamLogoImg.setAttribute("data-abbr", gameObj.vTeam);
+      
+      vTeamLogo.appendChild(vTeamLogoImg);
       boxScore.appendChild(vTeamLogo);
     }
 
@@ -257,8 +270,13 @@ Module.register("MMM-MyScoreboard",{
 
   // Override dom generator.
   getDom: function() {
+
     var wrapper = document.createElement("div");
     wrapper.classList.add("wrapper");
+
+    /*
+      Set up basic classes
+    */
     if (this.config.colored) {
       wrapper.classList.add("colored");
     }
@@ -268,7 +286,13 @@ Module.register("MMM-MyScoreboard",{
     if (!this.config.showLeagueSeparators) {
       wrapper.classList.add("no-league-separators");
     } 
+    if (this.config.highlightWinners) {
+      wrapper.classList.add("highlight-winners");
+    }
 
+    /*
+      Show "Loading" when there's no data initially.
+    */
     if (!this.loaded) {
       var loadingText = document.createElement("div");
       loadingText.innerHTML = this.translate("LOADING");
@@ -277,6 +301,11 @@ Module.register("MMM-MyScoreboard",{
       return wrapper;
     }
 
+
+    /*
+      Run through the leagues and generate box score displays for
+      each game.
+    */
     var anyGames = false;
     var self = this;
     this.config.sports.forEach(function(sport, index) {
@@ -354,6 +383,16 @@ Module.register("MMM-MyScoreboard",{
 
     this.getScores();
 
+    /*
+      As of v2.0, poll interval is no longer configurable.
+      Providers manage their own data pull schedule in some
+      cases (e.g. SNET.js), while others will poll on demand
+      when this timer fires. In an effort to keep the APIs
+      free and clear, please do not modify this to hammer
+      the APIs with a flood of calls.  Doing so may cause the
+      respective feed owners to lock down the APIs. Updating
+      every two minutes should be more than fine for our purposes.
+    */
     setInterval(function() {
       self.getScores();
     }, 2 * 60 * 1000);
@@ -365,8 +404,11 @@ Module.register("MMM-MyScoreboard",{
     var gameDate = moment(); //get today's date
 
     if (gameDate.hour() < this.config.rolloverHours) {
-      //it's past midnight local time, but within the
-      //rollover window.  Show yesterday's games, not today's
+      /*
+        it's past midnight local time, but within the
+        rollover window.  Query for yesterday's games,
+        not today's
+      */
       gameDate.subtract(1, "day");
     }
 
