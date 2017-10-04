@@ -19,8 +19,8 @@ leagues, including NHL, NBA, NFL, MLB, MLS, CFL and NCAAF (FBS Division).
 
 ## Notice to anyone updating from previous versions
 
-1. Run `git pull` to get the latest source code
-2. Run `npm install` in the `MMM-MyScoreboard` directory.
+1. Run `git pull` in the `MMM-MyScoreboard` directory to get the latest source code
+2. Still in the `MMM-MyScoreboard` directory, run `npm install`.
 3. (Optional) Run `npm prune` to remove some packages that are no longer needed.
 4. As the providers have changed for most sports, some of the team shortcodes are different. If you're not seeing your team show up even though you know a game is scheduled, check your config against the list of team shortcodes below.
 

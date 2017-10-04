@@ -22,7 +22,7 @@ Module.register("MMM-MyScoreboard",{
     sports: [
       {
         league: "NHL",
-        teams: ["TOR","MTL","OTT","WPG","CGY","EDM","VAN"]
+        teams: ["TOR"]
       },
       {
         league: "NBA",
@@ -32,6 +32,10 @@ Module.register("MMM-MyScoreboard",{
         league: "MLB",
         teams: ["TOR"]
       },
+      {
+        league: "CFL",
+        teams: ["TOR"]
+      }
     ]
   },
 

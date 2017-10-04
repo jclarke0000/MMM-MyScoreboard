@@ -95,7 +95,8 @@ module.exports = {
     if (teams != null) { //filter to teams list
 
       filteredGamesList = data.events.filter(function(game) {
-        return self.teamsToFollow.indexOf(game.competitions[0].competitors[0].team.abbreviation) != -1 || self.teamsToFollow.indexOf(game.competitions[0].competitors[1].team.abbreviation) != -1;
+        return teams.indexOf(game.competitions[0].competitors[0].team.abbreviation) != -1 ||
+          teams.indexOf(game.competitions[0].competitors[1].team.abbreviation) != -1;
       });
 
     } else { //return all games
