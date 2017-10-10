@@ -160,7 +160,8 @@ module.exports = {
       "In-Progress",
       "Half-Over",
       "Final",
-      "Delayed"
+      "Delayed",
+      "Postponed"
     ];
 
     var filteredGames = [];
@@ -309,6 +310,11 @@ module.exports = {
           gameState = 1; //in-progress
           classes.push("delay");
           status.push("Delay");
+          break;
+
+        case "Postponed":
+          gameState = 0;
+          status.push("Postponed");
           break;
 
         case "Final":
