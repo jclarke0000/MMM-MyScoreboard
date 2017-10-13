@@ -202,6 +202,7 @@ module.exports = {
     });
 
     var formattedGames = [];
+    var localTZ = moment.tz.guess();
 
     filteredGames.forEach(function(game) {
 
@@ -209,13 +210,13 @@ module.exports = {
       var gameState;
       var status = [];
       var classes = [];
-      var localTZ = moment.tz.guess();
 
       switch(game.game_status) {
 
         case "Pre-Game":
           gameState = 0; //not started
-          status.push(moment(game.time, "hh:mm a zz").tz(localTZ).format("h:mm a"));
+          //Feed provides all game times in Eastern Time
+          status.push(moment.tz(game.time, "hh:mm a zz", "America/Toronto").tz(localTZ).format("h:mm a"));
           break;
 
         case "In-Progress":
