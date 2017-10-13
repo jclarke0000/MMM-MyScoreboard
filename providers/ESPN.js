@@ -62,7 +62,7 @@ module.exports = {
     var url = "http://site.api.espn.com/apis/site/v2/sports/" +
       this.getLeaguePath(league) +
       "/scoreboard?dates=" + 
-      moment(gameDate).format("YYYYMMDD") + "&limit=100";
+      moment(gameDate).format("YYYYMMDD") + "&limit=200";
 
     request({url: url, method: "GET"}, function(r_err, response, body) {
 
@@ -234,7 +234,10 @@ module.exports = {
         So we'll deal with it here.  There is an SDSU logo file with a space at the end of
         its name (e.g.: "SDSU .png" that is for the FCS team.  We'll use that abbreviation
         which will load a different logo file, but the extra space will collapse in HTML
-        when the short code is displayed)
+        when the short code is displayed).
+
+        The big irony here is that the SAME school as the FCS SDSU has a different ESPN short
+        code for basketball: SDST.
       */
 
       if (league == "NCAAF" && hTeamData.team.abbreviation == "SDSU" && hTeamData.team.location.indexOf("South Dakota State") != -1) {

@@ -67,6 +67,10 @@ Module.register("MMM-MyScoreboard",{
     "NCAAF" : {
       provider: "ESPN",
       logoFormat: "png"
+    },
+    "NCAAM" : {
+      provider: "ESPN",
+      logoFormat: "png"
     }
   },
 
