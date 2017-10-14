@@ -103,7 +103,7 @@ module.exports = {
     // console.log("Get SNET JSON");
     var self = this;
 
-    request({url: "http://www.sportsnet.ca/wp-content/uploads/scoreboard.json", method: "GET"}, function(r_err, response, body) {
+    request({url: "http://www.sportsnet.ca/wp-content/files/scoreboard.json", method: "GET"}, function(r_err, response, body) {
 
       if(!r_err && response.statusCode == 200) {
         
