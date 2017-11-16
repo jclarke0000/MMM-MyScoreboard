@@ -407,6 +407,34 @@ Module.register("MMM-MyScoreboard",{
 
   },
 
+  makeTeamList: function(inst, league, teams, groups) {
+
+    var teamList = [];
+
+    if (teams != null) {
+      teamList = teams;
+    }
+
+    if (groups != null) {
+      for (var i = 0; i < groups.length; i++) {
+        var group = inst.groups[league][groups[i]];
+        if (group != null) {
+          group.forEach( function(team) {
+            teamList.push(team);
+          });
+          
+        } 
+      }
+    } 
+
+    
+    if (teamList.length == 0) {
+      return null;
+    }
+    return teamList;
+
+  },
+
   getScores: function() {
 
     var gameDate = moment(); //get today's date
@@ -427,7 +455,7 @@ Module.register("MMM-MyScoreboard",{
         instanceId: self.identifier,
         index: index,
         league: sport.league,
-        teams: (sport.teams ? sport.teams : null),
+        teams: self.makeTeamList(self, sport.league, sport.teams, sport.groups),
         provider: self.supportedLeagues[sport.league].provider,
         gameDate: gameDate
       };
@@ -438,6 +466,152 @@ Module.register("MMM-MyScoreboard",{
     });
 
 
+
+  },
+
+  /*
+    This section is for convenience when setting up your configuration.
+    If you care only about a certain division in a particular sport,
+    you can specify its group name as a shortcut rather than adding
+    indiviual teams. This becomes espcially useful for leagues like
+    NCAAF and NCAAM where there are hundreds of teams.
+  */
+  groups: {
+    NHL : {
+
+      //divisions
+      "Atlantic": ["BOS", "BUF", "DET", "FLA", "MTL", "OTT", "TB", "TOR"],
+      "Metropolitain": ["CAR", "CLB", "NJ", "NYI", "NYR", "PIT", "PHI", "WSH"],
+      "Central": ["CHI", "COL", "DAL", "MIN", "NSH", "STL", "WPG"],
+      "Pacific": ["ANA", "ARI", "CGY", "EDM", "LA", "SJ", "VAN", "VGK"],
+
+      //conferences
+      "East": ["BOS", "BUF", "CAR", "CLB", "DET", "FLA", "MTL", "NJ", "NYI", "NYR", "PIT", "PHI", "OTT", "TB", "TOR", "WSH"],
+      "West": ["ANA", "ARI", "CGY", "CHI", "COL", "DAL", "EDM", "LA", "MIN", "NSH", "SJ", "STL", "VAN", "VGK", "WPG"],
+
+      //all Canadian teams
+      "Canadian": ["CGY", "EDM", "MTL", "OTT", "TOR", "VAN", "WPG"]
+    },
+
+    MLB : {
+
+      //divisions
+      "AL East": ["BAL", "BOS", "NYY", "TB", "TOR"],
+      "AL Central": ["CLE", "CWS", "DET", "KC", "MIN"],
+      "AL West": ["HOU", "LAA", "OAK", "SEA", "TEX"],
+      "NL East": ["ATL", "MIA", "NYM", "PHI", "WAS"],
+      "NL Central": ["CHC", "CIN", "MIL", "PIT", "STL"],
+      "NL West": ["ARI", "COL", "LAD", "SD", "SF"],
+
+      //leagues
+      "American League": ["BAL", "BOS", "CLE", "CWS", "DET", "HOU", "LAA", "KC", "MIN", "NYY", "OAK", "SEA", "TB", "TEX", "TOR"],
+      "National League": ["ARI", "ATL", "CHC", "CIN", "COL", "LAD", "MIA", "MIL", "NYM", "PHI", "PIT", "SD", "SF", "STL", "WAS"]
+
+    },
+
+    NBA : {
+
+      //divisions
+      "Atlantic": ["BKN", "BOS", "NY", "PHI", "TOR"],
+      "Central": ["CHI", "CLE", "DET", "IND", "MIL"],
+      "Southeast": ["ATL", "CHA", "MIA", "ORL", "WSH"],
+      "Northwest": ["DEN", "MIN", "OKC", "POR", "UTAH"],
+      "Pacific": ["GS", "LAC", "LAL", "PHX", "SAC"],
+      "Southwest": ["DAL", "HOU", "MEM", "NO", "SA"],
+
+      //conferences
+      "East": ["ATL", "BKN", "BOS", "CHA", "CHI", "CLE", "DET", "IND", "MIA", "MIL", "NY", "ORL", "PHI", "TOR", "WSH"],
+      "West": ["DAL", "DEN", "GS", "HOU", "LAC", "LAL", "MEM", "MIN", "NO", "OKC", "PHX", "POR", "SA", "SAC", "UTAH"]
+
+    },
+
+    NFL : {
+
+      //divisions
+      "AFC East" : ["NE", "BUF", "MIA", "NYJ"],
+      "AFC North" : ["BAL", "CIN", "CLE", "PIT"],
+      "AFC South" : ["JAX", "HOU", "IND", "TEN"],
+      "AFC West" : ["DEN", "KC", "LAC", "OAK"],
+      "NFC East" : ["DAL", "NYG", "PHI", "WAS"],
+      "NFC North" : ["CHI", "DET", "GB", "MIN"],
+      "NFC South" : ["ATL", "CAR", "NO", "TB"],
+      "NFC West" : ["ARI", "LA", "SEA", "SF"],
+
+      //conferences
+      "AFC" : ["BAL", "BUF", "CIN", "CLE", "DEN", "HOU", "IND", "JAX", "KC", "LAC", "MIA", "NE", "NYJ", "OAK", "PIT", "TEN"],
+      "NFC" : ["ARI", "ATL", "CAR", "CHI", "DAL", "DET", "GB", "LA", "MIN", "NO", "NYG", "PHI", "SEA", "SF", "TB", "WAS"]
+    },
+
+    MLS : {
+
+      //conferences
+      "East" : ["ATL", "CHI", "CLB", "DC", "MTL", "NY", "NYC", "NE", "ORL", "PHI", "TOR"],
+      "West" : ["COL", "DAL", "HOU", "KC", "LA", "MIN", "POR", "RSL", "SEA", "SJ", "VAN"]
+
+    },
+
+    CFL : {
+
+      //conferences
+      "East" : ["HAM", "MTL", "OTT", "TOR"],
+      "West" : ["BC", "CGY", "EDM", "SSK", "WPG"]
+
+    },
+
+    NCAAF : {
+
+      //divisions
+      "American Athletic" : ["CIN", "CONN", "ECU", "HOU", "MEM", "NAVY", "SMU", "TEM", "TULN", "TLSA", "UCF", "USF"],
+      "ACC" : ["BC", "CLEM", "DUKE", "FSU", "GT", "LOU", "MIAMI", "NCST", "PITT", "SYR", "UNC", "UVA", "VT", "WAKE"],
+      "Big 12" : ["BAY", "ISU", "KU", "KSU", "OKLA", "OKST", "TCU", "TEX", "TTU", "WVU"],
+      "Big Ten" : ["ILL", "IND", "IOWA", "MD", "MICH", "MSU", "MINN", "NEB", "NW", "OSU", "PSU", "PUR", "RUTG", "WIS"],
+      "Conference USA" : ["CHAR", "FAU", "FIU", "LT", "MRSH", "MTSU", "UNT", "ODU", "RICE", "UAB", "USM", "UTEP", "UTSA", "WKU"],
+      "FBS Independents" : ["ARMY", "BYU", "ND", "UMASS"],
+      "Mid-American" : ["AKR", "BALL", "BGSU", "BUFF", "CMU", "EMU", "KENT", "M-OH", "NIU", "OHIO", "TOL", "WMU"],
+      "Mountain West" : ["AFA", "BSU", "CSU", "FRES", "HAW", "NEV", "SDSU", "SJSU", "UNLV", "UNM", "USU", "WYO"],
+      "Pac-12" : ["ARIZ", "ASU", "CAL", "COLO", "ORE", "ORST", "STAN", "UCLA", "USC", "UTAH", "WASH", "WSU"],
+      "SEC" : ["ALA", "ARK", "AUB", "FLA", "UGA", "UK", "LSU", "MISS", "MSST", "MIZ", "SC", "TENN", "TA&M", "VAN"],
+      "Sun Belt" : ["APP", "ARST", "CCU", "GASO", "GAST", "IDHO", "ULL", "ULM", "NMSU", "USA", "TXST", "TROY"]
+
+    },
+
+    NCAAM : {
+
+      //divisions
+      "America East" : ["ALBY", "BING", "HART", "MAINE", "STON", "UML", "UMBC", "UNH", "UVM"],
+      "American" : ["CIN", "CONN", "ECU", "HOU", "MEM", "SMU", "USF", "TEM", "TULN", "UCF", "WICH"],
+      "Atlantic 10" : ["DAV", "DAY", "DUQ", "FOR", "GMU", "GW", "LAS", "RICH", "JOES", "SLU", "SBON", "UMASS", "URI", "VCU"],
+      "ACC" : ["BC", "CLEM", "DUKE", "FSU", "GT", "LOU", "MIA", "NCST", "UNC", "ND", "PITT", "SYR", "UVA", "VT", "WAKE"],
+      "Atlantic Sun" : ["FGCU", "JAC", "KENN", "LIP", "NJIT", "UNF", "UPST", "STET"],
+      "Big 12" : ["BAY", "ISU", "KU", "KSU", "OKLA", "OKST", "TCU", "TEX", "TTU", "WVU"],
+      "Big East" : ["BUT", "CREI", "DEP", "GTWN", "MARQ", "PROV", "HALL", "SJU", "VILL", "XAV"],
+      "Big Sky" : ["EWU", "IDHO", "IDST", "MONT", "MTST", "NAU", "PRST", "SAC", "SUU", "UNCO", "UND", "WEB"],
+      "Big South" : ["CAM", "CHSO", "WEBB", "HP", "LIB", "LONG", "PRE", "RAD", "UNCA", "WIN"],
+      "Big Ten" : ["ILL", "IND", "IOWA", "MD", "MICH", "MSU", "MINN", "NEB", "NW", "OSU", "PSU", "PUR", "RUTG", "WIS"],
+      "Big West" : ["CP", "CSF", "CSUN", "HAW", "LBSU", "UCD", "UCI", "UCRV", "UCSB"],
+      "Colonial" : ["COFC", "DEL", "DREX", "ELON", "HOF", "JMU", "NE", "TOWS", "UNCW", "WM"],
+      "Conference USA" : ["CHAR", "FAU", "FIU", "LT", "MRSH", "MTU", "ODU", "RICE", "UAB", "UNT", "USM", "UTSA", "UTEP", "WKU"],
+      "Horizon" : ["CLEV", "DET", "GB", "IUPU", "MILW", "NKU", "OAK", "UIC", "WRST", "YSU"],
+      "Ivy" : ["BRWN", "CLMB", "COR", "DART", "HARV", "PENN", "PRIN", "YALE"],
+      "MAAC" : ["CAN", "FAIR", "IONA", "MAN", "MRST", "MONM", "NIAG", "QUIN", "RID", "SPU", "SIE"],
+      "Mid-American" : ["AKR", "BALL", "BGSU", "BUFF", "CMU", "EMU", "KENT", "M-OH", "NIU", "OHIO", "TOL", "WMU"],
+      "MEAC" : ["BCU", "COPP", "DSU", "FAMU", "HAMP", "HOW", "MORG", "NSU", "NCAT", "NCCU", "SAV", "SCST", "UMES"],
+      "Missouri Valley" : ["BRAD", "DRKE", "EVAN", "ILST", "INST", "L-IL", "MOST", "UNI", "SIU", "VALP"],
+      "Mountain West" : ["AFA", "BSU", "CSU", "FRES", "NEV", "UNM", "SDSU", "SJSU", "UNLV", "USU", "WYO"],
+      "Northeast" : ["BRY", "CCSU", "FDU", "LIU", "MSM", "RMU", "SHU", "SFNY", "SFU", "WAG"],
+      "Ohio Valley" : ["BEL", "EIU", "EKY", "JVST", "MORE", "MURR", "PEAY", "SEMO", "SIUE", "TNST", "TNTC", "UTM"],
+      "Pac-12" : ["ARIZ", "ASU", "CAL", "COLO", "ORE", "ORST", "STAN", "UCLA", "USC", "UTAH", "WASH", "WSU"],
+      "Patriot League" : ["AMER", "ARMY", "BU", "BUCK", "COLG", "HC", "LAF", "LEH", "L-MD", "NAVY"],
+      "SEC" : ["ALA", "ARK", "AUB", "FLA", "LSU", "MSST", "MIZ", "MISS", "SC", "TENN", "TAMU", "UGA", "UK", "VAN"],
+      "Southern" : ["CHAT", "ETSU", "FUR", "MER", "SAM", "CIT", "UNCG", "VMI", "WCU", "WOF"],
+      "Southland" : ["ACU", "AMCC", "HBU", "IW", "LAM", "MCNS", "NICH", "NWST", "SHSU", "SELA", "SFA", "UCA", "UNO"],
+      "SWAC" : ["AAMU", "ALST", "ALCN", "GRAM", "JKST", "MVSU", "PV", "SOU", "TXSO", "UAPB"],
+      "Summit League" : ["DEN", "IPFW", "NDSU", "OMA", "ORU", "SDAK", "SDST", "WIU"],
+      "Sun Belt" : ["APP", "ARST", "CCAR", "GASO", "GAST", "TXST", "TROY", "UALR", "ULL", "ULM", "USA", "UTA"],
+      "West Coast" : ["BYU", "GONZ", "LMU", "PAC", "PEPP", "PORT", "SMC", "USD", "SF", "SCU"],
+      "WAC" : ["CHS", "CSB", "GCU", "NMSU", "SEA", "TRGV", "UMKC", "UVU"]
+
+    }
 
   }
 

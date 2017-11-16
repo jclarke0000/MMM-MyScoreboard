@@ -103,7 +103,7 @@ module.exports = {
     // console.log("Get SNET JSON");
     var self = this;
 
-    request({url: "http://www.sportsnet.ca/wp-content/uploads/scoreboard.json", method: "GET"}, function(r_err, response, body) {
+    request({url: "http://www.sportsnet.ca/wp-content/files/scoreboard.json", method: "GET"}, function(r_err, response, body) {
 
       if(!r_err && response.statusCode == 200) {
         
@@ -176,6 +176,7 @@ module.exports = {
       in the same order regardless of status.  Sort it first by start
       time, then by visting team short code.
     */
+
 
     filteredGames.sort(function(a,b) {
       var aTime = moment(a.time, "hh:mm a zz");

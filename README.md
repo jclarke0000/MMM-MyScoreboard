@@ -97,10 +97,16 @@ Each entry in your `sports` array is an object with two properties:
     </tr>
     <tr>
       <td><code>teams</code></td>
-      <td>An array of teams for which you want to see scores.  Specify teams using their shortcodes (e.g.: <code>"TOR"</code> for Toronto Maple Leafs.<br><br><strong>Type</strong> <code>Array</code><br>See below for a full listing of teams and their short codes<br><br><strong>UPDATE v2.0:</strong> This is no longer required.  If you omit this, then all games will be listed.</td>
+      <td>An array of teams for which you want to see scores.  Specify teams using their shortcodes (e.g.: <code>"TOR"</code> for Toronto Maple Leafs.<br><br><strong>Type</strong> <code>Array</code><br>See below for a full listing of teams and their short codes<br><br><strong>UPDATE v2.0:</strong> This is no longer required.</td>
+    </tr>
+    <tr>
+      <td><code>groups</code></td>
+      <td>In addition to specifying individual teams, you may also specify groups.  Generally these groups correspond to the league's respective conferences and divisions.  See below for a full listing of groups available for each league. (e.g.: <code>["Atlantic", "Metropolitain"]</code> for teams in the Atlantic and Metropolitain divisions.<br><br><strong>Type</strong> <code>Array</code></td>
     </tr>
   </tbody>
 </table>
+
+It should be noted that if you specify arrays for both <code>teams</code> and <code>groups</code> they will be added together.  So it's possible to make a team list out of a division and a few other specific teams.  If you omit both parameters, then all games for the particular league will be shown.
 
 
 ## Example configuration
@@ -117,11 +123,13 @@ Each entry in your `sports` array is an object with two properties:
     viewStyle: "mediumLogos",
     sports: [
       {
-        league: "NHL"
+        league: "NHL",
+        groups: ["Atlantic"]
       },
       {
         league: "NBA",
-        teams: ["TOR"]
+        teams: ["TOR"],
+        groups: ["Pacific", "Central"]
       },
       {
         league: "MLB",
@@ -153,7 +161,7 @@ Examples of the available view styles you can specify with the `viewStyle` param
 ![View Styles](/../screenshots/viewStyle_smallLogos.png?raw=true "smallLogos")
 
 
-## Leagues and Team Shortcodes
+## Team Shortcodes and Groups
 
 ### NHL
 
@@ -189,7 +197,20 @@ VAN   Vanvouver Canucks
 VGK   Vegas Golden Knights
 WPG   Winnipeg Jets
 WSH   Washington Capitals
+
+Groups:
+---------------
+Atlantic
+Metropolitain
+Central
+Pacific
+East
+West
+Canadian (group that includes all seven Canadian teams)
 ```
+
+
+
 
 ### MLB
 
@@ -224,6 +245,17 @@ TB    Tampa Bay Rays
 TEX   Texas Rangers
 TOR   Toronto Blue Jays
 WAS   Washington Nationals
+
+Groups:
+---------------
+AL East
+AL Central
+AL West
+NL East
+NL Central
+NL West
+American League
+National League
 ```
 
 ### NBA
@@ -259,6 +291,17 @@ SA    San Antonio Spurs
 TOR   Toronto Raptors
 UTAH  Utah Jazz
 WSH   Washington Wizards
+
+Groups:
+---------------
+Atlantic
+Central
+Southeast
+Northwest
+Pacific
+Southwest
+East
+West
 ```
 
 ### NFL
@@ -295,6 +338,19 @@ SF    San Francisco 49ers
 TB    Tampa Bay Buccaneers
 TEN   Tennessee Titans
 WAS   Washington Redskins
+
+Groups:
+---------------
+AFC East
+AFC North
+AFC South
+AFC West
+NFC East
+NFC North
+NFC South
+NFC West
+AFC
+NFC
 ```
 
 ### MLS
@@ -307,6 +363,7 @@ DAL   FC Dallas
 DC    DC United
 HOU   Houston Dynamo
 LA    LA Galaxy
+KC    Sporting Kansas City
 MIN   Minnesota United FC
 MTL   Montreal Impact
 NE    New England Revolution
@@ -318,9 +375,13 @@ POR   Portland Timbers
 RSL   Real Salt Lake
 SJ    San Jose Earthquakes
 SEA   Seattle Sounders FC
-KC    Sporting Kansas City
 TOR   Toronto FC
 VAN   Vancouver Whitecaps
+
+Groups:
+---------------
+East
+West
 ```
 
 ### CFL
@@ -334,6 +395,11 @@ OTT   Ottawa Redblacks
 SSK   Saskatchewan Roughriders
 TOR   Toronto Argonauts
 WPG   Winnipeg Blue Bombers
+
+Groups:
+---------------
+East
+West
 ```
 
 ### NCAAF (FBS Division)
@@ -353,7 +419,7 @@ BAY   Baylor Bears
 BC    Boston College Eagles
 BGSU  Bowling Green Falcons
 BSU   Boise State Broncos
-BUFF  Buffalo Bills
+BUFF  Buffalo Bulls
 BYU   BYU Cougars
 CAL   California Golden Bears
 CCU   Coastal Carolina Chanticleers
@@ -468,6 +534,20 @@ WMU   Western MNichigan Broncos
 WSU   Washington State Cougars
 WVU   West Virginia Mountaineers
 WYO   Wyoming Cowboys
+
+Groups:
+---------------
+American Athletic
+ACC
+Big 12
+Big Ten
+Conference USA
+FBS Independents
+Mid-American
+Mountain West
+Pac-12
+SEC
+Sun Belt
 ```
 
 ### NCAAM (Division I)
@@ -627,7 +707,7 @@ MARQ  Marquette Golden Eagles
 MCNS  McNeese Cowboys
 MD    Maryland Terrapins
 MEM   Memphis Tigers
-MER   Memphis Tigers
+MER   Mercer Bears
 MIA   Miami Hurricanes
 MICH  Michigan Wolverines
 MILW  Milwaukee Panthers
@@ -671,7 +751,7 @@ OAK   Oakland Golden Grizzlies
 ODU   Old Dominion Monarchs
 OHIO  Ohio Bobcats
 OKLA  Oklahoma Sooners
-OKST  Old Dominion Monarchs
+OKST  Oklahoma State Cowboys
 OMA   Omaha Mavericks
 ORE   Oregon Ducks
 ORST  Oregon State Beavers
@@ -737,7 +817,7 @@ TEM   Temple Owls
 TENN  Tennessee Volunteers
 TEX   Texas Longhorns
 TLSA  Tulsa Golden Hurricane
-TNST  Tennessee St Tennessee State
+TNST  Tennessee State Tigers
 TNTC  Tennessee Tech Golden Eagles
 TOL   Toledo Rockets
 TOWS  Towson Tigers
@@ -823,4 +903,39 @@ WYO   Wyoming Cowboys
 XAV   Xavier Musketeers
 YALE  Yale Bulldogs
 YSU   Youngstown State Penguins
+
+Groups:
+---------------
+America East
+American
+Atlantic 10
+ACC
+Atlantic Sun
+Big 12
+Big East
+Big Sky
+Big South
+Big Ten
+Big West
+Colonial
+Conference USA
+Horizon
+Ivy
+MAAC
+Mid-American
+MEAC
+Missouri Valley
+Mountain West
+Northeast
+Ohio Valley
+Pac-12
+Patriot League
+SEC
+Southern
+Southland
+SWAC
+Summit League
+Sun Belt
+West Coast
+WAC
 ```
