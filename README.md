@@ -166,6 +166,9 @@ Examples of the available view styles you can specify with the `viewStyle` param
 ### NHL
 
 ```
+Teams:
+---------------
+
 ANA   Anaheim Ducks
 ARI   Arizona Coyotes
 BOS   Boston Bruins
@@ -215,6 +218,9 @@ Canadian (group that includes all seven Canadian teams)
 ### MLB
 
 ```
+Teams:
+---------------
+
 ARI   Arizona Diamondbacks
 ATL   Atlanta Braves
 BAL   Baltimore Orioles
@@ -261,6 +267,9 @@ National League
 ### NBA
 
 ```
+Teams:
+---------------
+
 ATL   Atlanta Hawks
 BKN   Brooklyn Nets
 BOS   Boston Celtics
@@ -306,6 +315,9 @@ West
 
 ### NFL
 ```
+Teams:
+---------------
+
 ARI   Arizona Cardinals
 ATL   Atlanta Falcons
 BAL   Baltimore Ravens
@@ -355,6 +367,9 @@ NFC
 
 ### MLS
 ```
+Teams:
+---------------
+
 ATL   Atlanta United FC
 CHI   Chicago Fire
 CLB   Columbus Crew SC
@@ -386,6 +401,9 @@ West
 
 ### CFL
 ```
+Teams:
+---------------
+
 BC    B.C. Lions
 CGY   Calgary Stampeders
 EDM   Edmonton Eskimos
@@ -404,6 +422,9 @@ West
 
 ### NCAAF (FBS Division)
 ```
+Teams:
+---------------
+
 AFA   Air Force Falcons
 AKR   Akron Zips
 ALA   Alabama Crimson Tide
@@ -552,6 +573,9 @@ Sun Belt
 
 ### NCAAM (Division I)
 ```
+Teams:
+---------------
+
 AAMU  Alabama A&M Bulldogs
 ACU   Abilene Christian Wildcats
 AFA   Air Force Falcons
