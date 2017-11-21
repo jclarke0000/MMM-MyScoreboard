@@ -177,6 +177,7 @@ module.exports = {
       time, then by visting team short code.
     */
 
+
     filteredGames.sort(function(a,b) {
       var aTime = moment(a.time, "hh:mm a zz");
       var bTime = moment(b.time, "hh:mm a zz");
