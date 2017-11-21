@@ -19,6 +19,7 @@ Module.register("MMM-MyScoreboard",{
     shadeRows: false,
     highlightWinners: true,
     viewStyle: "largeLogos",
+    showRankings: true,
     sports: [
       {
         league: "NHL",
@@ -113,6 +114,17 @@ Module.register("MMM-MyScoreboard",{
     }
   },
 
+  viewStyleHasRankingOverlay: function(v) {
+    switch (v) {      
+      case "largeLogos":
+      case "mediumLogos":
+      case "smallLogos":
+        return true;
+      default:
+        return false;
+    }
+  },
+
   viewStyleHasShortcodes: function(v) {
     switch(v) {
       case "oneLine":
@@ -184,6 +196,13 @@ Module.register("MMM-MyScoreboard",{
       hTeamLogoImg.setAttribute("data-abbr", gameObj.hTeam);
 
       hTeamLogo.appendChild(hTeamLogoImg);
+
+      if (this.config.showRankings && this.viewStyleHasRankingOverlay(viewStyle) && gameObj.hTeamRanking) {
+        var hTeamRakingOverlay = document.createElement("span");
+        hTeamRakingOverlay.classList.add("ranking");
+        hTeamRakingOverlay.innerHTML = gameObj.hTeamRanking;
+        hTeamLogo.appendChild(hTeamRakingOverlay);
+      }
       boxScore.appendChild(hTeamLogo);
 
 
@@ -196,6 +215,13 @@ Module.register("MMM-MyScoreboard",{
       vTeamLogoImg.setAttribute("data-abbr", gameObj.vTeam);
       
       vTeamLogo.appendChild(vTeamLogoImg);
+
+      if (this.config.showRankings && this.viewStyleHasRankingOverlay(viewStyle) && gameObj.vTeamRanking) {
+        var vTeamRakingOverlay = document.createElement("span");
+        vTeamRakingOverlay.classList.add("ranking");
+        vTeamRakingOverlay.innerHTML = gameObj.vTeamRanking;
+        vTeamLogo.appendChild(vTeamRakingOverlay);
+      }      
       boxScore.appendChild(vTeamLogo);
     }
 
@@ -203,12 +229,12 @@ Module.register("MMM-MyScoreboard",{
     if (this.viewStyleHasShortcodes(viewStyle)) {
       var hTeamSC = document.createElement("span");
       hTeamSC.classList.add("team-short-code", "home");
-      hTeamSC.innerHTML = gameObj.hTeam;
+      hTeamSC.innerHTML = (this.config.showRankings && gameObj.hTeamRanking ? "<span class=\"ranking\">" + gameObj.hTeamRanking + "</span>" : "") + gameObj.hTeam;
       boxScore.appendChild(hTeamSC);
 
       var vTeamSC = document.createElement("span");
       vTeamSC.classList.add("team-short-code", "visitor");
-      vTeamSC.innerHTML = gameObj.vTeam;
+      vTeamSC.innerHTML = (this.config.showRankings && gameObj.vTeamRanking ? "<span class=\"ranking\">" + gameObj.vTeamRanking + "</span>" : "") + gameObj.vTeam;
       boxScore.appendChild(vTeamSC);
     }
 
@@ -216,12 +242,12 @@ Module.register("MMM-MyScoreboard",{
     if (this.viewStyleHasLongNames(viewStyle)) {
       var hTeamName = document.createElement("span");
       hTeamName.classList.add("team-name", "home");
-      hTeamName.innerHTML = gameObj.hTeamLong;
+      hTeamName.innerHTML = (this.config.showRankings && gameObj.hTeamRanking ? "<span class=\"ranking\">" + gameObj.hTeamRanking + "</span>" : "") + gameObj.hTeamLong;
       boxScore.appendChild(hTeamName);
 
       var vTeamName = document.createElement("span");
       vTeamName.classList.add("team-name", "visitor");
-      vTeamName.innerHTML = gameObj.vTeamLong;
+      vTeamName.innerHTML = (this.config.showRankings && gameObj.vTeamRanking ? "<span class=\"ranking\">" + gameObj.vTeamRanking + "</span>" : "") + gameObj.vTeamLong;
       boxScore.appendChild(vTeamName);
     }
 
@@ -571,7 +597,8 @@ Module.register("MMM-MyScoreboard",{
       "Mountain West" : ["AFA", "BSU", "CSU", "FRES", "HAW", "NEV", "SDSU", "SJSU", "UNLV", "UNM", "USU", "WYO"],
       "Pac-12" : ["ARIZ", "ASU", "CAL", "COLO", "ORE", "ORST", "STAN", "UCLA", "USC", "UTAH", "WASH", "WSU"],
       "SEC" : ["ALA", "ARK", "AUB", "FLA", "UGA", "UK", "LSU", "MISS", "MSST", "MIZ", "SC", "TENN", "TA&M", "VAN"],
-      "Sun Belt" : ["APP", "ARST", "CCU", "GASO", "GAST", "IDHO", "ULL", "ULM", "NMSU", "USA", "TXST", "TROY"]
+      "Sun Belt" : ["APP", "ARST", "CCU", "GASO", "GAST", "IDHO", "ULL", "ULM", "NMSU", "USA", "TXST", "TROY"],
+      "Top 25" : ["@T25"] //special indicator for Top 25 ranked teams
 
     },
 
@@ -609,7 +636,8 @@ Module.register("MMM-MyScoreboard",{
       "Summit League" : ["DEN", "IPFW", "NDSU", "OMA", "ORU", "SDAK", "SDST", "WIU"],
       "Sun Belt" : ["APP", "ARST", "CCAR", "GASO", "GAST", "TXST", "TROY", "UALR", "ULL", "ULM", "USA", "UTA"],
       "West Coast" : ["BYU", "GONZ", "LMU", "PAC", "PEPP", "PORT", "SMC", "USD", "SF", "SCU"],
-      "WAC" : ["CHS", "CSB", "GCU", "NMSU", "SEA", "TRGV", "UMKC", "UVU"]
+      "WAC" : ["CHS", "CSB", "GCU", "NMSU", "SEA", "TRGV", "UMKC", "UVU"],
+      "Top 25" : ["@T25"] //special indicator for Top 25 ranked teams  
 
     }
 

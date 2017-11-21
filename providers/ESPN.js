@@ -64,6 +64,15 @@ module.exports = {
       "/scoreboard?dates=" + 
       moment(gameDate).format("YYYYMMDD") + "&limit=200";
 
+    /*
+      by default, ESPN returns only the Top 25 ranked teams for NCAAM.
+      If we append "&groups=50" (in the URL when you view the scores
+      on ESPN.com) we get all the games.
+    */      
+    if (league == "NCAAM") {
+      url = url + "&groups=50";
+    }
+
     request({url: url, method: "GET"}, function(r_err, response, body) {
 
       if(!r_err && response.statusCode == 200) {
@@ -95,6 +104,16 @@ module.exports = {
     if (teams != null) { //filter to teams list
 
       filteredGamesList = data.events.filter(function(game) {
+
+        //if "@T25" is in the teams list, it indicates to include teams ranked in the top 25
+        if (teams.indexOf("@T25") != -1 && 
+          ( (game.competitions[0].competitors[0].curatedRank.current >= 1 && 
+            game.competitions[0].competitors[0].curatedRank.current <= 25) || 
+          (game.competitions[0].competitors[1].curatedRank.current >= 1 && 
+            game.competitions[0].competitors[1].curatedRank.current <= 25) )) {
+          return true;
+        }
+
         return teams.indexOf(game.competitions[0].competitors[0].team.abbreviation) != -1 ||
           teams.indexOf(game.competitions[0].competitors[1].team.abbreviation) != -1;
       });
@@ -255,7 +274,9 @@ module.exports = {
           For college sports, include the shortcode in the long team name
         */
         hTeamLong: (league == "NCAAF" || league == "NCAAM" ? hTeamData.team.abbreviation + " " : "") + hTeamData.team.shortDisplayName,
-        vTeamLong: (league == "NCAAF" || league == "NCAAM" ? vTeamData.team.abbreviation + " " : "") + vTeamData.team.shortDisplayName,                    
+        vTeamLong: (league == "NCAAF" || league == "NCAAM" ? vTeamData.team.abbreviation + " " : "") + vTeamData.team.shortDisplayName,
+        hTeamRanking: (league == "NCAAF" || league == "NCAAM") ? self.formatT25Ranking(hTeamData.curatedRank.current) : null,
+        vTeamRanking: (league == "NCAAF" || league == "NCAAM") ? self.formatT25Ranking(vTeamData.curatedRank.current) : null,
         hScore: parseInt(hTeamData.score),
         vScore: parseInt(vTeamData.score),
         status: status,
@@ -268,6 +289,13 @@ module.exports = {
 
 
 
+  },
+
+  formatT25Ranking: function(rank) {
+    if (rank >= 1 && rank <= 25) {
+      return rank;
+    }
+    return null;
   },
 
   getOrdinal: function(p) {

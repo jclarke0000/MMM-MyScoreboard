@@ -70,11 +70,12 @@
   filter: grayscale(100%);
 }
 
+
+
 .MMM-MyScoreboard .box-score .logo img {
   max-width: 100%;
   max-height: 100%;
 }
-
 
 .MMM-MyScoreboard .wrapper.colored .box-score .logo {
   -webkit-filter: none;
@@ -142,9 +143,53 @@
   font-weight: 400;
 }
 
+.MMM-MyScoreboard .box-score .logo .ranking {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 13px;
+  background-color: #666;
+  color: #FFF;
+  padding: 0 2px 0 3px;
+  height: 13px;
+  border-radius: 2px;
+  border-bottom: solid 1px #000;
+  border-left: solid 1px #000;
+}
+
+.MMM-MyScoreboard .box-score .team-name .ranking,
+.MMM-MyScoreboard .box-score .team-short-code .ranking {
+  font-size: 12px;
+  display: inline-block;
+  margin-right: 2px;
+  vertical-align: bottom;
+  margin-bottom: 4px;
+  bottom: 2px;
+  line-height: 13px;
+  padding: 0 2px;
+  height: 13px;
+  background-color: #333;
+  color: #FFF;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+.MMM-MyScoreboard .box-score .team-short-code .ranking {
+  margin-bottom: 7px;
+}
+
 .MMM-MyScoreboard .box-score.in-progress .team-name,
 .MMM-MyScoreboard .box-score.in-progress .team-short-code {
   color: #EFEFEF;
+}
+
+.MMM-MyScoreboard .wrapper.colored .box-score .logo .ranking,
+.MMM-MyScoreboard .wrapper.colored .box-score .team-name .ranking,
+.MMM-MyScoreboard .wrapper.colored .box-score .team-short-code .ranking {
+  background-color: #37677B;
 }
 
 .MMM-MyScoreboard .wrapper.colored .box-score.in-progress .status {  
@@ -272,16 +317,44 @@
 }
 
 .MMM-MyScoreboard .box-score.smallLogos .logo {
-  width: 24px;
+  width: 40px;
   height: 24px;
   top: 3px;
+  /*overflow: visible;*/
+}
+
+.MMM-MyScoreboard .box-score.smallLogos .logo .ranking {
+  top: 5px;
+  border: solid 1px #000;
 }
 
 .MMM-MyScoreboard .box-score.smallLogos .logo.home {
   right: 0px;
 }
+
+.MMM-MyScoreboard .box-score.smallLogos .logo img {
+  max-width: 24px;
+  position: absolute;
+}
+
+.MMM-MyScoreboard .box-score.smallLogos .logo.home img {
+  right: 0px;
+}
+.MMM-MyScoreboard .box-score.smallLogos .logo.visitor img {
+  left: 0px;
+}
+
+.MMM-MyScoreboard .box-score.smallLogos .logo.home .ranking {
+  right: 20px;
+}
+
 .MMM-MyScoreboard .box-score.smallLogos .logo.visitor {
   left: 0px;
+}
+
+.MMM-MyScoreboard .box-score.smallLogos .logo.visitor .ranking {
+  right: initial;
+  left: 20px;
 }
 
 .MMM-MyScoreboard .box-score.smallLogos .status {
@@ -300,10 +373,10 @@
   line-height: 30px;
 }
 .MMM-MyScoreboard .box-score.smallLogos .score.visitor {
-  left: 28px;
+  left: 38px;
 }
 .MMM-MyScoreboard .box-score.smallLogos .score.home {
-  right: 28px;
+  right: 38px;
 }
 
 
@@ -333,7 +406,6 @@
   padding: 0;
   white-space:nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
   text-align: left;
 }
 
@@ -673,8 +745,20 @@
   letter-spacing: -1px;
 }
 
+.MMM-MyScoreboard .box-score.NCAAF.oneLineWithLogos .score.visitor {
+  left: 80px;
+}
+.MMM-MyScoreboard .box-score.NCAAF.oneLineWithLogos .score.home {
+  left: 202px;
+}
 
-
+/* NCAAM */
+.MMM-MyScoreboard .box-score.NCAAM.oneLineWithLogos .score.visitor {
+  left: 85px;
+}
+.MMM-MyScoreboard .box-score.NCAAM.oneLineWithLogos .score.home {
+  left: 207px;
+}
 
 /* MLS */
 .MMM-MyScoreboard .box-score.MLS.delay .status {

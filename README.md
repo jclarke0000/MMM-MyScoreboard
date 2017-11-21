@@ -60,6 +60,10 @@ leagues, including NHL, NBA, NFL, MLB, MLS, CFL, NCAAF (FBS Division) and NCAAM 
       <td>For games that are final, the winning team / score is highlighted.<br><br><strong>Type</strong> <code>Boolean</code><br>Defaults to <code>true</code></td>
     </tr>
     <tr>
+      <td><code>showRankings</code></td>
+      <td>For the NCAAF and NCAAM, whether to show the rankings for the top 25 teams.<br><br><strong>Type</strong> <code>Boolean</code><br>Defaults to <code>true</code></td>
+    </tr>
+    <tr>
       <td><code>sports</code></td>
       <td><strong>REQUIRED</strong> An array of leagues and teams you wish to follow.<br><br><strong>Type</strong> <code>Array</code><br>See below for instructions to configure your <code>sports</code> list.</td>
     </tr>
