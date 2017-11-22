@@ -151,8 +151,8 @@
   font-size: 12px;
   font-weight: bold;
   line-height: 13px;
-  background-color: #666;
-  color: #FFF;
+  background-color: #FFF;
+  color: #000;
   padding: 0 2px 0 3px;
   height: 13px;
   border-radius: 2px;
@@ -171,8 +171,8 @@
   line-height: 13px;
   padding: 0 2px;
   height: 13px;
-  background-color: #333;
-  color: #FFF;
+  background-color: #FFF;
+  color: #000;
   border-radius: 2px;
   font-weight: bold;
 }
@@ -189,7 +189,7 @@
 .MMM-MyScoreboard .wrapper.colored .box-score .logo .ranking,
 .MMM-MyScoreboard .wrapper.colored .box-score .team-name .ranking,
 .MMM-MyScoreboard .wrapper.colored .box-score .team-short-code .ranking {
-  background-color: #37677B;
+  background-color: #C0FF00;
 }
 
 .MMM-MyScoreboard .wrapper.colored .box-score.in-progress .status {  
@@ -422,7 +422,7 @@
 
 .MMM-MyScoreboard .box-score.oneLine .team-short-code,
 .MMM-MyScoreboard .box-score.oneLineWithLogos .team-short-code {
-  width: 60px;  
+  width: 57px;  
   color: #AAA;
 }
 

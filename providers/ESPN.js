@@ -65,11 +65,14 @@ module.exports = {
       moment(gameDate).format("YYYYMMDD") + "&limit=200";
 
     /*
-      by default, ESPN returns only the Top 25 ranked teams for NCAAM.
-      If we append "&groups=50" (in the URL when you view the scores
-      on ESPN.com) we get all the games.
-    */      
-    if (league == "NCAAM") {
+      by default, ESPN returns only the Top 25 ranked teams for NCAAF
+      and NCAAM. By appending the group parameter (80 for NCAAF and 50
+      for NCAAM, found in the URL of their respective scoreboard pages
+      on ESPN.com) we'll get the entire game list.
+    */
+    if (league == "NCAAF") {
+      url = url + "&groups=80";
+    } else if (league == "NCAAM") {
       url = url + "&groups=50";
     }
 
@@ -265,16 +268,26 @@ module.exports = {
         vTeamData.team.abbreviation = "SDSU ";
       }
 
+      //determine which display name to use
+      var hTeamLong = "";
+      var vTeamLong = "";
+      //For college sports, use the displayName property
+      if (league == "NCAAF" || league == "NCAAM") {
+        hTeamLong = (hTeamData.team.abbreviation == undefined ? "" : hTeamData.team.abbreviation + " ") + hTeamData.team.name;
+        vTeamLong = (vTeamData.team.abbreviation == undefined ? "" : vTeamData.team.abbreviation + " ") + vTeamData.team.name;
+      } else { //use the shortDisplayName property
+        hTeamLong = hTeamData.team.shortDisplayName;
+        vTeamLong = vTeamData.team.shortDisplayName;        
+      }
+
+
       formattedGamesList.push({
         classes: classes,
         gameMode: gameState,
-        hTeam: hTeamData.team.abbreviation,
-        vTeam: vTeamData.team.abbreviation,
-        /*
-          For college sports, include the shortcode in the long team name
-        */
-        hTeamLong: (league == "NCAAF" || league == "NCAAM" ? hTeamData.team.abbreviation + " " : "") + hTeamData.team.shortDisplayName,
-        vTeamLong: (league == "NCAAF" || league == "NCAAM" ? vTeamData.team.abbreviation + " " : "") + vTeamData.team.shortDisplayName,
+        hTeam: hTeamData.team.abbreviation == undefined ? hTeamData.team.name.substring(0,4).toUpperCase() + " " : hTeamData.team.abbreviation,
+        vTeam: vTeamData.team.abbreviation == undefined ? vTeamData.team.name.substring(0,4).toUpperCase() + " " : vTeamData.team.abbreviation,
+        hTeamLong: hTeamLong,
+        vTeamLong: vTeamLong,
         hTeamRanking: (league == "NCAAF" || league == "NCAAM") ? self.formatT25Ranking(hTeamData.curatedRank.current) : null,
         vTeamRanking: (league == "NCAAF" || league == "NCAAM") ? self.formatT25Ranking(vTeamData.curatedRank.current) : null,
         hScore: parseInt(hTeamData.score),
