@@ -562,6 +562,7 @@ WYO   Wyoming Cowboys
 
 Groups:
 ---------------
+Top 25
 American Athletic
 ACC
 Big 12
@@ -934,6 +935,7 @@ YSU   Youngstown State Penguins
 
 Groups:
 ---------------
+Top 25
 America East
 American
 Atlantic 10
