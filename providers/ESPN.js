@@ -48,7 +48,8 @@ module.exports = {
         return "football/college-football";
       case "NBA":
         return "basketball/nba";
-      case "NCAAM": 
+      case "NCAAM":
+      case "NCAAM_MM":
         return "basketball/mens-college-basketball";
       default:
         return null;
@@ -69,12 +70,19 @@ module.exports = {
       and NCAAM. By appending the group parameter (80 for NCAAF and 50
       for NCAAM, found in the URL of their respective scoreboard pages
       on ESPN.com) we'll get the entire game list.
+
+      March Madness is grouped separately in ESPN's feed. The way I
+      currently have things set up, I need to treat it like a different
+      league.
     */
     if (league == "NCAAF") {
       url = url + "&groups=80";
     } else if (league == "NCAAM") {
       url = url + "&groups=50";
+    } else if (league == "NCAAM_MM") {
+      url = url + "&groups=100";
     }
+
 
     request({url: url, method: "GET"}, function(r_err, response, body) {
 
@@ -336,6 +344,7 @@ module.exports = {
     switch (league) {
       case "NCAAF":
       case "NCAAM":
+      case "NCAAM_MM":
       case "NBA":
         if (p == 5) {
           return "OT";
@@ -351,6 +360,7 @@ module.exports = {
     switch (league) {
       case "NCAAF":
       case "NCAAM":
+      case "NCAAM_MM":
       case "NBA":
         if (p == 5) {
           return " (OT)";

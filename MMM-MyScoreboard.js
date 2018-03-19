@@ -72,6 +72,10 @@ Module.register("MMM-MyScoreboard",{
     "NCAAM" : {
       provider: "ESPN",
       logoFormat: "png"
+    },
+    "NCAAM_MM" : {
+      provider: "ESPN",
+      logoFormat: "png"
     }
   },
 
@@ -185,6 +189,13 @@ Module.register("MMM-MyScoreboard",{
       });      
     }
 
+    //redirect path to logos to NCAAM
+    //for March Madness
+    var leagueForLogoPath = league;
+    if (league == "NCAAM_MM") {
+      leagueForLogoPath = "NCAAM";
+    }
+
     //add team logos if applicable
     if (this.viewStyleHasLogos(viewStyle)) {      
 
@@ -192,7 +203,7 @@ Module.register("MMM-MyScoreboard",{
       hTeamLogo.classList.add("logo", "home");
 
       var hTeamLogoImg = document.createElement("img");
-      hTeamLogoImg.src = this.file("logos/" + league + "/" + gameObj.hTeam + "." + this.supportedLeagues[league].logoFormat );
+      hTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.hTeam + "." + this.supportedLeagues[league].logoFormat );
       hTeamLogoImg.setAttribute("data-abbr", gameObj.hTeam);
 
       hTeamLogo.appendChild(hTeamLogoImg);
@@ -211,7 +222,7 @@ Module.register("MMM-MyScoreboard",{
       vTeamLogo.classList.add("logo", "visitor");
 
       var vTeamLogoImg = document.createElement("img");      
-      vTeamLogoImg.src = this.file("logos/" + league + "/" + gameObj.vTeam + "." + this.supportedLeagues[league].logoFormat );
+      vTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.vTeam + "." + this.supportedLeagues[league].logoFormat );
       vTeamLogoImg.setAttribute("data-abbr", gameObj.vTeam);
       
       vTeamLogo.appendChild(vTeamLogoImg);
@@ -348,7 +359,11 @@ Module.register("MMM-MyScoreboard",{
         if (self.config.showLeagueSeparators) {
           var leagueSeparator = document.createElement("div");
           leagueSeparator.classList.add("league-separator");
-          leagueSeparator.innerHTML = "<span>" + sport.league + "</span>";
+          if (sport.label) {
+            leagueSeparator.innerHTML = "<span>" + sport.label + "</span>";
+          } else {          
+            leagueSeparator.innerHTML = "<span>" + sport.league + "</span>";
+          }
           wrapper.appendChild(leagueSeparator);
         }
         self.sportsData[index].forEach(function(game, gidx) {
@@ -473,6 +488,7 @@ Module.register("MMM-MyScoreboard",{
       */
       gameDate.subtract(1, "day");
     }
+
 
     var self = this;
     this.config.sports.forEach( function(sport, index) {
@@ -638,6 +654,10 @@ Module.register("MMM-MyScoreboard",{
       "West Coast" : ["BYU", "GONZ", "LMU", "PAC", "PEPP", "PORT", "SMC", "USD", "SF", "SCU"],
       "WAC" : ["CHS", "CSB", "GCU", "NMSU", "SEA", "TRGV", "UMKC", "UVU"],
       "Top 25" : ["@T25"] //special indicator for Top 25 ranked teams  
+
+    },
+
+    NCAAM_MM : {
 
     }
 

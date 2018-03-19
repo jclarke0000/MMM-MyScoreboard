@@ -5,7 +5,7 @@ https://magicmirror.builders/<br>
 https://github.com/MichMich/MagicMirror
 
 This module display's today's scores for your favourite teams across a number of different
-leagues, including NHL, NBA, NFL, MLB, MLS, CFL, NCAAF (FBS Division) and NCAAM (Division I).
+leagues, including NHL, NBA, NFL, MLB, MLS, CFL, NCAAF (FBS Division) and NCAAM (Division I and March Madness).
 
 ![Screen Shot](/../screenshots/MMM-MyScoreboard-screenshot.png?raw=true "Screen Shot")
 
@@ -84,6 +84,7 @@ Currently this module supports the following leagues:
 * **CFL** - Canadian Football League
 * **NCAAF** - NCAA College Football (FBS Division only)
 * **NCAAM** - NCAA College Basketball (Division I)
+* **NCAAM_MM** - NCAA College Basketball (March Madness Tournament)
 
 Each entry in your `sports` array is an object with two properties:
 
@@ -98,6 +99,10 @@ Each entry in your `sports` array is an object with two properties:
     <tr>
       <td><code>league</code></td>
       <td><strong>REQUIRED</strong> e.g.: <code>"NHL"</code>.<br><br><strong>Type</strong> <code>String</code></td>
+    </tr>
+    <tr>
+      <td><code>label</code></td>
+      <td>If <code>showLeagueSeparators</code> is set to <code>true</code>, you can optionally set a custom label for the separator. Useful in particular to show something other than <code>"NCAAM_MM"</code> for the March Madness tournament.<br><br><strong>Type</strong> <code>String</code><br />Defaults to the value for <code>league</code>.</td>
     </tr>
     <tr>
       <td><code>teams</code></td>
@@ -146,6 +151,10 @@ It should be noted that if you specify arrays for both <code>teams</code> and <c
       {
         league: "CFL",
         teams: ["TOR", "MTL", "OTT"]
+      },
+      {
+        league: "NCAAM_MM",
+        label: "March Madness"
       }
     ]
 
@@ -576,7 +585,7 @@ SEC
 Sun Belt
 ```
 
-### NCAAM (Division I)
+### NCAAM (Division I and March Madness)
 ```
 Teams:
 ---------------
@@ -933,7 +942,7 @@ XAV   Xavier Musketeers
 YALE  Yale Bulldogs
 YSU   Youngstown State Penguins
 
-Groups:
+Groups (Division I only.  No groups for March Madness):
 ---------------
 Top 25
 America East
