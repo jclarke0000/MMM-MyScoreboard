@@ -48,7 +48,8 @@ module.exports = {
         return "football/college-football";
       case "NBA":
         return "basketball/nba";
-      case "NCAAM": 
+      case "NCAAM":
+      case "NCAAM_MM":
         return "basketball/mens-college-basketball";
       default:
         return null;
@@ -63,6 +64,25 @@ module.exports = {
       this.getLeaguePath(league) +
       "/scoreboard?dates=" + 
       moment(gameDate).format("YYYYMMDD") + "&limit=200";
+
+    /*
+      by default, ESPN returns only the Top 25 ranked teams for NCAAF
+      and NCAAM. By appending the group parameter (80 for NCAAF and 50
+      for NCAAM, found in the URL of their respective scoreboard pages
+      on ESPN.com) we'll get the entire game list.
+
+      March Madness is grouped separately in ESPN's feed. The way I
+      currently have things set up, I need to treat it like a different
+      league.
+    */
+    if (league == "NCAAF") {
+      url = url + "&groups=80";
+    } else if (league == "NCAAM") {
+      url = url + "&groups=50";
+    } else if (league == "NCAAM_MM") {
+      url = url + "&groups=100";
+    }
+
 
     request({url: url, method: "GET"}, function(r_err, response, body) {
 
@@ -95,6 +115,16 @@ module.exports = {
     if (teams != null) { //filter to teams list
 
       filteredGamesList = data.events.filter(function(game) {
+
+        //if "@T25" is in the teams list, it indicates to include teams ranked in the top 25
+        if (teams.indexOf("@T25") != -1 && 
+          ( (game.competitions[0].competitors[0].curatedRank.current >= 1 && 
+            game.competitions[0].competitors[0].curatedRank.current <= 25) || 
+          (game.competitions[0].competitors[1].curatedRank.current >= 1 && 
+            game.competitions[0].competitors[1].curatedRank.current <= 25) )) {
+          return true;
+        }
+
         return teams.indexOf(game.competitions[0].competitors[0].team.abbreviation) != -1 ||
           teams.indexOf(game.competitions[0].competitors[1].team.abbreviation) != -1;
       });
@@ -246,16 +276,28 @@ module.exports = {
         vTeamData.team.abbreviation = "SDSU ";
       }
 
+      //determine which display name to use
+      var hTeamLong = "";
+      var vTeamLong = "";
+      //For college sports, use the displayName property
+      if (league == "NCAAF" || league == "NCAAM") {
+        hTeamLong = (hTeamData.team.abbreviation == undefined ? "" : hTeamData.team.abbreviation + " ") + hTeamData.team.name;
+        vTeamLong = (vTeamData.team.abbreviation == undefined ? "" : vTeamData.team.abbreviation + " ") + vTeamData.team.name;
+      } else { //use the shortDisplayName property
+        hTeamLong = hTeamData.team.shortDisplayName;
+        vTeamLong = vTeamData.team.shortDisplayName;        
+      }
+
+
       formattedGamesList.push({
         classes: classes,
         gameMode: gameState,
-        hTeam: hTeamData.team.abbreviation,
-        vTeam: vTeamData.team.abbreviation,
-        /*
-          For college sports, include the shortcode in the long team name
-        */
-        hTeamLong: (league == "NCAAF" || league == "NCAAM" ? hTeamData.team.abbreviation + " " : "") + hTeamData.team.shortDisplayName,
-        vTeamLong: (league == "NCAAF" || league == "NCAAM" ? vTeamData.team.abbreviation + " " : "") + vTeamData.team.shortDisplayName,                    
+        hTeam: hTeamData.team.abbreviation == undefined ? hTeamData.team.name.substring(0,4).toUpperCase() + " " : hTeamData.team.abbreviation,
+        vTeam: vTeamData.team.abbreviation == undefined ? vTeamData.team.name.substring(0,4).toUpperCase() + " " : vTeamData.team.abbreviation,
+        hTeamLong: hTeamLong,
+        vTeamLong: vTeamLong,
+        hTeamRanking: (league == "NCAAF" || league == "NCAAM") ? self.formatT25Ranking(hTeamData.curatedRank.current) : null,
+        vTeamRanking: (league == "NCAAF" || league == "NCAAM") ? self.formatT25Ranking(vTeamData.curatedRank.current) : null,
         hScore: parseInt(hTeamData.score),
         vScore: parseInt(vTeamData.score),
         status: status,
@@ -268,6 +310,13 @@ module.exports = {
 
 
 
+  },
+
+  formatT25Ranking: function(rank) {
+    if (rank >= 1 && rank <= 25) {
+      return rank;
+    }
+    return null;
   },
 
   getOrdinal: function(p) {
@@ -295,6 +344,7 @@ module.exports = {
     switch (league) {
       case "NCAAF":
       case "NCAAM":
+      case "NCAAM_MM":
       case "NBA":
         if (p == 5) {
           return "OT";
@@ -310,6 +360,7 @@ module.exports = {
     switch (league) {
       case "NCAAF":
       case "NCAAM":
+      case "NCAAM_MM":
       case "NBA":
         if (p == 5) {
           return " (OT)";
