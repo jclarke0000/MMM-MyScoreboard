@@ -679,6 +679,14 @@ Module.register("MMM-MyScoreboard",{
 
     NCAAM_MM : {
 
+    },
+
+    EPL : {
+
+    },
+
+    BRAS : {
+      
     }
 
   }
