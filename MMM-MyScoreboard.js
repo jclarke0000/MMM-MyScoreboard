@@ -1,13 +1,13 @@
 /*********************************
 
-  Magic Mirror Module: 
-  MMM-MyScoreboard
-  https://github.com/jclarke0000/MMM-MyScoreboard
+ Magic Mirror Module:
+ MMM-MyScoreboard
+ https://github.com/jclarke0000/MMM-MyScoreboard
 
-  By Jeff Clarke
-  MIT Licensed
- 
-*********************************/
+ By Jeff Clarke
+ MIT Licensed
+
+ *********************************/
 
 Module.register("MMM-MyScoreboard",{
 
@@ -76,7 +76,16 @@ Module.register("MMM-MyScoreboard",{
     "NCAAM_MM" : {
       provider: "ESPN",
       logoFormat: "png"
+    },
+    "EPL" : {
+      provider: "ESPN",
+      logoFormat: "png"
+    },
+    "Bras" : {
+      provider: "ESPN",
+      logoFormat: "png"
     }
+
   },
 
   // Define required styles.
@@ -119,7 +128,7 @@ Module.register("MMM-MyScoreboard",{
   },
 
   viewStyleHasRankingOverlay: function(v) {
-    switch (v) {      
+    switch (v) {
       case "largeLogos":
       case "mediumLogos":
       case "smallLogos":
@@ -152,27 +161,27 @@ Module.register("MMM-MyScoreboard",{
 
   /******************************************************************
 
-    Function boxScoreFactory()
-    
-    Parameters:
-      gameObj: Object of a single game's data
+   Function boxScoreFactory()
 
-    Generates an HTML snippet representing one game in the list.
-    Scores are ommitted if gameObj.gameMode == FUTURE
+   Parameters:
+   gameObj: Object of a single game's data
 
-    <div class='box-score league [extra classes]'>
-      <img class='logo home' src='logos/league/hTeamShortcode.svg' alt='hTeam' />
-      <img class='logo visitor' src='logos/league/vTeamShortcode.svg' alt='vTeam' />
-      <span class="team-shortcode home">XXX</span>
-      <span class="team-shortcode visitor">XXX</span>
-      <span class='status'>
-        <span>status1</span>
-        <span>status2</span>
-      </span>
-      <span class='score home'>hScore</span>
-      <span class='score visitor'>vScore</span>
-    </div>
-  ******************************************************************/
+   Generates an HTML snippet representing one game in the list.
+   Scores are ommitted if gameObj.gameMode == FUTURE
+
+   <div class='box-score league [extra classes]'>
+   <img class='logo home' src='logos/league/hTeamShortcode.svg' alt='hTeam' />
+   <img class='logo visitor' src='logos/league/vTeamShortcode.svg' alt='vTeam' />
+   <span class="team-shortcode home">XXX</span>
+   <span class="team-shortcode visitor">XXX</span>
+   <span class='status'>
+   <span>status1</span>
+   <span>status2</span>
+   </span>
+   <span class='score home'>hScore</span>
+   <span class='score visitor'>vScore</span>
+   </div>
+   ******************************************************************/
   boxScoreFactory: function(league, gameObj) {
 
     var viewStyle = this.config.viewStyle;
@@ -186,7 +195,7 @@ Module.register("MMM-MyScoreboard",{
     if (gameObj.classes) {
       gameObj.classes.forEach( function(c) {
         boxScore.classList.add(c);
-      });      
+      });
     }
 
     //redirect path to logos to NCAAM
@@ -197,13 +206,16 @@ Module.register("MMM-MyScoreboard",{
     }
 
     //add team logos if applicable
-    if (this.viewStyleHasLogos(viewStyle)) {      
+    if (this.viewStyleHasLogos(viewStyle)) {
 
       var hTeamLogo = document.createElement("span");
       hTeamLogo.classList.add("logo", "home");
 
       var hTeamLogoImg = document.createElement("img");
       hTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.hTeam + "." + this.supportedLeagues[league].logoFormat );
+      //For Soccer Leagues
+      if (league == "Bras" || league == "EPL"){ hTeamLogoImg.src = gameObj.hTeamLogo;}
+      //End of for Soccer
       hTeamLogoImg.setAttribute("data-abbr", gameObj.hTeam);
 
       hTeamLogo.appendChild(hTeamLogoImg);
@@ -221,10 +233,13 @@ Module.register("MMM-MyScoreboard",{
       var vTeamLogo = document.createElement("span");
       vTeamLogo.classList.add("logo", "visitor");
 
-      var vTeamLogoImg = document.createElement("img");      
+      var vTeamLogoImg = document.createElement("img");
       vTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.vTeam + "." + this.supportedLeagues[league].logoFormat );
+      //For Soccer Leagues
+      if (league == "Bras" || league == "EPL"){ vTeamLogoImg.src = gameObj.vTeamLogo;}
+      //End of for Soccer
       vTeamLogoImg.setAttribute("data-abbr", gameObj.vTeam);
-      
+
       vTeamLogo.appendChild(vTeamLogoImg);
 
       if (this.config.showRankings && this.viewStyleHasRankingOverlay(viewStyle) && gameObj.vTeamRanking) {
@@ -232,7 +247,7 @@ Module.register("MMM-MyScoreboard",{
         vTeamRakingOverlay.classList.add("ranking");
         vTeamRakingOverlay.innerHTML = gameObj.vTeamRanking;
         vTeamLogo.appendChild(vTeamRakingOverlay);
-      }      
+      }
       boxScore.appendChild(vTeamLogo);
     }
 
@@ -265,11 +280,16 @@ Module.register("MMM-MyScoreboard",{
 
     //add "@" for games not yet started for the oneLine
     //and oneLineWithLogos view styles
-    if (gameObj.gameMode == this.gameModes.FUTURE && 
-      (viewStyle == "oneLine" || viewStyle == "oneLineWithLogos")) {
+    if (gameObj.gameMode == this.gameModes.FUTURE &&
+        (viewStyle == "oneLine" || viewStyle == "oneLineWithLogos")) {
       var vsSymbol = document.createElement("span");
       vsSymbol.classList.add("vs-symbol");
-      vsSymbol.innerHTML = "@";
+      //Soccer games we don't say AT (@) but VS thus the HOME team is first (Chelsea Vs Manchester - Chelsea's Home instead of Manchester @ Chelsea)
+      if (league == "EPL" || league == "Bras") {
+        vsSymbol.innerHTML = "X";
+      } else {
+        vsSymbol.innerHTML = "@";
+      }
       boxScore.appendChild(vsSymbol);
     }
 
@@ -330,7 +350,7 @@ Module.register("MMM-MyScoreboard",{
     }
     if (!this.config.showLeagueSeparators) {
       wrapper.classList.add("no-league-separators");
-    } 
+    }
     if (this.config.highlightWinners) {
       wrapper.classList.add("highlight-winners");
     }
@@ -361,7 +381,7 @@ Module.register("MMM-MyScoreboard",{
           leagueSeparator.classList.add("league-separator");
           if (sport.label) {
             leagueSeparator.innerHTML = "<span>" + sport.label + "</span>";
-          } else {          
+          } else {
             leagueSeparator.innerHTML = "<span>" + sport.league + "</span>";
           }
           wrapper.appendChild(leagueSeparator);
@@ -369,7 +389,7 @@ Module.register("MMM-MyScoreboard",{
         self.sportsData[index].forEach(function(game, gidx) {
           var boxScore = self.boxScoreFactory(sport.league, game);
           boxScore.classList.add(gidx % 2 == 0 ? "odd" : "even") ;
-          wrapper.appendChild(boxScore);     
+          wrapper.appendChild(boxScore);
         });
       }
     });
@@ -463,12 +483,12 @@ Module.register("MMM-MyScoreboard",{
           group.forEach( function(team) {
             teamList.push(team);
           });
-          
-        } 
-      }
-    } 
 
-    
+        }
+      }
+    }
+
+
     if (teamList.length == 0) {
       return null;
     }
@@ -653,7 +673,7 @@ Module.register("MMM-MyScoreboard",{
       "Sun Belt" : ["APP", "ARST", "CCAR", "GASO", "GAST", "TXST", "TROY", "UALR", "ULL", "ULM", "USA", "UTA"],
       "West Coast" : ["BYU", "GONZ", "LMU", "PAC", "PEPP", "PORT", "SMC", "USD", "SF", "SCU"],
       "WAC" : ["CHS", "CSB", "GCU", "NMSU", "SEA", "TRGV", "UMKC", "UVU"],
-      "Top 25" : ["@T25"] //special indicator for Top 25 ranked teams  
+      "Top 25" : ["@T25"] //special indicator for Top 25 ranked teams
 
     },
 

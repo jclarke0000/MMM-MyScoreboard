@@ -84,7 +84,10 @@ Currently this module supports the following leagues:
 * **CFL** - Canadian Football League
 * **NCAAF** - NCAA College Football (FBS Division only)
 * **NCAAM** - NCAA College Basketball (Division I)
-* **NCAAM_MM** - NCAA College Basketball (March Madness Tournament)
+* **NCAAM_MM** - NCAA College Basketball (March Madness Tournament
+* **EPL** - English Premier League Soccer
+* **BRASILEIRÃO** - Brazilian League 1 Soccer
+
 
 Each entry in your `sports` array is an object with two properties:
 
@@ -412,6 +415,57 @@ East
 West
 ```
 
+### EPL
+```
+Teams:
+---------------
+SWA   Swansea City
+BHA   Brighton & Hove Albion
+HUD   Huddersfield Town
+STK   Stoke City
+BOU   AFC Bournemouth
+ARS   Arsenal
+MAN   Manchester United
+NEW   Newcastle United
+CHE   Chelsea
+LIV   Liverpool
+TOT   Tottenham Hotspur
+EVE   Everton
+WHU   West Ham United
+LEI   Leicester City
+SOU   Southampton
+BUR   Burnley
+MNC   Manchester City
+WBA   West Bromwich Albion
+CRY   Crystal Palace
+WAT   Watford    
+```
+
+### BRASILEIRÃO (League: Bras)
+```
+Teams:
+---------------
+FLA   Flamengo
+COR   Corinthians
+INT   Internacional
+CRU   Cruzeiro
+SAO   São Paulo
+PAL   Palmeiras
+SAN   Santos
+FLU   Fluminense
+PAR   Paraná
+VAS   Vasco da Gama
+VIT   Vitória
+CAP   Atlético-PR
+BOT   Botafogo
+AMG   América-MG
+GRE   Grêmio
+CAM   Atlético-MG
+SPO   Sport
+CHA   Chapecoense
+BAH   Bahia
+CEA   Ceará   
+```
 ### CFL
 ```
 Teams:
