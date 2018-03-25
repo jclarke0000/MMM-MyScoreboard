@@ -99,7 +99,6 @@ module.exports = {
       url = url + "&groups=100";
     }
 
-    console.log("url: " + url);
     request({url: url, method: "GET"}, function(r_err, response, body) {
 
       if(!r_err && response.statusCode == 200) {
