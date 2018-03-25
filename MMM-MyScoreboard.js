@@ -81,7 +81,7 @@ Module.register("MMM-MyScoreboard",{
       provider: "ESPN",
       logoFormat: "png"
     },
-    "Bras" : {
+    "BRAS" : {
       provider: "ESPN",
       logoFormat: "png"
     }

@@ -6,11 +6,14 @@
 
   Provides scores for
     NCAAF (College Football, FBS Division)
+    NCAAM (College Basketball. Division I)
+    MCAAM_M (College Basketball, March Madness Torunament)
     NBA (National Basketball Association)
+    EPL (English Premier League Football)
+    BRAS (Brazilian League 1 Football)
 
   Data API also provides scoreboard data for MANY other
-  leagues, not currently supported.  NCAAM (Men's
-  College Basketball) support to come in the near future.
+  leagues, not currently supported.
 
   You can get an idea of what sports and leagues are
   supported here:
@@ -53,7 +56,7 @@ module.exports = {
         return "basketball/mens-college-basketball";
       case "EPL":     //added English Premier League
         return "soccer/eng.1";
-      case "Bras":     //added Brazilian League 1
+      case "BRAS":     //added Brazilian League 1
         return "soccer/bra.1";
       default:
         return null;
@@ -96,7 +99,7 @@ module.exports = {
       url = url + "&groups=100";
     }
 
-
+    console.log("url: " + url);
     request({url: url, method: "GET"}, function(r_err, response, body) {
 
       if(!r_err && response.statusCode == 200) {
@@ -276,9 +279,14 @@ module.exports = {
       }
 
       //Soccer is the opposite, Home team comes first. To avoid major code changes on MyScoreboard.js it's easier to swap them here
-      if (league == "EPL" || league == "Bras"){
+      if (league == "EPL" || league == "BRAS"){
         hTeamData = game.competitions[0].competitors[1];
         vTeamData = game.competitions[0].competitors[0];
+
+        if (hTeamData.homeAway == "away") {          
+          hTeamData = game.competitions[0].competitors[0];
+          vTeamData = game.competitions[0].competitors[1];
+        }
       }
 
       /*

@@ -5,7 +5,7 @@ https://magicmirror.builders/<br>
 https://github.com/MichMich/MagicMirror
 
 This module display's today's scores for your favourite teams across a number of different
-leagues, including NHL, NBA, NFL, MLB, MLS, CFL, NCAAF (FBS Division) and NCAAM (Division I and March Madness).
+leagues, including NHL, NBA, NFL, MLB, MLS, CFL, NCAAF (FBS Division), NCAAM (Division I and March Madness), EPL (English Premier League Football), and BRAS (Brazilian League 1 Football)
 
 ![Screen Shot](/../screenshots/MMM-MyScoreboard-screenshot.png?raw=true "Screen Shot")
 
@@ -86,7 +86,7 @@ Currently this module supports the following leagues:
 * **NCAAM** - NCAA College Basketball (Division I)
 * **NCAAM_MM** - NCAA College Basketball (March Madness Tournament
 * **EPL** - English Premier League Soccer
-* **BRASILEIRÃO** - Brazilian League 1 Soccer
+* **BRAS** - Brazilian League 1 Soccer
 
 
 Each entry in your `sports` array is an object with two properties:
@@ -438,10 +438,11 @@ BUR   Burnley
 MNC   Manchester City
 WBA   West Bromwich Albion
 CRY   Crystal Palace
-WAT   Watford    
+WAT   Watford
 ```
 
-### BRASILEIRÃO (League: Bras)
+
+### BRASILEIRÃO (League: BRAS)
 ```
 Teams:
 ---------------
@@ -466,6 +467,8 @@ CHA   Chapecoense
 BAH   Bahia
 CEA   Ceará   
 ```
+
+
 ### CFL
 ```
 Teams:
