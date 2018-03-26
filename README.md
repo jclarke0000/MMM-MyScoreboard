@@ -88,6 +88,9 @@ Currently this module supports the following leagues:
 * **EPL** - English Premier League Soccer
 * **BRASILEIRAO** - Brazilian League 1 Soccer
 * **LIBERTADORES** - Conmebol Libertadores 
+* **FIFAWC** - 2018 Russia FIFA World Cup 
+* **BUNDESLIGA** - German Bundesliga Soccer 
+
 
 
 Each entry in your `sports` array is an object with two properties:
