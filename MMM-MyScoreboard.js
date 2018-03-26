@@ -47,7 +47,7 @@ Module.register("MMM-MyScoreboard",{
     },
     "NHL" : {
       provider: "SNET",
-      logoFormat: "svg",
+      logoFormat: "svg"
     },
     "NFL" : {
       provider: "SNET",
@@ -729,7 +729,7 @@ Module.register("MMM-MyScoreboard",{
     },
 
     BUNDESLIGA : {
-      
+
     }
 
   }
