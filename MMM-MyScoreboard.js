@@ -47,7 +47,8 @@ Module.register("MMM-MyScoreboard",{
     },
     "NHL" : {
       provider: "SNET",
-      logoFormat: "svg"
+      logoFormat: "svg",
+      homeTeamFirst: true
     },
     "NFL" : {
       provider: "SNET",
@@ -63,7 +64,8 @@ Module.register("MMM-MyScoreboard",{
     },
     "MLS" : {
       provider: "SNET",
-      logoFormat: "svg"
+      logoFormat: "svg",
+      homeTeamFirst: true
     },
     "NCAAF" : {
       provider: "ESPN",
@@ -79,11 +81,13 @@ Module.register("MMM-MyScoreboard",{
     },
     "EPL" : {
       provider: "ESPN",
-      logoFormat: "png"
+      logoFormat: "url",
+      homeTeamFirst: true
     },
     "BRAS" : {
       provider: "ESPN",
-      logoFormat: "png"
+      logoFormat: "url",
+      homeTeamFirst: true
     }
 
   },
@@ -197,6 +201,9 @@ Module.register("MMM-MyScoreboard",{
         boxScore.classList.add(c);
       });
     }
+    if (this.supportedLeagues[league].homeTeamFirst) {
+      boxScore.classList.add("home-team-first");
+    }
 
     //redirect path to logos to NCAAM
     //for March Madness
@@ -212,9 +219,13 @@ Module.register("MMM-MyScoreboard",{
       hTeamLogo.classList.add("logo", "home");
 
       var hTeamLogoImg = document.createElement("img");
-      hTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.hTeam + "." + this.supportedLeagues[league].logoFormat );
-      //For Soccer Leagues
-      if (league == "BRAS" || league == "EPL"){ hTeamLogoImg.src = gameObj.hTeamLogo;}
+      if (this.supportedLeagues[league].logoFormat == "url") {
+        //use URL to external logo image
+        hTeamLogoImg.src = gameObj.hTeamLogoUrl;
+      } else {
+        hTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.hTeam + "." + this.supportedLeagues[league].logoFormat );
+      }
+
       //End of for Soccer
       hTeamLogoImg.setAttribute("data-abbr", gameObj.hTeam);
 
@@ -234,10 +245,12 @@ Module.register("MMM-MyScoreboard",{
       vTeamLogo.classList.add("logo", "visitor");
 
       var vTeamLogoImg = document.createElement("img");
-      vTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.vTeam + "." + this.supportedLeagues[league].logoFormat );
-      //For Soccer Leagues
-      if (league == "BRAS" || league == "EPL"){ vTeamLogoImg.src = gameObj.vTeamLogo;}
-      //End of for Soccer
+      if (this.supportedLeagues[league].logoFormat == "url") {
+        vTeamLogoImg.src = gameObj.vTeamLogoUrl;
+      } else {
+        vTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.vTeam + "." + this.supportedLeagues[league].logoFormat );        
+      }
+
       vTeamLogoImg.setAttribute("data-abbr", gameObj.vTeam);
 
       vTeamLogo.appendChild(vTeamLogoImg);
@@ -285,8 +298,8 @@ Module.register("MMM-MyScoreboard",{
       var vsSymbol = document.createElement("span");
       vsSymbol.classList.add("vs-symbol");
       //Soccer games we don't say AT (@) but VS thus the HOME team is first (Chelsea Vs Manchester - Chelsea's Home instead of Manchester @ Chelsea)
-      if (league == "EPL" || league == "BRAS") {
-        vsSymbol.innerHTML = "X";
+      if (this.supportedLeagues[league].homeTeamFirst) {
+        vsSymbol.innerHTML = "vs";
       } else {
         vsSymbol.innerHTML = "@";
       }
@@ -686,7 +699,7 @@ Module.register("MMM-MyScoreboard",{
     },
 
     BRAS : {
-      
+
     }
 
   }

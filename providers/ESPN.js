@@ -277,17 +277,6 @@ module.exports = {
         vTeamData = game.competitions[0].competitors[0];
       }
 
-      //Soccer is the opposite, Home team comes first. To avoid major code changes on MyScoreboard.js it's easier to swap them here
-      if (league == "EPL" || league == "BRAS"){
-        hTeamData = game.competitions[0].competitors[1];
-        vTeamData = game.competitions[0].competitors[0];
-
-        if (hTeamData.homeAway == "away") {          
-          hTeamData = game.competitions[0].competitors[0];
-          vTeamData = game.competitions[0].competitors[1];
-        }
-      }
-
       /*
         WTF...
         for NCAAF, sometimes FCS teams (I-AA) play FBS (I-A) teams.  These are known as money
@@ -334,9 +323,8 @@ module.exports = {
         hScore: parseInt(hTeamData.score),
         vScore: parseInt(vTeamData.score),
         status: status,
-        usePngLogos: true,
-        hTeamLogo: hTeamData.team.logo,
-        vTeamLogo: vTeamData.team.logo
+        hTeamLogoUrl: hTeamData.team.logo ? hTeamData.team.logo : "",
+        vTeamLogoUrl: vTeamData.team.logo ? vTeamData.team.logo : ""
       });
 
     });

@@ -90,6 +90,16 @@
   right: 0px;
 }
 
+.MMM-MyScoreboard .box-score.home-team-first .logo.visitor {
+  right: 0px;
+  left: auto;
+}
+.MMM-MyScoreboard .box-score.home-team-first .logo.home {
+  left: 0px;
+  right: auto;
+}
+
+
 .MMM-MyScoreboard .box-score .score {
   position: absolute;
   display: block;
@@ -106,6 +116,14 @@
 }
 .MMM-MyScoreboard .box-score .score.home {
   right: 62px;
+}
+.MMM-MyScoreboard .box-score.home-team-first .score.visitor {
+  right: 62px;
+  left: auto;
+}
+.MMM-MyScoreboard .box-score.home-team-first .score.home {
+  left: 62px;
+  right: auto;
 }
 
 .MMM-MyScoreboard .box-score .status {
@@ -293,6 +311,14 @@
 .MMM-MyScoreboard .box-score.mediumLogos .logo.visitor {
   left: 0px;
 }
+.MMM-MyScoreboard .box-score.mediumLogos.home-team-first .logo.home {
+  left: 0px;
+  right: auto;
+}
+.MMM-MyScoreboard .box-score.mediumLogos.home-team-first .logo.visitor {
+  right: 0px;
+  left: auto;
+}
 
 .MMM-MyScoreboard .box-score.mediumLogos .status {
   height: 50px;
@@ -309,6 +335,14 @@
 }
 .MMM-MyScoreboard .box-score.mediumLogos .score.home {
   right: 42px;
+}
+.MMM-MyScoreboard .box-score.mediumLogos.home-team-first .score.visitor {
+  right: 42px;
+  left: auto;
+}
+.MMM-MyScoreboard .box-score.mediumLogos.home-team-first .score.home {
+  left: 42px;
+  right: auto;
 }
 
 /* smallLogos */
@@ -331,6 +365,10 @@
 .MMM-MyScoreboard .box-score.smallLogos .logo.home {
   right: 0px;
 }
+.MMM-MyScoreboard .box-score.smallLogos.home-team-first .logo.home {
+  left: 0px;
+  right: auto;
+}
 
 .MMM-MyScoreboard .box-score.smallLogos .logo img {
   max-width: 24px;
@@ -343,18 +381,38 @@
 .MMM-MyScoreboard .box-score.smallLogos .logo.visitor img {
   left: 0px;
 }
+.MMM-MyScoreboard .box-score.smallLogos.home-team-first .logo.home img {
+  left: 0px;
+  right: auto;
+}
+.MMM-MyScoreboard .box-score.smallLogos.home-team-first .logo.visitor img {
+  right: 0px;
+  left: auto;
+}
 
 .MMM-MyScoreboard .box-score.smallLogos .logo.home .ranking {
   right: 20px;
+}
+.MMM-MyScoreboard .box-score.smallLogos.home-team-first .logo.home .ranking {
+  left: 20px;
+  right: auto;
 }
 
 .MMM-MyScoreboard .box-score.smallLogos .logo.visitor {
   left: 0px;
 }
+.MMM-MyScoreboard .box-score.smallLogos.home-team-first .logo.visitor {
+  right: 0px;
+  left: auto;
+}
 
 .MMM-MyScoreboard .box-score.smallLogos .logo.visitor .ranking {
   right: initial;
   left: 20px;
+}
+.MMM-MyScoreboard .box-score.smallLogos.home-team-first .logo.visitor .ranking {
+  left: auto;
+  right: 20px;
 }
 
 .MMM-MyScoreboard .box-score.smallLogos .status {
@@ -377,6 +435,14 @@
 }
 .MMM-MyScoreboard .box-score.smallLogos .score.home {
   right: 38px;
+}
+.MMM-MyScoreboard .box-score.smallLogos.home-team-first .score.visitor {
+  right: 38px;
+  left: auto;
+}
+.MMM-MyScoreboard .box-score.smallLogos.home-team-first .score.home {
+  left: 38px;
+  right: auto;
 }
 
 
@@ -444,6 +510,16 @@
   left: 120px;
 }
 
+.MMM-MyScoreboard .box-score.oneLine.home-team-first .team-short-code.visitor,
+.MMM-MyScoreboard .box-score.oneLineWithLogos.home-team-first .team-short-code.visitor {
+  left: 120px;
+}
+.MMM-MyScoreboard .box-score.oneLine.home-team-first .team-short-code.home,
+.MMM-MyScoreboard .box-score.oneLineWithLogos.home-team-first .team-short-code.home {
+  left: 0px;
+}
+
+
 .MMM-MyScoreboard .box-score.oneLine .score,
 .MMM-MyScoreboard .box-score.oneLineWithLogos .score {
   width: 40px;
@@ -458,6 +534,16 @@
 .MMM-MyScoreboard .box-score.oneLineWithLogos .score.home {
   left: 182px;
 }
+
+.MMM-MyScoreboard .box-score.oneLine.home-team-first .score.visitor,
+.MMM-MyScoreboard .box-score.oneLineWithLogos.home-team-first .score.visitor {
+  left: 182px;
+}
+.MMM-MyScoreboard .box-score.oneLine .score.home,
+.MMM-MyScoreboard .box-score.oneLineWithLogos .score.home {
+  left: 62px;
+}
+
 
 .MMM-MyScoreboard .box-score.oneLine .status,
 .MMM-MyScoreboard .box-score.oneLineWithLogos .status {
@@ -504,6 +590,27 @@
 .MMM-MyScoreboard .box-score.oneLineWithLogos .score.home {
   left: 202px;
 }
+
+.MMM-MyScoreboard .box-score.oneLineWithLogos.home-team-first .logo.visitor {
+  left: 120px;
+}
+.MMM-MyScoreboard .box-score.oneLineWithLogos.home-team-first .logo.home {
+  left: 0px;
+}
+.MMM-MyScoreboard .box-score.oneLineWithLogos.home-team-first .team-short-code.visitor {
+  left: 150px;
+}
+.MMM-MyScoreboard .box-score.oneLineWithLogos.home-team-first .team-short-code.home {
+  left: 30px;
+}
+.MMM-MyScoreboard .box-score.oneLineWithLogos.home-team-first .score.visitor {
+  left: 202px;
+}
+.MMM-MyScoreboard .box-score.oneLineWithLogos.home-team-first .score.home {
+  left: 80px;
+}
+
+
 .MMM-MyScoreboard .box-score.oneLineWithLogos .vs-symbol {
   left: 85px;
 }
@@ -551,10 +658,16 @@
   color: #EFEFEF;
 }
 .MMM-MyScoreboard .box-score.stacked .team-name.visitor {
-  top:6px;
+  top: 6px;
 }
 .MMM-MyScoreboard .box-score.stacked .team-name.home {
   top: 30px;
+}
+.MMM-MyScoreboard .box-score.stacked.home-team-first .team-name.visitor {
+  top: 30px;
+}
+.MMM-MyScoreboard .box-score.stacked.home-team-first .team-name.home {
+  top: 6px;
 }
 
 .MMM-MyScoreboard .box-score.stacked .score,
@@ -574,6 +687,16 @@
 .MMM-MyScoreboard .box-score.stackedWithLogos .score.home {
   top: 30px;
 }
+.MMM-MyScoreboard .box-score.stacked.home-team-first .score.visitor,
+.MMM-MyScoreboard .box-score.stackedWithLogos.home-team-first .score.visitor {
+  top:30px;
+}
+.MMM-MyScoreboard .box-score.stacked .score.home,
+.MMM-MyScoreboard .box-score.stackedWithLogos .score.home {
+  top: 6px;
+}
+
+
 
 .MMM-MyScoreboard .box-score.stacked .status,
 .MMM-MyScoreboard .box-score.stackedWithLogos .status {
@@ -598,12 +721,19 @@
 .MMM-MyScoreboard .box-score.stackedWithLogos .team-name.home {
   top: 34px;
 }
+.MMM-MyScoreboard .box-score.stackedWithLogos.home-team-first .team-name.visitor {
+  top: 34px;
+}
+.MMM-MyScoreboard .box-score.stackedWithLogos.home-team-first .team-name.home {
+  top: 8px;
+}
 
-.MMM-MyScoreboard .box-score.stackedWithLogos .logo {
+.MMM-MyScoreboard .box-score.stackedWithLogos .logo,
+.MMM-MyScoreboard .box-score.stackedWithLogos.home-team-first .logo {
   height: 24px;
   width: 24px;
   left: 0px;
-  right: initial;
+  right: auto;
 }
 .MMM-MyScoreboard .box-score.stackedWithLogos .logo.visitor {
   top: 8px;
@@ -611,6 +741,13 @@
 .MMM-MyScoreboard .box-score.stackedWithLogos .logo.home {
   top: 36px;
 }
+.MMM-MyScoreboard .box-score.stackedWithLogos.home-team-first .logo.visitor {
+  top: 36px;
+}
+.MMM-MyScoreboard .box-score.stackedWithLogos.home-team-first .logo.home {
+  top: 8px;
+}
+
 .MMM-MyScoreboard .box-score.stackedWithLogos .score {  
   left: 146px;
 }
@@ -619,6 +756,12 @@
 }
 .MMM-MyScoreboard .box-score.stackedWithLogos .score.home {
   top: 34px;
+}
+.MMM-MyScoreboard .box-score.stackedWithLogos.home-team-first .score.visitor {
+  top: 34px;
+}
+.MMM-MyScoreboard .box-score.stackedWithLogos.home-team-first .score.home {
+  top: 8px;
 }
 .MMM-MyScoreboard .box-score.stackedWithLogos .status {
   height: 66px;
@@ -751,6 +894,12 @@
 .MMM-MyScoreboard .box-score.NCAAF.oneLineWithLogos .score.home {
   left: 202px;
 }
+.MMM-MyScoreboard .box-score.NCAAF.oneLineWithLogos.home-team-first .score.visitor {
+  left: 202px;
+}
+.MMM-MyScoreboard .box-score.NCAAF.oneLineWithLogos.home-team-first .score.home {
+  left: 80px;
+}
 
 /* NCAAM */
 .MMM-MyScoreboard .box-score.NCAAM.oneLineWithLogos .score.visitor {
@@ -758,6 +907,12 @@
 }
 .MMM-MyScoreboard .box-score.NCAAM.oneLineWithLogos .score.home {
   left: 207px;
+}
+.MMM-MyScoreboard .box-score.NCAAM.oneLineWithLogos.home-team-first .score.visitor {
+  left: 207px;
+}
+.MMM-MyScoreboard .box-score.NCAAM.oneLineWithLogos.home-team-first .score.home {
+  left: 85px;
 }
 
 /* MLS */
