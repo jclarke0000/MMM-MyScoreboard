@@ -666,7 +666,7 @@ MTSU  Middle Tennessee Blue Raiders
 NAVY  Navy Midshipmen
 NCST  North Carolina State Wolfpack
 ND    Notre Dame Fighting Irish
-NEB   NeBRASILEIRAOka Cornhuskers
+NEB   Nebraska Cornhuskers
 NEV   Nevada Wolf Pack
 NIU   Northern Illinois Huskies
 NMSU  New Mexico State Aggies
@@ -937,7 +937,7 @@ NCST  NC State Wolfpack
 ND    Notre Dame Fighting Irish
 NDSU  North Dakota St Bison
 NE    Northeastern Huskies
-NEB   NeBRASILEIRAOka Cornhuskers
+NEB   Nebraska Cornhuskers
 NEV   Nevada Wolf Pack
 NIAG  Niagara Purple Eagles
 NICH  Nicholls Colonels
