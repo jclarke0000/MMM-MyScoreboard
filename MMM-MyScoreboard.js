@@ -718,6 +718,18 @@ Module.register("MMM-MyScoreboard",{
 
     BRASILEIRAO : {
 
+    },
+
+    LIBERTADORES : {
+
+    },
+
+    FIFAWC : {
+
+    },
+
+    BUNDESLIGA : {
+      
     }
 
   }
