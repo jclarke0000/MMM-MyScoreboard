@@ -214,7 +214,7 @@ Module.register("MMM-MyScoreboard",{
       var hTeamLogoImg = document.createElement("img");
       hTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.hTeam + "." + this.supportedLeagues[league].logoFormat );
       //For Soccer Leagues
-      if (league == "Bras" || league == "EPL"){ hTeamLogoImg.src = gameObj.hTeamLogo;}
+      if (league == "BRAS" || league == "EPL"){ hTeamLogoImg.src = gameObj.hTeamLogo;}
       //End of for Soccer
       hTeamLogoImg.setAttribute("data-abbr", gameObj.hTeam);
 
@@ -236,7 +236,7 @@ Module.register("MMM-MyScoreboard",{
       var vTeamLogoImg = document.createElement("img");
       vTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.vTeam + "." + this.supportedLeagues[league].logoFormat );
       //For Soccer Leagues
-      if (league == "Bras" || league == "EPL"){ vTeamLogoImg.src = gameObj.vTeamLogo;}
+      if (league == "BRAS" || league == "EPL"){ vTeamLogoImg.src = gameObj.vTeamLogo;}
       //End of for Soccer
       vTeamLogoImg.setAttribute("data-abbr", gameObj.vTeam);
 
@@ -285,7 +285,7 @@ Module.register("MMM-MyScoreboard",{
       var vsSymbol = document.createElement("span");
       vsSymbol.classList.add("vs-symbol");
       //Soccer games we don't say AT (@) but VS thus the HOME team is first (Chelsea Vs Manchester - Chelsea's Home instead of Manchester @ Chelsea)
-      if (league == "EPL" || league == "Bras") {
+      if (league == "EPL" || league == "BRAS") {
         vsSymbol.innerHTML = "X";
       } else {
         vsSymbol.innerHTML = "@";
