@@ -1115,10 +1115,10 @@ POL   Poland
 SUI   Switzerland
 CRO   Croatia
 FRA   France
-DEN   Denmark`
+DEN   Denmark
 GER   Germany
 POR   Portugal
 JPN   Japan
 AUS   Australia
 SEN   Senegal
-``
+``` 

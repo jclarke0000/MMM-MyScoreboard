@@ -72,16 +72,16 @@ module.exports = {
     var self = this;
 
     // var url = "http://site.api.espn.com/apis/site/v2/sports/" +
-    //   this.getLeaguePath(league) +
-    //   "/scoreboard?dates=" +
-    //   moment(gameDate).format("YYYYMMDD") + "&limit=200";
+      this.getLeaguePath(league) +
+      "/scoreboard?dates=" +
+      moment(gameDate).format("YYYYMMDD") + "&limit=200";
 
 
     ///temporary link to have Soccer Games ShowingUp
-    var url = "http://site.api.espn.com/apis/site/v2/sports/" +
-        this.getLeaguePath(league) +
-        "/scoreboard?dates=20180311" +
-         "&limit=200";
+    // var url = "http://site.api.espn.com/apis/site/v2/sports/" +
+    //     this.getLeaguePath(league) +
+    //     "/scoreboard?dates=20180311" +
+    //      "&limit=200";
 
 
 
