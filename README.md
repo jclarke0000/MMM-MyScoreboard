@@ -86,7 +86,8 @@ Currently this module supports the following leagues:
 * **NCAAM** - NCAA College Basketball (Division I)
 * **NCAAM_MM** - NCAA College Basketball (March Madness Tournament
 * **EPL** - English Premier League Soccer
-* **BRASILEIRÃO** - Brazilian League 1 Soccer
+* **BRASILEIRAO** - Brazilian League 1 Soccer
+* **LIBERTADORES** - Conmebol Libertadores 
 
 
 Each entry in your `sports` array is an object with two properties:
@@ -441,7 +442,7 @@ CRY   Crystal Palace
 WAT   Watford    
 ```
 
-### BRASILEIRÃO (League: Bras)
+### BRASILEIRAO (Brazilian League 1)
 ```
 Teams:
 ---------------
@@ -1032,3 +1033,89 @@ Sun Belt
 West Coast
 WAC
 ```
+
+### LIBERTADORES (Conmebol Libertadores 2018)
+```
+Teams:
+---------------
+CABJ  Boca Juniors
+EST   Estudiantes La Plata
+IND   Independiente
+RAC   Racing Club
+CARP  River Plate
+BAN   Banfield
+FLA   Flamengo
+COR   Corinthians
+DSC   Defensor Sporting
+DEL   Delfin
+CRU   Cruzeiro
+PAL   Palmeiras
+EME   Emelec
+LIB   Libertad
+CERR  Cerro Porteño
+SAN   Santos
+OLI   Olimpia
+ALM   Alianza Lima
+BOL   Bolívar
+ORI   Oriente Petrolero
+PEN   Peñarol
+NAC   Nacional
+UDS   Universitario de Deportes
+STR   The Strongest
+COL   Colo Colo
+``` 
+
+###BUNDESLIGA 
+```
+Teams: 
+---------------
+COL   FC Cologne
+BVB   Borussia Dortmund
+FRA   Eintracht Frankfurt
+FRE   SC Freiburg
+HSV   Hamburg SV
+HER   Hertha Berlin
+LEV   Bayer Leverkusen
+BMU   Bayern Munich
+SCH   Schalke 04
+STU   VfB Stuttgart
+BRE   Werder Bremen
+WLF   VfL Wolfsburg
+MGB   Borussia Monchengladbach
+HAN   Hannover 96
+MNZ   Mainz
+AUG   FC Augsburg
+HOF   TSG Hoffenheim
+RBL   RB Leipzig
+```
+
+### FIFAWC (2018 Russia FIFA WORLD CUP)
+```
+Teams:
+---------------
+ESP   Spain
+ARG   Argentina
+MEX   Mexico
+BRA   Brazil
+COL   Colombia
+PER   Peru
+URU   Uruguay
+CRC   Costa Rica
+ENG   England
+KOR   South Korea
+RUS   Russia
+BEL   Belgium
+SWE   Sweden
+IRN   Iran
+ISL   Iceland
+POL   Poland
+SUI   Switzerland
+CRO   Croatia
+FRA   France
+DEN   Denmark`
+GER   Germany
+POR   Portugal
+JPN   Japan
+AUS   Australia
+SEN   Senegal
+``

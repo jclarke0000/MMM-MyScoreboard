@@ -81,13 +81,27 @@ Module.register("MMM-MyScoreboard",{
       provider: "ESPN",
       logoFormat: "png"
     },
-    "Bras" : {
+    "BRASILEIRAO" : {
       provider: "ESPN",
       logoFormat: "png"
+    },
+    "LIBERTADORES":{
+      provider: "ESPN",
+      logoFormat: "png"
+    },
+    "FIFAWC":{
+      provider: "ESPN",
+      logoFormat: "png"
+    },
+    "BUNDESLIGA":{
+      provider: "ESPN",
+      logoFormar: "png"
     }
 
   },
 
+  //Soccer array:
+  soccerTeams: ["EPL", "BRASILEIRAO", "LIBERTADORES","FIFAWC", "BUNDESLIGA"],
   // Define required styles.
   getStyles: function () {
     return ["MMM-MyScoreboard.css"];
@@ -214,10 +228,8 @@ Module.register("MMM-MyScoreboard",{
       var hTeamLogoImg = document.createElement("img");
       hTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.hTeam + "." + this.supportedLeagues[league].logoFormat );
       //For Soccer Leagues
-      if (league == "Bras" || league == "EPL"){ hTeamLogoImg.src = gameObj.hTeamLogo;}
-      //End of for Soccer
+      if (this.soccerTeams.includes(league)){ hTeamLogoImg.src = gameObj.hTeamLogo;}
       hTeamLogoImg.setAttribute("data-abbr", gameObj.hTeam);
-
       hTeamLogo.appendChild(hTeamLogoImg);
 
       if (this.config.showRankings && this.viewStyleHasRankingOverlay(viewStyle) && gameObj.hTeamRanking) {
@@ -232,14 +244,11 @@ Module.register("MMM-MyScoreboard",{
 
       var vTeamLogo = document.createElement("span");
       vTeamLogo.classList.add("logo", "visitor");
-
       var vTeamLogoImg = document.createElement("img");
       vTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.vTeam + "." + this.supportedLeagues[league].logoFormat );
       //For Soccer Leagues
-      if (league == "Bras" || league == "EPL"){ vTeamLogoImg.src = gameObj.vTeamLogo;}
-      //End of for Soccer
+      if (this.soccerTeams.includes(league)){ vTeamLogoImg.src = gameObj.vTeamLogo;}
       vTeamLogoImg.setAttribute("data-abbr", gameObj.vTeam);
-
       vTeamLogo.appendChild(vTeamLogoImg);
 
       if (this.config.showRankings && this.viewStyleHasRankingOverlay(viewStyle) && gameObj.vTeamRanking) {
@@ -285,7 +294,7 @@ Module.register("MMM-MyScoreboard",{
       var vsSymbol = document.createElement("span");
       vsSymbol.classList.add("vs-symbol");
       //Soccer games we don't say AT (@) but VS thus the HOME team is first (Chelsea Vs Manchester - Chelsea's Home instead of Manchester @ Chelsea)
-      if (league == "EPL" || league == "Bras") {
+      if (this.soccerTeams.includes(league)) {
         vsSymbol.innerHTML = "X";
       } else {
         vsSymbol.innerHTML = "@";

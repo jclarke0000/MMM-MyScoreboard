@@ -37,6 +37,8 @@
 const request = require("request");
 const moment = require("moment-timezone");
 const parseJSON = require("json-parse-async");
+//Soccer array:
+soccerTeams = ["EPL", "BRASILEIRAO", "LIBERTADORES", "FIFAWC", "BUNDESLIGA"];
 
 module.exports = {
 
@@ -53,28 +55,33 @@ module.exports = {
         return "basketball/mens-college-basketball";
       case "EPL":     //added English Premier League
         return "soccer/eng.1";
-      case "Bras":     //added Brazilian League 1
+      case "BRASILEIRAO":     //added Brazilian League 1
         return "soccer/bra.1";
+      case "LIBERTADORES":
+        return "soccer/conmebol.libertadores";
+      case "FIFAWC":
+        return "soccer/fifa.world";
+      case "BUNDESLIGA":
+        return "soccer/ger.1";
       default:
         return null;
     }
   },
-
   getScores: function(league, teams, gameDate, callback) {
 
     var self = this;
 
-    var url = "http://site.api.espn.com/apis/site/v2/sports/" +
-      this.getLeaguePath(league) +
-      "/scoreboard?dates=" +
-      moment(gameDate).format("YYYYMMDD") + "&limit=200";
-
-
-    ///temporary link to have Soccer Games ShowingUp  ** Use this to have the API point to a date
     // var url = "http://site.api.espn.com/apis/site/v2/sports/" +
-    //     this.getLeaguePath(league) +
-    //     "/scoreboard?dates=20180317" +
-    //     "&limit=200";
+    //   this.getLeaguePath(league) +
+    //   "/scoreboard?dates=" +
+    //   moment(gameDate).format("YYYYMMDD") + "&limit=200";
+
+
+    ///temporary link to have Soccer Games ShowingUp
+    var url = "http://site.api.espn.com/apis/site/v2/sports/" +
+        this.getLeaguePath(league) +
+        "/scoreboard?dates=20180311" +
+         "&limit=200";
 
 
 
@@ -100,10 +107,10 @@ module.exports = {
     request({url: url, method: "GET"}, function(r_err, response, body) {
 
       if(!r_err && response.statusCode == 200) {
-
+        
         parseJSON(body, function(p_err, content) {
           if (p_err) {
-            console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** Couldn't parse " + league + " data for provider ESPN: " + p_err );
+            console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** Couldn't parse " + league + " data for provider ESPN: " + p_err );       
           } else {
             callback(self.formatScores(league, content, teams));
           }
@@ -132,16 +139,16 @@ module.exports = {
       filteredGamesList = data.events.filter(function(game) {
 
         //if "@T25" is in the teams list, it indicates to include teams ranked in the top 25
-        if (teams.indexOf("@T25") != -1 &&
-            ( (game.competitions[0].competitors[0].curatedRank.current >= 1 &&
-                game.competitions[0].competitors[0].curatedRank.current <= 25) ||
-                (game.competitions[0].competitors[1].curatedRank.current >= 1 &&
-                    game.competitions[0].competitors[1].curatedRank.current <= 25) )) {
+        if (teams.indexOf("@T25") != -1 && 
+          ( (game.competitions[0].competitors[0].curatedRank.current >= 1 && 
+            game.competitions[0].competitors[0].curatedRank.current <= 25) || 
+          (game.competitions[0].competitors[1].curatedRank.current >= 1 && 
+            game.competitions[0].competitors[1].curatedRank.current <= 25) )) {
           return true;
         }
 
         return teams.indexOf(game.competitions[0].competitors[0].team.abbreviation) != -1 ||
-            teams.indexOf(game.competitions[0].competitors[1].team.abbreviation) != -1;
+          teams.indexOf(game.competitions[0].competitors[1].team.abbreviation) != -1;
       });
 
     } else { //return all games
@@ -163,12 +170,12 @@ module.exports = {
 
       //start times are the same.  Now sort by away team short codes
       var aTteam = (a.competitions[0].competitors[0].homeAway == "away" ?
-          a.competitions[0].competitors[0].team.abbreviation :
-          a.competitions[0].competitors[1].team.abbreviation);
+        a.competitions[0].competitors[0].team.abbreviation :
+        a.competitions[0].competitors[1].team.abbreviation);
 
       var bTteam = (b.competitions[0].competitors[0].homeAway == "away" ?
-          b.competitions[0].competitors[0].team.abbreviation :
-          b.competitions[0].competitors[1].team.abbreviation);
+        b.competitions[0].competitors[0].team.abbreviation :
+        b.competitions[0].competitors[1].team.abbreviation);
 
 
       if (aTteam < bTteam) {
@@ -230,7 +237,7 @@ module.exports = {
         case "6": //postponed
           gameState = 0;
           status.push("Postponed");
-          break;
+          break;          
         case "7":  //delayed
         case "17": //rain delay
           gameState = 1;
@@ -240,7 +247,7 @@ module.exports = {
         case "8": //suspended
           gameState = 0;
           status.push("Suspended");
-          break;
+          break;          
         case "22": //end period
           gameState = 1;
           status.push("END");
@@ -250,9 +257,13 @@ module.exports = {
           gameState = 1;
           status.push("HALFTIME");
           break;
-        case "28": //SOCCER
+        case "28": //Soccer Final Score Regular
           gameState = 2;
-          status.push("Final" + self.getFinalOT(league, game.status.period));
+          status.push("Final");
+          break;
+        case "47": //Soccer Final PK
+          gameState = 2;
+          status.push("Final PK" + self.getFinalPK(game.competitions[0]));
           break;
         default: //Anything else, treat like a game that hasn't started yet
           gameState = 0;
@@ -276,13 +287,13 @@ module.exports = {
       }
 
       //Soccer is the opposite, Home team comes first. To avoid major code changes on MyScoreboard.js it's easier to swap them here
-      if (league == "EPL" || league == "Bras"){
+      if (this.soccerTeams.includes(league)) {
         hTeamData = game.competitions[0].competitors[1];
         vTeamData = game.competitions[0].competitors[0];
       }
 
       /*
-        WTF...
+        WTF... 
         for NCAAF, sometimes FCS teams (I-AA) play FBS (I-A) teams.  These are known as money
         games. As such, the logos directory contains images for all of the FCS teams as well
         as the FBS teams.  Wouldn't you know it but there is a SDSU in both divisions --
@@ -297,7 +308,7 @@ module.exports = {
       */
 
       if (league == "NCAAF" && hTeamData.team.abbreviation == "SDSU" && hTeamData.team.location.indexOf("South Dakota State") != -1) {
-        hTeamData.team.abbreviation = "SDSU ";
+        hTeamData.team.abbreviation = "SDSU "; 
       } else if (league == "NCAAF" && vTeamData.team.abbreviation == "SDSU" && vTeamData.team.location.indexOf("South Dakota State") != -1) {
         vTeamData.team.abbreviation = "SDSU ";
       }
@@ -311,9 +322,8 @@ module.exports = {
         vTeamLong = (vTeamData.team.abbreviation == undefined ? "" : vTeamData.team.abbreviation + " ") + vTeamData.team.name;
       } else { //use the shortDisplayName property
         hTeamLong = hTeamData.team.shortDisplayName;
-        vTeamLong = vTeamData.team.shortDisplayName;
+        vTeamLong = vTeamData.team.shortDisplayName;        
       }
-
 
       formattedGamesList.push({
         classes: classes,
@@ -329,15 +339,12 @@ module.exports = {
         status: status,
         usePngLogos: true,
         hTeamLogo: hTeamData.team.logo,
-        vTeamLogo: vTeamData.team.logo
+        vTeamLogo: vTeamData.team.logo,
       });
 
     });
 
     return formattedGamesList;
-
-
-
   },
 
   formatT25Ranking: function(rank) {
@@ -361,7 +368,7 @@ module.exports = {
     if (mod10 == 3 && mod100 != 13) {
       return p + "<sup>RD</sup>";
     }
-
+    
     return p + "<sup>TH</sup>";
 
   },
@@ -385,7 +392,7 @@ module.exports = {
   },
 
   getFinalOT: function(league, p) {
-    switch (league) {
+      switch (league) {
       case "NCAAF":
       case "NCAAM":
       case "NCAAM_MM":
@@ -396,8 +403,12 @@ module.exports = {
           return " (" + (p - 4) + "OT)";
         }
         break;
-    }
+    } 
     return "";
+  },
+
+  getFinalPK: function (teams) {
+    return " " + teams.competitors[0].shootoutScore + "x" + teams.competitors[1].shootoutScore;
   }
 
 
