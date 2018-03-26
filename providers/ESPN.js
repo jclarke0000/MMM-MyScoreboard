@@ -9,8 +9,13 @@
     NCAAM (College Basketball. Division I)
     MCAAM_M (College Basketball, March Madness Torunament)
     NBA (National Basketball Association)
-    EPL (English Premier League Football)
-    BRAS (Brazilian League 1 Football)
+    EPL (English Premier League Soccer)
+    BRASILEIRAO (Brazilian League 1 Soccer)
+    LIBERTADORES (CONMEBOL Libertadores)
+    FIFAWC (FIFA World Cup)
+    BUNDESLIGA (German League Soccer)
+
+
 
   Data API also provides scoreboard data for MANY other
   leagues, not currently supported.
@@ -54,10 +59,16 @@ module.exports = {
       case "NCAAM":
       case "NCAAM_MM":
         return "basketball/mens-college-basketball";
-      case "EPL":     //added English Premier League
+      case "EPL":
         return "soccer/eng.1";
-      case "BRAS":     //added Brazilian League 1
+      case "BRASILEIRAO":
         return "soccer/bra.1";
+      case "LIBERTADORES":
+        return "soccer/conmebol.libertadores";
+      case "FIFAWC":
+        return "soccer/fifa.world";
+      case "BUNDESLIGA":
+        return "soccer/ger.1";        
       default:
         return null;
     }
@@ -193,6 +204,19 @@ module.exports = {
 
       var gameState = 0;
 
+      var hTeamData = game.competitions[0].competitors[0];
+      var vTeamData = game.competitions[0].competitors[1];
+
+      /*
+        Looks like the home team is always the first in the feed, but it also specified,
+        so we can be sure.
+      */
+
+      if (hTeamData.homeAway == "away") {
+        hTeamData = game.competitions[0].competitors[1];
+        vTeamData = game.competitions[0].competitors[0];
+      }      
+
       /*
         Not all of ESPN's status.type.id's are supported here.
         Some are for sports that this provider doesn't yet
@@ -252,29 +276,19 @@ module.exports = {
           gameState = 1;
           status.push("HALFTIME");
           break;
-        case "28": //SOCCER
+        case "28": //SOCCER Full Time
           gameState = 2;
           status.push("Full Time" + self.getFinalOT(league, game.status.period));
           break;
+        case "47": //Soccer Final PK
+          gameState = 2;
+          status.push("Full Time (PK) " + self.getFinalPK(hTeamData,vTeamData)); 
+          break;         
         default: //Anything else, treat like a game that hasn't started yet
           gameState = 0;
           status.push(moment(game.competitions[0].date).tz(localTZ).format("h:mm a"));
           break;
 
-      }
-
-
-      var hTeamData = game.competitions[0].competitors[0];
-      var vTeamData = game.competitions[0].competitors[1];
-
-      /*
-        Looks like the home team is always the first in the feed, but it also specified,
-        so we can be sure.
-      */
-
-      if (hTeamData.homeAway == "away") {
-        hTeamData = game.competitions[0].competitors[1];
-        vTeamData = game.competitions[0].competitors[0];
       }
 
       /*
@@ -376,7 +390,7 @@ module.exports = {
         }
         break;
       case "EPL":
-      case "BRAS":
+      case "BRASILEIRAO":
         if (p == 3) {
           return "OT";
         } else if (p > 3) {
@@ -399,13 +413,17 @@ module.exports = {
         }
         break;
       case "EPL":
-      case "BRAS":
+      case "BRASILEIRAO":
         if (p > 2) {
           return " (OT)";
         }
     }
     return "";
   },
+
+  getFinalPK: function (hTeamData,vTeamData) {
+    return hTeamData.shootoutScore + "x" + vTeamData.shootoutScore;
+  }  
 
 
 

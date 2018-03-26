@@ -48,7 +48,6 @@ Module.register("MMM-MyScoreboard",{
     "NHL" : {
       provider: "SNET",
       logoFormat: "svg",
-      homeTeamFirst: true
     },
     "NFL" : {
       provider: "SNET",
@@ -84,11 +83,26 @@ Module.register("MMM-MyScoreboard",{
       logoFormat: "url",
       homeTeamFirst: true
     },
-    "BRAS" : {
+    "BRASILEIRAO" : {
       provider: "ESPN",
       logoFormat: "url",
       homeTeamFirst: true
-    }
+    },
+    "LIBERTADORES": {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    "FIFAWC": {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    "BUNDESLIGA": {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    }    
 
   },
 
@@ -702,7 +716,7 @@ Module.register("MMM-MyScoreboard",{
 
     },
 
-    BRAS : {
+    BRASILEIRAO : {
 
     }
 

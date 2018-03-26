@@ -5,7 +5,22 @@ https://magicmirror.builders/<br>
 https://github.com/MichMich/MagicMirror
 
 This module display's today's scores for your favourite teams across a number of different
-leagues, including NHL, NBA, NFL, MLB, MLS, CFL, NCAAF (FBS Division), NCAAM (Division I and March Madness), EPL (English Premier League Football), and BRAS (Brazilian League 1 Football)
+leagues, including:
+
+* NHL Hockey
+* NBA Basketball
+* MLB Baseball
+* NFL Footabll
+* CFL Footabll (Canadian Footbal League)
+* MLS Soccer
+* NCAAF (FBS Division)
+* NCAAM (Division I and March Madness)
+* EPL (English Premier League Soccer)
+* BRASILEIRAO (Brasileirão League 1 Soccer)
+* Conmebol Libertadores
+* FIFA World Cup Soccer
+* Bundesliga German League Soccer
+
 
 ![Screen Shot](/../screenshots/MMM-MyScoreboard-screenshot.png?raw=true "Screen Shot")
 
@@ -80,16 +95,20 @@ Currently this module supports the following leagues:
 * **NBA** - National Basketball Association
 * **MLB** - Major League Baseball
 * **NFL** - National Football League
-* **MLS** - Major League Soccer
 * **CFL** - Canadian Football League
+* **MLS** - Major League Soccer
 * **NCAAF** - NCAA College Football (FBS Division only)
 * **NCAAM** - NCAA College Basketball (Division I)
 * **NCAAM_MM** - NCAA College Basketball (March Madness Tournament)
 * **EPL** - English Premier League Soccer
-* **BRAS** - Brazilian League 1 Soccer
+* **BRASILEIRAO** - Brazilian League 1 Soccer
+* **LIBERTADORES** - CONMEBOL Libertadores
+* **FIFAWC** - FIFA World Cup Soccer
+* **BUNDESLIGA** - German League Soccer
 
 
-Each entry in your `sports` array is an object with two properties:
+
+Each entry in your `sports` array is an object with the following properties:
 
 <table>
   <thead>
@@ -101,7 +120,7 @@ Each entry in your `sports` array is an object with two properties:
   <tbody>
     <tr>
       <td><code>league</code></td>
-      <td><strong>REQUIRED</strong> e.g.: <code>"NHL"</code>.<br><br><strong>Type</strong> <code>String</code></td>
+      <td><strong>REQUIRED</strong> e.g.: <code>"NHL"</code>. Use any of the bold, uppercase league labaels from the list above.<br><br><strong>Type</strong> <code>String</code></td>
     </tr>
     <tr>
       <td><code>label</code></td>
@@ -381,6 +400,28 @@ AFC
 NFC
 ```
 
+### CFL
+```
+Teams:
+---------------
+
+BC    B.C. Lions
+CGY   Calgary Stampeders
+EDM   Edmonton Eskimos
+HAM   Hamilton Tiger-Cats
+MTL   Montreal Alouetts
+OTT   Ottawa Redblacks
+SSK   Saskatchewan Roughriders
+TOR   Toronto Argonauts
+WPG   Winnipeg Blue Bombers
+
+Groups:
+---------------
+East
+West
+```
+
+
 ### MLS
 ```
 Teams:
@@ -442,7 +483,7 @@ WAT   Watford
 ```
 
 
-### BRASILEIRÃO (League: BRAS)
+### BRASILEIRAO
 ```
 Teams:
 ---------------
@@ -469,25 +510,90 @@ CEA   Ceará
 ```
 
 
-### CFL
+### LIBERTADORES
 ```
 Teams:
 ---------------
+CABJ  Boca Juniors
+EST   Estudiantes La Plata
+IND   Independiente
+RAC   Racing Club
+CARP  River Plate
+BAN   Banfield
+FLA   Flamengo
+COR   Corinthians
+DSC   Defensor Sporting
+DEL   Delfin
+CRU   Cruzeiro
+PAL   Palmeiras
+EME   Emelec
+LIB   Libertad
+CERR  Cerro Porteño
+SAN   Santos
+OLI   Olimpia
+ALM   Alianza Lima
+BOL   Bolívar
+ORI   Oriente Petrolero
+PEN   Peñarol
+NAC   Nacional
+UDS   Universitario de Deportes
+STR   The Strongest
+COL   Colo Colo
+``` 
 
-BC    B.C. Lions
-CGY   Calgary Stampeders
-EDM   Edmonton Eskimos
-HAM   Hamilton Tiger-Cats
-MTL   Montreal Alouetts
-OTT   Ottawa Redblacks
-SSK   Saskatchewan Roughriders
-TOR   Toronto Argonauts
-WPG   Winnipeg Blue Bombers
-
-Groups:
+###BUNDESLIGA 
+```
+Teams: 
 ---------------
-East
-West
+COL   FC Cologne
+BVB   Borussia Dortmund
+FRA   Eintracht Frankfurt
+FRE   SC Freiburg
+HSV   Hamburg SV
+HER   Hertha Berlin
+LEV   Bayer Leverkusen
+BMU   Bayern Munich
+SCH   Schalke 04
+STU   VfB Stuttgart
+BRE   Werder Bremen
+WLF   VfL Wolfsburg
+MGB   Borussia Monchengladbach
+HAN   Hannover 96
+MNZ   Mainz
+AUG   FC Augsburg
+HOF   TSG Hoffenheim
+RBL   RB Leipzig
+```
+
+### FIFAWC (2018 Russia FIFA WORLD CUP)
+```
+Teams:
+---------------
+ESP   Spain
+ARG   Argentina
+MEX   Mexico
+BRA   Brazil
+COL   Colombia
+PER   Peru
+URU   Uruguay
+CRC   Costa Rica
+ENG   England
+KOR   South Korea
+RUS   Russia
+BEL   Belgium
+SWE   Sweden
+IRN   Iran
+ISL   Iceland
+POL   Poland
+SUI   Switzerland
+CRO   Croatia
+FRA   France
+DEN   Denmark
+GER   Germany
+POR   Portugal
+JPN   Japan
+AUS   Australia
+SEN   Senegal
 ```
 
 ### NCAAF (FBS Division)
@@ -560,7 +666,7 @@ MTSU  Middle Tennessee Blue Raiders
 NAVY  Navy Midshipmen
 NCST  North Carolina State Wolfpack
 ND    Notre Dame Fighting Irish
-NEB   Nebraska Cornhuskers
+NEB   NeBRASILEIRAOka Cornhuskers
 NEV   Nevada Wolf Pack
 NIU   Northern Illinois Huskies
 NMSU  New Mexico State Aggies
@@ -831,7 +937,7 @@ NCST  NC State Wolfpack
 ND    Notre Dame Fighting Irish
 NDSU  North Dakota St Bison
 NE    Northeastern Huskies
-NEB   Nebraska Cornhuskers
+NEB   NeBRASILEIRAOka Cornhuskers
 NEV   Nevada Wolf Pack
 NIAG  Niagara Purple Eagles
 NICH  Nicholls Colonels
