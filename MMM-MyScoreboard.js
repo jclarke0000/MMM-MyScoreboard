@@ -522,6 +522,10 @@ Module.register("MMM-MyScoreboard",{
       gameDate.subtract(1, "day");
     }
 
+    //just used for debug, if you want to force a specific date
+    if (this.config.gameDate) {
+      gameDate = moment(this.config.gameDate, "YYYYMMDD");
+    }
 
     var self = this;
     this.config.sports.forEach( function(sport, index) {

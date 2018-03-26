@@ -539,8 +539,8 @@
 .MMM-MyScoreboard .box-score.oneLineWithLogos.home-team-first .score.visitor {
   left: 182px;
 }
-.MMM-MyScoreboard .box-score.oneLine .score.home,
-.MMM-MyScoreboard .box-score.oneLineWithLogos .score.home {
+.MMM-MyScoreboard .box-score.oneLine.home-team-first .score.home,
+.MMM-MyScoreboard .box-score.oneLineWithLogos.home-team-first .score.home {
   left: 62px;
 }
 
@@ -671,7 +671,9 @@
 }
 
 .MMM-MyScoreboard .box-score.stacked .score,
-.MMM-MyScoreboard .box-score.stackedWithLogos .score {
+.MMM-MyScoreboard .box-score.stackedWithLogos .score,
+.MMM-MyScoreboard .box-score.stacked.home-team-first .score,
+.MMM-MyScoreboard .box-score.stackedWithLogos.home-team-first .score {
   left: 140px;
   width: 44px;
   color: #AAA;
@@ -690,9 +692,10 @@
 .MMM-MyScoreboard .box-score.stacked.home-team-first .score.visitor,
 .MMM-MyScoreboard .box-score.stackedWithLogos.home-team-first .score.visitor {
   top:30px;
+  right: auto;
 }
-.MMM-MyScoreboard .box-score.stacked .score.home,
-.MMM-MyScoreboard .box-score.stackedWithLogos .score.home {
+.MMM-MyScoreboard .box-score.stacked.home-team-first .score.home,
+.MMM-MyScoreboard .box-score.stackedWithLogos.home-team-first .score.home {
   top: 6px;
 }
 
@@ -748,7 +751,8 @@
   top: 8px;
 }
 
-.MMM-MyScoreboard .box-score.stackedWithLogos .score {  
+.MMM-MyScoreboard .box-score.stackedWithLogos .score,
+.MMM-MyScoreboard .box-score.stackedWithLogos.home-team-first .score {  
   left: 146px;
 }
 .MMM-MyScoreboard .box-score.stackedWithLogos .score.visitor {

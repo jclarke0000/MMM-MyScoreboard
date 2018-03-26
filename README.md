@@ -84,7 +84,7 @@ Currently this module supports the following leagues:
 * **CFL** - Canadian Football League
 * **NCAAF** - NCAA College Football (FBS Division only)
 * **NCAAM** - NCAA College Basketball (Division I)
-* **NCAAM_MM** - NCAA College Basketball (March Madness Tournament
+* **NCAAM_MM** - NCAA College Basketball (March Madness Tournament)
 * **EPL** - English Premier League Soccer
 * **BRAS** - Brazilian League 1 Soccer
 

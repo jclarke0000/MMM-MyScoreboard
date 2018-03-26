@@ -254,7 +254,7 @@ module.exports = {
           break;
         case "28": //SOCCER
           gameState = 2;
-          status.push("Final" + self.getFinalOT(league, game.status.period));
+          status.push("Full Time" + self.getFinalOT(league, game.status.period));
           break;
         default: //Anything else, treat like a game that hasn't started yet
           gameState = 0;
@@ -375,6 +375,13 @@ module.exports = {
           return (p - 4) + "OT";
         }
         break;
+      case "EPL":
+      case "BRAS":
+        if (p == 3) {
+          return "OT";
+        } else if (p > 3) {
+          return (p - 2) + "OT";
+        }
     }
     return this.getOrdinal(p);
   },
@@ -391,9 +398,14 @@ module.exports = {
           return " (" + (p - 4) + "OT)";
         }
         break;
+      case "EPL":
+      case "BRAS":
+        if (p > 2) {
+          return " (OT)";
+        }
     }
     return "";
-  }
+  },
 
 
 

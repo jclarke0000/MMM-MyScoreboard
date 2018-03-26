@@ -19,7 +19,7 @@
 
 
   All sports are provided in a single feed at
-  http://www.sportsnet.ca/wp-content/uploads/scoreboard.json
+  http://www.sportsnet.ca/wp-content/files/scoreboard.json
 
   The feed takes no parameters. It returns all of today's games,
   yesterday's finals up until noon Eastern time, and upcoming
@@ -330,6 +330,12 @@ module.exports = {
           break;
       }
 
+      /*
+        URLs to logo images are available in the feed, but they are a bit too low
+        quaity for some of the templates. However, logos are available at higher
+        resolution if we replace "59x59" with "200x200" in the path.
+      */
+
       var formattedGame = {
         classes: classes,
         gameMode: gameState,
@@ -339,7 +345,9 @@ module.exports = {
         vTeamLong: game.visiting_team_short == "TBD" ? "TBD" : self.titleCase(game.visiting_team),
         hScore: game.home_score,
         vScore: game.visiting_score,
-        status: status
+        status: status,
+        hTeamLogoUrl: game.home_team_logo_url ? game.home_team_logo_url.replace("59x59","200x200") : "",
+        vTeamLogoUrl: game.visiting_team_logo_url ? game.visiting_team_logo_url.replace("59x59","200x200") : ""        
       };
 
       formattedGames.push(formattedGame);
