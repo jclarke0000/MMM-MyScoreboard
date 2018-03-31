@@ -272,10 +272,14 @@ module.exports = {
           status.push("END");
           status.push(self.getPeriod(league, game.status.period));
           break;
-        case "23": //halftime
+        case "23": //soccer - halftime
           gameState = 1;
           status.push("HALFTIME");
           break;
+        case "26": //soccer - 2nd Half on-going
+          gameState = 1;
+          status.push("2nd Half");
+          break;  
         case "28": //SOCCER Full Time
           gameState = 2;
           status.push("Full Time" + self.getFinalOT(league, game.status.period));
