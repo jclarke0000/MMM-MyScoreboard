@@ -235,6 +235,7 @@ module.exports = {
         case "2": //in-progress
         case "21": //beginning of period
         case "24": //overtime
+        case "26": //soccer 2nd half
           gameState = 1;
           status.push(game.status.displayClock);
           status.push(self.getPeriod(league, game.status.period));
@@ -272,17 +273,21 @@ module.exports = {
           status.push("END");
           status.push(self.getPeriod(league, game.status.period));
           break;
-        case "23": //halftime
+        case "23": //soccer Halftime
           gameState = 1;
-          status.push("HALFTIME");
+          status.push("HT");
           break;
-        case "28": //SOCCER Full Time
+        case "28": //soccer Full Time
           gameState = 2;
-          status.push("Full Time" + self.getFinalOT(league, game.status.period));
+          status.push("FT" + self.getFinalOT(league, game.status.period));
           break;
-        case "47": //Soccer Final PK
+        case "44": //soccer Shootout
+          gameState = 1;
+          status.push("SO " + self.getPK(hTeamData, vTeamData));
+          break;
+        case "47": //soccer Final Shootout
           gameState = 2;
-          status.push("Full Time (PK) " + self.getFinalPK(hTeamData,vTeamData)); 
+          status.push("FT (SO) " + self.getPK(hTeamData, vTeamData)); 
           break;         
         default: //Anything else, treat like a game that hasn't started yet
           gameState = 0;
@@ -345,8 +350,6 @@ module.exports = {
 
     return formattedGamesList;
 
-
-
   },
 
   formatT25Ranking: function(rank) {
@@ -389,12 +392,15 @@ module.exports = {
           return (p - 4) + "OT";
         }
         break;
+      case "FIFAWC":
       case "EPL":
       case "BRASILEIRAO":
         if (p == 3) {
-          return "OT";
+          return "ET";
         } else if (p > 3) {
-          return (p - 2) + "OT";
+          return (p - 2) + "ET";
+        } else {
+            return "";
         }
     }
     return this.getOrdinal(p);
@@ -412,20 +418,18 @@ module.exports = {
           return " (" + (p - 4) + "OT)";
         }
         break;
+      case "FIFAWC":
       case "EPL":
       case "BRASILEIRAO":
         if (p > 2) {
-          return " (OT)";
+          return " (AET)";
         }
     }
     return "";
   },
 
-  getFinalPK: function (hTeamData,vTeamData) {
-    return hTeamData.shootoutScore + "x" + vTeamData.shootoutScore;
-  }  
-
-
-
+  getPK: function (hTeamData,vTeamData) {
+    return hTeamData.shootoutScore + "-" + vTeamData.shootoutScore;
+  }
 
 };
