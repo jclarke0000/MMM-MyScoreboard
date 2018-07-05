@@ -12,9 +12,11 @@
     EPL (English Premier League Soccer)
     BRASILEIRAO (Brazilian League 1 Soccer)
     LIBERTADORES (CONMEBOL Libertadores)
+    CHAMPIONSLEAGUE
     FIFAWC (FIFA World Cup)
     BUNDESLIGA (German League Soccer)
-
+    SERIEA (Italian League Soccer)
+    LALIGA (Spanish League Soccer)
 
 
   Data API also provides scoreboard data for MANY other
@@ -65,10 +67,16 @@ module.exports = {
         return "soccer/bra.1";
       case "LIBERTADORES":
         return "soccer/conmebol.libertadores";
+      case "CHAMPIONSLEAGUE":
+        return "soccer/uefa.champions";
       case "FIFAWC":
         return "soccer/fifa.world";
       case "BUNDESLIGA":
-        return "soccer/ger.1";        
+        return "soccer/ger.1";
+      case "SERIEA":
+        return "soccer/ita.1";
+      case "LALIGA":
+        return "soccer/esp.1";
       default:
         return null;
     }
@@ -85,10 +93,10 @@ module.exports = {
 
 
     ///temporary link to have Soccer Games ShowingUp  ** Use this to have the API point to a date
-    // var url = "http://site.api.espn.com/apis/site/v2/sports/" +
-    //     this.getLeaguePath(league) +
-    //     "/scoreboard?dates=20180317" +
-    //     "&limit=200";
+     // var url = "http://site.api.espn.com/apis/site/v2/sports/" +
+     //     this.getLeaguePath(league) +
+     //     "/scoreboard?dates=20180317" +
+     //     "&limit=200";
 
 
 
@@ -235,6 +243,7 @@ module.exports = {
         case "2": //in-progress
         case "21": //beginning of period
         case "24": //overtime
+        case "25": //soccer 1st half
         case "26": //soccer 2nd half
           gameState = 1;
           status.push(game.status.displayClock);
@@ -284,6 +293,10 @@ module.exports = {
         case "44": //soccer Shootout
           gameState = 1;
           status.push("SO " + self.getPK(hTeamData, vTeamData));
+          break;
+        case "45": //soccer Final AET
+          gameState = 2;
+          status.push("FT AET");
           break;
         case "47": //soccer Final Shootout
           gameState = 2;
@@ -393,8 +406,7 @@ module.exports = {
         }
         break;
       case "FIFAWC":
-      case "EPL":
-      case "BRASILEIRAO":
+      case "CHAMPIONSLEAGUE":
         if (p == 3) {
           return "ET";
         } else if (p > 3) {
@@ -419,8 +431,7 @@ module.exports = {
         }
         break;
       case "FIFAWC":
-      case "EPL":
-      case "BRASILEIRAO":
+      case "CHAMPIONSLEAGUE":
         if (p > 2) {
           return " (AET)";
         }

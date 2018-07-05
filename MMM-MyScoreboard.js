@@ -93,6 +93,11 @@ Module.register("MMM-MyScoreboard",{
       logoFormat: "url",
       homeTeamFirst: true
     },
+    "CHAMPIONSLEAGUE": {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
     "FIFAWC": {
       provider: "ESPN",
       logoFormat: "url",
@@ -102,7 +107,17 @@ Module.register("MMM-MyScoreboard",{
       provider: "ESPN",
       logoFormat: "url",
       homeTeamFirst: true
-    }    
+    },
+    "SERIEA": {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    "LALIGA": {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true    
+    }
 
   },
 
@@ -712,8 +727,8 @@ Module.register("MMM-MyScoreboard",{
 
     },
 
-    EPL : {
-
+    EPL : { 
+      "All": ["BHA", "HUD", "CAR", "BOU", "ARS", "MAN", "NEW", "CHE", "LIV", "TOT", "EVE", "FUL", "WHU", "LEI", "SOU", "BUR", "WOL", "MNC", "CRY", "WAT"]
     },
 
     BRASILEIRAO : {
@@ -724,12 +739,24 @@ Module.register("MMM-MyScoreboard",{
 
     },
 
+    CHAMPIONSLEAGUE : {
+
+    },
+
     FIFAWC : {
 
     },
 
     BUNDESLIGA : {
 
+    },
+
+    SERIEA : {
+      "All": ["MIL", "ROMA", "ATA", "BOL", "FIO", "INT", "JUV", "LAZ", "NAP", "UDI", "HEL", "CVO", "TOR", "SMP", "CAG", "CRO", "GEN", "SPAL", "SAS", "BEN"]
+    },
+
+    LALIGA: {
+      "All": ["BAR", "CEL", "MAD", "ESP", "RSO", "DEP", "BIL", "VCF", "ALV", "LPA", "MCF", "VIL", "SEV", "RBB", "ATM", "LEV", "GET", "EIB", "GIR", "LEG"]
     }
 
   }
