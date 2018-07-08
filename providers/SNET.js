@@ -269,7 +269,6 @@ module.exports = {
                 To Do: Extra Time and Penalty Kicks
               */
               status.push(game.clock);
-              status.push(self.getPeriod(league, game.period));
               break;
 
             case "NFL":
