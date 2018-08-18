@@ -728,7 +728,7 @@ Module.register("MMM-MyScoreboard",{
     },
 
     EPL : { 
-      "All": ["BHA", "HUD", "CAR", "BOU", "ARS", "MAN", "NEW", "CHE", "LIV", "TOT", "EVE", "FUL", "WHU", "LEI", "SOU", "BUR", "WOL", "MNC", "CRY", "WAT"]
+      "All": ["BOU", "ARS", "BHA", "BUR", "CAR", "CHE", "CRY", "EVE", "FUL", "HUD", "LEI", "LIV", "MNC", "MAN", "NEW", "SOU", "TOT", "WAT", "WHU", "WOL"]
     },
 
     BRASILEIRAO : {
@@ -748,15 +748,15 @@ Module.register("MMM-MyScoreboard",{
     },
 
     BUNDESLIGA : {
-
+      "All": ["LEV", "BMU", "BVB", "MGB", "FRA", "AUG", "F95", "HAN", "HER", "MNZ", "NUR", "RBL", "FRE", "SCH", "HOF", "STU", "WLF", "BRE"]
     },
 
     SERIEA : {
-      "All": ["MIL", "ROMA", "ATA", "BOL", "FIO", "INT", "JUV", "LAZ", "NAP", "UDI", "HEL", "CVO", "TOR", "SMP", "CAG", "CRO", "GEN", "SPAL", "SAS", "BEN"]
+      "All": ["MIL", "ROMA", "ATA", "BOL", "CAG", "CVO", "EMP", "FIO", "FRO", "GEN", "INT", "JUV", "LAZ", "NAP", "PAR", "SPAL", "SMP", "SAS", "TOR", "UDI"]
     },
 
     LALIGA: {
-      "All": ["BAR", "CEL", "MAD", "ESP", "RSO", "DEP", "BIL", "VCF", "ALV", "LPA", "MCF", "VIL", "SEV", "RBB", "ATM", "LEV", "GET", "EIB", "GIR", "LEG"]
+      "All": ["ALV", "BIL", "ATM", "BAR", "CEL", "EIB", "ESP", "GET", "GIR", "HUE", "LEG", "LEV", "RAY", "RBB", "MAD", "RSO", "VLD", "SEV", "VCF", "VIL"]
     }
 
   }

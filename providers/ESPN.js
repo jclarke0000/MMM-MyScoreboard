@@ -405,6 +405,12 @@ module.exports = {
           return (p - 4) + "OT";
         }
         break;
+      case "SERIEA":
+      case "BUNDESLIGA":
+      case "EPL":
+      case "LALIGA":
+        return "";
+        break
       case "FIFAWC":
       case "CHAMPIONSLEAGUE":
         if (p == 3) {
