@@ -63,20 +63,38 @@ module.exports = {
         return "basketball/mens-college-basketball";
       case "EPL":
         return "soccer/eng.1";
-      case "BRASILEIRAO":
-        return "soccer/bra.1";
-      case "LIBERTADORES":
-        return "soccer/conmebol.libertadores";
-      case "CHAMPIONSLEAGUE":
-        return "soccer/uefa.champions";
-      case "FIFAWC":
-        return "soccer/fifa.world";
       case "BUNDESLIGA":
         return "soccer/ger.1";
       case "SERIEA":
         return "soccer/ita.1";
       case "LALIGA":
         return "soccer/esp.1";
+      case "BRASILEIRAO":
+        return "soccer/bra.1";
+      case "LIBERTADORES":
+        return "soccer/conmebol.libertadores";
+      case "CHAMPIONSLEAGUE":
+        return "soccer/uefa.champions";
+      case "EUROPALEAGUE":
+        return "soccer/uefa.europa";
+      case "FIFAWC":
+        return "soccer/fifa.world";
+      case "FIFAFRIENDLY":
+        return "soccer/fifa.friendly";
+      case "FIFAWCQCONCACAF":
+        return "soccer/fifa.worldq.concacaf";
+      case "FIFAWCQCONMEBOL":
+        return "soccer/fifa.worldq.conmebol";
+      case "FIFAWCQUEFA":
+        return "soccer/fifa.worldq.uefa";
+      case "UEFAEURO":
+        return "soccer/uefa.euro";
+      case "UEFAEUROQ":
+        return "soccer/uefa.euroq";
+      case "UEFANATIONS":
+        return "soccer/uefa.nations";
+      case "COPAAMERICA":
+        return "soccer/conmebol.america";
       default:
         return null;
     }
@@ -405,14 +423,22 @@ module.exports = {
           return (p - 4) + "OT";
         }
         break;
-      case "SERIEA":
-      case "BUNDESLIGA":
       case "EPL":
+      case "BUNDESLIGA":
+      case "SERIEA":
       case "LALIGA":
-        return "";
-        break
+          return "";
       case "FIFAWC":
       case "CHAMPIONSLEAGUE":
+      case "EUROPALEAGUE":
+      case "FIFAFRIENDLY":
+      case "FIFAWCQCONCACAF":
+      case "FIFAWCQCONMEBOL":
+      case "FIFAWCQUEFA":
+      case "UEFAEURO":
+      case "UEFAEUROQ":
+      case "UEFANATIONS":
+      case "COPAAMERICA":
         if (p == 3) {
           return "ET";
         } else if (p > 3) {
@@ -438,6 +464,15 @@ module.exports = {
         break;
       case "FIFAWC":
       case "CHAMPIONSLEAGUE":
+      case "EUROPALEAGUE":
+      case "FIFAFRIENDLY":
+      case "FIFAWCQCONCACAF":
+      case "FIFAWCQCONMEBOL":
+      case "FIFAWCQUEFA":
+      case "UEFAEURO":
+      case "UEFAEUROQ":
+      case "UEFANATIONS":
+      case "COPAAMERICA":
         if (p > 2) {
           return " (AET)";
         }

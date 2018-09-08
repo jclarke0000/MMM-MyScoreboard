@@ -78,45 +78,90 @@ Module.register("MMM-MyScoreboard",{
       provider: "ESPN",
       logoFormat: "png"
     },
-    "EPL" : {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "BRASILEIRAO" : {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "LIBERTADORES": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "CHAMPIONSLEAGUE": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "FIFAWC": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
+    "EPL": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
     },
     "BUNDESLIGA": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
     },
     "SERIEA": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
     },
     "LALIGA": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true    
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
+    },
+    "BRASILEIRAO": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
+    },
+    "LIBERTADORES": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
+    },
+    "CHAMPIONSLEAGUE": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
+    },
+    "EUROPALEAGUE": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
+    },
+    "FIFAWC": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
+    },
+    "FIFAFRIENDLY": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
+    },
+    "FIFAWCQCONCACAF": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
+    },
+    "FIFAWCQCONMEBOL": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
+    },
+    "FIFAWCQUEFA": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
+    },
+    "UEFAEURO": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
+    },
+    "UEFAEUROQ": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
+    },
+    "UEFANATIONS": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
+    },
+    "COPAAMERICA": {
+        provider: "ESPN",
+        logoFormat: "url",
+        homeTeamFirst: true
     }
 
   },
@@ -727,36 +772,72 @@ Module.register("MMM-MyScoreboard",{
 
     },
 
-    EPL : { 
-      "All": ["BOU", "ARS", "BHA", "BUR", "CAR", "CHE", "CRY", "EVE", "FUL", "HUD", "LEI", "LIV", "MNC", "MAN", "NEW", "SOU", "TOT", "WAT", "WHU", "WOL"]
+    EPL: {
+        "All": ["BOU", "ARS", "BHA", "BUR", "CAR", "CHE", "CRY", "EVE", "FUL", "HUD", "LEI", "LIV", "MNC", "MAN", "NEW", "SOU", "TOT", "WAT", "WHU", "WOL"]
     },
 
-    BRASILEIRAO : {
-
+    BUNDESLIGA: {
+        "All": ["LEV", "BMU", "BVB", "MGB", "FRA", "AUG", "F95", "HAN", "HER", "MNZ", "NUR", "RBL", "FRE", "SCH", "HOF", "STU", "WLF", "BRE"]
     },
 
-    LIBERTADORES : {
-
-    },
-
-    CHAMPIONSLEAGUE : {
-
-    },
-
-    FIFAWC : {
-
-    },
-
-    BUNDESLIGA : {
-      "All": ["LEV", "BMU", "BVB", "MGB", "FRA", "AUG", "F95", "HAN", "HER", "MNZ", "NUR", "RBL", "FRE", "SCH", "HOF", "STU", "WLF", "BRE"]
-    },
-
-    SERIEA : {
-      "All": ["MIL", "ROMA", "ATA", "BOL", "CAG", "CVO", "EMP", "FIO", "FRO", "GEN", "INT", "JUV", "LAZ", "NAP", "PAR", "SPAL", "SMP", "SAS", "TOR", "UDI"]
+    SERIEA: {
+        "All": ["MIL", "ROMA", "ATA", "BOL", "CAG", "CVO", "EMP", "FIO", "FRO", "GEN", "INT", "JUV", "LAZ", "NAP", "PAR", "SPAL", "SMP", "SAS", "TOR", "UDI"]
     },
 
     LALIGA: {
-      "All": ["ALV", "BIL", "ATM", "BAR", "CEL", "EIB", "ESP", "GET", "GIR", "HUE", "LEG", "LEV", "RAY", "RBB", "MAD", "RSO", "VLD", "SEV", "VCF", "VIL"]
+        "All": ["ALV", "BIL", "ATM", "BAR", "CEL", "EIB", "ESP", "GET", "GIR", "HUE", "LEG", "LEV", "RAY", "RBB", "MAD", "RSO", "VLD", "SEV", "VCF", "VIL"]
+    },
+
+    BRASILEIRAO: {
+
+    },
+
+    LIBERTADORES: {
+
+    },
+
+    CHAMPIONSLEAGUE: {
+
+    },
+
+    EUROPALEAGUE: {
+
+    },
+
+    FIFAWC: {
+
+    },
+
+    FIFAFRIENDLY: {
+
+    },
+
+    FIFAWCQCONCACAF: {
+
+    },
+
+    FIFAWCQCONMEBOL: {
+
+    },
+
+    FIFAWCQUEFA: {
+
+    },
+
+    UEFAEURO: {
+
+    },
+
+    UEFAEUROQ: {
+
+    },
+
+    UEFANATIONS: {
+
+    },
+
+    COPAAMERICA: {
+
     }
 
   }

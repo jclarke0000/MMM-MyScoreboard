@@ -16,10 +16,22 @@ leagues, including:
 * NCAAF (FBS Division)
 * NCAAM (Division I and March Madness)
 * EPL (English Premier League Soccer)
-* BRASILEIRAO (Brasileirão League 1 Soccer)
-* Conmebol Libertadores
-* FIFA World Cup Soccer
 * Bundesliga German League Soccer
+* BRASILEIRAO (Brasileirão League 1 Soccer)
+* SERIE A (Italian Soccer)
+* LA LIGA (Spanish Soccer)
+* Conmebol Libertadores
+* Champions League
+* Europa League
+* FIFA World Cup Soccer
+* FIFA Friendlies
+* FIFA CONCACAF Qualifying
+* FIFA CONMEBOL Qualifying
+* FIFA UEFA Qualifying
+* EURO Championship
+* EURO Qualifying
+* UEFA Nations League
+* Copa America
 
 
 ![Screen Shot](/../screenshots/MMM-MyScoreboard-screenshot.png?raw=true "Screen Shot")
