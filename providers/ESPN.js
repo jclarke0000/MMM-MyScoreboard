@@ -6,11 +6,21 @@
 
   Provides scores for
     NCAAF (College Football, FBS Division)
+    NCAAM (College Basketball. Division I)
+    MCAAM_M (College Basketball, March Madness Torunament)
     NBA (National Basketball Association)
+    EPL (English Premier League Soccer)
+    BRASILEIRAO (Brazilian League 1 Soccer)
+    LIBERTADORES (CONMEBOL Libertadores)
+    CHAMPIONSLEAGUE
+    FIFAWC (FIFA World Cup)
+    BUNDESLIGA (German League Soccer)
+    SERIEA (Italian League Soccer)
+    LALIGA (Spanish League Soccer)
+
 
   Data API also provides scoreboard data for MANY other
-  leagues, not currently supported.  NCAAM (Men's
-  College Basketball) support to come in the near future.
+  leagues, not currently supported.
 
   You can get an idea of what sports and leagues are
   supported here:
@@ -51,6 +61,40 @@ module.exports = {
       case "NCAAM":
       case "NCAAM_MM":
         return "basketball/mens-college-basketball";
+      case "EPL":
+        return "soccer/eng.1";
+      case "BUNDESLIGA":
+        return "soccer/ger.1";
+      case "SERIEA":
+        return "soccer/ita.1";
+      case "LALIGA":
+        return "soccer/esp.1";
+      case "BRASILEIRAO":
+        return "soccer/bra.1";
+      case "LIBERTADORES":
+        return "soccer/conmebol.libertadores";
+      case "CHAMPIONSLEAGUE":
+        return "soccer/uefa.champions";
+      case "EUROPALEAGUE":
+        return "soccer/uefa.europa";
+      case "FIFAWC":
+        return "soccer/fifa.world";
+      case "FIFAFRIENDLY":
+        return "soccer/fifa.friendly";
+      case "FIFAWCQCONCACAF":
+        return "soccer/fifa.worldq.concacaf";
+      case "FIFAWCQCONMEBOL":
+        return "soccer/fifa.worldq.conmebol";
+      case "FIFAWCQUEFA":
+        return "soccer/fifa.worldq.uefa";
+      case "UEFAEURO":
+        return "soccer/uefa.euro";
+      case "UEFAEUROQ":
+        return "soccer/uefa.euroq";
+      case "UEFANATIONS":
+        return "soccer/uefa.nations";
+      case "COPAAMERICA":
+        return "soccer/conmebol.america";
       default:
         return null;
     }
@@ -62,8 +106,17 @@ module.exports = {
 
     var url = "http://site.api.espn.com/apis/site/v2/sports/" +
       this.getLeaguePath(league) +
-      "/scoreboard?dates=" + 
+      "/scoreboard?dates=" +
       moment(gameDate).format("YYYYMMDD") + "&limit=200";
+
+
+    ///temporary link to have Soccer Games ShowingUp  ** Use this to have the API point to a date
+     // var url = "http://site.api.espn.com/apis/site/v2/sports/" +
+     //     this.getLeaguePath(league) +
+     //     "/scoreboard?dates=20180317" +
+     //     "&limit=200";
+
+
 
     /*
       by default, ESPN returns only the Top 25 ranked teams for NCAAF
@@ -83,21 +136,22 @@ module.exports = {
       url = url + "&groups=100";
     }
 
-
     request({url: url, method: "GET"}, function(r_err, response, body) {
 
       if(!r_err && response.statusCode == 200) {
-        
+
         parseJSON(body, function(p_err, content) {
           if (p_err) {
-            console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** Couldn't parse " + league + " data for provider ESPN: " + p_err );       
+            console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** Couldn't parse " + league + " data for provider ESPN: " + p_err );
           } else {
             callback(self.formatScores(league, content, teams));
           }
         });
 
       } else {
-        console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** Couldn't retrieve " + league + " data for provider ESPN: " + r_err );       
+        console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** Couldn't retrieve " + league + " data for provider ESPN: " + r_err );
+        console.log( "[MMM-MyScoreboard] " + url );
+
       }
 
     });
@@ -117,16 +171,16 @@ module.exports = {
       filteredGamesList = data.events.filter(function(game) {
 
         //if "@T25" is in the teams list, it indicates to include teams ranked in the top 25
-        if (teams.indexOf("@T25") != -1 && 
-          ( (game.competitions[0].competitors[0].curatedRank.current >= 1 && 
-            game.competitions[0].competitors[0].curatedRank.current <= 25) || 
-          (game.competitions[0].competitors[1].curatedRank.current >= 1 && 
-            game.competitions[0].competitors[1].curatedRank.current <= 25) )) {
+        if (teams.indexOf("@T25") != -1 &&
+            ( (game.competitions[0].competitors[0].curatedRank.current >= 1 &&
+                game.competitions[0].competitors[0].curatedRank.current <= 25) ||
+                (game.competitions[0].competitors[1].curatedRank.current >= 1 &&
+                    game.competitions[0].competitors[1].curatedRank.current <= 25) )) {
           return true;
         }
 
         return teams.indexOf(game.competitions[0].competitors[0].team.abbreviation) != -1 ||
-          teams.indexOf(game.competitions[0].competitors[1].team.abbreviation) != -1;
+            teams.indexOf(game.competitions[0].competitors[1].team.abbreviation) != -1;
       });
 
     } else { //return all games
@@ -148,12 +202,12 @@ module.exports = {
 
       //start times are the same.  Now sort by away team short codes
       var aTteam = (a.competitions[0].competitors[0].homeAway == "away" ?
-        a.competitions[0].competitors[0].team.abbreviation :
-        a.competitions[0].competitors[1].team.abbreviation);
+          a.competitions[0].competitors[0].team.abbreviation :
+          a.competitions[0].competitors[1].team.abbreviation);
 
       var bTteam = (b.competitions[0].competitors[0].homeAway == "away" ?
-        b.competitions[0].competitors[0].team.abbreviation :
-        b.competitions[0].competitors[1].team.abbreviation);
+          b.competitions[0].competitors[0].team.abbreviation :
+          b.competitions[0].competitors[1].team.abbreviation);
 
 
       if (aTteam < bTteam) {
@@ -176,6 +230,19 @@ module.exports = {
 
       var gameState = 0;
 
+      var hTeamData = game.competitions[0].competitors[0];
+      var vTeamData = game.competitions[0].competitors[1];
+
+      /*
+        Looks like the home team is always the first in the feed, but it also specified,
+        so we can be sure.
+      */
+
+      if (hTeamData.homeAway == "away") {
+        hTeamData = game.competitions[0].competitors[1];
+        vTeamData = game.competitions[0].competitors[0];
+      }      
+
       /*
         Not all of ESPN's status.type.id's are supported here.
         Some are for sports that this provider doesn't yet
@@ -194,6 +261,8 @@ module.exports = {
         case "2": //in-progress
         case "21": //beginning of period
         case "24": //overtime
+        case "25": //soccer 1st half
+        case "26": //soccer 2nd half
           gameState = 1;
           status.push(game.status.displayClock);
           status.push(self.getPeriod(league, game.status.period));
@@ -215,7 +284,7 @@ module.exports = {
         case "6": //postponed
           gameState = 0;
           status.push("Postponed");
-          break;          
+          break;
         case "7":  //delayed
         case "17": //rain delay
           gameState = 1;
@@ -225,16 +294,32 @@ module.exports = {
         case "8": //suspended
           gameState = 0;
           status.push("Suspended");
-          break;          
+          break;
         case "22": //end period
           gameState = 1;
           status.push("END");
           status.push(self.getPeriod(league, game.status.period));
           break;
-        case "23": //halftime
+        case "23": //soccer Halftime
           gameState = 1;
-          status.push("HALFTIME");
+          status.push("HT");
           break;
+        case "28": //soccer Full Time
+          gameState = 2;
+          status.push("FT" + self.getFinalOT(league, game.status.period));
+          break;
+        case "44": //soccer Shootout
+          gameState = 1;
+          status.push("SO " + self.getPK(hTeamData, vTeamData));
+          break;
+        case "45": //soccer Final AET
+          gameState = 2;
+          status.push("FT AET");
+          break;
+        case "47": //soccer Final Shootout
+          gameState = 2;
+          status.push("FT (SO) " + self.getPK(hTeamData, vTeamData)); 
+          break;         
         default: //Anything else, treat like a game that hasn't started yet
           gameState = 0;
           status.push(moment(game.competitions[0].date).tz(localTZ).format("h:mm a"));
@@ -242,21 +327,8 @@ module.exports = {
 
       }
 
-
-      var hTeamData = game.competitions[0].competitors[0];
-      var vTeamData = game.competitions[0].competitors[1];
-
       /*
-        Looks like the home team is always the first in the feed, but it also specified,
-        so we can be sure.
-      */
-      if (hTeamData.homeAway == "away") {
-        hTeamData = game.competitions[0].competitors[1];
-        vTeamData = game.competitions[0].competitors[0];
-      }
-
-      /*
-        WTF... 
+        WTF...
         for NCAAF, sometimes FCS teams (I-AA) play FBS (I-A) teams.  These are known as money
         games. As such, the logos directory contains images for all of the FCS teams as well
         as the FBS teams.  Wouldn't you know it but there is a SDSU in both divisions --
@@ -271,7 +343,7 @@ module.exports = {
       */
 
       if (league == "NCAAF" && hTeamData.team.abbreviation == "SDSU" && hTeamData.team.location.indexOf("South Dakota State") != -1) {
-        hTeamData.team.abbreviation = "SDSU "; 
+        hTeamData.team.abbreviation = "SDSU ";
       } else if (league == "NCAAF" && vTeamData.team.abbreviation == "SDSU" && vTeamData.team.location.indexOf("South Dakota State") != -1) {
         vTeamData.team.abbreviation = "SDSU ";
       }
@@ -285,7 +357,7 @@ module.exports = {
         vTeamLong = (vTeamData.team.abbreviation == undefined ? "" : vTeamData.team.abbreviation + " ") + vTeamData.team.name;
       } else { //use the shortDisplayName property
         hTeamLong = hTeamData.team.shortDisplayName;
-        vTeamLong = vTeamData.team.shortDisplayName;        
+        vTeamLong = vTeamData.team.shortDisplayName;
       }
 
 
@@ -301,14 +373,13 @@ module.exports = {
         hScore: parseInt(hTeamData.score),
         vScore: parseInt(vTeamData.score),
         status: status,
-        usePngLogos: true
+        hTeamLogoUrl: hTeamData.team.logo ? hTeamData.team.logo : "",
+        vTeamLogoUrl: vTeamData.team.logo ? vTeamData.team.logo : ""
       });
 
     });
 
     return formattedGamesList;
-
-
 
   },
 
@@ -333,7 +404,7 @@ module.exports = {
     if (mod10 == 3 && mod100 != 13) {
       return p + "<sup>RD</sup>";
     }
-    
+
     return p + "<sup>TH</sup>";
 
   },
@@ -352,6 +423,29 @@ module.exports = {
           return (p - 4) + "OT";
         }
         break;
+      case "EPL":
+      case "BUNDESLIGA":
+      case "SERIEA":
+      case "LALIGA":
+          return "";
+      case "FIFAWC":
+      case "CHAMPIONSLEAGUE":
+      case "EUROPALEAGUE":
+      case "FIFAFRIENDLY":
+      case "FIFAWCQCONCACAF":
+      case "FIFAWCQCONMEBOL":
+      case "FIFAWCQUEFA":
+      case "UEFAEURO":
+      case "UEFAEUROQ":
+      case "UEFANATIONS":
+      case "COPAAMERICA":
+        if (p == 3) {
+          return "ET";
+        } else if (p > 3) {
+          return (p - 2) + "ET";
+        } else {
+            return "";
+        }
     }
     return this.getOrdinal(p);
   },
@@ -368,11 +462,26 @@ module.exports = {
           return " (" + (p - 4) + "OT)";
         }
         break;
-    } 
+      case "FIFAWC":
+      case "CHAMPIONSLEAGUE":
+      case "EUROPALEAGUE":
+      case "FIFAFRIENDLY":
+      case "FIFAWCQCONCACAF":
+      case "FIFAWCQCONMEBOL":
+      case "FIFAWCQUEFA":
+      case "UEFAEURO":
+      case "UEFAEUROQ":
+      case "UEFANATIONS":
+      case "COPAAMERICA":
+        if (p > 2) {
+          return " (AET)";
+        }
+    }
     return "";
+  },
+
+  getPK: function (hTeamData,vTeamData) {
+    return hTeamData.shootoutScore + "-" + vTeamData.shootoutScore;
   }
-
-
-
 
 };
