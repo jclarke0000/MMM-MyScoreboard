@@ -31,13 +31,6 @@ module.exports = NodeHelper.create({
       provider.getScores(payload.league, payload.teams, payload.gameDate, function(scores) {
         self.sendSocketNotification("MMM-MYSCOREBOARD-SCORE-UPDATE", {instanceId: payload.instanceId, index: payload.index, scores: scores});
       });
-
-
     }
-
   },
-
-
-
-
 });

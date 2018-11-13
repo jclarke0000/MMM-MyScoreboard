@@ -381,7 +381,7 @@ HOU   Houston Texans
 IND   Indianapolis Colts
 JAX   Jacksonville Jaguars
 KC    Kansas City Chiefs
-LA    Los Angeles Rams
+LAR   Los Angeles Rams
 LAC   Los Angeles Chargers
 MIA   Miami Dolphins
 MIN   Minnesota Vikings
@@ -446,7 +446,8 @@ COL   Colorado Rapids
 DAL   FC Dallas
 DC    DC United
 HOU   Houston Dynamo
-LA    LA Galaxy
+LAG   LA Galaxy
+LAFC  LA FC
 KC    Sporting Kansas City
 MIN   Minnesota United FC
 MTL   Montreal Impact
