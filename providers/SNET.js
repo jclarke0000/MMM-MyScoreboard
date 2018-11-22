@@ -19,11 +19,20 @@
 
 
   All sports are provided in a single feed at
-  http://www.sportsnet.ca/wp-content/uploads/scoreboard.json
+  https://d290qmen6zswb.cloudfront.net/ticker
 
-  The feed takes no parameters. It returns all of today's games,
-  yesterday's finals up until noon Eastern time, and upcoming
-  games 1-2 days into the future.
+  The feed takes one parameter:
+
+    day - YYYY-MM-DD (e.g. 2018-11-20)
+
+  It's also possible to request individual leagues with the
+  "league" parameter, but for some sports, more than one day's
+  worth of games are returned (e.g. CFL, NFL).  This becomes
+  tricky when time zones come into effect, since the date stamps
+  are provided in UTC, and would report the next day's
+  games for anything 7:00 PM ET or later.  It was easier
+  to continue to use the independent poll that was used with the
+  old feed.
 
   Sportsnet's Scoreboard feed is free and clear, so please
   do not modify this to hammer the API with a flood of calls.
@@ -55,14 +64,16 @@ module.exports = {
     In any case, the front end asks for data every 2 minutes,
     so making this any more frequent doesn't change anything.
   */
-  POLL_FREQUENCY: 60 * 1000, //every minute.
+  POLL_FREQUENCY: 60 * 1000, //every 30 seconds.
 
   scoresObj: null,
   dataPollStarted: false,
+  gameDate: null,
 
   getScores: function(league, teams, gameDate, callback) {
     
     var self = this;
+    this.gameDate = moment(gameDate);
 
     if (this.scoresObj == null) {
 
@@ -77,12 +88,12 @@ module.exports = {
           clearInterval(waitForDataTimer);
           waitForDataTimer = null;
 
-          callback(self.getLeague(league, teams, gameDate));
+          callback(self.getLeague(league, teams));
         }
       }, 1000);
 
     } else {
-      callback(self.getLeague(league, teams, gameDate));
+      callback(self.getLeague(league, teams));
     }
   },
 
@@ -103,7 +114,9 @@ module.exports = {
     // console.log("Get SNET JSON");
     var self = this;
 
-    request({url: "http://www.sportsnet.ca/wp-content/files/scoreboard.json", method: "GET"}, function(r_err, response, body) {
+    var url = "https://d290qmen6zswb.cloudfront.net/ticker?day=" + this.gameDate.format("YYYY-MM-DD");
+
+    request({url: url, method: "GET"}, function(r_err, response, body) {
 
       if(!r_err && response.statusCode == 200) {
         
@@ -122,52 +135,15 @@ module.exports = {
     });
   },
 
-  filterGames: function(obj, leagueData, addToArray, teams, gameDate) {
 
-    if (leagueData[obj]) {
-      leagueData[obj].forEach(function(game) {
-        if ( moment(game.date, "ddd MMM D").isSame(gameDate, "day") && 
-          (teams == null || teams.indexOf(game.home_team_short) != -1 ||
-            teams.indexOf(game.visiting_team_short) != -1)) {
-          addToArray.push(game);
-        }
-      });
-    }
-
-  },
-
-  getLeague: function(league, teams, gameDate) {
+  getLeague: function(league, teams) {
 
     var self = this;
-    var d = moment(gameDate);
 
-    // In case the front end requests scores for a supported league currently out of season
-    if (!this.scoresObj.data[league.toLowerCase()]) {
-      return [];
-    }
-
-    /*
-      Sportsnet's feed is subdivided by league and then further subdivided
-      into a number of different arrays
-
-      So we'll build one array that has games from each if they match
-      the game date and the teams array if present
-    */
-    var leagueData = this.scoresObj.data[league.toLowerCase()];
-
-    var snetGameObjects = [
-      "Pre-Game",
-      "In-Progress",
-      "Half-Over",
-      "Final",
-      "Delayed",
-      "Postponed"
-    ];
-
-    var filteredGames = [];
-
-    snetGameObjects.forEach(function(obj) {
-      self.filterGames(obj, leagueData, filteredGames, teams, d);
+    var filteredGames = this.scoresObj.data.games.filter(function(game) {
+      return(game.league.toUpperCase() == league.toUpperCase() &&
+        (teams == null || teams.indexOf(game.home_team.short_name.toUpperCase()) != -1 ||
+          teams.indexOf(game.visiting_team.short_name.toUpperCase()) != -1) );
     });
 
 
@@ -179,8 +155,8 @@ module.exports = {
 
 
     filteredGames.sort(function(a,b) {
-      var aTime = moment(a.time, "hh:mm a zz");
-      var bTime = moment(b.time, "hh:mm a zz");
+      var aTime = moment(a.timestamp * 1000);
+      var bTime = moment(b.timestamp * 1000);
 
       //first sort by start time
       if (aTime.isBefore(bTime)) {
@@ -191,10 +167,10 @@ module.exports = {
       }
 
       //start times are the same.  Now sort by team short codes
-      if (a.visiting_team_short < b.visiting_team_short) {
+      if (a.visiting_team.short_name < b.visiting_team.short_name) {
         return -1;
       }
-      if (a.visiting_team_short > b.visiting_team_short) {
+      if (a.visiting_team.short_name > b.visiting_team.short_name) {
         return 1;
       }
 
@@ -217,7 +193,7 @@ module.exports = {
         case "Pre-Game":
           gameState = 0; //not started
           //Feed provides all game times in Eastern Time
-          status.push(moment.tz(game.time, "hh:mm a zz", "America/Toronto").tz(localTZ).format("h:mm a"));
+          status.push(moment(game.timestamp * 1000).tz(localTZ).format("h:mm a"));
           break;
 
         case "In-Progress":
@@ -240,11 +216,14 @@ module.exports = {
                 display game.clock and feed game.period
                 into the getPeriod() routine.
               */
-              if (game.period_status.indexOf("End ") != -1) {
+              if (game.shootout == true) {
+                status.push("SHOOTOUT");
+              } else if (game.overtime == true) {
+                status.push(game.clock);          
+                status.push("OT");
+              } else if (game.clock == "0:00") {
                 status.push("END");
                 status.push(self.getPeriod(league, game.period));
-              } else if (game.period_status == "SO") {
-                status.push("SHOOTOUT");
               } else {
                 status.push(game.clock);          
                 status.push(self.getPeriod(league, game.period));
@@ -258,7 +237,7 @@ module.exports = {
                 then feed game.period into the getPeriod() routine
                 to format ordinals with the <sup> wrapper.
               */
-              status.push(game.period_status.split(" ")[0]);
+              status.push(game.period_status && game.period_status.split(" ")[0]);
               status.push(self.getPeriod(league, game.period));
               break;
 
@@ -326,19 +305,19 @@ module.exports = {
 
         default:
           gameState = 0;
-          status.push(moment(game.time, "hh:mm a zz").tz(localTZ).format("h:mm a"));
+          status.push(moment(game.timestamp * 1000).tz(localTZ).format("h:mm a"));
           break;
       }
 
       var formattedGame = {
         classes: classes,
         gameMode: gameState,
-        hTeam: game.home_team_short,
-        vTeam: game.visiting_team_short,
-        hTeamLong: game.home_team_short == "TBD" ? "TBD" : self.titleCase(game.home_team),
-        vTeamLong: game.visiting_team_short == "TBD" ? "TBD" : self.titleCase(game.visiting_team),
-        hScore: game.home_score,
-        vScore: game.visiting_score,
+        hTeam: game.home_team.short_name,
+        vTeam: game.visiting_team.short_name,
+        hTeamLong: game.home_team.short_name == "TBD" ? "TBD" : self.titleCase(game.home_team.name),
+        vTeamLong: game.visiting_team.short_name == "TBD" ? "TBD" : self.titleCase(game.visiting_team.name),
+        hScore: game.home_team.score,
+        vScore: game.visiting_team.score,
         status: status
       };
 
@@ -354,10 +333,10 @@ module.exports = {
   getFinalOT: function(league, game) {
     switch (league) {
       case "NHL":
-        if (game.formatted_status && game.formatted_status == "F(OT)") {
-          return " (OT)";
-        } else if (game.formatted_status && game.formatted_status == "F(SO)") {
+        if (game.shootout == true) {
           return " (SO)";
+        } else if (game.overtime == true) {
+          return " (OT)";
         }  else if (game.period == 4) {
           return " (OT)";
         } else if (game.period > 4) {
