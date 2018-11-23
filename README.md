@@ -338,7 +338,7 @@ HOU   Houston Texans
 IND   Indianapolis Colts
 JAX   Jacksonville Jaguars
 KC    Kansas City Chiefs
-LA    Los Angeles Rams
+LAR    Los Angeles Rams
 LAC   Los Angeles Chargers
 MIA   Miami Dolphins
 MIN   Minnesota Vikings
