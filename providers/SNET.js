@@ -242,13 +242,11 @@ module.exports = {
               break;
 
             case "MLS":
-              /*
-                Games at the half get put in the "Half-Over",
-                array. So we don't need to handle it here.
-                To Do: Extra Time and Penalty Kicks
-              */
-              status.push(game.clock);
-              status.push(self.getPeriod(league, game.period));
+              if (game.clock == "Half") {
+                status.push("HALFTIME");
+              } else {
+                status.push(game.clock);                
+              }
               break;
 
             case "NFL":
