@@ -483,6 +483,31 @@ CRY   Crystal Palace
 WAT   Watford
 ```
 
+### LALIGA
+```
+Teams:
+---------------
+ALV   Alavés
+ATM   Atletico Madrid
+BAR   Barcelona
+BET   Real Betis   
+BIL   Athletic Bilbao
+CEL   Celta Vigo
+EIB   Eibar
+ESP   Espanyol
+GET   Getafe
+GIR   Girona
+HUE   Huesca
+LEG   Leganes
+LEV   Levante
+MAD   Real Madrid
+RAY   Rayo Vallecano
+RSO   Real Sociedad   
+SEV   Sevilla FC
+VAL   Valencia
+VIL   Villarreal
+VLD   Real Valladolid
+```
 
 ### BRASILEIRAO
 ```
