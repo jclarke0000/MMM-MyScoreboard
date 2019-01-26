@@ -735,6 +735,10 @@ Module.register("MMM-MyScoreboard",{
 
     BUNDESLIGA : {
 
+    },
+
+    LALIGA : {
+      
     }
 
   }
