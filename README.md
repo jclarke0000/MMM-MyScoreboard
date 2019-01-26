@@ -5,7 +5,23 @@ https://magicmirror.builders/<br>
 https://github.com/MichMich/MagicMirror
 
 This module display's today's scores for your favourite teams across a number of different
-leagues, including NHL, NBA, NFL, MLB, MLS, CFL, NCAAF (FBS Division) and NCAAM (Division I).
+leagues, including:
+
+* NHL Hockey
+* NBA Basketball
+* MLB Baseball
+* NFL Footabll
+* CFL Footabll (Canadian Footbal League)
+* MLS Soccer
+* NCAAF (FBS Division)
+* NCAAM (Division I and March Madness)
+* EPL (English Premier League Soccer)
+* BRASILEIRAO (Brasileirão League 1 Soccer)
+* Conmebol Libertadores
+* FIFA World Cup Soccer
+* Bundesliga German League Soccer
+* LaLiga (Spanish Division I Soccer)
+
 
 ![Screen Shot](/../screenshots/MMM-MyScoreboard-screenshot.png?raw=true "Screen Shot")
 
@@ -80,12 +96,20 @@ Currently this module supports the following leagues:
 * **NBA** - National Basketball Association
 * **MLB** - Major League Baseball
 * **NFL** - National Football League
-* **MLS** - Major League Soccer
 * **CFL** - Canadian Football League
+* **MLS** - Major League Soccer
 * **NCAAF** - NCAA College Football (FBS Division only)
 * **NCAAM** - NCAA College Basketball (Division I)
+* **NCAAM_MM** - NCAA College Basketball (March Madness Tournament)
+* **EPL** - English Premier League Soccer
+* **BRASILEIRAO** - Brazilian League 1 Soccer
+* **LIBERTADORES** - CONMEBOL Libertadores
+* **FIFAWC** - FIFA World Cup Soccer
+* **BUNDESLIGA** - German League Soccer
 
-Each entry in your `sports` array is an object with two properties:
+
+
+Each entry in your `sports` array is an object with the following properties:
 
 <table>
   <thead>
@@ -97,7 +121,11 @@ Each entry in your `sports` array is an object with two properties:
   <tbody>
     <tr>
       <td><code>league</code></td>
-      <td><strong>REQUIRED</strong> e.g.: <code>"NHL"</code>.<br><br><strong>Type</strong> <code>String</code></td>
+      <td><strong>REQUIRED</strong> e.g.: <code>"NHL"</code>. Use any of the bold, uppercase league labaels from the list above.<br><br><strong>Type</strong> <code>String</code></td>
+    </tr>
+    <tr>
+      <td><code>label</code></td>
+      <td>If <code>showLeagueSeparators</code> is set to <code>true</code>, you can optionally set a custom label for the separator. Useful in particular to show something other than <code>"NCAAM_MM"</code> for the March Madness tournament.<br><br><strong>Type</strong> <code>String</code><br />Defaults to the value for <code>league</code>.</td>
     </tr>
     <tr>
       <td><code>teams</code></td>
@@ -146,6 +174,10 @@ It should be noted that if you specify arrays for both <code>teams</code> and <c
       {
         league: "CFL",
         teams: ["TOR", "MTL", "OTT"]
+      },
+      {
+        league: "NCAAM_MM",
+        label: "March Madness"
       }
     ]
 
@@ -369,6 +401,28 @@ AFC
 NFC
 ```
 
+### CFL
+```
+Teams:
+---------------
+
+BC    B.C. Lions
+CGY   Calgary Stampeders
+EDM   Edmonton Eskimos
+HAM   Hamilton Tiger-Cats
+MTL   Montreal Alouetts
+OTT   Ottawa Redblacks
+SSK   Saskatchewan Roughriders
+TOR   Toronto Argonauts
+WPG   Winnipeg Blue Bombers
+
+Groups:
+---------------
+East
+West
+```
+
+
 ### MLS
 ```
 Teams:
@@ -403,25 +457,144 @@ East
 West
 ```
 
-### CFL
+### EPL
 ```
 Teams:
 ---------------
+SWA   Swansea City
+BHA   Brighton & Hove Albion
+HUD   Huddersfield Town
+STK   Stoke City
+BOU   AFC Bournemouth
+ARS   Arsenal
+MAN   Manchester United
+NEW   Newcastle United
+CHE   Chelsea
+LIV   Liverpool
+TOT   Tottenham Hotspur
+EVE   Everton
+WHU   West Ham United
+LEI   Leicester City
+SOU   Southampton
+BUR   Burnley
+MNC   Manchester City
+WBA   West Bromwich Albion
+CRY   Crystal Palace
+WAT   Watford
+```
 
-BC    B.C. Lions
-CGY   Calgary Stampeders
-EDM   Edmonton Eskimos
-HAM   Hamilton Tiger-Cats
-MTL   Montreal Alouetts
-OTT   Ottawa Redblacks
-SSK   Saskatchewan Roughriders
-TOR   Toronto Argonauts
-WPG   Winnipeg Blue Bombers
 
-Groups:
+### BRASILEIRAO
+```
+Teams:
 ---------------
-East
-West
+FLA   Flamengo
+COR   Corinthians
+INT   Internacional
+CRU   Cruzeiro
+SAO   São Paulo
+PAL   Palmeiras
+SAN   Santos
+FLU   Fluminense
+PAR   Paraná
+VAS   Vasco da Gama
+VIT   Vitória
+CAP   Atlético-PR
+BOT   Botafogo
+AMG   América-MG
+GRE   Grêmio
+CAM   Atlético-MG
+SPO   Sport
+CHA   Chapecoense
+BAH   Bahia
+CEA   Ceará   
+```
+
+
+### LIBERTADORES
+```
+Teams:
+---------------
+CABJ  Boca Juniors
+EST   Estudiantes La Plata
+IND   Independiente
+RAC   Racing Club
+CARP  River Plate
+BAN   Banfield
+FLA   Flamengo
+COR   Corinthians
+DSC   Defensor Sporting
+DEL   Delfin
+CRU   Cruzeiro
+PAL   Palmeiras
+EME   Emelec
+LIB   Libertad
+CERR  Cerro Porteño
+SAN   Santos
+OLI   Olimpia
+ALM   Alianza Lima
+BOL   Bolívar
+ORI   Oriente Petrolero
+PEN   Peñarol
+NAC   Nacional
+UDS   Universitario de Deportes
+STR   The Strongest
+COL   Colo Colo
+``` 
+
+###BUNDESLIGA 
+```
+Teams: 
+---------------
+COL   FC Cologne
+BVB   Borussia Dortmund
+FRA   Eintracht Frankfurt
+FRE   SC Freiburg
+HSV   Hamburg SV
+HER   Hertha Berlin
+LEV   Bayer Leverkusen
+BMU   Bayern Munich
+SCH   Schalke 04
+STU   VfB Stuttgart
+BRE   Werder Bremen
+WLF   VfL Wolfsburg
+MGB   Borussia Monchengladbach
+HAN   Hannover 96
+MNZ   Mainz
+AUG   FC Augsburg
+HOF   TSG Hoffenheim
+RBL   RB Leipzig
+```
+
+### FIFAWC (2018 Russia FIFA WORLD CUP)
+```
+Teams:
+---------------
+ESP   Spain
+ARG   Argentina
+MEX   Mexico
+BRA   Brazil
+COL   Colombia
+PER   Peru
+URU   Uruguay
+CRC   Costa Rica
+ENG   England
+KOR   South Korea
+RUS   Russia
+BEL   Belgium
+SWE   Sweden
+IRN   Iran
+ISL   Iceland
+POL   Poland
+SUI   Switzerland
+CRO   Croatia
+FRA   France
+DEN   Denmark
+GER   Germany
+POR   Portugal
+JPN   Japan
+AUS   Australia
+SEN   Senegal
 ```
 
 ### NCAAF (FBS Division)
@@ -576,7 +749,7 @@ SEC
 Sun Belt
 ```
 
-### NCAAM (Division I)
+### NCAAM (Division I and March Madness)
 ```
 Teams:
 ---------------
@@ -933,7 +1106,7 @@ XAV   Xavier Musketeers
 YALE  Yale Bulldogs
 YSU   Youngstown State Penguins
 
-Groups:
+Groups (Division I only.  No groups for March Madness):
 ---------------
 Top 25
 America East

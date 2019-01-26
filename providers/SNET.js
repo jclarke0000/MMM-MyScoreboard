@@ -307,6 +307,12 @@ module.exports = {
           break;
       }
 
+      /*
+        URLs to logo images are available in the feed, but they are a bit too low
+        quaity for some of the templates. However, logos are available at higher
+        resolution if we replace "59x59" with "200x200" in the path.
+      */
+
       var formattedGame = {
         classes: classes,
         gameMode: gameState,
