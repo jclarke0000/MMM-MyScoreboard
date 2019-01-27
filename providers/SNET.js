@@ -361,7 +361,7 @@ module.exports = {
         break;
       case "MLS":
         if (game.period > 2) {
-          return " (OT)";
+          return " (ET)";
         } 
         break;
     } 
@@ -405,6 +405,11 @@ module.exports = {
           return ("OT");
         } else if (p > 4) {
           return (p - 3) + "OT";
+        }
+        break;
+      case "MLS" :
+        if (p > 2) {
+          return ("ET");
         }
         break;
     }

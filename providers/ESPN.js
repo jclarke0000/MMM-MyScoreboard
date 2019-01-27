@@ -49,6 +49,15 @@ const parseJSON = require("json-parse-async");
 module.exports = {
 
   PROVIDER_NAME: "ESPN",
+  SOCCER_LEAGUES: [
+    "EPL",
+    "LALIGA",
+    "BRASILEIRAO",
+    "LIBERTADORES",
+    "FIFAWC",
+    "BUNDESLIGA"
+  ],
+
 
   getLeaguePath: function(league) {
     switch (league) {
@@ -137,7 +146,7 @@ module.exports = {
 
   formatScores: function(league, data, teams) {
 
-    var self = this;
+    // var self = this;
     var formattedGamesList = new Array();
     var localTZ = moment.tz.guess();
 
@@ -199,7 +208,7 @@ module.exports = {
 
 
     //iterate through games and construct formattedGamesList
-    filteredGamesList.forEach(function(game) {
+    filteredGamesList.forEach(game => {
 
       var status = [];
       var classes = [];
@@ -237,13 +246,17 @@ module.exports = {
         case "2": //in-progress
         case "21": //beginning of period
         case "24": //overtime
+        case "25": //SOCCER first half
+        case "26": //SOCCER second half
+        case "43": //SOCCER Golden Time
+        case "44": //Shootout
           gameState = 1;
           status.push(game.status.displayClock);
-          status.push(self.getPeriod(league, game.status.period));
+          status.push(this.getPeriod(league, game.status.period));            
           break;
         case "3": //final
           gameState = 2;
-          status.push("Final" + self.getFinalOT(league, game.status.period));
+          status.push("Final" + this.getFinalOT(league, game.status.period));
           break;
         case "4": //forfeit
         case "9": //forfeit of home team
@@ -270,21 +283,31 @@ module.exports = {
           status.push("Suspended");
           break;
         case "22": //end period
+        case "48": //SOCCER end extra time
           gameState = 1;
           status.push("END");
-          status.push(self.getPeriod(league, game.status.period));
+          status.push(this.getPeriod(league, game.status.period));
           break;
         case "23": //halftime
           gameState = 1;
           status.push("HALFTIME");
           break;
+        case "49": //SOCCER extra time half time
+          gameState = 1;
+          status.push("HALFTIME (ET)");
+          break;
         case "28": //SOCCER Full Time
           gameState = 2;
-          status.push("Full Time" + self.getFinalOT(league, game.status.period));
+          status.push("Full Time " + this.getFinalOT(league, game.status.period));
           break;
+        case "45": //SOCCER Final ET
+        case "46": //SOCCER final score - after golden goal
+          gameState = 2;
+          status.push("Full Time (ET)"); 
+          break;         
         case "47": //Soccer Final PK
           gameState = 2;
-          status.push("Full Time (PK) " + self.getFinalPK(hTeamData,vTeamData)); 
+          status.push("Full Time (PK) " + this.getFinalPK(hTeamData,vTeamData)); 
           break;         
         default: //Anything else, treat like a game that hasn't started yet
           gameState = 0;
@@ -334,8 +357,8 @@ module.exports = {
         vTeam: vTeamData.team.abbreviation == undefined ? vTeamData.team.name.substring(0,4).toUpperCase() + " " : vTeamData.team.abbreviation,
         hTeamLong: hTeamLong,
         vTeamLong: vTeamLong,
-        hTeamRanking: (league == "NCAAF" || league == "NCAAM") ? self.formatT25Ranking(hTeamData.curatedRank.current) : null,
-        vTeamRanking: (league == "NCAAF" || league == "NCAAM") ? self.formatT25Ranking(vTeamData.curatedRank.current) : null,
+        hTeamRanking: (league == "NCAAF" || league == "NCAAM") ? this.formatT25Ranking(hTeamData.curatedRank.current) : null,
+        vTeamRanking: (league == "NCAAF" || league == "NCAAM") ? this.formatT25Ranking(vTeamData.curatedRank.current) : null,
         hScore: parseInt(hTeamData.score),
         vScore: parseInt(vTeamData.score),
         status: status,
@@ -398,10 +421,13 @@ module.exports = {
       case "FIFAWC":
       case "BUNDESLIGA":
         if (p == 3) {
-          return "OT";
+          return "ET";
         } else if (p > 3) {
-          return (p - 2) + "OT";
+          return (p - 2) + "ET";
         }
+    }
+    if (this.isSoccer(league)) {
+      return "";
     }
     return this.getOrdinal(p);
   },
@@ -425,7 +451,7 @@ module.exports = {
       case "FIFAWC":
       case "BUNDESLIGA":
         if (p > 2) {
-          return " (OT)";
+          return " (ET)";
         }
     }
     return "";
@@ -433,9 +459,15 @@ module.exports = {
 
   getFinalPK: function (hTeamData,vTeamData) {
     return hTeamData.shootoutScore + "x" + vTeamData.shootoutScore;
-  }  
+  },
 
-
+  isSoccer: function(league) {
+    if (this.SOCCER_LEAGUES.indexOf(league) !== -1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 
 };
