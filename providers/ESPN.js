@@ -14,7 +14,7 @@
     LIBERTADORES (CONMEBOL Libertadores)
     FIFAWC (FIFA World Cup)
     BUNDESLIGA (German League Soccer)
-
+    LALIGA (Spanish Division I)
 
 
   Data API also provides scoreboard data for MANY other
@@ -427,7 +427,7 @@ module.exports = {
         }
     }
     if (this.isSoccer(league)) {
-      return "";
+      return ""; //no need to indicate first or second half
     }
     return this.getOrdinal(p);
   },
