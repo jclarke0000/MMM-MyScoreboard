@@ -542,8 +542,8 @@ Module.register("MMM-MyScoreboard",{
     }
 
     //just used for debug, if you want to force a specific date
-    if (this.config.gameDate) {
-      gameDate = moment(this.config.gameDate, "YYYYMMDD");
+    if (this.config.DEBUG_gameDate) {
+      gameDate = moment(this.config.DEBUG_gameDate, "YYYYMMDD");
     }
 
     var self = this;
@@ -738,7 +738,7 @@ Module.register("MMM-MyScoreboard",{
     },
 
     LALIGA : {
-      
+
     }
 
   }
