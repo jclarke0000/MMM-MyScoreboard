@@ -107,6 +107,11 @@ Module.register("MMM-MyScoreboard",{
       provider: "ESPN",
       logoFormat: "url",
       homeTeamFirst: true
+    },
+    "UEFACHMP": {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
     }
 
   },
@@ -715,6 +720,17 @@ Module.register("MMM-MyScoreboard",{
 
     NCAAM_MM : {
 
+    },
+
+    UEFACHMP : {
+      "Group A" : ["BVB", "ATM", "BRUG", "MON"],
+      "Group B" : ["BAR", "TOT", "INT", "PSV"],
+      "Group C" : ["PSG", "LIV", "NAP", "RSB"],
+      "Group D" : ["POR", "SCH", "GAL", "LOK"],
+      "Group E" : ["BMU", "AJAX", "BEN", "AEK"],
+      "Group F" : ["MNC", "LYON", "SHAK", "HOF"],
+      "Group G" : ["MAD", "ROMA", "VPLZ", "CSKA"],
+      "Group H" : ["JUV", "MAN", "VAL", "BOY"]
     },
 
     EPL : {

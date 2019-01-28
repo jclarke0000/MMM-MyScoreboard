@@ -13,14 +13,15 @@ leagues, including:
 * NFL Footabll
 * CFL Footabll (Canadian Footbal League)
 * MLS Soccer
-* NCAAF (FBS Division)
-* NCAAM (Division I and March Madness)
-* EPL (English Premier League Soccer)
-* BRASILEIRAO (Brasileirão League 1 Soccer)
+* NCAA College Football (FBS Division)
+* NCAA College Basketball (Division I and March Madness)
+* English Premier League Soccer
+* UEFA Champions League Soccer
+* Brasileirão League 1 Soccer
 * Conmebol Libertadores
 * FIFA World Cup Soccer
 * Bundesliga German League Soccer
-* LaLiga (Spanish Division I Soccer)
+* La Liga Spanish Division I Soccer
 
 
 ![Screen Shot](/../screenshots/MMM-MyScoreboard-screenshot.png?raw=true "Screen Shot")
@@ -102,10 +103,12 @@ Currently this module supports the following leagues:
 * **NCAAM** - NCAA College Basketball (Division I)
 * **NCAAM_MM** - NCAA College Basketball (March Madness Tournament)
 * **EPL** - English Premier League Soccer
+* **UEFACHMP** - UEFA Champions League League Soccer
 * **BRASILEIRAO** - Brazilian League 1 Soccer
 * **LIBERTADORES** - CONMEBOL Libertadores
 * **FIFAWC** - FIFA World Cup Soccer
 * **BUNDESLIGA** - German League Soccer
+* **LALIGA** - Spanish League Soccer (Division I)
 
 
 
@@ -481,6 +484,55 @@ MNC   Manchester City
 WBA   West Bromwich Albion
 CRY   Crystal Palace
 WAT   Watford
+```
+
+### UEFACHMP
+```
+Teams:
+---------------
+AEK   AEK Athens
+AJAX  Ajax Amsterdam
+ATM   Atletico Madrid
+BAR   Barcelona
+BEN   Benfica
+BMU   Bayern Munich
+BOY   Young Boys
+BRUG  Club Brugge
+BVB   Borussia Dortmund
+CSKA  CSKA Moscow
+GAL   Galatasaray
+HOF   TSG Hoffenheim
+INT   Internazionale
+JUV   Juventus
+LIV   Liverpool
+LOK   Lokomotiv Moscow
+LYON  Lyon
+MAD   Real Madrid
+MAN   Manchester United
+MNC   Manchester City
+MON   AS Monaco
+NAP   Napoli
+POR   FC Porto
+PSG   Paris Saint-Germain
+PSV   PSV Eindhoven
+ROMA  AS Roma
+RSB   Red Star Belgrade
+SCH   Schalke 04
+SHAK  Shakhtar Donetsk
+TOT   Tottenham Hotspur
+VAL   Valencia
+VPLZ  Viktoria Plzen
+
+Groups:
+---------------
+Group A
+Group B
+Group C
+Group D
+Group E
+Group F
+Group G
+Group H
 ```
 
 ### LALIGA

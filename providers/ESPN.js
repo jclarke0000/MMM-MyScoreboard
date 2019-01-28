@@ -7,12 +7,13 @@
   Provides scores for
     NCAAF (College Football, FBS Division)
     NCAAM (College Basketball. Division I)
-    MCAAM_M (College Basketball, March Madness Torunament)
+    NCAAM_MM (College Basketball, March Madness Torunament)
     NBA (National Basketball Association)
     EPL (English Premier League Soccer)
+    UEFACHMP (UEFA Champions League)
+    FIFAWC (FIFA World Cup)
     BRASILEIRAO (Brazilian League 1 Soccer)
     LIBERTADORES (CONMEBOL Libertadores)
-    FIFAWC (FIFA World Cup)
     BUNDESLIGA (German League Soccer)
     LALIGA (Spanish Division I)
 
@@ -55,7 +56,8 @@ module.exports = {
     "BRASILEIRAO",
     "LIBERTADORES",
     "FIFAWC",
-    "BUNDESLIGA"
+    "BUNDESLIGA",
+    "UEFACHMP"
   ],
 
 
@@ -79,7 +81,9 @@ module.exports = {
       case "BUNDESLIGA":
         return "soccer/ger.1";        
       case "LALIGA":
-        return "soccer/esp.1";        
+        return "soccer/esp.1";
+      case "UEFACHMP" :
+        return "soccer/uefa.champions";      
       default:
         return null;
     }

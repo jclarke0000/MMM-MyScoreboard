@@ -12,11 +12,6 @@
     MLS (Major League Soccer)
     MLB (Major League Baseball)
 
-  Data feed also provides data for other
-  leagues, not currently supported:
-    EPL (European Premier League Soccer)
-    CHLG (European Champion's League Soccer)
-
 
   All sports are provided in a single feed at
   https://d290qmen6zswb.cloudfront.net/ticker
