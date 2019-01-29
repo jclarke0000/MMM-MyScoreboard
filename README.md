@@ -641,56 +641,35 @@ POR   Portugal
 SUI   Switzerland
 ```
 
-### LALIGA
+### FIFAWC
 ```
 Teams:
 ---------------
-ALV   Alavés
-ATM   Atletico Madrid
-BAR   Barcelona
-BET   Real Betis   
-BIL   Athletic Bilbao
-CEL   Celta Vigo
-EIB   Eibar
-ESP   Espanyol
-GET   Getafe
-GIR   Girona
-HUE   Huesca
-LEG   Leganes
-LEV   Levante
-MAD   Real Madrid
-RAY   Rayo Vallecano
-RSO   Real Sociedad   
-SEV   Sevilla FC
-VAL   Valencia
-VIL   Villarreal
-VLD   Real Valladolid
-```
-
-### SERIEA
-```
-Teams:
----------------
-ATA   Atalanta
-BOL   Bologna
-CAG   Cagliari
-CVO   Chievo Verona
-EMP   Empoli
-FIO   Fiorentina
-FRO   Frosinone
-GEN   Genoa
-INT   Internazionale
-JUV   Juventus
-LAZ   Lazio
-MIL   AC Milan
-NAP   Napoli
-PAR   Parma
-ROMA  AS Roma
-SAS   Sassuolo
-SMP   Sampdoria
-SPAL  Società Polisportiva Ars et Labor
-TOR   Torino
-UDI   Udinese
+ESP   Spain
+ARG   Argentina
+MEX   Mexico
+BRA   Brazil
+COL   Colombia
+PER   Peru
+URU   Uruguay
+CRC   Costa Rica
+ENG   England
+KOR   South Korea
+RUS   Russia
+BEL   Belgium
+SWE   Sweden
+IRN   Iran
+ISL   Iceland
+POL   Poland
+SUI   Switzerland
+CRO   Croatia
+FRA   France
+DEN   Denmark
+GER   Germany
+POR   Portugal
+JPN   Japan
+AUS   Australia
+SEN   Senegal
 ```
 
 ### BRASILEIRAO
@@ -719,6 +698,81 @@ BAH   Bahia
 CEA   Ceará   
 ```
 
+### BUNDESLIGA 
+```
+Teams: 
+---------------
+COL   FC Cologne
+BVB   Borussia Dortmund
+FRA   Eintracht Frankfurt
+FRE   SC Freiburg
+HSV   Hamburg SV
+HER   Hertha Berlin
+LEV   Bayer Leverkusen
+BMU   Bayern Munich
+SCH   Schalke 04
+STU   VfB Stuttgart
+BRE   Werder Bremen
+WLF   VfL Wolfsburg
+MGB   Borussia Monchengladbach
+HAN   Hannover 96
+MNZ   Mainz
+AUG   FC Augsburg
+HOF   TSG Hoffenheim
+RBL   RB Leipzig
+```
+
+### FRL1
+```
+Teams:
+---------------
+AMI   SC Amiens
+ANG   Angers
+BOR   Bordeaux
+CAN   Caen
+DIJ   Dijon FCO
+GUI   Guingamp
+LOSC  Lille
+LYON  Lyon
+MON   AS Monaco
+MONT  Montpellier
+MRS   Marseille
+NAN   Nantes
+NICE  Nice
+NIM   Nimes
+PSG   Paris Saint-Germain
+REI   Stade de Reims
+REN   Stade Rennes
+STE   Saint-Etienne
+STRA  Strasbourg
+TOU   Toulouse
+```
+
+### LALIGA
+```
+Teams:
+---------------
+ALV   Alavés
+ATM   Atletico Madrid
+BAR   Barcelona
+BET   Real Betis   
+BIL   Athletic Bilbao
+CEL   Celta Vigo
+EIB   Eibar
+ESP   Espanyol
+GET   Getafe
+GIR   Girona
+HUE   Huesca
+LEG   Leganes
+LEV   Levante
+MAD   Real Madrid
+RAY   Rayo Vallecano
+RSO   Real Sociedad   
+SEV   Sevilla FC
+VAL   Valencia
+VIL   Villarreal
+VLD   Real Valladolid
+```
 
 ### LIBERTADORES
 ```
@@ -751,87 +805,6 @@ STR   The Strongest
 COL   Colo Colo
 ``` 
 
-###BUNDESLIGA 
-```
-Teams: 
----------------
-COL   FC Cologne
-BVB   Borussia Dortmund
-FRA   Eintracht Frankfurt
-FRE   SC Freiburg
-HSV   Hamburg SV
-HER   Hertha Berlin
-LEV   Bayer Leverkusen
-BMU   Bayern Munich
-SCH   Schalke 04
-STU   VfB Stuttgart
-BRE   Werder Bremen
-WLF   VfL Wolfsburg
-MGB   Borussia Monchengladbach
-HAN   Hannover 96
-MNZ   Mainz
-AUG   FC Augsburg
-HOF   TSG Hoffenheim
-RBL   RB Leipzig
-```
-
-### FIFAWC
-```
-Teams:
----------------
-ESP   Spain
-ARG   Argentina
-MEX   Mexico
-BRA   Brazil
-COL   Colombia
-PER   Peru
-URU   Uruguay
-CRC   Costa Rica
-ENG   England
-KOR   South Korea
-RUS   Russia
-BEL   Belgium
-SWE   Sweden
-IRN   Iran
-ISL   Iceland
-POL   Poland
-SUI   Switzerland
-CRO   Croatia
-FRA   France
-DEN   Denmark
-GER   Germany
-POR   Portugal
-JPN   Japan
-AUS   Australia
-SEN   Senegal
-```
-
-### FRL1
-```
-Teams:
----------------
-AMI   SC Amiens
-ANG   Angers
-BOR   Bordeaux
-CAN   Caen
-DIJ   Dijon FCO
-GUI   Guingamp
-LOSC  Lille
-LYON  Lyon
-MON   AS Monaco
-MONT  Montpellier
-MRS   Marseille
-NAN   Nantes
-NICE  Nice
-NIM   Nimes
-PSG   Paris Saint-Germain
-REI   Stade de Reims
-REN   Stade Rennes
-STE   Saint-Etienne
-STRA  Strasbourg
-TOU   Toulouse
-```
-
 ### MEX
 ```
 Teams:
@@ -854,6 +827,32 @@ TOL   Toluca
 UANL  U.A.N.L
 UNAM  Pumas UNAM
 VER   Veracruz
+```
+
+### SERIEA
+```
+Teams:
+---------------
+ATA   Atalanta
+BOL   Bologna
+CAG   Cagliari
+CVO   Chievo Verona
+EMP   Empoli
+FIO   Fiorentina
+FRO   Frosinone
+GEN   Genoa
+INT   Internazionale
+JUV   Juventus
+LAZ   Lazio
+MIL   AC Milan
+NAP   Napoli
+PAR   Parma
+ROMA  AS Roma
+SAS   Sassuolo
+SMP   Sampdoria
+SPAL  Società Polisportiva Ars et Labor
+TOR   Torino
+UDI   Udinese
 ```
 
 ### NCAAF (FBS Division)
