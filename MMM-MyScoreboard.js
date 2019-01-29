@@ -83,6 +83,11 @@ Module.register("MMM-MyScoreboard",{
       logoFormat: "url",
       homeTeamFirst: true
     },
+    "ENGCHMP" : {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
     "BRASILEIRAO" : {
       provider: "ESPN",
       logoFormat: "url",
@@ -112,7 +117,33 @@ Module.register("MMM-MyScoreboard",{
       provider: "ESPN",
       logoFormat: "url",
       homeTeamFirst: true
+    },
+    "UEFAEUROPA": {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    "UEFANATIONS": {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    "SERIEA": {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    "FRL1": {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    "MEX": {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
     }
+
 
   },
 
@@ -718,44 +749,23 @@ Module.register("MMM-MyScoreboard",{
 
     },
 
-    NCAAM_MM : {
+    NCAAM_MM : {}, //no groups for March Madness
 
-    },
+    //Generally no divisions / conferences for soccer
+    EPL : {},
+    ENGCHMP : {},
+    UEFACHMP : {},
+    UEFAEUROPA : {},
+    UEFANATIONS : {},
+    FIFAWC : {},
+    BRASILEIRAO : {},
+    BUNDESLIGA : {},
+    FRL1: {},
+    LALIGA : {},
+    LIBERTADORES : {},
+    MEX : {},
+    SERIEA : {}
 
-    UEFACHMP : {
-      "Group A" : ["BVB", "ATM", "BRUG", "MON"],
-      "Group B" : ["BAR", "TOT", "INT", "PSV"],
-      "Group C" : ["PSG", "LIV", "NAP", "RSB"],
-      "Group D" : ["POR", "SCH", "GAL", "LOK"],
-      "Group E" : ["BMU", "AJAX", "BEN", "AEK"],
-      "Group F" : ["MNC", "LYON", "SHAK", "HOF"],
-      "Group G" : ["MAD", "ROMA", "VPLZ", "CSKA"],
-      "Group H" : ["JUV", "MAN", "VAL", "BOY"]
-    },
-
-    EPL : {
-
-    },
-
-    BRASILEIRAO : {
-
-    },
-
-    LIBERTADORES : {
-
-    },
-
-    FIFAWC : {
-
-    },
-
-    BUNDESLIGA : {
-
-    },
-
-    LALIGA : {
-
-    }
 
   }
 

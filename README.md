@@ -16,12 +16,18 @@ leagues, including:
 * NCAA College Football (FBS Division)
 * NCAA College Basketball (Division I and March Madness)
 * English Premier League Soccer
+* English Championship Leauge Soccer
 * UEFA Champions League Soccer
-* Brasileirão League 1 Soccer
-* Conmebol Libertadores
+* UEFA Europa League Soccer
+* UEFA Nations League Soccer
 * FIFA World Cup Soccer
+* Brasileirão League 1 Soccer
 * Bundesliga German League Soccer
+* French Ligue 1 Soccer
+* Conmebol Libertadores Soccer
+* Italian Serie A Soccer
 * La Liga Spanish Division I Soccer
+* Mexican Liga BBVA Bancomer Soccer
 
 
 ![Screen Shot](/../screenshots/MMM-MyScoreboard-screenshot.png?raw=true "Screen Shot")
@@ -103,12 +109,18 @@ Currently this module supports the following leagues:
 * **NCAAM** - NCAA College Basketball (Division I)
 * **NCAAM_MM** - NCAA College Basketball (March Madness Tournament)
 * **EPL** - English Premier League Soccer
+* **ENGCHMP** - English Championship League Soccer
 * **UEFACHMP** - UEFA Champions League League Soccer
-* **BRASILEIRAO** - Brazilian League 1 Soccer
-* **LIBERTADORES** - CONMEBOL Libertadores
+* **UEFAEUROPA** - UEFA Europa League Soccer
+* **UEFANATIONS** - UEFA Nations League Soccer
 * **FIFAWC** - FIFA World Cup Soccer
+* **BRASILEIRAO** - Brazilian League 1 Soccer
 * **BUNDESLIGA** - German League Soccer
+* **FRL1** - French Ligue 1 Soccer
 * **LALIGA** - Spanish League Soccer (Division I)
+* **LIBERTADORES** - CONMEBOL Libertadores
+* **MEX** - Mexican Liga BBVA Bancomer Soccer
+* **SERIEA** - Italian Serie A Soccer
 
 
 
@@ -201,6 +213,9 @@ Examples of the available view styles you can specify with the `viewStyle` param
 
 
 ## Team Shortcodes and Groups
+
+**NOTE** For many of the soccer leagues, the list of teams changes every season as teams get relegated out, while other get promoted in.  If the team you wish to follow isn't listed, just go to ESPN.com, find your team in the league table, and resize your browser to mobile width.  You will see the shortcode there.
+
 
 ### NHL
 
@@ -486,6 +501,36 @@ CRY   Crystal Palace
 WAT   Watford
 ```
 
+### ENGCHMP
+```
+Teams:
+---------------
+AVL   Aston Villa
+BIR   Birmingham City
+BLK   Blackburn Rovers
+BOL   Bolton Wanderers
+BRC   Bristol City
+BRN   Brentford
+DER   Derby County
+FOR   Nottingham Forest
+HUL   Hull City
+IPS   Ipswich Town
+LEE   Leeds United
+MID   Middlesbrough
+MIL   Millwall
+NOR   Norwich City
+PNE   Preston North End
+QPR   Queens Park Rangers 
+REA   Reading
+ROT   Rotherham United
+SHFU  Sheffield United
+SHFW  Sheffield Wednesday
+STK   Stoke City
+SWA   Swansea City
+WBA   West Bromwich Albion
+WGA   Wigan Athletic
+```
+
 ### UEFACHMP
 ```
 Teams:
@@ -522,17 +567,78 @@ SHAK  Shakhtar Donetsk
 TOT   Tottenham Hotspur
 VAL   Valencia
 VPLZ  Viktoria Plzen
+```
 
-Groups:
+### UEFAEUROPA
+```
+Teams:
 ---------------
-Group A
-Group B
-Group C
-Group D
-Group E
-Group F
-Group G
-Group H
+AEK   AEK Larnaca
+AKB   Akhisar Belediyespor
+AND   Anderlecht
+APO   Apollon Limassol
+ARS   Arsenal
+ASTA  FC Astana
+BATE  BATE Borisov
+BES   Besiktas
+BET   Real Betis
+BOR   Bordeaux
+CEL   Celtic
+CHE   Chelsea
+COP   FC Copenhagen
+F91   F91 Dudelange
+FEN   Fenerbahce
+FRA   Eintracht Frankfurt
+GENK  Racing Genk
+JAB   Jablonec
+KIEV  Dynamo Kiev
+KRA   Krasnodar
+LAZ   Lazio
+LEV   Bayer Leverkusen
+LUD   Ludogorets Razgrad
+MAL   Malmo FF
+MIL   AC Milan
+MRS   Marseille
+OLY   Olympiakos
+PAOK  PAOK Salonika
+QBG   FK Qarabag
+RANG  Rangers
+RBS   FC Salzburg
+RBL   RB Leipzig
+REN   Stade Rennes
+ROS   Rosenborg
+SAR   Sarpsborg FK
+SEV   Sevilla FC
+SLP   Slavia Prague
+STL   Standard Liege
+TRN   FC Spartak Trnava
+ZAG   Dinamo Zagreb
+ZEN   Zenit St Petersburg
+ZUR   FC Zürich
+SCP   Sporting CP
+SPM   Spartak Moscow
+VIE   Rapid Vienna
+VIL   Villarreal
+VOR   Vorskla
+VIDI  Vidi
+```
+
+### UEFANATIONS
+```
+Teams:
+---------------
+BEL   Belgium
+CRO   Croatia
+ENG   England
+ESP   Spain
+FRA   France
+GER   Germany
+ISL   Iceland
+ITA   Italy
+NED   Netherlands
+POL   Poland
+POR   Portugal
+SUI   Switzerland
 ```
 
 ### LALIGA
@@ -559,6 +665,32 @@ SEV   Sevilla FC
 VAL   Valencia
 VIL   Villarreal
 VLD   Real Valladolid
+```
+
+### SERIEA
+```
+Teams:
+---------------
+ATA   Atalanta
+BOL   Bologna
+CAG   Cagliari
+CVO   Chievo Verona
+EMP   Empoli
+FIO   Fiorentina
+FRO   Frosinone
+GEN   Genoa
+INT   Internazionale
+JUV   Juventus
+LAZ   Lazio
+MIL   AC Milan
+NAP   Napoli
+PAR   Parma
+ROMA  AS Roma
+SAS   Sassuolo
+SMP   Sampdoria
+SPAL  Società Polisportiva Ars et Labor
+TOR   Torino
+UDI   Udinese
 ```
 
 ### BRASILEIRAO
@@ -643,7 +775,7 @@ HOF   TSG Hoffenheim
 RBL   RB Leipzig
 ```
 
-### FIFAWC (2018 Russia FIFA WORLD CUP)
+### FIFAWC
 ```
 Teams:
 ---------------
@@ -672,6 +804,56 @@ POR   Portugal
 JPN   Japan
 AUS   Australia
 SEN   Senegal
+```
+
+### FRL1
+```
+Teams:
+---------------
+AMI   SC Amiens
+ANG   Angers
+BOR   Bordeaux
+CAN   Caen
+DIJ   Dijon FCO
+GUI   Guingamp
+LOSC  Lille
+LYON  Lyon
+MON   AS Monaco
+MONT  Montpellier
+MRS   Marseille
+NAN   Nantes
+NICE  Nice
+NIM   Nimes
+PSG   Paris Saint-Germain
+REI   Stade de Reims
+REN   Stade Rennes
+STE   Saint-Etienne
+STRA  Strasbourg
+TOU   Toulouse
+```
+
+### MEX
+```
+Teams:
+---------------
+ALS   Atlas
+AME   América
+BUAP  Lobos BUAP
+CRA   Cruz Azul
+GUAD  Guadalajara
+LEO   León
+MON   Monterrey
+MOR   Morelia
+NEC   Necaxa
+PCH   Pachuca
+PUE   Puebla
+QRT   Querétaro
+SAN   Santos
+TIJ   Tijuana
+TOL   Toluca
+UANL  U.A.N.L
+UNAM  Pumas UNAM
+VER   Veracruz
 ```
 
 ### NCAAF (FBS Division)

@@ -11,11 +11,13 @@
     NBA (National Basketball Association)
     EPL (English Premier League Soccer)
     UEFACHMP (UEFA Champions League)
+    UEFAEUROPA (UEFA Europa League)
     FIFAWC (FIFA World Cup)
     BRASILEIRAO (Brazilian League 1 Soccer)
     LIBERTADORES (CONMEBOL Libertadores)
     BUNDESLIGA (German League Soccer)
     LALIGA (Spanish Division I)
+    SERIEA (Italian Serie A)
 
 
   Data API also provides scoreboard data for MANY other
@@ -50,14 +52,25 @@ const parseJSON = require("json-parse-async");
 module.exports = {
 
   PROVIDER_NAME: "ESPN",
+
+  /*
+    Used with isSoccer() so that we can quickly identify soccer leagues 
+    for score display patterns, instead of IFs for each league
+   */
   SOCCER_LEAGUES: [
     "EPL",
-    "LALIGA",
-    "BRASILEIRAO",
-    "LIBERTADORES",
+    "ENGCHMP",
+    "UEFACHMP",
+    "UEFAEUROPA",
+    "UEFANATIONS",
     "FIFAWC",
+    "BRASILEIRAO",
     "BUNDESLIGA",
-    "UEFACHMP"
+    "FRL1",
+    "LALIGA",
+    "LIBERTADORES",
+    "MEX",
+    "SERIEA",
   ],
 
 
@@ -72,18 +85,30 @@ module.exports = {
         return "basketball/mens-college-basketball";
       case "EPL":
         return "soccer/eng.1";
-      case "BRASILEIRAO":
-        return "soccer/bra.1";
-      case "LIBERTADORES":
-        return "soccer/conmebol.libertadores";
-      case "FIFAWC":
-        return "soccer/fifa.world";
-      case "BUNDESLIGA":
-        return "soccer/ger.1";        
-      case "LALIGA":
-        return "soccer/esp.1";
+      case "ENGCHMP":
+        return "soccer/eng.2";
       case "UEFACHMP" :
         return "soccer/uefa.champions";      
+      case "UEFAEUROPA" :
+        return "soccer/uefa.europa";      
+      case "UEFANATIONS" :
+        return "soccer/uefa.nations";    
+      case "FIFAWC":
+        return "soccer/fifa.world";
+      case "BRASILEIRAO":
+        return "soccer/bra.1";
+      case "BUNDESLIGA":
+        return "soccer/ger.1";        
+      case "FRL1" :
+        return "soccer/fra.1";      
+      case "LALIGA":
+        return "soccer/esp.1";
+      case "LIBERTADORES":
+        return "soccer/conmebol.libertadores";
+      case "MEX" :
+        return "soccer/mex.1";    
+      case "SERIEA" :
+        return "soccer/ita.1";      
       default:
         return null;
     }
@@ -407,57 +432,40 @@ module.exports = {
   getPeriod: function(league, p) {
 
     //check for overtime, otherwise return ordinal
-    switch (league) {
-      case "NCAAF":
-      case "NCAAM":
-      case "NCAAM_MM":
-      case "NBA":
-        if (p == 5) {
-          return "OT";
-        } else if (p > 5) {
-          return (p - 4) + "OT";
-        }
-        break;
-      case "EPL":
-      case "LALIGA":
-      case "BRASILEIRAO":
-      case "LIBERTADORES":
-      case "FIFAWC":
-      case "BUNDESLIGA":
-        if (p == 3) {
-          return "ET";
-        } else if (p > 3) {
-          return (p - 2) + "ET";
-        }
-    }
     if (this.isSoccer(league)) {
-      return ""; //no need to indicate first or second half
+
+      if (p == 3) {
+        return "ET";
+      } else if (p > 3) {
+        return (p - 2) + "ET";
+      } else {
+        return ""; //no need to indicate first or second half        
+      }
+
+    } else {
+      if (p == 5) {
+        return "OT";
+      } else if (p > 5) {
+        return (p - 4) + "OT";
+      }      
     }
+
     return this.getOrdinal(p);
+
   },
 
   getFinalOT: function(league, p) {
-    switch (league) {
-      case "NCAAF":
-      case "NCAAM":
-      case "NCAAM_MM":
-      case "NBA":
-        if (p == 5) {
-          return " (OT)";
-        } else if (p > 5) {
-          return " (" + (p - 4) + "OT)";
-        }
-        break;
-      case "EPL":
-      case "LALIGA":
-      case "BRASILEIRAO":
-      case "LIBERTADORES":
-      case "FIFAWC":
-      case "BUNDESLIGA":
-        if (p > 2) {
-          return " (ET)";
-        }
+
+    if (this.isSoccer(league) && p > 2) {
+      return " (ET)";    
+    } else if (!this.isSoccer(league)) {
+      if (p == 5) {
+        return " (OT)";
+      } else if (p > 5) {
+        return " (" + (p - 4) + "OT)";
+      }
     }
+
     return "";
   },
 
