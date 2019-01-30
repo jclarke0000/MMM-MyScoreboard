@@ -66,6 +66,7 @@ module.exports = {
     "FIFAWC",
     "BRASILEIRAO",
     "BUNDESLIGA",
+    "COPADELREY",
     "FRL1",
     "LALIGA",
     "LIBERTADORES",
@@ -99,6 +100,8 @@ module.exports = {
         return "soccer/bra.1";
       case "BUNDESLIGA":
         return "soccer/ger.1";        
+      case "COPADELREY" :
+        return "soccer/esp.copa_del_rey";
       case "FRL1" :
         return "soccer/fra.1";      
       case "LALIGA":

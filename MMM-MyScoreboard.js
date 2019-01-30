@@ -142,6 +142,11 @@ Module.register("MMM-MyScoreboard",{
       provider: "ESPN",
       logoFormat: "url",
       homeTeamFirst: true
+    },
+    "COPADELREY": {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
     }
 
 
