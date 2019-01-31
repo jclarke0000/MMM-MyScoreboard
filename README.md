@@ -109,15 +109,15 @@ Each entry in your `sports` array is an object with the following properties:
   <tbody>
     <tr>
       <td><code>league</code></td>
-      <td><strong>REQUIRED</strong> e.g.: <code>NHL</code>. Use any of the bold, uppercase league labaels from the list bleow.<br><br><strong>Type</strong> <code>String</code></td>
+      <td><strong>REQUIRED</strong> e.g.: <code>"NHL"</code>. Use any of the bold, uppercase league labaels from the list bleow.<br><br><strong>Type</strong> <code>String</code></td>
     </tr>
     <tr>
       <td><code>label</code></td>
-      <td>If <code>showLeagueSeparators</code> is set to <code>true</code>, you can optionally set a custom label for the separator. Useful in particular to show something other than <code>NCAAM_MM</code> for the March Madness tournament.<br><br><strong>Type</strong> <code>String</code><br />Defaults to the value for <code>league</code>.</td>
+      <td>If <code>showLeagueSeparators</code> is set to <code>true</code>, you can optionally set a custom label for the separator. Useful in particular to show something other than <code>"NCAAM_MM"</code> for the March Madness tournament.<br><br><strong>Type</strong> <code>String</code><br />Defaults to the value for <code>league</code>.</td>
     </tr>
     <tr>
       <td><code>teams</code></td>
-      <td>An array of teams for which you want to see scores.  Specify teams using their shortcodes (e.g.: <code>TOR</code> for Toronto Maple Leafs.<br><br><strong>Type</strong> <code>Array</code><br>See below for a full listing of teams and their short codes<br><br><strong>UPDATE v2.0:</strong> This is no longer required.</td>
+      <td>An array of teams for which you want to see scores.  Specify teams using their shortcodes (e.g.: <code>"TOR"</code> for Toronto Maple Leafs.<br><br><strong>Type</strong> <code>Array</code><br>See below for a full listing of teams and their short codes<br><br><strong>UPDATE v2.0:</strong> This is no longer required.</td>
     </tr>
     <tr>
       <td><code>groups</code></td>
@@ -133,39 +133,39 @@ It should be noted that if you specify arrays for both <code>teams</code> and <c
 
 ```
 {
-  module: **MMM-MyScoreboard**,
-  position: **top_right**,
-  classes: **default everyone**,
-  header: **My Scoreboard**,
+  module: "MMM-MyScoreboard",
+  position: "top_right",
+  classes: "default everyone",
+  header: "My Scoreboard",
   config: {
     showLeagueSeparators: true,
     colored: true,
-    viewStyle: **mediumLogos**,
+    viewStyle: "mediumLogos",
     sports: [
       {
-        league: **NHL**,
-        groups: [**Atlantic**]
+        league: "NHL",
+        groups: ["Atlantic"]
       },
       {
-        league: **NBA**,
-        teams: [**TOR**],
-        groups: [**Pacific**, **Central**]
+        league: "NBA",
+        teams: ["TOR"],
+        groups: ["Pacific", "Central"]
       },
       {
-        league: **MLB**,
-        teams: [**TOR**, **CHW**, **NYY**]
+        league: "MLB",
+        teams: ["TOR", "CHW", "NYY"]
       },
       {
-        league: **NFL**,
-        teams: [**BUF**, **NYJ**, **NYG**]
+        league: "NFL",
+        teams: ["BUF", "NYJ", "NYG"]
       },
       {
-        league: **CFL**,
-        teams: [**TOR**, **MTL**, **OTT**]
+        league: "CFL",
+        teams: ["TOR", "MTL", "OTT"]
       },
       {
-        league: **NCAAM_MM**,
-        label: **March Madness**
+        league: "NCAAM_MM",
+        label: "March Madness"
       }
     ]
 
