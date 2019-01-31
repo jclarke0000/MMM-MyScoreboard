@@ -42,7 +42,7 @@ leagues, including:
 
 ## Notice to anyone updating from previous versions
 
-1. Run `git pull` in the `MMM-MyScoreboard` directory to get the latest source code
+1. Run `git pull` in the `MMM-MyScoreboard` directory to get the latest source code. If you are not seeing the latest update, then try deleting your `MMM-MyScoreboard` directory and reclone it as per the initial installation instructions above.
 2. Still in the `MMM-MyScoreboard` directory, run `npm install`.
 3. (Optional) Run `npm prune` to remove some packages that are no longer needed.
 4. As the providers have changed for most sports, some of the team shortcodes are different. If you're not seeing your team show up even though you know a game is scheduled, check your config against the list of team shortcodes below.
@@ -109,19 +109,19 @@ Each entry in your `sports` array is an object with the following properties:
   <tbody>
     <tr>
       <td><code>league</code></td>
-      <td><strong>REQUIRED</strong> e.g.: <code>**NHL**</code>. Use any of the bold, uppercase league labaels from the list bleow.<br><br><strong>Type</strong> <code>String</code></td>
+      <td><strong>REQUIRED</strong> e.g.: <code>NHL</code>. Use any of the bold, uppercase league labaels from the list bleow.<br><br><strong>Type</strong> <code>String</code></td>
     </tr>
     <tr>
       <td><code>label</code></td>
-      <td>If <code>showLeagueSeparators</code> is set to <code>true</code>, you can optionally set a custom label for the separator. Useful in particular to show something other than <code>**NCAAM_MM**</code> for the March Madness tournament.<br><br><strong>Type</strong> <code>String</code><br />Defaults to the value for <code>league</code>.</td>
+      <td>If <code>showLeagueSeparators</code> is set to <code>true</code>, you can optionally set a custom label for the separator. Useful in particular to show something other than <code>NCAAM_MM</code> for the March Madness tournament.<br><br><strong>Type</strong> <code>String</code><br />Defaults to the value for <code>league</code>.</td>
     </tr>
     <tr>
       <td><code>teams</code></td>
-      <td>An array of teams for which you want to see scores.  Specify teams using their shortcodes (e.g.: <code>**TOR**</code> for Toronto Maple Leafs.<br><br><strong>Type</strong> <code>Array</code><br>See below for a full listing of teams and their short codes<br><br><strong>UPDATE v2.0:</strong> This is no longer required.</td>
+      <td>An array of teams for which you want to see scores.  Specify teams using their shortcodes (e.g.: <code>TOR</code> for Toronto Maple Leafs.<br><br><strong>Type</strong> <code>Array</code><br>See below for a full listing of teams and their short codes<br><br><strong>UPDATE v2.0:</strong> This is no longer required.</td>
     </tr>
     <tr>
       <td><code>groups</code></td>
-      <td>In addition to specifying individual teams, you may also specify groups.  Generally these groups correspond to the league's respective conferences and divisions.  See below for a full listing of groups available for each league. (e.g.: <code>[**Atlantic**, **Metropolitain**]</code> for teams in the Atlantic and Metropolitain divisions.<br><br><strong>Type</strong> <code>Array</code></td>
+      <td>In addition to specifying individual teams, you may also specify groups.  Generally these groups correspond to the league's respective conferences and divisions.  See below for a full listing of groups available for each league. (e.g.: <code>["Atlantic", "Metropolitain"]</code> for teams in the Atlantic and Metropolitain divisions.<br><br><strong>Type</strong> <code>Array</code></td>
     </tr>
   </tbody>
 </table>
