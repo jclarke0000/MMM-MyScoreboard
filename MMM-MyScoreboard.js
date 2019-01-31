@@ -41,114 +41,178 @@ Module.register("MMM-MyScoreboard",{
   },
 
   supportedLeagues: {
-    "NBA" : {
-      provider: "ESPN",
-      logoFormat: "svg"
-    },
-    "NHL" : {
-      provider: "SNET",
-      logoFormat: "svg"
-    },
-    "NFL" : {
-      provider: "SNET",
-      logoFormat: "svg"
-    },
-    "CFL" : {
-      provider: "SNET",
-      logoFormat: "svg"
-    },
-    "MLB" : {
-      provider: "SNET",
-      logoFormat: "svg"
-    },
-    "MLS" : {
-      provider: "SNET",
-      logoFormat: "svg",
-      homeTeamFirst: true
-    },
-    "NCAAF" : {
-      provider: "ESPN",
-      logoFormat: "png"
-    },
-    "NCAAM" : {
-      provider: "ESPN",
-      logoFormat: "png"
-    },
-    "NCAAM_MM" : {
-      provider: "ESPN",
-      logoFormat: "png"
-    },
-    "EPL" : {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "ENGCHMP" : {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "BRASILEIRAO" : {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "LIBERTADORES": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "FIFAWC": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "BUNDESLIGA": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "LALIGA": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "UEFACHMP": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "UEFAEUROPA": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "UEFANATIONS": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "SERIEA": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "FRL1": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "MEX": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    },
-    "COPADELREY": {
-      provider: "ESPN",
-      logoFormat: "url",
-      homeTeamFirst: true
-    }
+    //North American Leagues
+    "NBA": {provider: "ESPN", logoFormat: "svg"},
+    "NHL": {provider: "SNET", logoFormat: "svg"},
+    "NFL": {provider: "SNET", logoFormat: "svg"},
+    "CFL": {provider: "SNET", logoFormat: "svg"},
+    "MLB": {provider: "SNET", logoFormat: "svg"},
+    "MLS": {provider: "SNET", logoFormat: "svg", homeTeamFirst: true},
+    "NCAAF": {provider: "ESPN", logoFormat: "png"},
+    "NCAAM": {provider: "ESPN", logoFormat: "png"},
+    "NCAAM_MM": {provider: "ESPN",logoFormat: "png"},
 
+    //International Soccer
+    "AFC_ASIAN_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "AFC_ASIAN_CUP_Q": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "AFF_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "AFR_NATIONS_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "AFR_NATIONS_CUP_Q": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "AFR_NATIONS_Q": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "CONCACAF_GOLD_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "CONCACAF_NATIONS_Q": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "CONCACAF_WOMENS_CHAMPIONSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "CONMEBOL_COPA_AMERICA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_CLUB_WORLD_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_CONFEDERATIONS_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_MENS_FRIENDLIES": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_MENS_OLYMPICS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_WOMENS_FRIENDLIES": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_WOMENS_OLYMPICS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_WOMENS_WORLD_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_WORLD_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_WORLD_CUP_Q_AFC": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_WORLD_CUP_Q_CAF": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_WORLD_CUP_Q_CONCACAF": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_WORLD_CUP_Q_CONMEBOL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_WORLD_CUP_Q_OFC": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_WORLD_CUP_Q_UEFA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_WORLD_U17": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FIFA_WORLD_U20": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "UEFA_CHAMPIONS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "UEFA_EUROPEAN_CHAMPIONSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "UEFA_EUROPEAN_CHAMPIONSHIP_Q": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "UEFA_EUROPEAN_CHAMPIONSHIP_U19": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "UEFA_EUROPEAN_CHAMPIONSHIP_U21": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "UEFA_EUROPA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "UEFA_NATIONS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "SAFF_CHAMPIONSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "WOMENS_EUROPEAN_CHAMPIONSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+
+    //UK / Ireland Soccer
+    "ENG_CARABAO_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ENG_CHAMPIONSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ENG_EFL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ENG_FA_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ENG_LEAGUE_1": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ENG_LEAGUE_2": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ENG_NATIONAL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ENG_PREMIERE_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "IRL_PREM": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "NIR_PREM": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "SCO_CHALLENGE_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "SCO_CHAMPIONSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "SCO_CIS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "SCO_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "SCO_LEAGUE_1": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "SCO_LEAGUE_2": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "SCO_PREM": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "WAL_PREM": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+
+    //European Soccer
+    "ITA_SERIE_A": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FRA_LIGUE_1": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ESP_LALIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "GER_BUNDESLIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ESP_COPA_DEL_REY": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "GER_DFB_POKAL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ITA_COPPA_ITALIA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FRA_COUPE_DE_FRANCE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FRA_COUPE_DE_LA_LIGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "NED_EREDIVISIE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "NED_KNVB_BEKER": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "POR_LIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "RUS_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "BEL_DIV_A": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "TUR_SUPER_LIG": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "GRE_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "AUT_BUNDESLIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "SUI_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "DEN_SAS_LIGAEN": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "NOR_ELITESERIEN": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "SWE_ALLSVENSKANLIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ROU_FIRST_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ISR_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "MLT_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ESP_SEGUNDA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "GER_2_BUNDESLIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ITA_SERIE_B": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "FRA_LIGUE_2": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "NED_EERSTE_DIVISIE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+
+    //South American Soccer
+    "ARG_COPA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ARG_NACIONAL_B": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ARG_PRIMERA_DIV_B": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ARG_PRIMERA_DIV_C": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ARG_PRIMERA_DIV_D": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ARG_SUPERLIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "BOL_LIGA_PRO": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "BRA_COPA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "BRA_CAMP_CARIOCA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "BRA_CAMP_GAUCHO": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "BRA_CAMP_MINEIRO": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "BRA_CAMP_PAULISTA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "BRA_SERIE_A": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "BRA_SERIE_B": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "BRA_SERIE_C": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "CHI_COPA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "CHI_PRIMERA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "COL_COPA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "COL_PRIMERA_A": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "COL_PRIMERA_B": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "CONMEBOL_COPA_LIBERTADORES": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "CONMEBOL_COPA_SUDAMERICANA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ECU_PRIMERA_A": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "PAR_PRIMERA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "PER_PRIMERA_PRO": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "URU_PRIMERA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "VEN_PRIMERA_PRO": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+
+    //North American Soccer
+    "CONCACAF_CHAMPIONS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "CONCACAF_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "CRC_PRIMERA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "GUA_LIGA_NACIONAL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "HON_PRIMERA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "JAM_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "MEX_ASCENSO_MX": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "MEX_COPA_MX": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "MEX_LIGA_BANCOMER": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "SLV_PRIMERA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "USA_MLS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "USA_NCAA_SL_M": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "USA_NCAA_SL_W": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "USA_NASL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "USA_NWSL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "USA_OPEN": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "USA_USL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+
+    //Asian Soccer
+    "AFC_CHAMPIONS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "AUS_A_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "CHN_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "IDN_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "IND_I_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "IND_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "JPN_J_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "MYS_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "SGP_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "THA_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+
+    //African Soccer
+    "CAF_CHAMPIONS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "CAF_CONFED_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "GHA_PREMIERE_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "KEN_PREMIERE_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "NGA_PRO_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "RSA_FIRST_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "RSA_NEDBANK_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "RSA_PREMIERSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "RSA_TELKOM_KNOCKOUT": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "UGA_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ZAM_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    "ZIM_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
 
   },
 

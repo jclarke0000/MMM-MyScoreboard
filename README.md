@@ -100,6 +100,8 @@ leagues, including:
 
 Currently this module supports the following leagues:
 
+### North American Leagues
+
 * **NHL** - National Hockey League
 * **NBA** - National Basketball Association
 * **MLB** - Major League Baseball
@@ -109,6 +111,10 @@ Currently this module supports the following leagues:
 * **NCAAF** - NCAA College Football (FBS Division only)
 * **NCAAM** - NCAA College Basketball (Division I)
 * **NCAAM_MM** - NCAA College Basketball (March Madness Tournament)
+
+
+### Soccer Leagues
+
 * **EPL** - English Premier League Soccer
 * **ENGCHMP** - English Championship League Soccer
 * **UEFACHMP** - UEFA Champions League League Soccer
