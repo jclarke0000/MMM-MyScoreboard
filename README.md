@@ -373,10 +373,10 @@ Currently this module supports the following leagues.  Use the bold uppercase sh
 
 Examples of the available view styles you can specify with the `viewStyle` parameter.
 
-![View Styles](/../screenshots/viewStyles.jpg?raw=true **View Styles**)
+![View Styles](/../screenshots/viewStyles.jpg?raw=true "View Styles")
 
 `smallLogos`<br />
-![View Styles](/../screenshots/viewStyle_smallLogos.png?raw=true **smallLogos**)
+![Small Logos](/../screenshots/viewStyle_smallLogos.png?raw=true "Small Logos")
 
 
 ## Team Shortcodes and Groups
