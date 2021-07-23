@@ -10,8 +10,8 @@ leagues, including:
 * NHL Hockey
 * NBA Basketball
 * MLB Baseball
-* NFL Footabll
-* CFL Footabll (Canadian Footbal League)
+* NFL Football
+* CFL Football (Canadian Football League)
 * MLS Soccer
 * NCAA College Football (FBS Division)
 * NCAA College Basketball (Division I and March Madness)
@@ -339,7 +339,7 @@ Currently this module supports the following leagues.  Use the bold uppercase sh
 * **USA_NCAA_SL_W** - United States NCAA Women's 1
 * **USA_NASL** - United States North American Soccer League
 * **USA_NWSL** - United States NWSL Women's League
-* **USA_OPEN** - United States Open Cup 
+* **USA_OPEN** - United States Open Cup
 * **USA_USL** - United States USL Championship
 
 #### Asia
@@ -351,7 +351,7 @@ Currently this module supports the following leagues.  Use the bold uppercase sh
 * **IND_SUPER_LEAGUE** - Indian Super League
 * **JPN_J_LEAGUE** - Japanese J League
 * **MYS_SUPER_LEAGUE** - Malaysian Super League
-* **SGP_PREMIER_LEAGUE** - Singaporean S-League 
+* **SGP_PREMIER_LEAGUE** - Singaporean S-League
 * **THA_PREMIER_LEAGUE** - Thai Premier League
 
 #### Africa
@@ -415,11 +415,12 @@ NYR   New York Rangers
 OTT   Ottawa Senators
 PHI   Philadelphia Flyers
 PIT   Pittsburgh Penguins
+SEA   Seattle Kraken
 SJ    San Jose Sharks
 STL   St. Louis Blues
-TB    Tamba Bay Lightning
+TB    Tampa Bay Lightning
 TOR   Toronto Maple Leafs
-VAN   Vanvouver Canucks
+VAN   Vancouver Canucks
 VGK   Vegas Golden Knights
 WPG   Winnipeg Jets
 WSH   Washington Capitals
@@ -427,7 +428,7 @@ WSH   Washington Capitals
 Groups:
 ---------------
 Atlantic
-Metropolitain
+Metropolitan
 Central
 Pacific
 East
@@ -460,7 +461,7 @@ LAA   Los Angeles Angels
 LAD   Los Angeles Dodgers
 MIA   Miami Marlins
 MIL   Milwaukee Brewers
-MIN   Minnesota Twons
+MIN   Minnesota Twins
 NYM   New York Mets
 NYY   New York Yankees
 OAK   Oakland Athletics
@@ -547,7 +548,7 @@ BAL   Baltimore Ravens
 BUF   Buffalo Bills
 CAR   Carolina Panthers
 CHI   Chicago Bears
-CIN   Cincinati Bengals
+CIN   Cincinnati Bengals
 CLE   Cleveland Browns
 DAL   Dallas Cowboys
 DEN   Denver Broncos
@@ -597,7 +598,7 @@ BC    B.C. Lions
 CGY   Calgary Stampeders
 EDM   Edmonton Eskimos
 HAM   Hamilton Tiger-Cats
-MTL   Montreal Alouetts
+MTL   Montreal Alouettes
 OTT   Ottawa Redblacks
 SSK   Saskatchewan Roughriders
 TOR   Toronto Argonauts
@@ -616,6 +617,7 @@ Teams:
 ---------------
 
 ATL   Atlanta United FC
+ATX   Austin FC
 CHI   Chicago Fire
 CLB   Columbus Crew SC
 COL   Colorado Rapids
@@ -673,8 +675,8 @@ CHAR  Charlotte 49ers
 CIN   Cincinnati Bearcats
 CLEM  Clemson Tigers
 CMU   Central Michigan Chippewas
-COLO  Colorado Buffalos
-CONN  Connecticut Juskies
+COLO  Colorado Buffaloes
+CONN  Connecticut Huskies
 CSU   Colorado State Rams
 DUKE  Duke Blue Devils
 ECU   East Carolina Pirates
@@ -699,7 +701,7 @@ KSU   Kansas State Wildcats
 KU    Kansas Jayhawks
 LOU   Louisville Cardinals
 LSU   LSU Tigers
-LT    Louisianna Tech Bulldogs
+LT    Louisiana Tech Bulldogs
 M-OH  Miami (OH) Redhawks
 MD    Maryland Terrapins
 MEM   Memphis Tigers
@@ -754,8 +756,8 @@ UCF   UCF Knights
 UCLA  UCLA Bruins
 UGA   Georgia Bulldogs
 UK    Kentucky Wildcats
-ULL   Louisianna-Lafayette Ragin' Cajuns
-ULM   Louisianna-Monroe Warhawks
+ULL   Louisiana-Lafayette Ragin' Cajuns
+ULM   Louisiana-Monroe Warhawks
 UMASS Massachusetts Minutemen
 UNC   North Carolina Tar Heels
 UNLV  UNLV Rebels
@@ -776,7 +778,7 @@ WAKE  Wake Forest Demon Deacons
 WASH  Washington Huskies
 WIS   Wisconsin Badgers
 WKU   Western Kentucky Hilltoppers
-WMU   Western MNichigan Broncos
+WMU   Western Michigan Broncos
 WSU   Washington State Cougars
 WVU   West Virginia Mountaineers
 WYO   Wyoming Cowboys
@@ -1024,7 +1026,7 @@ QUIN  Quinnipiac Bobcats
 RAD   Radford Highlanders
 RICE  Rice Owls
 RICH  Richmond Spiders
-RID   Rider Broncs
+RID   Rider Broncos
 RMU   Robert Morris Colonials
 RUTG  Rutgers Scarlet Knights
 SAC   Sacramento State Hornets
