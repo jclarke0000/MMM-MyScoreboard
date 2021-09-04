@@ -619,12 +619,14 @@ Teams:
 ATL   Atlanta United FC
 ATX   Austin FC
 CHI   Chicago Fire
+CIN   FC Cincinnati
 CLB   Columbus Crew SC
 COL   Colorado Rapids
 DAL   FC Dallas
 DC    DC United
 HOU   Houston Dynamo
 LA    LA Galaxy
+LAFC  LA FC
 KC    Sporting Kansas City
 MIN   Minnesota United FC
 MTL   Montreal Impact
