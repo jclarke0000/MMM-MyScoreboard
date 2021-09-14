@@ -559,20 +559,20 @@ JAX   Jacksonville Jaguars
 KC    Kansas City Chiefs
 LAR   Los Angeles Rams
 LAC   Los Angeles Chargers
+LV    Las Vegas Raiders
 MIA   Miami Dolphins
 MIN   Minnesota Vikings
 NE    New England Patriots
 NO    New Orleans Saints
 NYG   New York Giants
 NYJ   New York Jets
-OAK   Oakland Raiders
 PHI   Philadelphia Eagles
 PIT   Pittsburgh Steelers
 SEA   Seattle Seahawks
 SF    San Francisco 49ers
 TB    Tampa Bay Buccaneers
 TEN   Tennessee Titans
-WAS   Washington Redskins
+WAS   Washington
 
 Groups:
 ---------------
@@ -595,7 +595,7 @@ Teams:
 
 BC    B.C. Lions
 CGY   Calgary Stampeders
-EDM   Edmonton Eskimos
+EDM   Edmonton Elks
 HAM   Hamilton Tiger-Cats
 MTL   Montreal Alouetts
 OTT   Ottawa Redblacks
@@ -616,20 +616,25 @@ Teams:
 ---------------
 
 ATL   Atlanta United FC
-CHI   Chicago Fire
-CLB   Columbus Crew SC
+ATX   Austin FC
+CHI   Chicago Fire FC
+CIN   FC Cincinnati
+CLB   Columbus Crew
 COL   Colorado Rapids
 DAL   FC Dallas
 DC    DC United
-HOU   Houston Dynamo
+HOU   Houston Dynamo FC
 LA    LA Galaxy
+LAFC  LAFC
 KC    Sporting Kansas City
+MIA   Inter Miami CF
 MIN   Minnesota United FC
-MTL   Montreal Impact
+MTL   CF Montreal
 NE    New England Revolution
+NSH   Nashville SC
 NY    New York Red Bulls
 NYC   New York City FC
-ORL   Orlando City FC
+ORL   Orlando City SC
 PHI   Philadelphia Union
 POR   Portland Timbers
 RSL   Real Salt Lake
