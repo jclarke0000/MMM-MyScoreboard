@@ -44,7 +44,7 @@
 */
 
 const request = require("request");
-const moment = require("moment-timezone");
+const moment = require("./localeMoment");
 const parseJSON = require("json-parse-async");
 
 module.exports = {
@@ -188,7 +188,7 @@ module.exports = {
         case "Pre-Game":
           gameState = 0; //not started
           //Feed provides all game times in Eastern Time
-          status.push(moment(game.timestamp * 1000).tz(localTZ).format("h:mm a"));
+          status.push(moment(game.timestamp * 1000).tz(localTZ).format("LT"));
           break;
 
         case "In-Progress":
@@ -298,7 +298,7 @@ module.exports = {
 
         default:
           gameState = 0;
-          status.push(moment(game.timestamp * 1000).tz(localTZ).format("h:mm a"));
+          status.push(moment(game.timestamp * 1000).tz(localTZ).format("LT"));
           break;
       }
 

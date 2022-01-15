@@ -34,7 +34,7 @@
 */
 
 const request = require("request");
-const moment = require("moment-timezone");
+const moment = require("./localeMoment");
 const parseJSON = require("json-parse-async");
 
 module.exports = {
@@ -542,7 +542,7 @@ module.exports = {
           break;
         case "1": //scheduled
           gameState = 0;
-          status.push(moment(game.competitions[0].date).tz(localTZ).format("h:mm a"));
+          status.push(moment(game.competitions[0].date).tz(localTZ).format("LT"));
           break;
         case "2": //in-progress
         case "21": //beginning of period
@@ -612,7 +612,7 @@ module.exports = {
           break;         
         default: //Anything else, treat like a game that hasn't started yet
           gameState = 0;
-          status.push(moment(game.competitions[0].date).tz(localTZ).format("h:mm a"));
+          status.push(moment(game.competitions[0].date).tz(localTZ).format("LT"));
           break;
 
       }
