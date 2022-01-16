@@ -1,5 +1,6 @@
 const momentTz = require('moment-timezone');
 const moment = require("moment/min/moment-with-locales");
+const localeHelper = require("./localeHelper");
 
 const chooseMomentLocale = (locale) => {
   // make the locale lower case 
@@ -16,9 +17,7 @@ const chooseMomentLocale = (locale) => {
     return 'en-gb'; 
 };
 
-const environment = process.env;
-const userLocale = environment.LC_ALL || environment.LC_MESSAGES || environment.LANG || environment.LANGUAGE || environment.LC_NAME
-const momentLocale = userLocale.split('.')[0].replace('_', '-').toLowerCase()
+const momentLocale = localeHelper.getMomentLocale()
 const localeToImport = chooseMomentLocale(momentLocale)
 momentTz.locale(localeToImport)
 

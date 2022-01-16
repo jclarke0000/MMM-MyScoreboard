@@ -44,8 +44,9 @@
 */
 
 const request = require("request");
-const moment = require("./localeMoment");
+const moment = require("../localeMoment");
 const parseJSON = require("json-parse-async");
+const localeHelper = require("../localeHelper");
 
 module.exports = {
 
@@ -64,10 +65,12 @@ module.exports = {
   scoresObj: null,
   dataPollStarted: false,
   gameDate: null,
+  translations: {},
 
-  getScores: function(league, teams, gameDate, callback) {
+  getScores: function(league, teams, gameDate, language, callback) {
     
     var self = this;
+    self.translations = localeHelper.loadTranslations(language);
     this.gameDate = moment(gameDate);
 
     if (this.scoresObj == null) {
@@ -212,12 +215,12 @@ module.exports = {
                 into the getPeriod() routine.
               */
               if (game.shootout == true) {
-                status.push("SHOOTOUT");
+                status.push(this.translations.shootout);
               } else if (game.overtime == true) {
                 status.push(game.clock);          
-                status.push("OT");
+                status.push(this.translations.ot.replace('##1##', ''));
               } else if (game.clock == "0:00") {
-                status.push("END");
+                status.push(this.translations.end);
                 status.push(self.getPeriod(league, game.period));
               } else {
                 status.push(game.clock);          
@@ -238,7 +241,7 @@ module.exports = {
 
             case "MLS":
               if (game.clock == "Half") {
-                status.push("HALFTIME");
+                status.push(this.translations.halfTime);
               } else {
                 status.push(game.clock);                
               }
@@ -261,9 +264,9 @@ module.exports = {
                 their own special cases.
               */
               if (game.clock == "0:00" && game.period == 2) {
-                status.push("HALFTIME");
+                status.push(this.translations.halfTime);
               } else if (game.clock == "0:00") {
-                status.push("END");
+                status.push(this.translations.end);
                 status.push(self.getPeriod(league, game.period));
               } else {
                 status.push(game.clock);
@@ -277,23 +280,23 @@ module.exports = {
 
         case "Half-Over":
           gameState = 1; //in-progress
-          status.push("HALFTIME");
+          status.push(this.translations.halfTime);
           break;
 
         case "Delayed":
           gameState = 1; //in-progress
           classes.push("delay");
-          status.push("Delay");
+          status.push(this.translations.delay);
           break;
 
         case "Postponed":
           gameState = 0;
-          status.push("Postponed");
+          status.push(this.translations.postponed);
           break;
 
         case "Final":
           gameState = 2; //final
-          status.push("Final" + self.getFinalOT(league, game));
+          status.push(this.translations.final.replace('##1##', self.getFinalOT(league, game)).trim());
           break;
 
         default:
@@ -333,30 +336,30 @@ module.exports = {
     switch (league) {
       case "NHL":
         if (game.shootout == true) {
-          return " (SO)";
+          return this.translations.finalSoSuffix;
         } else if (game.overtime == true) {
-          return " (OT)";
+          return this.translations.finalOtSuffix.replace('##1##', '');
         }  else if (game.period == 4) {
-          return " (OT)";
+          return this.translations.finalOtSuffix.replace('##1##', '');
         } else if (game.period > 4) {
-          return " (" + (game.period - 3) + "OT)";
+          return this.translations.finalOtSuffix.replace('##1##', (game.period - 3).toString());
         }
         break;
       case "MLB":
         if (game.period > 9) {
-          return " (" + game.period + ")";
+          return this.translations.finalPeriodSuffix.replace('##1##', game.period.toString());
         }
         break;
       case "NFL":
       case "CFL":
       case "NBA":
         if (game.period > 4) {
-          return " (OT)";
+          return this.translations.finalOtSuffix.replace('##1##', '');
         } 
         break;
       case "MLS":
         if (game.period > 2) {
-          return " (ET)";
+          return this.translations.finalEtSuffix;
         } 
         break;
     } 
@@ -369,16 +372,16 @@ module.exports = {
     var mod100 = p % 100;
 
     if (mod10 == 1 && mod100 != 11) {
-      return p + "<sup>ST</sup>";
+      return p + this.translations.ordinalOne;
     }
     if (mod10 == 2 && mod100 != 12) {
-      return p + "<sup>ND</sup>";
+      return p + this.translations.ordinalTwo;
     }
     if (mod10 == 3 && mod100 != 13) {
-      return p + "<sup>RD</sup>";
+      return p + this.translations.ordinalThree;
     }
 
-    return p + "<sup>TH</sup>";
+    return p + this.translations.ordinalOther;
 
   },
 
@@ -390,21 +393,21 @@ module.exports = {
       case "NBA":
       case "CFL":
         if (p == 5) {
-          return ("OT");
+          return (this.translations.ot.replace('##1##', ''));
         } else if (p > 5) {
-          return (p - 4) + "OT";
+          return this.translations.ot.replace('##1##', (p-4).toString());
         }
         break;
       case "NHL":
         if (p == 4) {
-          return ("OT");
+          return (this.translations.ot.replace('##1##', ''));
         } else if (p > 4) {
-          return (p - 3) + "OT";
+          return this.translations.ot.replace('##1##', (p-3).toString());
         }
         break;
       case "MLS" :
         if (p > 2) {
-          return ("ET");
+          return this.translations.et;
         }
         break;
     }

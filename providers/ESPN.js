@@ -34,8 +34,10 @@
 */
 
 const request = require("request");
-const moment = require("./localeMoment");
+const moment = require("../localeMoment");
 const parseJSON = require("json-parse-async");
+const localeHelper = require("../localeHelper");
+
 
 module.exports = {
 
@@ -381,14 +383,16 @@ module.exports = {
     "ZIM_PREMIER_LEAGUE",
   ],
 
+  translations: {},
 
   getLeaguePath: function(league) {
     return this.LEAGUE_PATHS[league];
   },
 
-  getScores: function(league, teams, gameDate, callback) {
+  getScores: function(league, teams, gameDate, language, callback) {
 
     var self = this;
+    self.translations = localeHelper.loadTranslations(language);
 
     var url = "http://site.api.espn.com/apis/site/v2/sports/" +
       this.getLeaguePath(league) +
@@ -538,7 +542,7 @@ module.exports = {
       switch (game.status.type.id) {
         case "0" : //TBD
           gameState = 0;
-          status.push("TBD");
+          status.push(this.translations.tbd);
           break;
         case "1": //scheduled
           gameState = 0;
@@ -557,58 +561,58 @@ module.exports = {
           break;
         case "3": //final
           gameState = 2;
-          status.push("Final" + this.getFinalOT(league, game.status.period));
+          status.push(this.translations.final.replace('##1##', this.getFinalOT(league, game.status.period)).trim());
           break;
         case "4": //forfeit
         case "9": //forfeit of home team
         case "10": //forfeit of away team
           gameState = 0;
-          status.push("Forfeit");
+          status.push(this.translations.forfeit);
           break;
         case "5": //cancelled
           gameState = 0;
-          status.push("Cancelled");
+          status.push(this.translations.canceled);
           break;
         case "6": //postponed
           gameState = 0;
-          status.push("Postponed");
+          status.push(this.translations.postponed);
           break;
         case "7":  //delayed
         case "17": //rain delay
           gameState = 1;
           classes.push["delay"];
-          status.push("Delay");
+          status.push(this.translations.delay);
           break;
         case "8": //suspended
           gameState = 0;
-          status.push("Suspended");
+          status.push(this.translations.suspended);
           break;
         case "22": //end period
         case "48": //SOCCER end extra time
           gameState = 1;
-          status.push("END");
+          status.push(this.translations.end);
           status.push(this.getPeriod(league, game.status.period));
           break;
         case "23": //halftime
           gameState = 1;
-          status.push("HALFTIME");
+          status.push(this.translations.halfTime);
           break;
         case "49": //SOCCER extra time half time
           gameState = 1;
-          status.push("HALFTIME (ET)");
+          status.push(this.translations.halfTimeEt);
           break;
         case "28": //SOCCER Full Time
           gameState = 2;
-          status.push("Full Time " + this.getFinalOT(league, game.status.period));
+          status.push(this.translations.fullTime.replace('##1##', this.getFinalOT(league, game.status.period)).trim());
           break;
         case "45": //SOCCER Final ET
         case "46": //SOCCER final score - after golden goal
           gameState = 2;
-          status.push("Full Time (ET)"); 
+          status.push(this.translations.fullTime.replace('##1##', this.translations.finalEtSuffix));
           break;         
         case "47": //Soccer Final PK
           gameState = 2;
-          status.push("Full Time (PK) " + this.getFinalPK(hTeamData,vTeamData)); 
+          status.push(this.translations.fullTime.Replace('##1##', this.translations.finalPkSuffix.replace('##1##', this.getFinalPK(hTeamData,vTeamData))));
           break;         
         default: //Anything else, treat like a game that hasn't started yet
           gameState = 0;
@@ -688,16 +692,16 @@ module.exports = {
     var mod100 = p % 100;
 
     if (mod10 == 1 && mod100 != 11) {
-      return p + "<sup>ST</sup>";
+      return p + this.translations.ordinalOne;
     }
     if (mod10 == 2 && mod100 != 12) {
-      return p + "<sup>ND</sup>";
+      return p + this.translations.ordinalTwo;
     }
     if (mod10 == 3 && mod100 != 13) {
-      return p + "<sup>RD</sup>";
+      return p + this.translations.ordinalThree;
     }
 
-    return p + "<sup>TH</sup>";
+    return p + this.translations.ordinalOther;
 
   },
 
@@ -707,16 +711,16 @@ module.exports = {
     if (this.isSoccer(league)) {
 
       if (p > 2) {
-        return "ET";
+        return this.translations.et;
       } else {
         return ""; //no need to indicate first or second half        
       }
 
     } else {
       if (p == 5) {
-        return "OT";
+        return this.translations.ot.replace('##1##', '');
       } else if (p > 5) {
-        return (p - 4) + "OT";
+        return this.translations.ot.replace('##1##', (p-4).toString())
       }      
     }
 
@@ -727,12 +731,12 @@ module.exports = {
   getFinalOT: function(league, p) {
 
     if (this.isSoccer(league) && p > 2) {
-      return " (ET)";    
+      return this.translations.finalEtSuffix;    
     } else if (!this.isSoccer(league)) {
       if (p == 5) {
-        return " (OT)";
+        return this.translations.finalOtSuffix.replace('##1##', '');
       } else if (p > 5) {
-        return " (" + (p - 4) + "OT)";
+        return this.translations.finalOtSuffix.replace('##1##', (p-4).toString());
       }
     }
 
