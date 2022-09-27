@@ -14,7 +14,7 @@
 
 
   All sports are provided in a single feed at
-  https://d290qmen6zswb.cloudfront.net/ticker
+  https://mobile-statsv2.sportsnet.ca/ticker
 
   The feed takes one parameter:
 
