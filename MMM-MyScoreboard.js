@@ -660,7 +660,8 @@ Module.register("MMM-MyScoreboard",{
         league: sport.league,
         teams: self.makeTeamList(self, sport.league, sport.teams, sport.groups),
         provider: self.supportedLeagues[sport.league].provider,
-        gameDate: gameDate
+        gameDate: gameDate,
+        language: config.language
       };
 
       self.sendSocketNotification("MMM-MYSCOREBOARD-GET-SCORES", payload);
