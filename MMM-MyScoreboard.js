@@ -688,12 +688,12 @@ Module.register("MMM-MyScoreboard",{
       //divisions
       "Atlantic": ["BOS", "BUF", "DET", "FLA", "MTL", "OTT", "TB", "TOR"],
       "Metropolitain": ["CAR", "CLB", "NJ", "NYI", "NYR", "PIT", "PHI", "WSH"],
-      "Central": ["CHI", "COL", "DAL", "MIN", "NSH", "STL", "WPG"],
-      "Pacific": ["ANA", "ARI", "CGY", "EDM", "LA", "SJ", "VAN", "VGK"],
+      "Central": ["ARI", "CHI", "COL", "DAL", "MIN", "NSH", "STL", "WPG"],
+      "Pacific": ["ANA", "CGY", "EDM", "LA", "SEA", "SJ", "VAN", "VGK"],
 
       //conferences
       "East": ["BOS", "BUF", "CAR", "CLB", "DET", "FLA", "MTL", "NJ", "NYI", "NYR", "PIT", "PHI", "OTT", "TB", "TOR", "WSH"],
-      "West": ["ANA", "ARI", "CGY", "CHI", "COL", "DAL", "EDM", "LA", "MIN", "NSH", "SJ", "STL", "VAN", "VGK", "WPG"],
+      "West": ["ANA", "ARI", "CGY", "CHI", "COL", "DAL", "EDM", "LA", "MIN", "NSH", "SEA", "SJ", "STL", "VAN", "VGK", "WPG"],
 
       //all Canadian teams
       "Canadian": ["CGY", "EDM", "MTL", "OTT", "TOR", "VAN", "WPG"]

@@ -35,9 +35,9 @@ This update includes several addtions and fixes:
 * Correction of SportsNet provider ticker URL
 * Change of ESPN provider to HTTPS
 * Replacement of deprecated library Request with Axios
-* Addtion of WNBA and NCAAW womens' college basketball
+* Addition of WNBA and NCAAW womens' college basketball
 * Update of logos for North American leagues
-* Correctino of Winsconsin Badgers NCAA team shortcode from WIS to WISC
+* Correction of Winsconsin Badgers NCAA team shortcode from WIS to WISC
 
 As this replaces a library central to the module's fucntionality, upgrade as follows:
 In the MMM-MyScoreboard directory, type:
@@ -434,6 +434,7 @@ NYR   New York Rangers
 OTT   Ottawa Senators
 PHI   Philadelphia Flyers
 PIT   Pittsburgh Penguins
+SEA   Seattle Kraken
 SJ    San Jose Sharks
 STL   St. Louis Blues
 TB    Tamba Bay Lightning
