@@ -33,7 +33,7 @@
 
 */
 
-const request = require("request");
+const axios = require("axios");
 const moment = require("moment-timezone");
 const parseJSON = require("json-parse-async");
 
@@ -46,8 +46,10 @@ module.exports = {
     //North American Leagues
     "NCAAF": "football/college-football",
     "NBA": "basketball/nba",
+    "WNBA": "basketball/wnba",
     "NCAAM": "basketball/mens-college-basketball",
     "NCAAM_MM": "basketball/mens-college-basketball",
+    "NCAAW" : "basketball/womens-college-basketball/",
 
     //International Soccer
     "AFC_ASIAN_CUP": "soccer/afc.cup",
@@ -390,18 +392,10 @@ module.exports = {
 
     var self = this;
 
-    var url = "http://site.api.espn.com/apis/site/v2/sports/" +
+    var url = "https://site.api.espn.com/apis/site/v2/sports/" +
       this.getLeaguePath(league) +
       "/scoreboard?dates=" +
       moment(gameDate).format("YYYYMMDD") + "&limit=200";
-
-
-    ///temporary link to have Soccer Games ShowingUp  ** Use this to have the API point to a date
-    // var url = "http://site.api.espn.com/apis/site/v2/sports/" +
-    //     this.getLeaguePath(league) +
-    //     "/scoreboard?dates=20180317" +
-    //     "&limit=200";
-
 
 
     /*
@@ -422,25 +416,15 @@ module.exports = {
       url = url + "&groups=100";
     }
 
-    request({url: url, method: "GET"}, function(r_err, response, body) {
 
-      if(!r_err && response.statusCode == 200) {
-
-        parseJSON(body, function(p_err, content) {
-          if (p_err) {
-            console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** Couldn't parse " + league + " data for provider ESPN: " + p_err );
-          } else {
-            callback(self.formatScores(league, content, teams));
-          }
-        });
-
-      } else {
+    axios.get(url)
+      .then( function(response) {
+            callback(self.formatScores(league, response.data, teams));
+      })
+      .catch( function(r_err) {
         console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** Couldn't retrieve " + league + " data for provider ESPN: " + r_err );
-        console.log( "[MMM-MyScoreboard] " + url );
-
-      }
-
-    });
+        console.log( "[MMM-MyScoreboard] " + url );        
+      })
 
 
   },

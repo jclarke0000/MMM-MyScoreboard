@@ -4,9 +4,9 @@ import json
 import requests
 
 ##Change de URL (XXXXX) for the League you want to display the teams and abbreviations
-r = requests.get('http://site.api.espn.com/apis/site/v2/sports/soccer/XXXXXX/teams')
+r = requests.get('http://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/teams?limit=500')
 data = r.json()
 for index in range(len(data['sports'][0]['leagues'][0]['teams'])):
-    name = data['sports'][0]['leagues'][0]['teams'][index]['team']['name']
+    name = data['sports'][0]['leagues'][0]['teams'][index]['team']['displayName']
     abre = data['sports'][0]['leagues'][0]['teams'][index]['team']['abbreviation']
     print(abre + "   " + name)

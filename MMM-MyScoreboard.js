@@ -47,10 +47,13 @@ Module.register("MMM-MyScoreboard",{
     "NFL": {provider: "SNET", logoFormat: "svg"},
     "CFL": {provider: "SNET", logoFormat: "svg"},
     "MLB": {provider: "SNET", logoFormat: "svg"},
-    "MLS": {provider: "SNET", logoFormat: "svg", homeTeamFirst: true},
-    "NCAAF": {provider: "ESPN", logoFormat: "png"},
-    "NCAAM": {provider: "ESPN", logoFormat: "png"},
-    "NCAAM_MM": {provider: "ESPN",logoFormat: "png"},
+    "MLS": {provider: "SNET", logoFormat: "url", homeTeamFirst: true},
+    "NCAAF": {provider: "ESPN", logoFormat: "url"},
+    "NCAAM": {provider: "ESPN", logoFormat: "url"},
+    "NCAAM_MM": {provider: "ESPN",logoFormat: "url"},
+    "NCAAW": {provider: "ESPN", logoFormat: "url"},
+    "WNBA": {provider: "ESPN", logoFormat: "url"},
+
 
     //International Soccer
     "AFC_ASIAN_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
@@ -728,6 +731,15 @@ Module.register("MMM-MyScoreboard",{
 
     },
 
+    WNBA : {
+
+      //conferences
+      "East": ["ATL","CHI","CONN","IND","NY","WSH"],
+      "West": ["DAL","LA","LV","MIN","PHX","SEA"]
+
+    },
+
+
     NFL : {
 
       //divisions
@@ -817,6 +829,47 @@ Module.register("MMM-MyScoreboard",{
       "Top 25" : ["@T25"] //special indicator for Top 25 ranked teams
 
     },
+
+    NCAAW : {
+
+      //divisions
+      "ASUN" : ["APSU", "BELL", "CARK", "EKU", "FGCU", "JAX", "JVST", "KENN", "LIB", "LIP", "UNA", "UNF", "QUOC", "STET"],
+      "America East" : ["ALB", "BING", "BRY", "MAINE", "NJIT", "UNH", "UMBC", "UML", "UVM"],
+      "American" : ["CIN", "ECU", "HOU", "MEM", "SMU", "USF", "TEM", "TULN", "TLSA", "UCF", "WICH"],
+      "Atlantic 10" : ["DAV", "DAY", "DUQ", "FOR", "GMU", "GW", "LAS", "LUC", "URI", "RICH", "JOES", "SLU", "SBU", "MASS", "VCU"],
+      "ACC" : ["BC", "CLEM", "DUKE", "FSU", "GT", "LOU", "MIA", "NCST", "UNC", "ND", "PITT", "SYR", "UVA", "VT", "WAKE"],
+      "Big 12" : ["BAY", "ISU", "KU", "KSU", "OU", "OKST", "TCU", "TEX", "TTU", "WVU"],
+      "Big East" : ["BUT", "CREI", "DEP", "GTWN", "MARQ", "PROV", "HALL", "SJU", "CONN", "VILL", "XAV"],
+      "Big Sky" : ["EWU", "IDST", "IDHO", "MONT", "MTST", "NAU", "UNCO", "PRST", "SAC", "WEB"],
+      "Big South" : ["CAM", "CHSO", "GWEB", "HPU", "LONG", "PRES", "RAD", "SCUP", "UNCA", "WIN"],
+      "Big Ten" : ["ILL", "IU", "IOWA", "MD", "MSU", "MICH", "MINN", "NEB", "NU", "OSU", "PSU", "PUR", "RUTG", "WISC"],
+      "Big West" : ["CSUN", "CP", "CSUB", "CSUF", "HAW", "LBSU", "UCD", "UCI", "UCR", "UCSD", "UCSB"],
+      "Colonial" : ["COFC", "DEL", "DREX", "ELON", "HAMP", "HOF", "MONM", "NCAT", "NE", "STBK", "TOW", "UNCW", "W&M"],
+      "Conference USA" : ["CLT", "FAU", "FIU", "LT", "MTSU", "UNT", "RICE", "UAB", "UTEP", "UTSA", "WKU"],
+      "Independents" : ["CHST", "HART"],
+      "Horizon" : ["CLEV", "DETM", "GB", "IUPU", "MILW", "NKU", "OAK", "PFW", "RMU", "WRST", "YSU"],
+      "Ivy" : ["BRWN", "COLU", "COR", "DART", "HARV", "PENN", "PRIN", "YALE"],
+      "MAAC" : ["CAN", "FAIR", "IONA", "MAN", "MRST", "MSM", "NIA", "QUIN", "RID", "SPU" ,"SIE"],
+      "Mid-American" : ["AKR", "BALL", "BGSU", "BUFF", "CMU", "EMU", "KENT", "M-OH", "NIU", "OHIO", "TOL" , "WMU"],
+      "MEAC" : ["COPP", "DSU", "HOW", "MORG", "NORF", "NCCU", "SCST"],
+      "Missouri Valley" : ["BEL", "BRAD", "DRKE", "EVAN", "ILST", "INST", "MOST", "MUR", "UNI", "SIU", "UIC", "VAL"],
+      "Mountain West" : ["AFA", "BOIS", "CSU", "FRES", "NEV", "UNM", "SDSU", "SJSU", "UNLV", "USU", "WYO"],
+      "Northeast" : ["CCSU", "FDU", "LIU", "MRMK", "SHU", "SFPA", "SFNY", "STO", "WAG"],
+      "Ohio Valley" : ["EIU", "LIN", "LR", "MORE", "SIUE", "SEMO", "USI", "TNST", "TNTC", "UTM"],
+      "Pac-12" : ["ASU", "ARIZ", "CAL", "COLO", "ORE", "ORST", "STAN", "UCLA", "USC", "UTAH", "WASH", "WSU"],
+      "Patriot League" : ["AMER", "ARMY", "BU", "BUCK", "COLG", "HC", "LAF", "LEH", "L-MD", "NAVY"],
+      "SEC" : ["ALA", "ARK", "AUB", "FLA", "UGA", "UK", "LSU", "MSST", "MIZ", "MISS", "SC", "TENN", "TA&M", "VAN"],
+      "Southern" : ["UTC", "ETSU", "FUR", "MER", "SAM", "UNCG", "WCU", "WOF"],
+      "Southland" : ["HCU", "UIW", "LAM", "MCN", "UNO", "NICH", "NWST", "SELA", "TAMC", "AMCC"],
+      "SWAC" : ["AAMU", "ALST", "ALCN", "UAPB", "BCU", "FAMU", "GRAM", "JKST", "MVSU", "PV", "SOU", "TXSO"],
+      "Summit League" : ["DEN", "KC", "UND", "NDSU", "OMA", "ORU", "SDAK", "SDST", "STMN", "WIU"],
+      "Sun Belt" : ["APP", "ARST", "CCU", "GASO", "JMU", "UL", "MRSH", "ODU", "USA", "USM", "TXST", "TROY", "ULM"],
+      "West Coast" : ["BYU", "GONZ", "LMU", "PAC", "PEPP", "PORT", "SMC", "USD", "SF", "SCU"],
+      "WAC" : ["ACU", "CBU", "GCU", "NMSU", "SHSU", "SEA", "SUU", "SFA", "TAR", "UTA", "RGV", "UTU", "UVU"],
+      "Top 25" : ["@T25"] //special indicator for Top 25 ranked teams
+
+    },
+
 
     NCAAM_MM : {}, //no groups for March Madness
 

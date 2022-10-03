@@ -8,13 +8,13 @@ This module display's today's scores for your favourite teams across a number of
 leagues, including:
 
 * NHL Hockey
-* NBA Basketball
+* NBA / WNBA Basketball
 * MLB Baseball
 * NFL Footabll
 * CFL Footabll (Canadian Footbal League)
 * MLS Soccer
 * NCAA College Football (FBS Division)
-* NCAA College Basketball (Division I and March Madness)
+* NCAA College Basketball (Division I and March Madness, and Womens')
 * Over 100 soccer leagues including:
   * English Premier League
   * UEFA Champions League
@@ -28,6 +28,23 @@ leagues, including:
   * Italian Serie A
   * Spanish La Liga
   * Mexican Liga BBVA Bancomer
+
+## UPDATE 3-OCT-2022
+
+This update includes several addtions and fixes:
+* Correction of SportsNet provider ticker URL
+* Change of ESPN provider to HTTPS
+* Replacement of deprecated library Request with Axios
+* Addtion of WNBA and NCAAW womens' college basketball
+* Update of logos for North American leagues
+* Correctino of Winsconsin Badgers NCAA team shortcode from WIS to WISC
+
+As this replaces a library central to the module's fucntionality, upgrade as follows:
+In the MMM-MyScoreboard directory, type:
+
+`git pull`
+followed by
+`npm install`
 
 
 ![Screenshot](/../screenshots/MMM-MyScoreboard-screenshot.png?raw=true "Screenshot")
@@ -182,6 +199,7 @@ Currently this module supports the following leagues.  Use the bold uppercase sh
 
 * **NHL** - National Hockey League
 * **NBA** - National Basketball Association
+* **WNBA** - Womens' Basketball Association
 * **MLB** - Major League Baseball
 * **NFL** - National Football League
 * **CFL** - Canadian Football League
@@ -189,6 +207,7 @@ Currently this module supports the following leagues.  Use the bold uppercase sh
 * **NCAAF** - NCAA College Football (FBS Division only)
 * **NCAAM** - NCAA College Basketball (Division I)
 * **NCAAM_MM** - NCAA College Basketball (March Madness Tournament)
+* **NCAAW** - NCAA Women's College Basketball
 
 
 ### Soccer Leagues & Competitions
@@ -536,6 +555,29 @@ East
 West
 ```
 
+### WNBA
+```
+Teams:
+---------------
+ATL   Atlanta Dream
+CHI   Chicago Sky
+CONN  Connecticut Sun
+DAL   Dallas Wings
+IND   Indiana Fever
+LA    Los Angeles Sparks
+LV    Las Vegas Aces
+MIN   Minnesota Lynx
+NY    New York Liberty
+PHX   Phoenix Mercury
+SEA   Seattle Storm
+WSH   Washington Mystics
+
+Groups:
+---------------
+East
+West
+```
+
 ### NFL
 ```
 Teams:
@@ -559,20 +601,20 @@ JAX   Jacksonville Jaguars
 KC    Kansas City Chiefs
 LAR   Los Angeles Rams
 LAC   Los Angeles Chargers
+LV    Las Vegas Raiders
 MIA   Miami Dolphins
 MIN   Minnesota Vikings
 NE    New England Patriots
 NO    New Orleans Saints
 NYG   New York Giants
 NYJ   New York Jets
-OAK   Oakland Raiders
 PHI   Philadelphia Eagles
 PIT   Pittsburgh Steelers
 SEA   Seattle Seahawks
 SF    San Francisco 49ers
 TB    Tampa Bay Buccaneers
 TEN   Tennessee Titans
-WAS   Washington Redskins
+WAS   Washington
 
 Groups:
 ---------------
@@ -595,7 +637,7 @@ Teams:
 
 BC    B.C. Lions
 CGY   Calgary Stampeders
-EDM   Edmonton Eskimos
+EDM   Edmonton Elks
 HAM   Hamilton Tiger-Cats
 MTL   Montreal Alouetts
 OTT   Ottawa Redblacks
@@ -616,27 +658,33 @@ Teams:
 ---------------
 
 ATL   Atlanta United FC
-CHI   Chicago Fire
-CLB   Columbus Crew SC
-COL   Colorado Rapids
+ATX   Austin FC
+CHI   Chicago Fire FC
+CIN   FC Cincinnati
+CLB   Columbus Crew
+CLT   Charlotte FC
 DAL   FC Dallas
-DC    DC United
-HOU   Houston Dynamo
-LA    LA Galaxy
-KC    Sporting Kansas City
-MIN   Minnesota United FC
-MTL   Montreal Impact
-NE    New England Revolution
-NY    New York Red Bulls
+DCU   D.C. United
+HOU   Houston Dynamo FC
+GAL   LA Galaxy
+SKC   Sporting Kansas City
+LAF   Los Angeles FC
+MIA   Inter Miami CF
+MNU   Minnesota United
+MTL   CF Montreal
+NER   New England Revolution
+NSH   Nashville SC
+NYR   New York Red Bulls
 NYC   New York City FC
-ORL   Orlando City FC
+ORL   Orlando City
 PHI   Philadelphia Union
 POR   Portland Timbers
+RAP   Colorado Rapids
 RSL   Real Salt Lake
-SJ    San Jose Earthquakes
+SJE   San Jose Earthquakes
 SEA   Seattle Sounders FC
 TOR   Toronto FC
-VAN   Vancouver Whitecaps
+WHI   Vancouver Whitecaps FC
 
 Groups:
 ---------------
@@ -774,7 +822,7 @@ VAN   Vanderbilt Commodores
 VT    Virginia Tech Hokies
 WAKE  Wake Forest Demon Deacons
 WASH  Washington Huskies
-WIS   Wisconsin Badgers
+WISC  Wisconsin Badgers
 WKU   Western Kentucky Hilltoppers
 WMU   Western MNichigan Broncos
 WSU   Washington State Cougars
@@ -1140,7 +1188,7 @@ WEB   Weber State Wildcats
 WEBB  Gardner-Webb Bulldogs
 WICH  Wichita State Shockers
 WIN   Winthrop Eagles
-WIS   Wisconsin Badgers
+WISC  Wisconsin Badgers
 WIU   Western Illinois Leathernecks
 WKU   Western Kentucky Hilltoppers
 WM    William & Mary Tribe
@@ -1170,6 +1218,412 @@ Big Ten
 Big West
 Colonial
 Conference USA
+Horizon
+Ivy
+MAAC
+Mid-American
+MEAC
+Missouri Valley
+Mountain West
+Northeast
+Ohio Valley
+Pac-12
+Patriot League
+SEC
+Southern
+Southland
+SWAC
+Summit League
+Sun Belt
+West Coast
+WAC
+```
+
+### NCAAW
+```
+Teams:
+---------------
+
+ACU   Abilene Christian Wildcats
+AFA   Air Force Falcons
+AKR   Akron Zips
+AAMU  Alabama A&M Bulldogs
+ALA   Alabama Crimson Tide
+ALST  Alabama State Lady Hornets
+ALB   Albany Great Danes
+ALCN  Alcorn State Lady Braves
+AMER  American University Eagles
+APP   Appalachian State Mountaineers
+ASU   Arizona State Sun Devils
+ARIZ  Arizona Wildcats
+ARK   Arkansas Razorbacks
+ARST  Arkansas State Red Wolves
+UAPB  Arkansas-Pine Bluff Golden Lions
+ARMY  Army Black Knights
+AUB   Auburn Tigers
+APSU  Austin Peay Governors
+BYU   BYU Cougars
+BALL  Ball State Cardinals
+BAY   Baylor Bears
+BELL  Bellarmine Knights
+BEL   Belmont Bruins
+BCU   Bethune-Cookman Wildcats
+BING  Binghamton Bearcats
+BOIS  Boise State Broncos
+BC    Boston College Eagles
+BU    Boston University Terriers
+BGSU  Bowling Green Falcons
+BRAD  Bradley Braves
+BRWN  Brown Bears
+BRY   Bryant Bulldogs
+BUCK  Bucknell Bison
+BUFF  Buffalo Bulls
+BUT   Butler Bulldogs
+CSUN  CSU Northridge Matadors
+CP    Cal Poly Mustangs
+CSUB  Cal State Bakersfield Roadrunners
+CSUF  Cal State Fullerton Titans
+CBU   California Baptist Lancers
+CAL   California Golden Bears
+CAM   Campbell Fighting Camels
+CAN   Canisius Golden Griffins
+CARK  Central Arkansas Bears
+CCSU  Central Connecticut Blue Devils
+CMU   Central Michigan Chippewas
+COFC  Charleston Cougars
+CHSO  Charleston Southern Buccaneers
+CLT   Charlotte 49ers
+UTC   Chattanooga Mocs
+CHST  Chicago State Cougars
+CIN   Cincinnati Bearcats
+CLEM  Clemson Tigers
+CLEV  Cleveland State Vikings
+CCU   Coastal Carolina Chanticleers
+COLG  Colgate Raiders
+COLO  Colorado Buffaloes
+CSU   Colorado State Rams
+COLU  Columbia Lions
+COPP  Coppin State Eagles
+COR   Cornell Big Red
+CREI  Creighton Bluejays
+DART  Dartmouth Big Green
+DAV   Davidson Wildcats
+DAY   Dayton Flyers
+DEP   DePaul Blue Demons
+DEL   Delaware Blue Hens
+DSU   Delaware State Lady Hornets
+DEN   Denver Pioneers
+DETM  Detroit Mercy Titans
+DRKE  Drake Bulldogs
+DREX  Drexel Dragons
+DUKE  Duke Blue Devils
+DUQ   Duquesne Dukes
+ECU   East Carolina Pirates
+ETSU  East Tennessee State Bucs
+EIU   Eastern Illinois Panthers
+EKU   Eastern Kentucky Colonels
+EMU   Eastern Michigan Eagles
+EWU   Eastern Washington Eagles
+ELON  Elon Phoenix
+EVAN  Evansville Purple Aces
+FAIR  Fairfield Stags
+FDU   Fairleigh Dickinson Knights
+FAMU  Florida A&M Rattlers
+FAU   Florida Atlantic Owls
+FLA   Florida Gators
+FGCU  Florida Gulf Coast Eagles
+FIU   Florida International Panthers
+FSU   Florida State Seminoles
+FOR   Fordham Rams
+FRES  Fresno State Bulldogs
+FUR   Furman Paladins
+GWEB  Gardner-Webb Runnin' Bulldogs
+GMU   George Mason Patriots
+GW    George Washington Colonials
+GTWN  Georgetown Hoyas
+UGA   Georgia Lady Bulldogs
+GASO  Georgia Southern Eagles
+GAST  Georgia State Panthers
+GT    Georgia Tech Yellow Jackets
+GONZ  Gonzaga Bulldogs
+GRAM  Grambling Lady Tigers
+GCU   Grand Canyon Lopes
+GB    Green Bay Phoenix
+HAMP  Hampton Lady Pirates
+HART  Hartford Hawks
+HARV  Harvard Crimson
+HAW   Hawai'i Rainbow Wahine
+HPU   High Point Panthers
+HOF   Hofstra Pride
+HC    Holy Cross Crusaders
+HCU   Houston Christian Huskies
+HOU   Houston Cougars
+HOW   Howard Bison
+IUPU  IUPUI Jaguars
+IDST  Idaho State Bengals
+IDHO  Idaho Vandals
+ILL   Illinois Fighting Illini
+ILST  Illinois State Redbirds
+UIW   Incarnate Word Cardinals
+IU    Indiana Hoosiers
+INST  Indiana State Sycamores
+IONA  Iona Gaels
+IOWA  Iowa Hawkeyes
+ISU   Iowa State Cyclones
+JKST  Jackson State Lady Tigers
+JAX   Jacksonville Dolphins
+JVST  Jacksonville State Gamecocks
+JMU   James Madison Dukes
+KC    Kansas City Roos
+KU    Kansas Jayhawks
+KSU   Kansas State Wildcats
+KENN  Kennesaw State Owls
+KENT  Kent State Golden Flashes
+UK    Kentucky Wildcats
+LSU   LSU Tigers
+LAS   La Salle Explorers
+LAF   Lafayette Leopards
+LAM   Lamar Cardinals
+LEH   Lehigh Mountain Hawks
+LIB   Liberty Flames
+LIN   Lindenwood Lions
+LIP   Lipscomb Bisons
+LR    Little Rock Trojans
+LBSU  Long Beach State Beach
+LIU   Long Island University Sharks
+LONG  Longwood Lancers
+UL    Louisiana Ragin' Cajuns
+LT    Louisiana Tech Lady Techsters
+LOU   Louisville Cardinals
+LUC   Loyola Chicago Ramblers
+L-MD  Loyola Maryland Greyhounds
+LMU   Loyola Marymount Lions
+MAINE Maine Black Bears
+MAN   Manhattan Jaspers
+MRST  Marist Red Foxes
+MARQ  Marquette Golden Eagles
+MRSH  Marshall Thundering Herd
+MD    Maryland Terrapins
+UMES  Maryland-Eastern Shore Lady Hawks
+MCN   McNeese Cowgirls
+MEM   Memphis Tigers
+MER   Mercer Bears
+MRMK  Merrimack Warriors
+M-OH  Miami (OH) Redhawks
+MIA   Miami Hurricanes
+MSU   Michigan State Spartans
+MICH  Michigan Wolverines
+MTSU  Middle Tennessee Lady Raiders
+MILW  Milwaukee Panthers
+MINN  Minnesota Golden Gophers
+MSST  Mississippi State Bulldogs
+MVSU  Mississippi Valley State Devilettes
+MOST  Missouri State Lady Bears
+MIZ   Missouri Tigers
+MONM  Monmouth Hawks
+MONT  Montana Lady Griz
+MTST  Montana State Bobcats
+MORE  Morehead State Eagles
+MORG  Morgan State Lady Bears
+MSM   Mount St. Mary's Mountaineers
+MUR   Murray State Racers
+NCST  NC State Wolfpack
+NJIT  NJIT Highlanders
+NAVY  Navy Midshipmen
+NEB   Nebraska Cornhuskers
+NEV   Nevada Wolf Pack
+UNH   New Hampshire Wildcats
+UNM   New Mexico Lobos
+NMSU  New Mexico State Aggies
+UNO   New Orleans Privateers
+NIA   Niagara Purple Eagles
+NICH  Nicholls Colonels
+NORF  Norfolk State Spartans
+UNA   North Alabama Lions
+NCAT  North Carolina A&T Aggies
+NCCU  North Carolina Central Eagles
+UNC   North Carolina Tar Heels
+UND   North Dakota Fighting Hawks
+NDSU  North Dakota State Bison
+UNF   North Florida Ospreys
+UNT   North Texas Mean Green
+NE    Northeastern Huskies
+NAU   Northern Arizona Lumberjacks
+UNCO  Northern Colorado Bears
+NIU   Northern Illinois Huskies
+UNI   Northern Iowa Panthers
+NKU   Northern Kentucky Norse
+NWST  Northwestern State Lady Demons
+NU    Northwestern Wildcats
+ND    Notre Dame Fighting Irish
+OAK   Oakland Golden Grizzlies
+OHIO  Ohio Bobcats
+OSU   Ohio State Buckeyes
+OU    Oklahoma Sooners
+OKST  Oklahoma State Cowgirls
+ODU   Old Dominion Monarchs
+MISS  Ole Miss Rebels
+OMA   Omaha Mavericks
+ORU   Oral Roberts Golden Eagles
+ORE   Oregon Ducks
+ORST  Oregon State Beavers
+PAC   Pacific Tigers
+PSU   Penn State Lady Lions
+PENN  Pennsylvania Quakers
+PEPP  Pepperdine Waves
+PITT  Pittsburgh Panthers
+PORT  Portland Pilots
+PRST  Portland State Vikings
+PV    Prairie View A&M Lady Panthers
+PRES  Presbyterian Blue Hose
+PRIN  Princeton Tigers
+PROV  Providence Friars
+PUR   Purdue Boilermakers
+PFW   Purdue Fort Wayne Mastodons
+QUOC  Queens University Royals
+QUIN  Quinnipiac Bobcats
+RAD   Radford Highlanders
+URI   Rhode Island Rams
+RICE  Rice Owls
+RICH  Richmond Spiders
+RID   Rider Broncs
+RMU   Robert Morris Colonials
+RUTG  Rutgers Scarlet Knights
+SELA  SE Louisiana Lady Lions
+SIUE  SIU Edwardsville Cougars
+SMU   SMU Mustangs
+SAC   Sacramento State Hornets
+SHU   Sacred Heart Pioneers
+JOES  Saint Joseph's Hawks
+SLU   Saint Louis Billikens
+SMC   Saint Mary's Gaels
+SPU   Saint Peter's Peacocks
+SHSU  Sam Houston Bearkats
+SAM   Samford Bulldogs
+SDSU  San Diego State Aztecs
+USD   San Diego Toreros
+SF    San Francisco Dons
+SJSU  San Jose State Spartans
+SCU   Santa Clara Broncos
+SEA   Seattle U Redhawks
+HALL  Seton Hall Pirates
+SIE   Siena Saints
+USA   South Alabama Jaguars
+SC    South Carolina Gamecocks
+SCST  South Carolina State Lady Bulldogs
+SCUP  South Carolina Upstate Spartans
+SDAK  South Dakota Coyotes
+SDST  South Dakota State Jackrabbits
+USF   South Florida Bulls
+SEMO  Southeast Missouri State Redhawks
+SIU   Southern Illinois Salukis
+USI   Southern Indiana Screaming Eagles
+SOU   Southern Jaguars
+USM   Southern Miss Golden Eagles
+SUU   Southern Utah Thunderbirds
+SBU   St. Bonaventure Bonnies
+SFPA  St. Francis (PA) Red Flash
+SFNY  St. Francis Brooklyn Terriers
+SJU   St. John's Red Storm
+STMN  St. Thomas - Minnesota Tommies
+STAN  Stanford Cardinal
+SFA   Stephen F. Austin Ladyjacks
+STET  Stetson Hatters
+STO   Stonehill Skyhawks
+STBK  Stony Brook Seawolves
+SYR   Syracuse Orange
+TCU   TCU Horned Frogs
+TAR   Tarleton Texans
+TEM   Temple Owls
+TENN  Tennessee Lady Volunteers
+TNST  Tennessee State Lady Tigers
+TNTC  Tennessee Tech Golden Eagles
+TA&M  Texas A&M Aggies
+TAMC  Texas A&M-Commerce Lions
+AMCC  Texas A&M-Corpus Christi Islanders
+TEX   Texas Longhorns
+TXSO  Texas Southern Tigers
+TXST  Texas State Bobcats
+TTU   Texas Tech Lady Raiders
+TOL   Toledo Rockets
+TOW   Towson Tigers
+TROY  Troy Trojans
+TULN  Tulane Green Wave
+TLSA  Tulsa Golden Hurricane
+UAB   UAB Blazers
+UCD   UC Davis Aggies
+UCI   UC Irvine Anteaters
+UCR   UC Riverside Highlanders
+UCSD  UC San Diego Tritons
+UCSB  UC Santa Barbara Gauchos
+UCF   UCF Knights
+UCLA  UCLA Bruins
+CONN  UConn Huskies
+UIC   UIC Flames
+ULM   UL Monroe Warhawks
+UMBC  UMBC Retrievers
+UML   UMass Lowell River Hawks
+MASS  UMass Minutewomen
+UNCA  UNC Asheville Bulldogs
+UNCG  UNC Greensboro Spartans
+UNCW  UNC Wilmington Seahawks
+UNLV  UNLV Lady Rebels
+USC   USC Trojans
+UTA   UT Arlington Mavericks
+UTM   UT Martin Skyhawks
+RGV   UT Rio Grande Valley Vaqueros
+UTEP  UTEP Miners
+UTSA  UTSA Roadrunners
+USU   Utah State Aggies
+UTU   Utah Tech Trailblazers
+UTAH  Utah Utes
+UVU   Utah Valley Wolverines
+VCU   VCU Rams
+VAL   Valparaiso Beacons
+VAN   Vanderbilt Commodores
+UVM   Vermont Catamounts
+VILL  Villanova Wildcats
+UVA   Virginia Cavaliers
+VT    Virginia Tech Hokies
+WAG   Wagner Seahawks
+WAKE  Wake Forest Demon Deacons
+WASH  Washington Huskies
+WSU   Washington State Cougars
+WEB   Weber State Wildcats
+WVU   West Virginia Mountaineers
+WCU   Western Carolina Catamounts
+WIU   Western Illinois Leathernecks
+WKU   Western Kentucky Lady Toppers
+WMU   Western Michigan Broncos
+WICH  Wichita State Shockers
+W&M   William & Mary Tribe
+WIN   Winthrop Eagles
+WISC  Wisconsin Badgers
+WOF   Wofford Terriers
+WRST  Wright State Raiders
+WYO   Wyoming Cowgirls
+XAV   Xavier Musketeers
+YALE  Yale Bulldogs
+YSU   Youngstown State Penguins
+
+
+Groups:
+---------------
+Top 25
+ASUN
+America East
+American
+Atlantic 10
+ACC
+Big 12
+Big East
+Big Sky
+Big South
+Big Ten
+Big West
+Colonial
+Conference USA
+Independents
 Horizon
 Ivy
 MAAC

@@ -18,8 +18,9 @@
   "author": "Jeff Clarke",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.27.2",
     "json-parse-async": "^1.0.3",
-    "moment-timezone": "^0.5.13",
-    "request": "^2.81.0"
+    "moment-timezone": "^0.5.37",
+    "request": "^2.88.2"
   }
 }
