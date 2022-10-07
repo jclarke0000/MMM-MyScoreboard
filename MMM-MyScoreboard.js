@@ -41,6 +41,19 @@ Module.register("MMM-MyScoreboard",{
   },
 
   supportedLeagues: {
+
+    /*
+
+      logoFormat is no longer used.  The module makes a catalog of what
+      logos are present locally and uses them when available.
+      Otherewise the log image URL provided by the data feed is used.
+
+      In the spirit of "if it ain't broke, don't  fix it," I'll leave
+      the logoFormat parameter in place.  Who knows... I might use it
+      for something else in the future.
+
+    */
+
     //North American Leagues
     "NBA": {provider: "ESPN", logoFormat: "svg"},
     "NHL": {provider: "SNET", logoFormat: "svg"},
@@ -245,6 +258,8 @@ Module.register("MMM-MyScoreboard",{
     "stackedWithLogos"
   ],
 
+  localLogos: {},
+
   viewStyleHasLogos: function(v) {
     switch(v) {
       case "largeLogos":
@@ -346,14 +361,15 @@ Module.register("MMM-MyScoreboard",{
       hTeamLogo.classList.add("logo", "home");
 
       var hTeamLogoImg = document.createElement("img");
-      if (this.supportedLeagues[league].logoFormat == "url") {
-        //use URL to external logo image
-        hTeamLogoImg.src = gameObj.hTeamLogoUrl;
+
+      if (this.localLogos[leagueForLogoPath].indexOf(gameObj.hTeam + ".svg") !== -1) {
+        hTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.hTeam + ".svg");
+      } else if (this.localLogos[leagueForLogoPath].indexOf(gameObj.hTeam + ".png") !== -1) {
+        hTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.hTeam + ".png");
       } else {
-        hTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.hTeam + "." + this.supportedLeagues[league].logoFormat );
+        hTeamLogoImg.src = gameObj.hTeamLogoUrl;
       }
 
-      //End of for Soccer
       hTeamLogoImg.setAttribute("data-abbr", gameObj.hTeam);
 
       hTeamLogo.appendChild(hTeamLogoImg);
@@ -372,11 +388,15 @@ Module.register("MMM-MyScoreboard",{
       vTeamLogo.classList.add("logo", "visitor");
 
       var vTeamLogoImg = document.createElement("img");
-      if (this.supportedLeagues[league].logoFormat == "url") {
-        vTeamLogoImg.src = gameObj.vTeamLogoUrl;
+
+      if (this.localLogos[leagueForLogoPath].indexOf(gameObj.vTeam + ".svg") !== -1) {
+        vTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.vTeam + ".svg");
+      } else if (this.localLogos[leagueForLogoPath].indexOf(gameObj.vTeam + ".png") !== -1) {
+        vTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.vTeam + ".png");
       } else {
-        vTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.vTeam + "." + this.supportedLeagues[league].logoFormat );        
+        vTeamLogoImg.src = gameObj.vTeamLogoUrl;
       }
+
 
       vTeamLogoImg.setAttribute("data-abbr", gameObj.vTeam);
 
@@ -556,6 +576,30 @@ Module.register("MMM-MyScoreboard",{
       this.loaded = true;
       this.sportsData[payload.index] = payload.scores;
       this.updateDom();
+    } else if (notification === "MMM-MYSCOREBOARD-LOCAL-LOGO-LIST" && payload.instanceId == this.identifier) {
+      this.localLogos = payload.logos;
+
+      /*
+        get scores and set up polling
+      */
+
+      this.getScores();
+
+      /*
+        As of v2.0, poll interval is no longer configurable.
+        Providers manage their own data pull schedule in some
+        cases (e.g. SNET.js), while others will poll on demand
+        when this timer fires. In an effort to keep the APIs
+        free and clear, please do not modify this to hammer
+        the APIs with a flood of calls.  Doing so may cause the
+        respective feed owners to lock down the APIs. Updating
+        every two minutes should be more than fine for our purposes.
+      */
+      setInterval(() => {
+        this.getScores();
+      }, 2 * 60 * 1000);
+
+
     }
   },
 
@@ -587,24 +631,13 @@ Module.register("MMM-MyScoreboard",{
     }
 
     /*
-      get scores and set up polling
+      Get list of local logo images files.
+      These will override the URL provided by the feed
+    
+      Once this returns the list, we'll start polling for data
     */
 
-    this.getScores();
-
-    /*
-      As of v2.0, poll interval is no longer configurable.
-      Providers manage their own data pull schedule in some
-      cases (e.g. SNET.js), while others will poll on demand
-      when this timer fires. In an effort to keep the APIs
-      free and clear, please do not modify this to hammer
-      the APIs with a flood of calls.  Doing so may cause the
-      respective feed owners to lock down the APIs. Updating
-      every two minutes should be more than fine for our purposes.
-    */
-    setInterval(function() {
-      self.getScores();
-    }, 2 * 60 * 1000);
+    self.sendSocketNotification("MMM-MYSCOREBOARD-GET-LOCAL-LOGOS", {instanceId: self.identifier});
 
   },
 

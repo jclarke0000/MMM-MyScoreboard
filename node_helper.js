@@ -1,4 +1,6 @@
 const NodeHelper = require("node_helper");
+const dirTree = require("directory-tree");
+
 
 module.exports = NodeHelper.create({
 
@@ -9,6 +11,22 @@ module.exports = NodeHelper.create({
 
     this.providers.SNET = require("./providers/SNET.js");
     this.providers.ESPN = require("./providers/ESPN.js");
+    this.localLogos = {};
+
+    const fsTree = dirTree("./modules/MMM-MyScoreboard/logos", {
+      extensions: /\.(svg|png)$/
+    });
+    fsTree.children.forEach( league => {
+      if (league.children) {
+        var logoFiles = [];
+        league.children.forEach( logo => {
+          logoFiles.push(logo.name);
+        });
+        this.localLogos[league.name] = logoFiles;
+      } 
+    });
+
+
   },
 
   socketNotificationReceived: function(notification, payload) {
@@ -32,6 +50,10 @@ module.exports = NodeHelper.create({
         self.sendSocketNotification("MMM-MYSCOREBOARD-SCORE-UPDATE", {instanceId: payload.instanceId, index: payload.index, scores: scores});
       });
 
+
+    } else if (notification == "MMM-MYSCOREBOARD-GET-LOCAL-LOGOS") {
+
+      this.sendSocketNotification("MMM-MYSCOREBOARD-LOCAL-LOGO-LIST", {instanceId: payload.instanceId, index: payload.index, logos: this.localLogos});
 
     }
 
