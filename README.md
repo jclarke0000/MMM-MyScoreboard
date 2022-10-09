@@ -4,14 +4,14 @@ This a module for <strong>MagicMirror</strong><br>
 https://magicmirror.builders/<br>
 https://github.com/MichMich/MagicMirror
 
-This module display's today's scores for your favourite teams across a number of different
+This module displays today's scores for your favourite teams across a number of different
 leagues, including:
 
 * NHL Hockey
 * NBA / WNBA Basketball
 * MLB Baseball
 * NFL Footabll
-* CFL Footabll (Canadian Footbal League)
+* CFL Footabll (Canadian Football League)
 * MLS Soccer
 * NCAA College Football (FBS Division)
 * NCAA College Basketball (Division I and March Madness, and Womens')
@@ -29,17 +29,18 @@ leagues, including:
   * Spanish La Liga
   * Mexican Liga BBVA Bancomer
 
-## UPDATE 3-OCT-2022
+## UPDATE RELEASE 3.0 9-OCT-2022
 
 This update includes several addtions and fixes:
 * Correction of SportsNet provider ticker URL
 * Change of ESPN provider to HTTPS
 * Replacement of deprecated library Request with Axios
-* Addition of WNBA and NCAAW womens' college basketball
+* Addition of WNBA and NCAAW womens' basketball
 * Update of logos for North American leagues
 * Correction of Winsconsin Badgers NCAA team shortcode from WIS to WISC
+* Improves how team logos are handled.  Uses local logo files where available, otherwises uses URL from feed.
 
-As this replaces a library central to the module's fucntionality, upgrade as follows:
+If you are upgrading from a previous version, this update introduces new libraries. Upgrade as follows:
 In the MMM-MyScoreboard directory, type:
 
 `git pull`
