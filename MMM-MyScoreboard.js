@@ -362,9 +362,9 @@ Module.register("MMM-MyScoreboard",{
 
       var hTeamLogoImg = document.createElement("img");
 
-      if (this.localLogos[leagueForLogoPath].indexOf(gameObj.hTeam + ".svg") !== -1) {
+      if (this.localLogos[leagueForLogoPath] && this.localLogos[leagueForLogoPath].indexOf(gameObj.hTeam + ".svg") !== -1) {
         hTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.hTeam + ".svg");
-      } else if (this.localLogos[leagueForLogoPath].indexOf(gameObj.hTeam + ".png") !== -1) {
+      } else if (this.localLogos[leagueForLogoPath] && this.localLogos[leagueForLogoPath].indexOf(gameObj.hTeam + ".png") !== -1) {
         hTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.hTeam + ".png");
       } else {
         hTeamLogoImg.src = gameObj.hTeamLogoUrl;
@@ -389,9 +389,9 @@ Module.register("MMM-MyScoreboard",{
 
       var vTeamLogoImg = document.createElement("img");
 
-      if (this.localLogos[leagueForLogoPath].indexOf(gameObj.vTeam + ".svg") !== -1) {
+      if (this.localLogos[leagueForLogoPath] && this.localLogos[leagueForLogoPath].indexOf(gameObj.vTeam + ".svg") !== -1) {
         vTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.vTeam + ".svg");
-      } else if (this.localLogos[leagueForLogoPath].indexOf(gameObj.vTeam + ".png") !== -1) {
+      } else if (this.localLogos[leagueForLogoPath] && this.localLogos[leagueForLogoPath].indexOf(gameObj.vTeam + ".png") !== -1) {
         vTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.vTeam + ".png");
       } else {
         vTeamLogoImg.src = gameObj.vTeamLogoUrl;
