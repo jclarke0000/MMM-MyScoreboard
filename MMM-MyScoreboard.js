@@ -9,8 +9,7 @@
 
  *********************************/
 
-Module.register("MMM-MyScoreboard",{
-
+Module.register("MMM-MyScoreboard", {
   // Default module config.
   defaults: {
     showLeagueSeparators: true,
@@ -42,178 +41,553 @@ Module.register("MMM-MyScoreboard",{
 
   supportedLeagues: {
     //North American Leagues
-    "NBA": {provider: "ESPN", logoFormat: "svg"},
-    "NHL": {provider: "SNET", logoFormat: "svg"},
-    "NFL": {provider: "SNET", logoFormat: "svg"},
-    "CFL": {provider: "SNET", logoFormat: "svg"},
-    "MLB": {provider: "SNET", logoFormat: "svg"},
-    "MLS": {provider: "SNET", logoFormat: "svg", homeTeamFirst: true},
-    "NCAAF": {provider: "ESPN", logoFormat: "png"},
-    "NCAAM": {provider: "ESPN", logoFormat: "png"},
-    "NCAAM_MM": {provider: "ESPN",logoFormat: "png"},
+    NBA: { provider: "ESPN", logoFormat: "svg" },
+    NHL: { provider: "SNET", logoFormat: "svg" },
+    NFL: { provider: "SNET", logoFormat: "svg" },
+    CFL: { provider: "SNET", logoFormat: "svg" },
+    MLB: { provider: "SNET", logoFormat: "svg" },
+    MLS: { provider: "SNET", logoFormat: "svg", homeTeamFirst: true },
+    NCAAF: { provider: "ESPN", logoFormat: "png" },
+    NCAAM: { provider: "ESPN", logoFormat: "png" },
+    NCAAM_MM: { provider: "ESPN", logoFormat: "png" },
 
     //International Soccer
-    "AFC_ASIAN_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "AFC_ASIAN_CUP_Q": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "AFF_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "AFR_NATIONS_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "AFR_NATIONS_CUP_Q": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "AFR_NATIONS_Q": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "CONCACAF_GOLD_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "CONCACAF_NATIONS_Q": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "CONCACAF_WOMENS_CHAMPIONSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "CONMEBOL_COPA_AMERICA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_CLUB_WORLD_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_CONFEDERATIONS_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_MENS_FRIENDLIES": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_MENS_OLYMPICS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_WOMENS_FRIENDLIES": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_WOMENS_OLYMPICS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_WOMENS_WORLD_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_WORLD_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_WORLD_CUP_Q_AFC": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_WORLD_CUP_Q_CAF": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_WORLD_CUP_Q_CONCACAF": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_WORLD_CUP_Q_CONMEBOL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_WORLD_CUP_Q_OFC": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_WORLD_CUP_Q_UEFA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_WORLD_U17": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FIFA_WORLD_U20": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "UEFA_CHAMPIONS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "UEFA_EUROPEAN_CHAMPIONSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "UEFA_EUROPEAN_CHAMPIONSHIP_Q": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "UEFA_EUROPEAN_CHAMPIONSHIP_U19": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "UEFA_EUROPEAN_CHAMPIONSHIP_U21": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "UEFA_EUROPA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "UEFA_NATIONS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "SAFF_CHAMPIONSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "WOMENS_EUROPEAN_CHAMPIONSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    AFC_ASIAN_CUP: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    AFC_ASIAN_CUP_Q: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    AFF_CUP: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    AFR_NATIONS_CUP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    AFR_NATIONS_CUP_Q: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    AFR_NATIONS_Q: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    CONCACAF_GOLD_CUP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    CONCACAF_NATIONS_Q: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    CONCACAF_WOMENS_CHAMPIONSHIP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    CONMEBOL_COPA_AMERICA: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_CLUB_WORLD_CUP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_CONFEDERATIONS_CUP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_MENS_FRIENDLIES: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_MENS_OLYMPICS: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_WOMENS_FRIENDLIES: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_WOMENS_OLYMPICS: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_WOMENS_WORLD_CUP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_WORLD_CUP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_WORLD_CUP_Q_AFC: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_WORLD_CUP_Q_CAF: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_WORLD_CUP_Q_CONCACAF: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_WORLD_CUP_Q_CONMEBOL: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_WORLD_CUP_Q_OFC: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_WORLD_CUP_Q_UEFA: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_WORLD_U17: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FIFA_WORLD_U20: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    UEFA_CHAMPIONS: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    UEFA_EUROPEAN_CHAMPIONSHIP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    UEFA_EUROPEAN_CHAMPIONSHIP_Q: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    UEFA_EUROPEAN_CHAMPIONSHIP_U19: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    UEFA_EUROPEAN_CHAMPIONSHIP_U21: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    UEFA_EUROPA: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    UEFA_NATIONS: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    SAFF_CHAMPIONSHIP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    WOMENS_EUROPEAN_CHAMPIONSHIP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
 
     //UK / Ireland Soccer
-    "ENG_CARABAO_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ENG_CHAMPIONSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ENG_EFL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ENG_FA_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ENG_LEAGUE_1": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ENG_LEAGUE_2": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ENG_NATIONAL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ENG_PREMIERE_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "IRL_PREM": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "NIR_PREM": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "SCO_CHALLENGE_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "SCO_CHAMPIONSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "SCO_CIS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "SCO_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "SCO_LEAGUE_1": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "SCO_LEAGUE_2": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "SCO_PREM": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "WAL_PREM": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    ENG_CARABAO_CUP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ENG_CHAMPIONSHIP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ENG_EFL: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    ENG_FA_CUP: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    ENG_LEAGUE_1: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    ENG_LEAGUE_2: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    ENG_NATIONAL: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    ENG_PREMIERE_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    IRL_PREM: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    NIR_PREM: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    SCO_CHALLENGE_CUP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    SCO_CHAMPIONSHIP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    SCO_CIS: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    SCO_CUP: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    SCO_LEAGUE_1: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    SCO_LEAGUE_2: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    SCO_PREM: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    WAL_PREM: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
 
     //European Soccer
-    "AUT_BUNDESLIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "BEL_DIV_A": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "DEN_SAS_LIGAEN": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ESP_COPA_DEL_REY": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ESP_LALIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ESP_SEGUNDA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FRA_COUPE_DE_FRANCE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FRA_COUPE_DE_LA_LIGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FRA_LIGUE_1": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "FRA_LIGUE_2": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "GER_2_BUNDESLIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "GER_BUNDESLIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "GER_DFB_POKAL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "GRE_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ISR_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "MLT_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ITA_COPPA_ITALIA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ITA_SERIE_A": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ITA_SERIE_B": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "NED_EERSTE_DIVISIE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "NED_EREDIVISIE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "NED_KNVB_BEKER": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "NOR_ELITESERIEN": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "POR_LIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ROU_FIRST_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "RUS_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "SUI_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "SWE_ALLSVENSKANLIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "TUR_SUPER_LIG": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    AUT_BUNDESLIGA: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    BEL_DIV_A: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    DEN_SAS_LIGAEN: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ESP_COPA_DEL_REY: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ESP_LALIGA: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    ESP_SEGUNDA_DIV: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FRA_COUPE_DE_FRANCE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FRA_COUPE_DE_LA_LIGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    FRA_LIGUE_1: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    FRA_LIGUE_2: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    GER_2_BUNDESLIGA: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    GER_BUNDESLIGA: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    GER_DFB_POKAL: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    GRE_SUPER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ISR_PREMIER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    MLT_PREMIER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ITA_COPPA_ITALIA: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ITA_SERIE_A: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    ITA_SERIE_B: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    NED_EERSTE_DIVISIE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    NED_EREDIVISIE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    NED_KNVB_BEKER: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    NOR_ELITESERIEN: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    POR_LIGA: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    ROU_FIRST_DIV: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    RUS_PREMIER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    SUI_SUPER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    SWE_ALLSVENSKANLIGA: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    TUR_SUPER_LIG: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
 
     //South American Soccer
-    "ARG_COPA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ARG_NACIONAL_B": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ARG_PRIMERA_DIV_B": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ARG_PRIMERA_DIV_C": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ARG_PRIMERA_DIV_D": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ARG_SUPERLIGA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "BOL_LIGA_PRO": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "BRA_COPA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "BRA_CAMP_CARIOCA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "BRA_CAMP_GAUCHO": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "BRA_CAMP_MINEIRO": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "BRA_CAMP_PAULISTA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "BRA_SERIE_A": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "BRA_SERIE_B": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "BRA_SERIE_C": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "CHI_COPA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "CHI_PRIMERA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "COL_COPA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "COL_PRIMERA_A": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "COL_PRIMERA_B": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "CONMEBOL_COPA_LIBERTADORES": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "CONMEBOL_COPA_SUDAMERICANA": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ECU_PRIMERA_A": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "PAR_PRIMERA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "PER_PRIMERA_PRO": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "URU_PRIMERA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "VEN_PRIMERA_PRO": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    ARG_COPA: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    ARG_NACIONAL_B: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ARG_PRIMERA_DIV_B: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ARG_PRIMERA_DIV_C: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ARG_PRIMERA_DIV_D: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ARG_SUPERLIGA: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    BOL_LIGA_PRO: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    BRA_COPA: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    BRA_CAMP_CARIOCA: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    BRA_CAMP_GAUCHO: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    BRA_CAMP_MINEIRO: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    BRA_CAMP_PAULISTA: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    BRA_SERIE_A: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    BRA_SERIE_B: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    BRA_SERIE_C: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    CHI_COPA: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    CHI_PRIMERA_DIV: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    COL_COPA: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    COL_PRIMERA_A: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    COL_PRIMERA_B: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    CONMEBOL_COPA_LIBERTADORES: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    CONMEBOL_COPA_SUDAMERICANA: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ECU_PRIMERA_A: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    PAR_PRIMERA_DIV: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    PER_PRIMERA_PRO: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    URU_PRIMERA_DIV: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    VEN_PRIMERA_PRO: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
 
     //North American Soccer
-    "CONCACAF_CHAMPIONS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "CONCACAF_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "CRC_PRIMERA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "GUA_LIGA_NACIONAL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "HON_PRIMERA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "JAM_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "MEX_ASCENSO_MX": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "MEX_COPA_MX": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "MEX_LIGA_BANCOMER": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "SLV_PRIMERA_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "USA_MLS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "USA_NCAA_SL_M": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "USA_NCAA_SL_W": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "USA_NASL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "USA_NWSL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "USA_OPEN": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "USA_USL": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    CONCACAF_CHAMPIONS: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    CONCACAF_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    CRC_PRIMERA_DIV: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    GUA_LIGA_NACIONAL: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    HON_PRIMERA_DIV: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    JAM_PREMIER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    MEX_ASCENSO_MX: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    MEX_COPA_MX: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    MEX_LIGA_BANCOMER: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    SLV_PRIMERA_DIV: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    USA_MLS: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    USA_NCAA_SL_M: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    USA_NCAA_SL_W: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    USA_NASL: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    USA_NWSL: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    USA_OPEN: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    USA_USL: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
 
     //Asian Soccer
-    "AFC_CHAMPIONS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "AUS_A_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "CHN_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "IDN_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "IND_I_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "IND_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "JPN_J_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "MYS_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "SGP_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "THA_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
+    AFC_CHAMPIONS: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    AUS_A_LEAGUE: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    CHN_SUPER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    IDN_SUPER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    IND_I_LEAGUE: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    IND_SUPER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    JPN_J_LEAGUE: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    MYS_SUPER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    SGP_PREMIER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    THA_PREMIER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
 
     //African Soccer
-    "CAF_CHAMPIONS": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "CAF_CONFED_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "GHA_PREMIERE_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "KEN_PREMIERE_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "NGA_PRO_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "RSA_FIRST_DIV": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "RSA_NEDBANK_CUP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "RSA_PREMIERSHIP": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "RSA_TELKOM_KNOCKOUT": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "UGA_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ZAM_SUPER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-    "ZIM_PREMIER_LEAGUE": {provider: "ESPN", logoFormat: "url", homeTeamFirst: true},
-
+    CAF_CHAMPIONS: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    CAF_CONFED_CUP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    GHA_PREMIERE_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    KEN_PREMIERE_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    NGA_PRO_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    RSA_FIRST_DIV: { provider: "ESPN", logoFormat: "url", homeTeamFirst: true },
+    RSA_NEDBANK_CUP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    RSA_PREMIERSHIP: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    RSA_TELKOM_KNOCKOUT: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    UGA_SUPER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ZAM_SUPER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    },
+    ZIM_PREMIER_LEAGUE: {
+      provider: "ESPN",
+      logoFormat: "url",
+      homeTeamFirst: true
+    }
   },
 
   // Define required styles.
@@ -222,7 +596,7 @@ Module.register("MMM-MyScoreboard",{
   },
 
   // Define required scripts.
-  getScripts: function() {
+  getScripts: function () {
     return ["moment.js"];
   },
 
@@ -242,8 +616,8 @@ Module.register("MMM-MyScoreboard",{
     "stackedWithLogos"
   ],
 
-  viewStyleHasLogos: function(v) {
-    switch(v) {
+  viewStyleHasLogos: function (v) {
+    switch (v) {
       case "largeLogos":
       case "mediumLogos":
       case "smallLogos":
@@ -255,7 +629,7 @@ Module.register("MMM-MyScoreboard",{
     }
   },
 
-  viewStyleHasRankingOverlay: function(v) {
+  viewStyleHasRankingOverlay: function (v) {
     switch (v) {
       case "largeLogos":
       case "mediumLogos":
@@ -266,8 +640,8 @@ Module.register("MMM-MyScoreboard",{
     }
   },
 
-  viewStyleHasShortcodes: function(v) {
-    switch(v) {
+  viewStyleHasShortcodes: function (v) {
+    switch (v) {
       case "oneLine":
       case "oneLineWithLogos":
         return true;
@@ -276,8 +650,8 @@ Module.register("MMM-MyScoreboard",{
     }
   },
 
-  viewStyleHasLongNames: function(v) {
-    switch(v) {
+  viewStyleHasLongNames: function (v) {
+    switch (v) {
       case "stacked":
       case "stackedWithLogos":
         return true;
@@ -285,7 +659,6 @@ Module.register("MMM-MyScoreboard",{
         return false;
     }
   },
-
 
   /******************************************************************
 
@@ -310,8 +683,7 @@ Module.register("MMM-MyScoreboard",{
    <span class='score visitor'>vScore</span>
    </div>
    ******************************************************************/
-  boxScoreFactory: function(league, gameObj) {
-
+  boxScoreFactory: function (league, gameObj) {
     var viewStyle = this.config.viewStyle;
 
     var boxScore = document.createElement("div");
@@ -321,7 +693,7 @@ Module.register("MMM-MyScoreboard",{
       boxScore.classList.add("in-progress");
     }
     if (gameObj.classes) {
-      gameObj.classes.forEach( function(c) {
+      gameObj.classes.forEach(function (c) {
         boxScore.classList.add(c);
       });
     }
@@ -338,7 +710,6 @@ Module.register("MMM-MyScoreboard",{
 
     //add team logos if applicable
     if (this.viewStyleHasLogos(viewStyle)) {
-
       var hTeamLogo = document.createElement("span");
       hTeamLogo.classList.add("logo", "home");
 
@@ -347,7 +718,14 @@ Module.register("MMM-MyScoreboard",{
         //use URL to external logo image
         hTeamLogoImg.src = gameObj.hTeamLogoUrl;
       } else {
-        hTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.hTeam + "." + this.supportedLeagues[league].logoFormat );
+        hTeamLogoImg.src = this.file(
+          "logos/" +
+            leagueForLogoPath +
+            "/" +
+            gameObj.hTeam +
+            "." +
+            this.supportedLeagues[league].logoFormat
+        );
       }
 
       //End of for Soccer
@@ -355,15 +733,17 @@ Module.register("MMM-MyScoreboard",{
 
       hTeamLogo.appendChild(hTeamLogoImg);
 
-      if (this.config.showRankings && this.viewStyleHasRankingOverlay(viewStyle) && gameObj.hTeamRanking) {
+      if (
+        this.config.showRankings &&
+        this.viewStyleHasRankingOverlay(viewStyle) &&
+        gameObj.hTeamRanking
+      ) {
         var hTeamRakingOverlay = document.createElement("span");
         hTeamRakingOverlay.classList.add("ranking");
         hTeamRakingOverlay.innerHTML = gameObj.hTeamRanking;
         hTeamLogo.appendChild(hTeamRakingOverlay);
       }
       boxScore.appendChild(hTeamLogo);
-
-
 
       var vTeamLogo = document.createElement("span");
       vTeamLogo.classList.add("logo", "visitor");
@@ -372,14 +752,25 @@ Module.register("MMM-MyScoreboard",{
       if (this.supportedLeagues[league].logoFormat == "url") {
         vTeamLogoImg.src = gameObj.vTeamLogoUrl;
       } else {
-        vTeamLogoImg.src = this.file("logos/" + leagueForLogoPath + "/" + gameObj.vTeam + "." + this.supportedLeagues[league].logoFormat );        
+        vTeamLogoImg.src = this.file(
+          "logos/" +
+            leagueForLogoPath +
+            "/" +
+            gameObj.vTeam +
+            "." +
+            this.supportedLeagues[league].logoFormat
+        );
       }
 
       vTeamLogoImg.setAttribute("data-abbr", gameObj.vTeam);
 
       vTeamLogo.appendChild(vTeamLogoImg);
 
-      if (this.config.showRankings && this.viewStyleHasRankingOverlay(viewStyle) && gameObj.vTeamRanking) {
+      if (
+        this.config.showRankings &&
+        this.viewStyleHasRankingOverlay(viewStyle) &&
+        gameObj.vTeamRanking
+      ) {
         var vTeamRakingOverlay = document.createElement("span");
         vTeamRakingOverlay.classList.add("ranking");
         vTeamRakingOverlay.innerHTML = gameObj.vTeamRanking;
@@ -392,12 +783,18 @@ Module.register("MMM-MyScoreboard",{
     if (this.viewStyleHasShortcodes(viewStyle)) {
       var hTeamSC = document.createElement("span");
       hTeamSC.classList.add("team-short-code", "home");
-      hTeamSC.innerHTML = (this.config.showRankings && gameObj.hTeamRanking ? "<span class=\"ranking\">" + gameObj.hTeamRanking + "</span>" : "") + gameObj.hTeam;
+      hTeamSC.innerHTML =
+        (this.config.showRankings && gameObj.hTeamRanking
+          ? '<span class="ranking">' + gameObj.hTeamRanking + "</span>"
+          : "") + gameObj.hTeam;
       boxScore.appendChild(hTeamSC);
 
       var vTeamSC = document.createElement("span");
       vTeamSC.classList.add("team-short-code", "visitor");
-      vTeamSC.innerHTML = (this.config.showRankings && gameObj.vTeamRanking ? "<span class=\"ranking\">" + gameObj.vTeamRanking + "</span>" : "") + gameObj.vTeam;
+      vTeamSC.innerHTML =
+        (this.config.showRankings && gameObj.vTeamRanking
+          ? '<span class="ranking">' + gameObj.vTeamRanking + "</span>"
+          : "") + gameObj.vTeam;
       boxScore.appendChild(vTeamSC);
     }
 
@@ -405,20 +802,27 @@ Module.register("MMM-MyScoreboard",{
     if (this.viewStyleHasLongNames(viewStyle)) {
       var hTeamName = document.createElement("span");
       hTeamName.classList.add("team-name", "home");
-      hTeamName.innerHTML = (this.config.showRankings && gameObj.hTeamRanking ? "<span class=\"ranking\">" + gameObj.hTeamRanking + "</span>" : "") + gameObj.hTeamLong;
+      hTeamName.innerHTML =
+        (this.config.showRankings && gameObj.hTeamRanking
+          ? '<span class="ranking">' + gameObj.hTeamRanking + "</span>"
+          : "") + gameObj.hTeamLong;
       boxScore.appendChild(hTeamName);
 
       var vTeamName = document.createElement("span");
       vTeamName.classList.add("team-name", "visitor");
-      vTeamName.innerHTML = (this.config.showRankings && gameObj.vTeamRanking ? "<span class=\"ranking\">" + gameObj.vTeamRanking + "</span>" : "") + gameObj.vTeamLong;
+      vTeamName.innerHTML =
+        (this.config.showRankings && gameObj.vTeamRanking
+          ? '<span class="ranking">' + gameObj.vTeamRanking + "</span>"
+          : "") + gameObj.vTeamLong;
       boxScore.appendChild(vTeamName);
     }
 
-
     //add "@" for games not yet started for the oneLine
     //and oneLineWithLogos view styles
-    if (gameObj.gameMode == this.gameModes.FUTURE &&
-        (viewStyle == "oneLine" || viewStyle == "oneLineWithLogos")) {
+    if (
+      gameObj.gameMode == this.gameModes.FUTURE &&
+      (viewStyle == "oneLine" || viewStyle == "oneLineWithLogos")
+    ) {
       var vsSymbol = document.createElement("span");
       vsSymbol.classList.add("vs-symbol");
       //Soccer games we don't say AT (@) but VS thus the HOME team is first (Chelsea Vs Manchester - Chelsea's Home instead of Manchester @ Chelsea)
@@ -433,7 +837,7 @@ Module.register("MMM-MyScoreboard",{
     //add game status
     var status = document.createElement("div");
     status.classList.add("status");
-    gameObj.status.forEach(function(s) {
+    gameObj.status.forEach(function (s) {
       var statusPart = document.createElement("span");
       statusPart.innerHTML = s;
       status.appendChild(statusPart);
@@ -442,17 +846,15 @@ Module.register("MMM-MyScoreboard",{
 
     //add scores if game in progress or finished
     if (gameObj.gameMode != this.gameModes.FUTURE) {
-
       var hTeamScore = document.createElement("span");
       hTeamScore.classList.add("score", "home");
-      hTeamScore.innerHTML = (gameObj.hScore);
+      hTeamScore.innerHTML = gameObj.hScore;
       boxScore.appendChild(hTeamScore);
 
       var vTeamScore = document.createElement("span");
       vTeamScore.classList.add("score", "visitor");
-      vTeamScore.innerHTML = (gameObj.vScore);
+      vTeamScore.innerHTML = gameObj.vScore;
       boxScore.appendChild(vTeamScore);
-
     }
 
     //add classes to final games
@@ -471,8 +873,7 @@ Module.register("MMM-MyScoreboard",{
   },
 
   // Override dom generator.
-  getDom: function() {
-
+  getDom: function () {
     var wrapper = document.createElement("div");
     wrapper.classList.add("wrapper");
 
@@ -503,14 +904,13 @@ Module.register("MMM-MyScoreboard",{
       return wrapper;
     }
 
-
     /*
       Run through the leagues and generate box score displays for
       each game.
     */
     var anyGames = false;
     var self = this;
-    this.config.sports.forEach(function(sport, index) {
+    this.config.sports.forEach(function (sport, index) {
       if (self.sportsData[index] != null && self.sportsData[index].length > 0) {
         anyGames = true;
         if (self.config.showLeagueSeparators) {
@@ -523,9 +923,9 @@ Module.register("MMM-MyScoreboard",{
           }
           wrapper.appendChild(leagueSeparator);
         }
-        self.sportsData[index].forEach(function(game, gidx) {
+        self.sportsData[index].forEach(function (game, gidx) {
           var boxScore = self.boxScoreFactory(sport.league, game);
-          boxScore.classList.add(gidx % 2 == 0 ? "odd" : "even") ;
+          boxScore.classList.add(gidx % 2 == 0 ? "odd" : "even");
           wrapper.appendChild(boxScore);
         });
       }
@@ -539,16 +939,25 @@ Module.register("MMM-MyScoreboard",{
       should be visible.
     */
     if (!anyGames) {
-      this.hide(1000, {lockString: this.identifier});
+      this.hide(1000, { lockString: this.identifier });
+      self.sendNotification("MODULE_INVISIBLE", {
+        moduleName: "MMM-MyScoreboard"
+      });
     } else {
-      this.show(1000, {lockString: this.identifier});
+      this.show(1000, { lockString: this.identifier });
+      self.sendNotification("MODULE_VISIBLE", {
+        moduleName: "MMM-MyScoreboard"
+      });
     }
 
     return wrapper;
   },
 
-  socketNotificationReceived: function(notification, payload) {
-    if ( notification === "MMM-MYSCOREBOARD-SCORE-UPDATE" && payload.instanceId == this.identifier) {
+  socketNotificationReceived: function (notification, payload) {
+    if (
+      notification === "MMM-MYSCOREBOARD-SCORE-UPDATE" &&
+      payload.instanceId == this.identifier
+    ) {
       console.log("[MMM-MyScoreboard] Updating Scores");
       this.loaded = true;
       this.sportsData[payload.index] = payload.scores;
@@ -556,7 +965,7 @@ Module.register("MMM-MyScoreboard",{
     }
   },
 
-  start: function() {
+  start: function () {
     Log.info("Starting module: " + this.name);
 
     /*
@@ -565,7 +974,7 @@ Module.register("MMM-MyScoreboard",{
     var scrubbedSports = [];
     var self = this;
 
-    this.config.sports.forEach(function(sport) {
+    this.config.sports.forEach(function (sport) {
       if (self.supportedLeagues[sport.league]) {
         scrubbedSports.push(sport);
       }
@@ -599,14 +1008,12 @@ Module.register("MMM-MyScoreboard",{
       respective feed owners to lock down the APIs. Updating
       every two minutes should be more than fine for our purposes.
     */
-    setInterval(function() {
+    setInterval(function () {
       self.getScores();
     }, 2 * 60 * 1000);
-
   },
 
-  makeTeamList: function(inst, league, teams, groups) {
-
+  makeTeamList: function (inst, league, teams, groups) {
     var teamList = [];
 
     if (teams != null) {
@@ -617,24 +1024,20 @@ Module.register("MMM-MyScoreboard",{
       for (var i = 0; i < groups.length; i++) {
         var group = inst.groups[league][groups[i]];
         if (group != null) {
-          group.forEach( function(team) {
+          group.forEach(function (team) {
             teamList.push(team);
           });
-
         }
       }
     }
-
 
     if (teamList.length == 0) {
       return null;
     }
     return teamList;
-
   },
 
-  getScores: function() {
-
+  getScores: function () {
     var gameDate = moment(); //get today's date
 
     if (gameDate.hour() < this.config.rolloverHours) {
@@ -652,8 +1055,7 @@ Module.register("MMM-MyScoreboard",{
     }
 
     var self = this;
-    this.config.sports.forEach( function(sport, index) {
-
+    this.config.sports.forEach(function (sport, index) {
       var payload = {
         instanceId: self.identifier,
         index: index,
@@ -665,12 +1067,7 @@ Module.register("MMM-MyScoreboard",{
       };
 
       self.sendSocketNotification("MMM-MYSCOREBOARD-GET-SCORES", payload);
-
-
     });
-
-
-
   },
 
   /*
@@ -681,24 +1078,55 @@ Module.register("MMM-MyScoreboard",{
     NCAAF and NCAAM where there are hundreds of teams.
   */
   groups: {
-    NHL : {
-
+    NHL: {
       //divisions
-      "Atlantic": ["BOS", "BUF", "DET", "FLA", "MTL", "OTT", "TB", "TOR"],
-      "Metropolitain": ["CAR", "CLB", "NJ", "NYI", "NYR", "PIT", "PHI", "WSH"],
-      "Central": ["CHI", "COL", "DAL", "MIN", "NSH", "STL", "WPG"],
-      "Pacific": ["ANA", "ARI", "CGY", "EDM", "LA", "SJ", "VAN", "VGK"],
+      Atlantic: ["BOS", "BUF", "DET", "FLA", "MTL", "OTT", "TB", "TOR"],
+      Metropolitain: ["CAR", "CLB", "NJ", "NYI", "NYR", "PIT", "PHI", "WSH"],
+      Central: ["CHI", "COL", "DAL", "MIN", "NSH", "STL", "WPG"],
+      Pacific: ["ANA", "ARI", "CGY", "EDM", "LA", "SJ", "VAN", "VGK"],
 
       //conferences
-      "East": ["BOS", "BUF", "CAR", "CLB", "DET", "FLA", "MTL", "NJ", "NYI", "NYR", "PIT", "PHI", "OTT", "TB", "TOR", "WSH"],
-      "West": ["ANA", "ARI", "CGY", "CHI", "COL", "DAL", "EDM", "LA", "MIN", "NSH", "SJ", "STL", "VAN", "VGK", "WPG"],
+      East: [
+        "BOS",
+        "BUF",
+        "CAR",
+        "CLB",
+        "DET",
+        "FLA",
+        "MTL",
+        "NJ",
+        "NYI",
+        "NYR",
+        "PIT",
+        "PHI",
+        "OTT",
+        "TB",
+        "TOR",
+        "WSH"
+      ],
+      West: [
+        "ANA",
+        "ARI",
+        "CGY",
+        "CHI",
+        "COL",
+        "DAL",
+        "EDM",
+        "LA",
+        "MIN",
+        "NSH",
+        "SJ",
+        "STL",
+        "VAN",
+        "VGK",
+        "WPG"
+      ],
 
       //all Canadian teams
-      "Canadian": ["CGY", "EDM", "MTL", "OTT", "TOR", "VAN", "WPG"]
+      Canadian: ["CGY", "EDM", "MTL", "OTT", "TOR", "VAN", "WPG"]
     },
 
-    MLB : {
-
+    MLB: {
       //divisions
       "AL East": ["BAL", "BOS", "NYY", "TB", "TOR"],
       "AL Central": ["CLE", "CWS", "DET", "KC", "MIN"],
@@ -708,135 +1136,742 @@ Module.register("MMM-MyScoreboard",{
       "NL West": ["ARI", "COL", "LAD", "SD", "SF"],
 
       //leagues
-      "American League": ["BAL", "BOS", "CLE", "CWS", "DET", "HOU", "LAA", "KC", "MIN", "NYY", "OAK", "SEA", "TB", "TEX", "TOR"],
-      "National League": ["ARI", "ATL", "CHC", "CIN", "COL", "LAD", "MIA", "MIL", "NYM", "PHI", "PIT", "SD", "SF", "STL", "WAS"]
-
+      "American League": [
+        "BAL",
+        "BOS",
+        "CLE",
+        "CWS",
+        "DET",
+        "HOU",
+        "LAA",
+        "KC",
+        "MIN",
+        "NYY",
+        "OAK",
+        "SEA",
+        "TB",
+        "TEX",
+        "TOR"
+      ],
+      "National League": [
+        "ARI",
+        "ATL",
+        "CHC",
+        "CIN",
+        "COL",
+        "LAD",
+        "MIA",
+        "MIL",
+        "NYM",
+        "PHI",
+        "PIT",
+        "SD",
+        "SF",
+        "STL",
+        "WAS"
+      ]
     },
 
-    NBA : {
-
+    NBA: {
       //divisions
-      "Atlantic": ["BKN", "BOS", "NY", "PHI", "TOR"],
-      "Central": ["CHI", "CLE", "DET", "IND", "MIL"],
-      "Southeast": ["ATL", "CHA", "MIA", "ORL", "WSH"],
-      "Northwest": ["DEN", "MIN", "OKC", "POR", "UTAH"],
-      "Pacific": ["GS", "LAC", "LAL", "PHX", "SAC"],
-      "Southwest": ["DAL", "HOU", "MEM", "NO", "SA"],
+      Atlantic: ["BKN", "BOS", "NY", "PHI", "TOR"],
+      Central: ["CHI", "CLE", "DET", "IND", "MIL"],
+      Southeast: ["ATL", "CHA", "MIA", "ORL", "WSH"],
+      Northwest: ["DEN", "MIN", "OKC", "POR", "UTAH"],
+      Pacific: ["GS", "LAC", "LAL", "PHX", "SAC"],
+      Southwest: ["DAL", "HOU", "MEM", "NO", "SA"],
 
       //conferences
-      "East": ["ATL", "BKN", "BOS", "CHA", "CHI", "CLE", "DET", "IND", "MIA", "MIL", "NY", "ORL", "PHI", "TOR", "WSH"],
-      "West": ["DAL", "DEN", "GS", "HOU", "LAC", "LAL", "MEM", "MIN", "NO", "OKC", "PHX", "POR", "SA", "SAC", "UTAH"]
-
+      East: [
+        "ATL",
+        "BKN",
+        "BOS",
+        "CHA",
+        "CHI",
+        "CLE",
+        "DET",
+        "IND",
+        "MIA",
+        "MIL",
+        "NY",
+        "ORL",
+        "PHI",
+        "TOR",
+        "WSH"
+      ],
+      West: [
+        "DAL",
+        "DEN",
+        "GS",
+        "HOU",
+        "LAC",
+        "LAL",
+        "MEM",
+        "MIN",
+        "NO",
+        "OKC",
+        "PHX",
+        "POR",
+        "SA",
+        "SAC",
+        "UTAH"
+      ]
     },
 
-    NFL : {
-
+    NFL: {
       //divisions
-      "AFC East" : ["NE", "BUF", "MIA", "NYJ"],
-      "AFC North" : ["BAL", "CIN", "CLE", "PIT"],
-      "AFC South" : ["JAX", "HOU", "IND", "TEN"],
-      "AFC West" : ["DEN", "KC", "LAC", "OAK"],
-      "NFC East" : ["DAL", "NYG", "PHI", "WAS"],
-      "NFC North" : ["CHI", "DET", "GB", "MIN"],
-      "NFC South" : ["ATL", "CAR", "NO", "TB"],
-      "NFC West" : ["ARI", "LA", "SEA", "SF"],
+      "AFC East": ["NE", "BUF", "MIA", "NYJ"],
+      "AFC North": ["BAL", "CIN", "CLE", "PIT"],
+      "AFC South": ["JAX", "HOU", "IND", "TEN"],
+      "AFC West": ["DEN", "KC", "LAC", "OAK"],
+      "NFC East": ["DAL", "NYG", "PHI", "WAS"],
+      "NFC North": ["CHI", "DET", "GB", "MIN"],
+      "NFC South": ["ATL", "CAR", "NO", "TB"],
+      "NFC West": ["ARI", "LA", "SEA", "SF"],
 
       //conferences
-      "AFC" : ["BAL", "BUF", "CIN", "CLE", "DEN", "HOU", "IND", "JAX", "KC", "LAC", "MIA", "NE", "NYJ", "OAK", "PIT", "TEN"],
-      "NFC" : ["ARI", "ATL", "CAR", "CHI", "DAL", "DET", "GB", "LA", "MIN", "NO", "NYG", "PHI", "SEA", "SF", "TB", "WAS"]
+      AFC: [
+        "BAL",
+        "BUF",
+        "CIN",
+        "CLE",
+        "DEN",
+        "HOU",
+        "IND",
+        "JAX",
+        "KC",
+        "LAC",
+        "MIA",
+        "NE",
+        "NYJ",
+        "OAK",
+        "PIT",
+        "TEN"
+      ],
+      NFC: [
+        "ARI",
+        "ATL",
+        "CAR",
+        "CHI",
+        "DAL",
+        "DET",
+        "GB",
+        "LA",
+        "MIN",
+        "NO",
+        "NYG",
+        "PHI",
+        "SEA",
+        "SF",
+        "TB",
+        "WAS"
+      ]
     },
 
-    MLS : {
-
+    MLS: {
       //conferences
-      "East" : ["ATL", "CHI", "CLB", "DC", "MTL", "NY", "NYC", "NE", "ORL", "PHI", "TOR"],
-      "West" : ["COL", "DAL", "HOU", "KC", "LA", "MIN", "POR", "RSL", "SEA", "SJ", "VAN"]
-
+      East: [
+        "ATL",
+        "CHI",
+        "CLB",
+        "DC",
+        "MTL",
+        "NY",
+        "NYC",
+        "NE",
+        "ORL",
+        "PHI",
+        "TOR"
+      ],
+      West: [
+        "COL",
+        "DAL",
+        "HOU",
+        "KC",
+        "LA",
+        "MIN",
+        "POR",
+        "RSL",
+        "SEA",
+        "SJ",
+        "VAN"
+      ]
     },
 
-    CFL : {
-
+    CFL: {
       //conferences
-      "East" : ["HAM", "MTL", "OTT", "TOR"],
-      "West" : ["BC", "CGY", "EDM", "SSK", "WPG"]
-
+      East: ["HAM", "MTL", "OTT", "TOR"],
+      West: ["BC", "CGY", "EDM", "SSK", "WPG"]
     },
 
-    NCAAF : {
-
+    NCAAF: {
       //divisions
-      "American Athletic" : ["CIN", "CONN", "ECU", "HOU", "MEM", "NAVY", "SMU", "TEM", "TULN", "TLSA", "UCF", "USF"],
-      "ACC" : ["BC", "CLEM", "DUKE", "FSU", "GT", "LOU", "MIAMI", "NCST", "PITT", "SYR", "UNC", "UVA", "VT", "WAKE"],
-      "Big 12" : ["BAY", "ISU", "KU", "KSU", "OKLA", "OKST", "TCU", "TEX", "TTU", "WVU"],
-      "Big Ten" : ["ILL", "IND", "IOWA", "MD", "MICH", "MSU", "MINN", "NEB", "NW", "OSU", "PSU", "PUR", "RUTG", "WIS"],
-      "Conference USA" : ["CHAR", "FAU", "FIU", "LT", "MRSH", "MTSU", "UNT", "ODU", "RICE", "UAB", "USM", "UTEP", "UTSA", "WKU"],
-      "FBS Independents" : ["ARMY", "BYU", "ND", "UMASS"],
-      "Mid-American" : ["AKR", "BALL", "BGSU", "BUFF", "CMU", "EMU", "KENT", "M-OH", "NIU", "OHIO", "TOL", "WMU"],
-      "Mountain West" : ["AFA", "BSU", "CSU", "FRES", "HAW", "NEV", "SDSU", "SJSU", "UNLV", "UNM", "USU", "WYO"],
-      "Pac-12" : ["ARIZ", "ASU", "CAL", "COLO", "ORE", "ORST", "STAN", "UCLA", "USC", "UTAH", "WASH", "WSU"],
-      "SEC" : ["ALA", "ARK", "AUB", "FLA", "UGA", "UK", "LSU", "MISS", "MSST", "MIZ", "SC", "TENN", "TA&M", "VAN"],
-      "Sun Belt" : ["APP", "ARST", "CCU", "GASO", "GAST", "IDHO", "ULL", "ULM", "NMSU", "USA", "TXST", "TROY"],
-      "Top 25" : ["@T25"] //special indicator for Top 25 ranked teams
-
+      "American Athletic": [
+        "CIN",
+        "CONN",
+        "ECU",
+        "HOU",
+        "MEM",
+        "NAVY",
+        "SMU",
+        "TEM",
+        "TULN",
+        "TLSA",
+        "UCF",
+        "USF"
+      ],
+      ACC: [
+        "BC",
+        "CLEM",
+        "DUKE",
+        "FSU",
+        "GT",
+        "LOU",
+        "MIAMI",
+        "NCST",
+        "PITT",
+        "SYR",
+        "UNC",
+        "UVA",
+        "VT",
+        "WAKE"
+      ],
+      "Big 12": [
+        "BAY",
+        "ISU",
+        "KU",
+        "KSU",
+        "OKLA",
+        "OKST",
+        "TCU",
+        "TEX",
+        "TTU",
+        "WVU"
+      ],
+      "Big Ten": [
+        "ILL",
+        "IND",
+        "IOWA",
+        "MD",
+        "MICH",
+        "MSU",
+        "MINN",
+        "NEB",
+        "NW",
+        "OSU",
+        "PSU",
+        "PUR",
+        "RUTG",
+        "WIS"
+      ],
+      "Conference USA": [
+        "CHAR",
+        "FAU",
+        "FIU",
+        "LT",
+        "MRSH",
+        "MTSU",
+        "UNT",
+        "ODU",
+        "RICE",
+        "UAB",
+        "USM",
+        "UTEP",
+        "UTSA",
+        "WKU"
+      ],
+      "FBS Independents": ["ARMY", "BYU", "ND", "UMASS"],
+      "Mid-American": [
+        "AKR",
+        "BALL",
+        "BGSU",
+        "BUFF",
+        "CMU",
+        "EMU",
+        "KENT",
+        "M-OH",
+        "NIU",
+        "OHIO",
+        "TOL",
+        "WMU"
+      ],
+      "Mountain West": [
+        "AFA",
+        "BSU",
+        "CSU",
+        "FRES",
+        "HAW",
+        "NEV",
+        "SDSU",
+        "SJSU",
+        "UNLV",
+        "UNM",
+        "USU",
+        "WYO"
+      ],
+      "Pac-12": [
+        "ARIZ",
+        "ASU",
+        "CAL",
+        "COLO",
+        "ORE",
+        "ORST",
+        "STAN",
+        "UCLA",
+        "USC",
+        "UTAH",
+        "WASH",
+        "WSU"
+      ],
+      SEC: [
+        "ALA",
+        "ARK",
+        "AUB",
+        "FLA",
+        "UGA",
+        "UK",
+        "LSU",
+        "MISS",
+        "MSST",
+        "MIZ",
+        "SC",
+        "TENN",
+        "TA&M",
+        "VAN"
+      ],
+      "Sun Belt": [
+        "APP",
+        "ARST",
+        "CCU",
+        "GASO",
+        "GAST",
+        "IDHO",
+        "ULL",
+        "ULM",
+        "NMSU",
+        "USA",
+        "TXST",
+        "TROY"
+      ],
+      "Top 25": ["@T25"] //special indicator for Top 25 ranked teams
     },
 
-    NCAAM : {
-
+    NCAAM: {
       //divisions
-      "America East" : ["ALBY", "BING", "HART", "MAINE", "STON", "UML", "UMBC", "UNH", "UVM"],
-      "American" : ["CIN", "CONN", "ECU", "HOU", "MEM", "SMU", "USF", "TEM", "TULN", "UCF", "WICH"],
-      "Atlantic 10" : ["DAV", "DAY", "DUQ", "FOR", "GMU", "GW", "LAS", "RICH", "JOES", "SLU", "SBON", "UMASS", "URI", "VCU"],
-      "ACC" : ["BC", "CLEM", "DUKE", "FSU", "GT", "LOU", "MIA", "NCST", "UNC", "ND", "PITT", "SYR", "UVA", "VT", "WAKE"],
-      "Atlantic Sun" : ["FGCU", "JAC", "KENN", "LIP", "NJIT", "UNF", "UPST", "STET"],
-      "Big 12" : ["BAY", "ISU", "KU", "KSU", "OKLA", "OKST", "TCU", "TEX", "TTU", "WVU"],
-      "Big East" : ["BUT", "CREI", "DEP", "GTWN", "MARQ", "PROV", "HALL", "SJU", "VILL", "XAV"],
-      "Big Sky" : ["EWU", "IDHO", "IDST", "MONT", "MTST", "NAU", "PRST", "SAC", "SUU", "UNCO", "UND", "WEB"],
-      "Big South" : ["CAM", "CHSO", "WEBB", "HP", "LIB", "LONG", "PRE", "RAD", "UNCA", "WIN"],
-      "Big Ten" : ["ILL", "IND", "IOWA", "MD", "MICH", "MSU", "MINN", "NEB", "NW", "OSU", "PSU", "PUR", "RUTG", "WIS"],
-      "Big West" : ["CP", "CSF", "CSUN", "HAW", "LBSU", "UCD", "UCI", "UCRV", "UCSB"],
-      "Colonial" : ["COFC", "DEL", "DREX", "ELON", "HOF", "JMU", "NE", "TOWS", "UNCW", "WM"],
-      "Conference USA" : ["CHAR", "FAU", "FIU", "LT", "MRSH", "MTU", "ODU", "RICE", "UAB", "UNT", "USM", "UTSA", "UTEP", "WKU"],
-      "Horizon" : ["CLEV", "DET", "GB", "IUPU", "MILW", "NKU", "OAK", "UIC", "WRST", "YSU"],
-      "Ivy" : ["BRWN", "CLMB", "COR", "DART", "HARV", "PENN", "PRIN", "YALE"],
-      "MAAC" : ["CAN", "FAIR", "IONA", "MAN", "MRST", "MONM", "NIAG", "QUIN", "RID", "SPU", "SIE"],
-      "Mid-American" : ["AKR", "BALL", "BGSU", "BUFF", "CMU", "EMU", "KENT", "M-OH", "NIU", "OHIO", "TOL", "WMU"],
-      "MEAC" : ["BCU", "COPP", "DSU", "FAMU", "HAMP", "HOW", "MORG", "NSU", "NCAT", "NCCU", "SAV", "SCST", "UMES"],
-      "Missouri Valley" : ["BRAD", "DRKE", "EVAN", "ILST", "INST", "L-IL", "MOST", "UNI", "SIU", "VALP"],
-      "Mountain West" : ["AFA", "BSU", "CSU", "FRES", "NEV", "UNM", "SDSU", "SJSU", "UNLV", "USU", "WYO"],
-      "Northeast" : ["BRY", "CCSU", "FDU", "LIU", "MSM", "RMU", "SHU", "SFNY", "SFU", "WAG"],
-      "Ohio Valley" : ["BEL", "EIU", "EKY", "JVST", "MORE", "MURR", "PEAY", "SEMO", "SIUE", "TNST", "TNTC", "UTM"],
-      "Pac-12" : ["ARIZ", "ASU", "CAL", "COLO", "ORE", "ORST", "STAN", "UCLA", "USC", "UTAH", "WASH", "WSU"],
-      "Patriot League" : ["AMER", "ARMY", "BU", "BUCK", "COLG", "HC", "LAF", "LEH", "L-MD", "NAVY"],
-      "SEC" : ["ALA", "ARK", "AUB", "FLA", "LSU", "MSST", "MIZ", "MISS", "SC", "TENN", "TAMU", "UGA", "UK", "VAN"],
-      "Southern" : ["CHAT", "ETSU", "FUR", "MER", "SAM", "CIT", "UNCG", "VMI", "WCU", "WOF"],
-      "Southland" : ["ACU", "AMCC", "HBU", "IW", "LAM", "MCNS", "NICH", "NWST", "SHSU", "SELA", "SFA", "UCA", "UNO"],
-      "SWAC" : ["AAMU", "ALST", "ALCN", "GRAM", "JKST", "MVSU", "PV", "SOU", "TXSO", "UAPB"],
-      "Summit League" : ["DEN", "IPFW", "NDSU", "OMA", "ORU", "SDAK", "SDST", "WIU"],
-      "Sun Belt" : ["APP", "ARST", "CCAR", "GASO", "GAST", "TXST", "TROY", "UALR", "ULL", "ULM", "USA", "UTA"],
-      "West Coast" : ["BYU", "GONZ", "LMU", "PAC", "PEPP", "PORT", "SMC", "USD", "SF", "SCU"],
-      "WAC" : ["CHS", "CSB", "GCU", "NMSU", "SEA", "TRGV", "UMKC", "UVU"],
-      "Top 25" : ["@T25"] //special indicator for Top 25 ranked teams
-
+      "America East": [
+        "ALBY",
+        "BING",
+        "HART",
+        "MAINE",
+        "STON",
+        "UML",
+        "UMBC",
+        "UNH",
+        "UVM"
+      ],
+      American: [
+        "CIN",
+        "CONN",
+        "ECU",
+        "HOU",
+        "MEM",
+        "SMU",
+        "USF",
+        "TEM",
+        "TULN",
+        "UCF",
+        "WICH"
+      ],
+      "Atlantic 10": [
+        "DAV",
+        "DAY",
+        "DUQ",
+        "FOR",
+        "GMU",
+        "GW",
+        "LAS",
+        "RICH",
+        "JOES",
+        "SLU",
+        "SBON",
+        "UMASS",
+        "URI",
+        "VCU"
+      ],
+      ACC: [
+        "BC",
+        "CLEM",
+        "DUKE",
+        "FSU",
+        "GT",
+        "LOU",
+        "MIA",
+        "NCST",
+        "UNC",
+        "ND",
+        "PITT",
+        "SYR",
+        "UVA",
+        "VT",
+        "WAKE"
+      ],
+      "Atlantic Sun": [
+        "FGCU",
+        "JAC",
+        "KENN",
+        "LIP",
+        "NJIT",
+        "UNF",
+        "UPST",
+        "STET"
+      ],
+      "Big 12": [
+        "BAY",
+        "ISU",
+        "KU",
+        "KSU",
+        "OKLA",
+        "OKST",
+        "TCU",
+        "TEX",
+        "TTU",
+        "WVU"
+      ],
+      "Big East": [
+        "BUT",
+        "CREI",
+        "DEP",
+        "GTWN",
+        "MARQ",
+        "PROV",
+        "HALL",
+        "SJU",
+        "VILL",
+        "XAV"
+      ],
+      "Big Sky": [
+        "EWU",
+        "IDHO",
+        "IDST",
+        "MONT",
+        "MTST",
+        "NAU",
+        "PRST",
+        "SAC",
+        "SUU",
+        "UNCO",
+        "UND",
+        "WEB"
+      ],
+      "Big South": [
+        "CAM",
+        "CHSO",
+        "WEBB",
+        "HP",
+        "LIB",
+        "LONG",
+        "PRE",
+        "RAD",
+        "UNCA",
+        "WIN"
+      ],
+      "Big Ten": [
+        "ILL",
+        "IND",
+        "IOWA",
+        "MD",
+        "MICH",
+        "MSU",
+        "MINN",
+        "NEB",
+        "NW",
+        "OSU",
+        "PSU",
+        "PUR",
+        "RUTG",
+        "WIS"
+      ],
+      "Big West": [
+        "CP",
+        "CSF",
+        "CSUN",
+        "HAW",
+        "LBSU",
+        "UCD",
+        "UCI",
+        "UCRV",
+        "UCSB"
+      ],
+      Colonial: [
+        "COFC",
+        "DEL",
+        "DREX",
+        "ELON",
+        "HOF",
+        "JMU",
+        "NE",
+        "TOWS",
+        "UNCW",
+        "WM"
+      ],
+      "Conference USA": [
+        "CHAR",
+        "FAU",
+        "FIU",
+        "LT",
+        "MRSH",
+        "MTU",
+        "ODU",
+        "RICE",
+        "UAB",
+        "UNT",
+        "USM",
+        "UTSA",
+        "UTEP",
+        "WKU"
+      ],
+      Horizon: [
+        "CLEV",
+        "DET",
+        "GB",
+        "IUPU",
+        "MILW",
+        "NKU",
+        "OAK",
+        "UIC",
+        "WRST",
+        "YSU"
+      ],
+      Ivy: ["BRWN", "CLMB", "COR", "DART", "HARV", "PENN", "PRIN", "YALE"],
+      MAAC: [
+        "CAN",
+        "FAIR",
+        "IONA",
+        "MAN",
+        "MRST",
+        "MONM",
+        "NIAG",
+        "QUIN",
+        "RID",
+        "SPU",
+        "SIE"
+      ],
+      "Mid-American": [
+        "AKR",
+        "BALL",
+        "BGSU",
+        "BUFF",
+        "CMU",
+        "EMU",
+        "KENT",
+        "M-OH",
+        "NIU",
+        "OHIO",
+        "TOL",
+        "WMU"
+      ],
+      MEAC: [
+        "BCU",
+        "COPP",
+        "DSU",
+        "FAMU",
+        "HAMP",
+        "HOW",
+        "MORG",
+        "NSU",
+        "NCAT",
+        "NCCU",
+        "SAV",
+        "SCST",
+        "UMES"
+      ],
+      "Missouri Valley": [
+        "BRAD",
+        "DRKE",
+        "EVAN",
+        "ILST",
+        "INST",
+        "L-IL",
+        "MOST",
+        "UNI",
+        "SIU",
+        "VALP"
+      ],
+      "Mountain West": [
+        "AFA",
+        "BSU",
+        "CSU",
+        "FRES",
+        "NEV",
+        "UNM",
+        "SDSU",
+        "SJSU",
+        "UNLV",
+        "USU",
+        "WYO"
+      ],
+      Northeast: [
+        "BRY",
+        "CCSU",
+        "FDU",
+        "LIU",
+        "MSM",
+        "RMU",
+        "SHU",
+        "SFNY",
+        "SFU",
+        "WAG"
+      ],
+      "Ohio Valley": [
+        "BEL",
+        "EIU",
+        "EKY",
+        "JVST",
+        "MORE",
+        "MURR",
+        "PEAY",
+        "SEMO",
+        "SIUE",
+        "TNST",
+        "TNTC",
+        "UTM"
+      ],
+      "Pac-12": [
+        "ARIZ",
+        "ASU",
+        "CAL",
+        "COLO",
+        "ORE",
+        "ORST",
+        "STAN",
+        "UCLA",
+        "USC",
+        "UTAH",
+        "WASH",
+        "WSU"
+      ],
+      "Patriot League": [
+        "AMER",
+        "ARMY",
+        "BU",
+        "BUCK",
+        "COLG",
+        "HC",
+        "LAF",
+        "LEH",
+        "L-MD",
+        "NAVY"
+      ],
+      SEC: [
+        "ALA",
+        "ARK",
+        "AUB",
+        "FLA",
+        "LSU",
+        "MSST",
+        "MIZ",
+        "MISS",
+        "SC",
+        "TENN",
+        "TAMU",
+        "UGA",
+        "UK",
+        "VAN"
+      ],
+      Southern: [
+        "CHAT",
+        "ETSU",
+        "FUR",
+        "MER",
+        "SAM",
+        "CIT",
+        "UNCG",
+        "VMI",
+        "WCU",
+        "WOF"
+      ],
+      Southland: [
+        "ACU",
+        "AMCC",
+        "HBU",
+        "IW",
+        "LAM",
+        "MCNS",
+        "NICH",
+        "NWST",
+        "SHSU",
+        "SELA",
+        "SFA",
+        "UCA",
+        "UNO"
+      ],
+      SWAC: [
+        "AAMU",
+        "ALST",
+        "ALCN",
+        "GRAM",
+        "JKST",
+        "MVSU",
+        "PV",
+        "SOU",
+        "TXSO",
+        "UAPB"
+      ],
+      "Summit League": [
+        "DEN",
+        "IPFW",
+        "NDSU",
+        "OMA",
+        "ORU",
+        "SDAK",
+        "SDST",
+        "WIU"
+      ],
+      "Sun Belt": [
+        "APP",
+        "ARST",
+        "CCAR",
+        "GASO",
+        "GAST",
+        "TXST",
+        "TROY",
+        "UALR",
+        "ULL",
+        "ULM",
+        "USA",
+        "UTA"
+      ],
+      "West Coast": [
+        "BYU",
+        "GONZ",
+        "LMU",
+        "PAC",
+        "PEPP",
+        "PORT",
+        "SMC",
+        "USD",
+        "SF",
+        "SCU"
+      ],
+      WAC: ["CHS", "CSB", "GCU", "NMSU", "SEA", "TRGV", "UMKC", "UVU"],
+      "Top 25": ["@T25"] //special indicator for Top 25 ranked teams
     },
 
-    NCAAM_MM : {}, //no groups for March Madness
+    NCAAM_MM: {}, //no groups for March Madness
 
     //Generally no divisions / conferences for soccer
-    EPL : {},
-    ENGCHMP : {},
-    UEFACHMP : {},
-    UEFAEUROPA : {},
-    UEFANATIONS : {},
-    FIFAWC : {},
-    BRASILEIRAO : {},
-    BUNDESLIGA : {},
+    EPL: {},
+    ENGCHMP: {},
+    UEFACHMP: {},
+    UEFAEUROPA: {},
+    UEFANATIONS: {},
+    FIFAWC: {},
+    BRASILEIRAO: {},
+    BUNDESLIGA: {},
     FRL1: {},
-    LALIGA : {},
-    LIBERTADORES : {},
-    MEX : {},
-    SERIEA : {}
-
-
+    LALIGA: {},
+    LIBERTADORES: {},
+    MEX: {},
+    SERIEA: {}
   }
-
 });
