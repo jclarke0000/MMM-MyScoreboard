@@ -11,7 +11,7 @@
     CFL (Canadian Football League)
     MLS (Major League Soccer)
     MLB (Major League Baseball)
-
+    WBC (World Baseball Classic)
 
   All sports are provided in a single feed at
   https://mobile-statsv2.sportsnet.ca/ticker
@@ -219,6 +219,7 @@ module.exports = {
               break;
 
             case "MLB":
+            case "WBC":
               /*
                 game.period_status property will say "TOP 1st"
                 or "BOT 3rd" etc.  Break out "TOP" or "BOT", and
@@ -338,6 +339,7 @@ module.exports = {
         }
         break;
       case "MLB":
+      case "WBC":
         if (game.period > 9) {
           return " (" + game.period + ")";
         }

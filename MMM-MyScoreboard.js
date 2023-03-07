@@ -60,6 +60,7 @@ Module.register("MMM-MyScoreboard",{
     "NFL": {provider: "SNET", logoFormat: "svg"},
     "CFL": {provider: "SNET", logoFormat: "svg"},
     "MLB": {provider: "SNET", logoFormat: "svg"},
+    "WBC": {provider: "SNET", logoFormat: "svg"},
     "MLS": {provider: "SNET", logoFormat: "url", homeTeamFirst: true},
     "NCAAF": {provider: "ESPN", logoFormat: "url"},
     "NCAAM": {provider: "ESPN", logoFormat: "url"},
