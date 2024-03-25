@@ -112,7 +112,7 @@ module.exports = {
     var url = "https://mobile-statsv2.sportsnet.ca/ticker?day=" + this.gameDate.format("YYYY-MM-DD");
 
 
-    fetch(url)
+    fetch.get(url)
       .then( function(response) {
         if(response.data.data) {
           self.scoresObj = response.data;
