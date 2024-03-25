@@ -33,7 +33,7 @@
 
 */
 
-//const axios = require("axios");
+const axios = require("axios");
 const moment = require("moment-timezone");
 const parseJSON = require("json-parse-async");
 
@@ -417,7 +417,7 @@ module.exports = {
     }
 
 
-    fetch(url)
+    axios.get(url)
       .then( function(response) {
             callback(self.formatScores(league, response.data, teams));
       })
