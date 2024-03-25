@@ -417,7 +417,7 @@ module.exports = {
     }
 
 
-    fetch.get(url)
+    fetch(url)
       .then( function(response) {
             callback(self.formatScores(league, response.data, teams));
       })
