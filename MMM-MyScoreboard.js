@@ -1,6 +1,6 @@
 /*********************************
 
- Magic Mirror Module:
+ MagicMirror² Module:
  MMM-MyScoreboard
  https://github.com/jclarke0000/MMM-MyScoreboard
 

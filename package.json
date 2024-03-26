@@ -1,7 +1,7 @@
 {
   "name": "mmm-myscoreboard",
   "version": "1.0.0",
-  "description": "Sports module for MagicMirror2",
+  "description": "Sports module for MagicMirror²",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jclarke0000/MMM-MyScoreboard.git"
@@ -9,7 +9,8 @@
   "keywords": [
     "MagicMirror",
     "Module",
-    "Sports"
+    "Sports",
+    "Sport"
   ],
   "bugs": {
     "url": "https://github.com/jclarke0000/MMM-MyScoreboard/issues"

@@ -2,7 +2,7 @@
 
 This a module for <strong>MagicMirror</strong><br>
 https://magicmirror.builders/<br>
-https://github.com/MichMich/MagicMirror
+https://github.com/MagicMirrorOrg/MagicMirror
 
 This module displays today's scores for your favourite teams across a number of different
 leagues, including:
@@ -149,7 +149,7 @@ It should be noted that if you specify arrays for both <code>teams</code> and <c
 
 ## Example configuration
 
-```
+```js
 {
   module: "MMM-MyScoreboard",
   position: "top_right",
