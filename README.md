@@ -494,7 +494,7 @@ STL   St. Louis Cardinals
 TB    Tampa Bay Rays
 TEX   Texas Rangers
 TOR   Toronto Blue Jays
-WAS   Washington Nationals
+WSH   Washington Nationals
 
 Groups:
 ---------------
@@ -616,7 +616,7 @@ SEA   Seattle Seahawks
 SF    San Francisco 49ers
 TB    Tampa Bay Buccaneers
 TEN   Tennessee Titans
-WAS   Washington
+WSH   Washington
 
 Groups:
 ---------------
