@@ -209,7 +209,7 @@ Currently this module supports the following leagues.  Use the bold uppercase sh
 * **NCAAM** - NCAA College Basketball (Division I)
 * **NCAAM_MM** - NCAA College Basketball (March Madness Tournament)
 * **NCAAW** - NCAA Women's College Basketball
-
+* **WBC** - World Baseball Classic
 
 ### Soccer Leagues & Competitions
 
@@ -506,6 +506,34 @@ NL Central
 NL West
 American League
 National League
+```
+
+### WBC
+
+```
+Teams:
+---------------
+
+AUS   Australia
+CAN   Canada
+CHN   China
+COL   Colombia
+CUB   Cuba
+CZE   Czech Republic
+DOM   Dominican Republic
+GBR   Great Britain
+ISR   Israel
+ITA   Italy
+JPN   Japan
+KOR   Korea
+MEX   Mexico
+NCA   Nicaragua
+NED   Netherlands
+PAN   Panama
+PUR   Puerto Rico
+TPE   Chinese Taipei
+USA   United States
+VEN   Venezuela
 ```
 
 ### NBA

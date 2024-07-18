@@ -1,13 +1,13 @@
 const NodeHelper = require("node_helper");
 const dirTree = require("directory-tree");
-
+const Log = require('../../js/logger.js');
 
 module.exports = NodeHelper.create({
 
   providers: {},
 
   start: function() {
-    console.log("Starting node_helper for module [" + this.name + "]");
+    Log.log("Starting node_helper for module [" + this.name + "]");
 
     this.providers.SNET = require("./providers/SNET.js");
     this.providers.ESPN = require("./providers/ESPN.js");
@@ -26,11 +26,10 @@ module.exports = NodeHelper.create({
       } 
     });
 
-
   },
 
   socketNotificationReceived: function(notification, payload) {
-    
+    Log.log('[MMM-MyScoreboard] ' + payload.instanceId + ' - socketNotificationReceived: ' + notification);
     if (notification == "MMM-MYSCOREBOARD-GET-SCORES") {
 
       /*
@@ -52,14 +51,11 @@ module.exports = NodeHelper.create({
 
 
     } else if (notification == "MMM-MYSCOREBOARD-GET-LOCAL-LOGOS") {
-
       this.sendSocketNotification("MMM-MYSCOREBOARD-LOCAL-LOGO-LIST", {instanceId: payload.instanceId, index: payload.index, logos: this.localLogos});
 
     }
 
   },
-
-
 
 
 });

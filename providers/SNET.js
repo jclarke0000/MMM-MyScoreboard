@@ -11,10 +11,15 @@
     CFL (Canadian Football League)
     MLS (Major League Soccer)
     MLB (Major League Baseball)
-
+    WBC (World Baseball Classic)
 
   All sports are provided in a single feed at
   https://mobile-statsv2.sportsnet.ca/ticker
+
+  Updated to get current scores
+  https://forum.magicmirror.builders/post/118572
+  https://stats-api.sportsnet.ca/ticker
+
 
   The feed takes one parameter:
 
@@ -66,7 +71,7 @@ module.exports = {
   gameDate: null,
 
   getScores: function(league, teams, gameDate, callback) {
-    
+    console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " getScores: " + gameDate + ", " + league + ", " + teams );
     var self = this;
     this.gameDate = moment(gameDate);
 
@@ -109,13 +114,17 @@ module.exports = {
     // console.log("Get SNET JSON");
     var self = this;
 
-    var url = "https://mobile-statsv2.sportsnet.ca/ticker?day=" + this.gameDate.format("YYYY-MM-DD");
+    var url = "https://stats-api.sportsnet.ca/ticker?day=" + this.gameDate.format("YYYY-MM-DD");
 
 
     axios.get(url)
       .then( function(response) {
         if(response.data.data) {
+          console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " getData: got good reponse" );
           self.scoresObj = response.data;
+        }
+        else {
+          console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " getData: no data?" );
         }
       })
       .catch( function(r_err) {
@@ -125,14 +134,20 @@ module.exports = {
 
 
   getLeague: function(league, teams) {
-
+    console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " getLeague: " + league + ", " + teams );  
     var self = this;
-
-    var filteredGames = this.scoresObj.data.games.filter(function(game) {
-      return(game.league.toUpperCase() == league.toUpperCase() &&
-        (teams == null || teams.indexOf(game.home_team.short_name.toUpperCase()) != -1 ||
-          teams.indexOf(game.visiting_team.short_name.toUpperCase()) != -1) );
-    });
+    
+    var filteredGames = [];
+    if(this.scoresObj.data.games) {
+      filteredGames = this.scoresObj.data.games.filter(function(game) {
+        return(game.league.toUpperCase() == league.toUpperCase() &&
+          (teams == null || teams.indexOf(game.home_team.short_name.toUpperCase()) != -1 ||
+            teams.indexOf(game.visiting_team.short_name.toUpperCase()) != -1) );
+      });
+    }
+    else {
+      console.log( "[MMM-MyScoreboard] " + moment().format("D-MMM-YY HH:mm") + " getLeague: no games today"); 
+    }
 
 
     /*
@@ -219,6 +234,7 @@ module.exports = {
               break;
 
             case "MLB":
+            case "WBC":
               /*
                 game.period_status property will say "TOP 1st"
                 or "BOT 3rd" etc.  Break out "TOP" or "BOT", and
@@ -338,6 +354,7 @@ module.exports = {
         }
         break;
       case "MLB":
+      case "WBC":
         if (game.period > 9) {
           return " (" + game.period + ")";
         }

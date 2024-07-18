@@ -9,7 +9,7 @@
 
  *********************************/
 
-Module.register("MMM-MyScoreboard",{
+ Module.register("MMM-MyScoreboard",{
 
   // Default module config.
   defaults: {
@@ -60,6 +60,7 @@ Module.register("MMM-MyScoreboard",{
     "NFL": {provider: "SNET", logoFormat: "svg"},
     "CFL": {provider: "SNET", logoFormat: "svg"},
     "MLB": {provider: "SNET", logoFormat: "svg"},
+    "WBC": {provider: "SNET", logoFormat: "svg"},
     "MLS": {provider: "SNET", logoFormat: "url", homeTeamFirst: true},
     "NCAAF": {provider: "ESPN", logoFormat: "url"},
     "NCAAM": {provider: "ESPN", logoFormat: "url"},
@@ -329,7 +330,7 @@ Module.register("MMM-MyScoreboard",{
    </div>
    ******************************************************************/
   boxScoreFactory: function(league, gameObj) {
-
+    this.sendToLog('league: ' + league + ', gameObj:' + gameObj);
     var viewStyle = this.config.viewStyle;
 
     var boxScore = document.createElement("div");
@@ -495,7 +496,7 @@ Module.register("MMM-MyScoreboard",{
 
   // Override dom generator.
   getDom: function() {
-
+    this.sendToLog('getDom');
     var wrapper = document.createElement("div");
     wrapper.classList.add("wrapper");
 
@@ -561,28 +562,31 @@ Module.register("MMM-MyScoreboard",{
       the module will only be visible when both agree that it
       should be visible.
     */
+   /* disabled to test MMM-Scenes2
     if (!anyGames) {
       this.hide(1000, {lockString: this.identifier});
     } else {
       this.show(1000, {lockString: this.identifier});
     }
+    */
 
     return wrapper;
   },
 
   socketNotificationReceived: function(notification, payload) {
     if ( notification === "MMM-MYSCOREBOARD-SCORE-UPDATE" && payload.instanceId == this.identifier) {
-      console.log("[MMM-MyScoreboard] Updating Scores");
+      this.sendToLog('socketNotificationReceived: ' + notification + ', updating scores');
       this.loaded = true;
       this.sportsData[payload.index] = payload.scores;
       this.updateDom();
     } else if (notification === "MMM-MYSCOREBOARD-LOCAL-LOGO-LIST" && payload.instanceId == this.identifier) {
+      this.sendToLog('socketNotificationReceived: ' + notification);
       this.localLogos = payload.logos;
 
       /*
         get scores and set up polling
       */
-
+    
       this.getScores();
 
       /*
@@ -595,8 +599,10 @@ Module.register("MMM-MyScoreboard",{
         respective feed owners to lock down the APIs. Updating
         every two minutes should be more than fine for our purposes.
       */
+      this.sendToLog('setInterval');
+      var self = this;
       setInterval(() => {
-        this.getScores();
+        self.getScores();
       }, 2 * 60 * 1000);
 
 
@@ -604,8 +610,7 @@ Module.register("MMM-MyScoreboard",{
   },
 
   start: function() {
-    Log.info("Starting module: " + this.name);
-
+    this.sendToLog('Starting module');
     /*
       scrub the config to ensure only supported leagues are included
     */
@@ -670,7 +675,7 @@ Module.register("MMM-MyScoreboard",{
   },
 
   getScores: function() {
-
+    this.sendToLog('getScores()');
     var gameDate = moment(); //get today's date
 
     if (gameDate.hour() < this.config.rolloverHours) {
@@ -700,7 +705,6 @@ Module.register("MMM-MyScoreboard",{
       };
 
       self.sendSocketNotification("MMM-MYSCOREBOARD-GET-SCORES", payload);
-
 
     });
 
@@ -922,6 +926,10 @@ Module.register("MMM-MyScoreboard",{
     SERIEA : {}
 
 
-  }
+  },
+
+  sendToLog: function(message) {
+		Log.log('['+ this.name + '] ' + this.identifier + ' - ' + message);
+	}
 
 });
